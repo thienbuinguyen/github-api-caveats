@@ -1,20 +1,19 @@
 """
 Script to extract issues, issue comments, pull requests and pull request comments from .gz files from Github Archive.
 Expects the '.gz' files in separate folders in the './github-archive' directory.
-    e.g. Run 'wget http://data.gharchive.org/2019-01-{01..31}-{0..23}.json.gz' first.
+    e.g. Run 'wget https://data.gharchive.org/2018-{01..12}-{01..31}-{0..23}.json.gz' first.
 
     ./github-archive
-        /2019-01/
-            2019-01-01-1.json.gz
+        /2018-01/
+            2018-01-01-1.json.gz
             ...
-        /2019-02/
-            2019-02-01-1.json.gz
+        /2018-02/
+            2018-02-01-1.json.gz
             ...
 Outputs the data as json files in './github-archive-extracted' directory.
 """
 
 import json
-import pickle
 import glob
 import os
 import gzip
@@ -90,6 +89,7 @@ def extract_github_data(file):
             "error": error}
 
 def extract_all_github_data():
+    start_time = time.time()
     p = Pool(10)
     num_files, num_issues, num_issue_comments, num_pull_requests,\
             num_pull_request_comments = 0, 0, 0, 0, 0
@@ -121,16 +121,16 @@ def extract_all_github_data():
         num_pull_requests += len(pull_requests)
         num_pull_request_comments += len(pull_request_comments)
 
-        # Write extracted data to pickle files
+        # Write extracted data to json files
         base_path = os.path.join(output_dir_path, os.path.basename(os.path.normpath(path)))
-        with open(base_path + "-issues.pickle", "wb+") as f_issues,\
-                open(base_path + "-issue-comments.pickle", "wb+") as f_issue_comments,\
-                open(base_path + "-pull-requests.pickle", "wb+") as f_pull_requests,\
-                open(base_path + "-pull-request-comments.pickle", "wb+") as f_pull_request_comments:
-            pickle.dump(issues, f_issues)
-            pickle.dump(issue_comments, f_issue_comments)
-            pickle.dump(pull_requests, f_pull_requests)
-            pickle.dump(pull_request_comments, f_pull_request_comments)
+        with open(base_path + "-issues.json", "w+") as f_issues,\
+                open(base_path + "-issue-comments.json", "w+") as f_issue_comments,\
+                open(base_path + "-pull-requests.json", "w+") as f_pull_requests,\
+                open(base_path + "-pull-request-comments.json", "w+") as f_pull_request_comments:
+            json.dump(issues, f_issues)
+            json.dump(issue_comments, f_issue_comments)
+            json.dump(pull_requests, f_pull_requests)
+            json.dump(pull_request_comments, f_pull_request_comments)
 
     print("\nExtraction Complete! Total of {} files mined.".format(num_files ))
 
@@ -144,7 +144,6 @@ def extract_all_github_data():
     # print total extracted data statistics
     print(tabulate([[num_issues, num_issue_comments, num_pull_requests, num_pull_request_comments]],
             headers=["issues", "issue comments", "pull requests", "pull request comments"]))
+    print('Extraction completed in {} minutes.'.format((time.time() - start_time) / 60))
 
-start_time = time.time()
-extract_all_github_data()
-print('Extraction completed in {} minutes.'.format((time.time() - start_time) / 60))
+# extract_all_github_data()
