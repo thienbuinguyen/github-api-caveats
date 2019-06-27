@@ -11,17 +11,16 @@ output_repo_name_file = './output/repos.txt'
 query = 'language:java created:{}..{} stars:>=2'
 
 def retrieve_repos():
-    date = datetime(2009, 1, 1)
-    count = 3
+    date = datetime(2012, 10, 9)
+    end_date = datetime(2019, 1, 1)
 
-    for i in range(365 * 9):
+    while date < end_date:
         arr = []
         next = date + timedelta(days=1)
 
         try:
             repos = g.search_repositories(query.format(date.strftime('%Y-%m-%d'), 
                 next.strftime('%Y-%m-%d')), sort='stars', order='desc')
-            count -= 1
 
             for repo in repos:
                 arr.append({
@@ -32,13 +31,10 @@ def retrieve_repos():
             print('Writing repos for {}/{}/{} to file...'.format(date.day, date.month, date.year))
             with open(output_dir + str(date.day) + '-' + str(date.month) + '-' + str(date.year) + '-repos.json', 'w+') as f:
                 json.dump(arr, f)
-        except:
-            print("Failed for date: {}".format(date.strftime('%Y-%m-%d')))
 
-        if count == 0:
-            sleep(60)
-            count = 3
-        date = next
+            date = next
+        except:
+           sleep(60)
 
 def extract_repo_names():
     """ Write all repo names to an output txt file """
@@ -52,5 +48,5 @@ def extract_repo_names():
                 for obj in arr:
                     f.write(obj['name'] + '\n')
 
-retrieve_repos()
-# extract_repo_names()
+# retrieve_repos()
+extract_repo_names()
