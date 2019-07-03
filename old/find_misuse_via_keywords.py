@@ -1,7 +1,7 @@
 import json
 import os
 import re
-from java_api_tree_web_crawler import keywords
+from web_crawler import keywords
 
 repo_path = './repositories'
 repos = os.listdir(repo_path)

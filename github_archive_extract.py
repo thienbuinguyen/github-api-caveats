@@ -22,8 +22,31 @@ from multiprocessing import Pool
 from tabulate import tabulate
 
 archive_paths = glob.glob('/media/thien/Data Drive1/github-archive/*/')
-ignore_paths = ['/media/thien/Data Drive1/github-archive/2019-01/']
+ignore_paths = ['/media/thien/Data Drive1/github-archive/2019-01/', 
+    '/media/thien/Data Drive1/github-archive/2018-01/', 
+    '/media/thien/Data Drive1/github-archive/2018-02/',
+    '/media/thien/Data Drive1/github-archive/2018-03/',
+    '/media/thien/Data Drive1/github-archive/2018-04/',
+    '/media/thien/Data Drive1/github-archive/2018-05/',
+    '/media/thien/Data Drive1/github-archive/2018-06/',
+    '/media/thien/Data Drive1/github-archive/2018-08/',
+    '/media/thien/Data Drive1/github-archive/2018-09/',
+    '/media/thien/Data Drive1/github-archive/2018-10/',
+    '/media/thien/Data Drive1/github-archive/2018-11/',
+    '/media/thien/Data Drive1/github-archive/2018-12/',
+]
 output_dir_path = '/media/thien/Data Drive1/github-archive-extracted/'
+java_repos_file_path = './repos.txt'
+
+def get_relevant_repo_names(file):
+    repos = []
+
+    with open(file) as f:
+        for line in f:
+            line = line.strip()
+            repos.append(line)
+    
+    return repos
 
 # Extract issues, issue comments, pull requests and pull request comments for all .gz file in the given path
 def extract_github_data(file):
@@ -40,6 +63,7 @@ def extract_github_data(file):
             for line in f_in:
                 last_line = line
                 line = json.loads(line)
+                 
                 if line["public"]: # only extract artefacts that are public
                     if line["type"] == "IssuesEvent": # extract issues
                         if line["payload"]["action"] == "opened":
@@ -70,7 +94,7 @@ def extract_github_data(file):
                                 "repo_name": line["repo"]["name"],
                                 "html_url": line["payload"]["pull_request"]["html_url"]
                             })
-                    elif line["type"] == "PullRequestReviewCommentEvent": # Extract comments for pull requests
+                    if line["type"] == "PullRequestReviewCommentEvent": # Extract comments for pull requests
                         if line["payload"]["action"] == "created":
                             pull_request_comments.append({
                                 "body": line["payload"]["comment"]["body"],
@@ -94,7 +118,7 @@ def extract_all_github_data():
     num_files, num_issues, num_issue_comments, num_pull_requests,\
             num_pull_request_comments = 0, 0, 0, 0, 0
     errors = []
-
+    
     for path in archive_paths:
         if path in ignore_paths:
             continue
@@ -146,4 +170,32 @@ def extract_all_github_data():
             headers=["issues", "issue comments", "pull requests", "pull request comments"]))
     print('Extraction completed in {} minutes.'.format((time.time() - start_time) / 60))
 
-# extract_all_github_data()
+def extract_java_elements(repo_names, input_files, output_file):
+    output_arr = []
+
+    for file in input_files:
+        with open(file) as f:
+            print(file)
+            arr = json.load(f)
+            for e in arr:
+                if e['repo_name'] in repo_names:
+                    output_arr.append(e)
+            
+    with open(output_file, 'w+') as out:
+        json.dump(output_arr, out)
+
+def extract_all_java_elements():
+    repo_names = get_relevant_repo_names(java_repos_file_path)
+    repo_names = set(repo_names)
+
+    issues = glob.glob(output_dir_path + '*issues.json')
+    issue_comments = glob.glob(output_dir_path + '*issue-comments.json')
+    pull_requests = glob.glob(output_dir_path + '*pull-requests.json')
+    pull_request_comments = glob.glob(output_dir_path + '*pull-request-comments.json')
+
+    # extract_java_elements(repo_names, issues, './output/java-2018-issues.json')
+    # extract_java_elements(repo_names, issue_comments, './output/java-2018-issue-comments.json')
+    # extract_java_elements(repo_names, pull_requests, './output/java-2018-pull-requests.json')
+    extract_java_elements(repo_names, pull_request_comments, './output/java-2018-pull-request-comments.json')
+
+extract_all_java_elements()
