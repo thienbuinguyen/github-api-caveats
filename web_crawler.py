@@ -12,13 +12,13 @@ import json
 from nltk.tokenize import sent_tokenize
 
 tree_url = 'https://docs.oracle.com/javase/12/docs/api/'
-deprecated_url = 'https://docs.oracle.com/javase/12/docs/api/'
+deprecated_url = 'https://docs.oracle.com/en/java/javase/12/docs/api/deprecated-list.html'
 
 # Output file paths
 api_tree_output_file = './output/java_api_12_entities.txt'
 api_deprecated_output_file = './output/java_api_12_deprecated.txt'
-api_text_output_dir = './api_text'
-api_caveat_sentences_dir = './api_caveat_sentences'
+api_text_output_dir = '/media/thien/Data Drive1/java_api_12_text'
+api_caveat_sentences_dir = './output/java_12_spec_caveat_sentences'
 
 keywords = ['insecure', 'susceptible', 'error', 'exception', 'null', 'susceptible',
         'unavailable', 'non thread safe','illegal', 'inappropriate', 'deprecate', 'better to', 'best to',
@@ -90,14 +90,19 @@ def mine_api_html_recursive(file_path, output_dir):
 def extract_api_caveats(html_file):
     """ Extract sentences that contain a caveat keyword within an API HTML file. """
     soup = BeautifulSoup(open(html_file), features='html.parser')
-    methods = soup.find_all('li', {'class': 'blockList'})
+    sections = soup.find_all('section')
     class_desc = soup.find('div', {'class': 'description'})
     api_caveats = []
 
+    # retrieve all sentences associated to the class
+    caveat_sentences = []
+    class_deprecated = False
+
     if class_desc:
-        desc = class_desc.find('div', {'class': 'block'})
-        caveat_sentences = []
+        desc = class_desc.find('div', class_='block')
         if desc:
+            class_deprecated = class_desc.find('div', class_='deprecationBlock', recursive=True) != None
+
             sentences = sent_tokenize(desc.text)
             for sentence in sentences:
                 for keyword in keywords:
@@ -106,68 +111,104 @@ def extract_api_caveats(html_file):
                         caveat_sentences.append(sentence)
                         break
 
-            if caveat_sentences:
-                api_caveats.append({'class_level_caveat_sentences': caveat_sentences})
+    api_caveats.append({'class_level_caveat_sentences': caveat_sentences, 'deprecated': class_deprecated})
 
-    for method in methods:
-        name = method.find('h4')
-        desc = method.find('div', {'class': 'block'})
-
-        if method.find('h3'):
+    for section in sections:
+        first_a_element = section.find('a')
+        
+        if not first_a_element:
             continue
+        
+        section_type = ''
+        a_id = first_a_element.get('id')        
+        if a_id == 'field.detail':
+            section_type = 'field'
+        elif a_id == 'construtor.detail':
+            section_type = 'constructor'
+        elif a_id == 'method.detail':
+            section_type = 'method'
+        else: # skip all other sections
+            continue 
+        
+        block_lists = section.find_all('li', class_='blockList')
+        
+        for api in block_lists:
+            name = api.find('h4')
+            desc = api.find('div', class_='block')
+            signature = api.find('pre')
 
-        if name and desc:
-            sentences = sent_tokenize(desc.text)
-            caveat_sentences = []
-            misc = method.find_all('dd')
-            caveat_misc = []
+            # skip enclosing li elements for the sections
+            if api.find('h3'):
+                continue
 
-            for sentence in sentences:
-                sentence = ' '.join(sentence.split())
-                for keyword in keywords:
-                    matches = re.search(r'\b' + keyword + r'\b', sentence, re.IGNORECASE)
-                    if matches:
-                        caveat_sentences.append(sentence)
-                        break
+            if name and desc and signature:
+                signature_text = None
+                if section_type == 'method':
+                    signature_text = signature.text.replace('\u200b', '')
+                    signature_text = signature_text.replace('\xa0', ' ')
+                    signature_text = ' '.join(signature_text.split())
+            
+                deprecated = api.find('div', class_='deprecationBlock', recursive=True) != None
+                caveat_obj = {
+                    'name': name.text,
+                    'type': section_type,
+                    'signature': '' if deprecated else signature_text,
+                    'deprecated': deprecated,
+                    'caveat_sentences': [],
+                    'caveat_misc': []
+                }
+                            
+                sentences = sent_tokenize(desc.text)
+                misc_list = api.find('dl')
 
-            for m in misc:
-                text = ' '.join(m.text.split())
-                for keyword in keywords:
-                    matches = re.search(r'\b'+ keyword + r'\b', text, re.IGNORECASE)
-                    if matches:
-                        caveat_misc.append(text)
-                        break
+                for sentence in sentences:
+                    sentence = ' '.join(sentence.split())
+                    for keyword in keywords:
+                        matches = re.search(r'\b' + keyword + r'\b', sentence, re.IGNORECASE)
+                        if matches:
+                            caveat_obj['caveat_sentences'].append(sentence)
+                            break
 
-            if caveat_sentences or caveat_misc:
-                api_caveats.append({'name': name.text, 'caveat_sentences': caveat_sentences, 'caveat_misc': caveat_misc})
+                if misc_list:
+                    misc_text = []
+                    curr_misc = ''
+                    for e in misc_list:
+                        if e.name == 'dt':
+                            if curr_misc == '':
+                                curr_misc = e.text
+                                                 
+                            # append the previous caveat misc data
+                            if (len(misc_text) > 0):
+                                caveat_obj['caveat_misc'].append({'misc_name': curr_misc, 'text': misc_text})
+                        
+                            misc_text = []
+                            curr_misc = e.text
+                        elif e.name == 'dd':
+                            text = ' '.join(e.text.split()) # change any whitespace to single space
+                            for keyword in keywords:
+                                matches = re.search(r'\b'+ keyword + r'\b', text, re.IGNORECASE)
+                                if matches:
+                                    misc_text.append(text)
+                                    break
+                        
+                    if len(misc_text) > 0:
+                        caveat_obj['caveat_misc'].append({'misc_name': curr_misc, 'text': misc_text})
+
+                api_caveats.append(caveat_obj)
 
     return api_caveats
 
 def extract_all_api_caveat_sentences():
     files = [f for f in glob.glob(api_text_output_dir + '/*')]
-    num_class_level_caveats = 0
-    num_sentence_caveats = 0
-    num_misc_caveats = 0
 
     for file in files:
         api_caveats = extract_api_caveats(file)
         name = os.path.splitext(os.path.basename(file))[0]
 
-        for api_caveat in api_caveats:
-            if 'class_level_caveat_sentences' in api_caveat:
-                num_class_level_caveats += len(api_caveat['class_level_caveat_sentences'])
-            else:
-                num_sentence_caveats += len(api_caveat['caveat_sentences']) 
-                num_misc_caveats += len(api_caveat['caveat_misc'])
+        with open(api_caveat_sentences_dir + '/' + name + '.json', 'w+') as f:
+            json.dump(api_caveats, f)
 
-        if len(api_caveats) == 0:
-            print("No API caveat sentences found for: " + file)
-        else:
-            with open(api_caveat_sentences_dir + '/' + name + '.json', 'w+') as f:
-                json.dump(api_caveats, f)
-            print('Extracted API caveat sentences from: ' + file)
+    print('Extraction complete!')
 
-    print('Found {} class level caveats, {} method sentence caveats and {} misc caveats ({} total)'.format(num_class_level_caveats, num_sentence_caveats, num_misc_caveats, num_class_level_caveats + num_sentence_caveats + num_misc_caveats))
-
-# scrape_api_names(tree_url, api_tree_output_file)
 # scrape_deprecated(deprecated_url, api_deprecated_output_file)
+extract_all_api_caveat_sentences()
