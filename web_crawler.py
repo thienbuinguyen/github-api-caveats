@@ -27,6 +27,8 @@ keywords = ['insecure', 'susceptible', 'error', 'exception', 'null', 'susceptibl
         'when', 'assume that', 'before', 'after', 'must', 'should', 'have to', 'need to', 'is not', 'are not',
         'was not', 'were not', 'will not', 'be not', 'does not', 'never', 'note', 'only', 'always']
 
+caveat_id = 0 # global counter to identify caveat objects
+
 def scrape_api_names(url, file_path):
     """ Find all Java class names from the Java hierarchy tree and write them to file. """
     tree_url = 'https://docs.oracle.com/en/java/javase/12/docs/api/overview-tree.html'
@@ -87,49 +89,102 @@ def mine_api_html_recursive(file_path, output_dir):
         print("Failed to extract API text!")
         print(e)
 
+def transform_soup(soup, parameters):
+    obj = {
+        'parameters': [],
+        'fields': [],
+        'methods': [],
+        'primitives': [],
+        'classes': [] 
+        }
+    
+    # transform the text of code tag elements
+    for code in soup.find_all('code'):
+        if len(code.text) == 0 or code.text in ['true', 'false', 'null'] or re.match('[^A-Za-z]', code.text) is not None:
+            continue
+        elif code.text in parameters:
+            if code.text not in obj['parameters']:
+                obj['parameters'].append(code.text) 
+            code.string = 'PARAMETER_' + str(obj['parameters'].index(code.text))
+        elif '(' in code.text:
+            if code.text not in obj['methods']:
+                obj['methods'].append(code.text)
+            code.string = 'METHOD_' + str(obj['methods'].index(code.text))
+        elif code.text[0].islower(): 
+            if code.text in['byte', 'short', 'int', 'long', 'float', 'double', 'char', 'boolean']:
+                if code.text not in obj['primitives']:
+                    obj['primitives'].append(code.text)
+                code.string = 'PRIMITIVE_' + str(obj['primitives'].index(code.text))
+            else:
+                if code.text not in obj['methods']:
+                    obj['methods'].append(code.text)
+                code.string = 'METHOD_' + str(obj['methods'].index(code.text))
+        elif re.match('.*[A-Z_]+$', code.text) is not None:
+            if code.text not in obj['fields']:
+                obj['fields'].append(code.text)
+            code.string = 'FIELD_' + str(obj['fields'].index(code.text))
+        else:
+            if code.text not in obj['classes']:
+                obj['classes'].append(code.text)
+            code.string = 'CLASS_' + str(obj['classes'].index(code.text))
+
+    return obj
+
+def extract_class_caveats(soup):
+    class_deprecated = False
+    desc = soup.find('div', class_='block')
+    caveat_sentences = []
+    if desc:
+        class_deprecated = soup.find('div', class_='deprecationBlock', recursive=True) != None
+
+        sentences = sent_tokenize(desc.text)
+        for sentence in sentences:
+            lower_case_sentence = sentence.lower()
+            for keyword in keywords:
+                matches = re.search(r'\b' + keyword + r'\b', lower_case_sentence, re.IGNORECASE)
+                if matches:
+                    caveat_sentences.append(sentence)
+                    break
+
+    return {'class_level_caveat_sentences': caveat_sentences, 'deprecated': class_deprecated}
+
+def calculate_section_type(soup):
+    first_a_element = soup.find('a')
+    section_type = ''
+    if first_a_element:
+        a_id = first_a_element.get('id')        
+        if a_id == 'field.detail':
+            section_type = 'field'
+        elif a_id == 'constructor.detail':
+            section_type = 'constructor'
+        elif a_id == 'method.detail':
+            section_type = 'method'
+
+    return section_type
+
 def extract_api_caveats(html_file):
     """ Extract sentences that contain a caveat keyword within an API HTML file. """
+    global caveat_id
     soup = BeautifulSoup(open(html_file), features='html.parser')
     sections = soup.find_all('section')
     class_desc = soup.find('div', {'class': 'description'})
     api_caveats = []
 
     # retrieve all sentences associated to the class
-    caveat_sentences = []
-    class_deprecated = False
-
     if class_desc:
-        desc = class_desc.find('div', class_='block')
-        if desc:
-            class_deprecated = class_desc.find('div', class_='deprecationBlock', recursive=True) != None
+        mappings = transform_soup(class_desc, {})
+        obj = extract_class_caveats(class_desc)
+        obj['id'] = caveat_id
+        obj['mappings'] = mappings
+        api_caveats.append(obj)
 
-            sentences = sent_tokenize(desc.text)
-            for sentence in sentences:
-                for keyword in keywords:
-                    matches = re.search(r'\b' + keyword + r'\b', sentence, re.IGNORECASE)
-                    if matches:
-                        caveat_sentences.append(sentence)
-                        break
-
-    api_caveats.append({'class_level_caveat_sentences': caveat_sentences, 'deprecated': class_deprecated})
+    caveat_id += 1
 
     for section in sections:
-        first_a_element = section.find('a')
-        
-        if not first_a_element:
+        section_type = calculate_section_type(section) 
+        # skip all sections that are not fields, constructors or methods
+        if section_type == '':
             continue
-        
-        section_type = ''
-        a_id = first_a_element.get('id')        
-        if a_id == 'field.detail':
-            section_type = 'field'
-        elif a_id == 'construtor.detail':
-            section_type = 'constructor'
-        elif a_id == 'method.detail':
-            section_type = 'method'
-        else: # skip all other sections
-            continue 
-        
         block_lists = section.find_all('li', class_='blockList')
         
         for api in block_lists:
@@ -143,7 +198,7 @@ def extract_api_caveats(html_file):
 
             if name and desc and signature:
                 signature_text = None
-                if section_type == 'method':
+                if section_type in ['method', 'constructor']:
                     signature_text = signature.text.replace('\u200b', '')
                     signature_text = signature_text.replace('\xa0', ' ')
                     signature_text = ' '.join(signature_text.split())
@@ -155,23 +210,36 @@ def extract_api_caveats(html_file):
                     'signature': '' if deprecated else signature_text,
                     'deprecated': deprecated,
                     'caveat_sentences': [],
-                    'caveat_misc': []
+                    'caveat_misc': [],
+                    'id': caveat_id
                 }
-                            
-                sentences = sent_tokenize(desc.text)
+
+                caveat_id += 1
+                parameters = [] # list of parameter names for functions
+
                 misc_list = api.find('dl')
-
-                for sentence in sentences:
-                    sentence = ' '.join(sentence.split())
-                    for keyword in keywords:
-                        matches = re.search(r'\b' + keyword + r'\b', sentence, re.IGNORECASE)
-                        if matches:
-                            caveat_obj['caveat_sentences'].append(sentence)
-                            break
-
+                # extract the parameters for constructors and methods
                 if misc_list:
+                    if section_type in ['method', 'constructor']:
+                        extract_parameters = False
+                        for e in misc_list:
+                            if e.name == 'dt':
+                                if e.text == 'Parameters:':
+                                    extract_parameters = True
+                                elif extract_parameters:
+                                    break
+                            elif extract_parameters and  e.name == 'dd':
+                                parameters.append(e.text.split(' - ')[0])
+
+                    # extract all misc text (e.g. "Parameters:", "Returns:", "Throws:" sections)
                     misc_text = []
                     curr_misc = ''
+
+                # normalise all <code> tag text in the api soup and store the mappings
+                caveat_obj['mappings'] = transform_soup(api, parameters)
+
+                # extract misc sentences/text
+                if misc_list:
                     for e in misc_list:
                         if e.name == 'dt':
                             if curr_misc == '':
@@ -179,20 +247,33 @@ def extract_api_caveats(html_file):
                                                  
                             # append the previous caveat misc data
                             if (len(misc_text) > 0):
-                                caveat_obj['caveat_misc'].append({'misc_name': curr_misc, 'text': misc_text})
+                                caveat_obj['caveat_misc'].append({'name': curr_misc, 'text_list': misc_text})
                         
                             misc_text = []
                             curr_misc = e.text
                         elif e.name == 'dd':
                             text = ' '.join(e.text.split()) # change any whitespace to single space
+                            lower_case_text = text.lower()
                             for keyword in keywords:
-                                matches = re.search(r'\b'+ keyword + r'\b', text, re.IGNORECASE)
+                                matches = re.search(r'\b'+ keyword + r'\b', lower_case_text, re.IGNORECASE)
                                 if matches:
                                     misc_text.append(text)
                                     break
-                        
+
                     if len(misc_text) > 0:
-                        caveat_obj['caveat_misc'].append({'misc_name': curr_misc, 'text': misc_text})
+                        caveat_obj['caveat_misc'].append({'name': curr_misc, 'text_list': misc_text})
+
+                sentences = sent_tokenize(desc.text)
+
+                for index, sentence in enumerate(sentences):
+                    sentence = ' '.join(sentence.split())
+                    
+                    lower_case_sentence = sentence.lower()
+                    for keyword in keywords:
+                        matches = re.search(r'\b' + keyword + r'\b', lower_case_sentence, re.IGNORECASE)
+                        if matches:
+                            caveat_obj['caveat_sentences'].append(sentence)
+                            break
 
                 api_caveats.append(caveat_obj)
 
@@ -202,6 +283,7 @@ def extract_all_api_caveat_sentences():
     files = [f for f in glob.glob(api_text_output_dir + '/*')]
 
     for file in files:
+        print(file)
         api_caveats = extract_api_caveats(file)
         name = os.path.splitext(os.path.basename(file))[0]
 
