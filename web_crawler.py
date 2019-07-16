@@ -139,6 +139,7 @@ def extract_class_caveats(soup):
 
         sentences = sent_tokenize(desc.text)
         for sentence in sentences:
+            sentence = ' '.join(sentence.split()) # change any whitespace to single space
             lower_case_sentence = sentence.lower()
             for keyword in keywords:
                 matches = re.search(r'\b' + keyword + r'\b', lower_case_sentence, re.IGNORECASE)
