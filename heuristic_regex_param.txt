@@ -1,0 +1,59 @@
+# NULLNESS NOT ALLOWED
+# 19
+(^[A-Za-z0-9_\.]*| .*) can not be null
+# 20
+non-null ([A-Za-z0-9_\.]*$|.* )
+# NULLNESS ALLOWED
+# 1
+(^[A-Za-z0-9_\.]*| .*) can be null
+(^[A-Za-z0-9_\.]*| .*) could be null
+# 2
+(^[A-Za-z0-9_\.]*| .*) may be null
+# 3
+(^[A-Za-z0-9_\.]*| .*) can be equal to null
+(^[A-Za-z0-9_\.]*| .*) could be equal to null
+(^[A-Za-z0-9_\.]*| .*) can be equivalent to null
+(^[A-Za-z0-9_\.]*| .*) could be equivalent to null
+# 4
+(^[A-Za-z0-9_\.]*| .*) parameter can be null
+(^[A-Za-z0-9_\.]*| .*) parameter could be null
+# 5
+(^[A-Za-z0-9_\.]*| .*) parameter may be null
+# 6
+(^[A-Za-z0-9_\.]*| .*) parameter can be equal to null
+(^[A-Za-z0-9_\.]*| .*) parameter can be equivalent to null
+(^[A-Za-z0-9_\.]*| .*) parameter could be equal to null
+(^[A-Za-z0-9_\.]*| .*) parameter could be equivalent to null
+# 7
+value of (.*) can be null
+value of (.*) could be null
+# 8
+value of (.*) may be null
+# 9
+value of (.*) can be equal to null
+value of (.*) can be to null
+value of (.*) could be equal to null
+value of (.*) could be equivalent to null
+# 10
+(^[A-Za-z0-9_\.]*| .*) null be ignored
+# 11
+(^[A-Za-z0-9_\.]*| .*) or null
+
+# RANGE LIMITATION
+# 21 
+(^[A-Za-z0-9_\.]*| .*) can not be negative
+(^[A-Za-z0-9_\.]*| .*) can not be positive
+(^[A-Za-z0-9_\.]*| .*) can not be non-negative
+(^[A-Za-z0-9_\.]*| .*) must be non-positive
+(^[A-Za-z0-9_\.]*| .*) must be negative
+(^[A-Za-z0-9_\.]*| .*) must be positive
+(^[A-Za-z0-9_\.]*| .*) must be non-negative
+(^[A-Za-z0-9_\.]*| .*) must be non-positive
+# 22
+(^[A-Za-z0-9_\.]*| .*) must be greater than ([A-Za-z0-9_\.]*$|.* )
+(^[A-Za-z0-9_\.]*| .*) must be less than ([A-Za-z0-9_\.]*$|.* )
+(^[A-Za-z0-9_\.]*| .*) must be larger than ([A-Za-z0-9_\.]*$|.* )
+# 23
+(^[A-Za-z0-9_\.]*| .*) be greater than ([A-Za-z0-9_\.]*$|.* )
+(^[A-Za-z0-9_\.]*| .*) be less than ([A-Za-z0-9_\.]*$|.* )
+(^[A-Za-z0-9_\.]*| .*) be larger than ([A-Za-z0-9_\.]*$|.* )

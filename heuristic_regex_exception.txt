@@ -1,0 +1,248 @@
+# NULLNESS NOT ALLOWED
+# 1
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be null
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) equals null
+# 2
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equal to null
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equivalent to null
+# 3
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be null
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) equals null
+# 4
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equal to null
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equivalent to null
+# 5
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) parameter be null
+# 6
+the specified (.+) be null
+# 7
+any of (.+) be null
+none of (.+) be null
+# 8
+either (.+) be null
+neither (.+) be null
+any (.+) be null
+all (.+) be null
+both (.+) be null
+none (.+) be null
+either (.+) equals null
+neither (.+) equals null
+any (.+) equals null
+all (.+) equals null
+both (.+) equals null
+none (.+) equals null
+# 9
+either (.+) be equal null
+neither (.+) be equal null
+any (.+) be equal null
+all (.+) be equal null
+both (.+) be equal null
+none (.+) be equal null
+either (.+) be equivalent null
+neither (.+) be equival null
+any (.+) be equivalent null
+all (.+) be equivalent null
+both (.+) be equivalent null
+none (.+) be equivalent null
+# 10
+either (.+) or (.+) be null
+either (.+) or (.+) equals null
+neither (.+) nor (.+) be null
+neither (.+) nor (.+) equals null
+# 11
+both (.+) and (.+) be null
+# 12 - skip 
+# 13-14 skip
+# 15
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+)'s value be null
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+)'s value equals null
+# 16
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+)'s value be equal null
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+)'s value be equivalent null
+# 17
+value of (.+) be null
+value of (.+) equals null
+# 18
+value of (.+) be equal null
+value of (.+) be equivalent null
+
+# TYPE RESTRICTION
+# 1
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 2
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 3
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 4
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equal to (.+)
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 5
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be a class derived from ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not a class derived from ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 6
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be a class derived from ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be a class derived from ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not a class derived from ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not a class derived from ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 7
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) > (.+)  be an instance of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) > (.+)  not an instance of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 8
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be an instance of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be an instance of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not an instance of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not an instance of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 9 
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be an instance of (.+) or ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not an instance of (.+) or ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 10
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be an instance of (.+) or ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not an instance of (.+) or ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be an instance of (.+) or ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not an instance of (.+) or ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+
+# RANGE LIMITATION
+# 1
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) = ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) > ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) < ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) >= ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) <= ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 2
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 3
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) equals ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 4 
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 5
+computing (.+) be less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) be greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) be larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) not less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) not greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) not larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing (.+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 6
+computing either (.+) or (.+) be less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) be greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) be larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) not less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) not greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) not larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+computing either (.+) or (.+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 7
+product of (.+) and (.+) be less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) be greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) be larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) not less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) not greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) not larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+product of (.+) and (.+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) be less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) be greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) be larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) be equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) be equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) not less than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) not greater than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) not larger than ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) not equal to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+sum of (.+) and (.+) not equivalent to ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 8
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be negative
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be positive
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be false
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be true 
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not negative
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not positive
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not false
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not true 
+# 9 
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be negative
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be positive
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be false
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) be true 
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not negative
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not positive
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not false
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) or (.+) not true 
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be negative
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be positive
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be false
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be true 
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not negative
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not positive
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not false
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not true 
+# 10
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) be the same
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) and (.+) not the same
+# 11
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) equals ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 12
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be in range ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be out of range ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be outside of range ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not in range ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not out of range ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not outside of range ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 13
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be in bounds
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be out of bounds
+# 14
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 15 - skip, expression expected
+# 16
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be between (.+) and ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not between (.+) and ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 17 - skip, same as 14
+# 18
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be one of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not one of ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 19
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be one of the following: ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not one of the following: ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+# 20
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) be one of supported data, which are ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
+(^[A-Za-z0-9_\.]+| [A-Za-z0-9_\.]+) not one of supported data, which are ([A-Za-z0-9_\.]+$|[A-Za-z0-9_\.]+ )
