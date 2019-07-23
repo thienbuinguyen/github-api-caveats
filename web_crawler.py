@@ -18,16 +18,18 @@ deprecated_url = 'https://docs.oracle.com/en/java/javase/12/docs/api/deprecated-
 api_tree_output_file = './output/java_api_12_entities.txt'
 api_deprecated_output_file = './output/java_api_12_deprecated.txt'
 api_text_output_dir = '/media/thien/Data Drive1/java_api_12_text'
-api_caveat_sentences_dir = './output/java_12_spec_caveat_sentences'
+api_caveat_sentences_dir = './output/java_12_spec_caveat_sentences_revised'
 
 keywords = ['insecure', 'susceptible', 'error', 'exception', 'null', 'susceptible',
-        'unavailable', 'non thread safe','illegal', 'inappropriate', 'deprecate', 'better to', 'best to',
+        'unavailable', 'not thread safe','illegal', 'inappropriate', 'deprecate', 'better to', 'best to',
         'recommended', 'less desirable','discourage', 'instead of', 'rather than','otherwise',
-        'do not', 'note that', 'notably', 'caution', 'under the condition', 'whether', 'if',
-        'when', 'assume that', 'before', 'after', 'must', 'should', 'have to', 'need to', 'is not', 'are not',
-        'was not', 'were not', 'will not', 'be not', 'does not', 'never', 'note', 'only', 'always']
+        'do not', 'note that', 'notably', 'caution', 'under the condition', 'whether ', 'if ',
+        'when ', 'assume that ', 'before', 'after', 'must', 'should', 'have to', 'need to', 
+        'be not', 'never', 'none', 'only', 'always']
 
 caveat_id = 0 # global counter to identify caveat objects
+num_sentences = 0 # global counter for number of sentences analysed
+num_caveat_sentences = 0 # global counter for caveat sentences
 
 def scrape_api_names(url, file_path):
     """ Find all Java class names from the Java hierarchy tree and write them to file. """
@@ -131,6 +133,8 @@ def transform_soup(soup, parameters):
     return obj
 
 def extract_class_caveats(soup):
+    global num_sentences
+
     class_deprecated = False
     desc = soup.find('div', class_='block')
     caveat_sentences = []
@@ -138,11 +142,11 @@ def extract_class_caveats(soup):
         class_deprecated = soup.find('div', class_='deprecationBlock', recursive=True) != None
 
         sentences = sent_tokenize(desc.text)
+        num_sentences += len(sentences)
         for sentence in sentences:
             sentence = ' '.join(sentence.split()) # change any whitespace to single space
-            lower_case_sentence = sentence.lower()
             for keyword in keywords:
-                matches = re.search(r'\b' + keyword + r'\b', lower_case_sentence, re.IGNORECASE)
+                matches = re.search(keyword, sentence, re.IGNORECASE)
                 if matches:
                     caveat_sentences.append(sentence)
                     break
@@ -166,6 +170,9 @@ def calculate_section_type(soup):
 def extract_api_caveats(html_file):
     """ Extract sentences that contain a caveat keyword within an API HTML file. """
     global caveat_id
+    global num_sentences
+    global num_caveat_sentences
+
     soup = BeautifulSoup(open(html_file), features='html.parser')
     sections = soup.find_all('section')
     class_desc = soup.find('div', {'class': 'description'})
@@ -178,6 +185,8 @@ def extract_api_caveats(html_file):
         obj['id'] = caveat_id
         obj['mappings'] = mappings
         api_caveats.append(obj)
+
+        num_caveat_sentences += len(obj['class_level_caveat_sentences'])
 
     caveat_id += 1
 
@@ -249,38 +258,47 @@ def extract_api_caveats(html_file):
                             # append the previous caveat misc data
                             if (len(misc_text) > 0):
                                 caveat_obj['caveat_misc'].append({'name': curr_misc, 'text_list': misc_text})
+                                num_caveat_sentences += len(misc_text)
                         
                             misc_text = []
                             curr_misc = e.text
                         elif e.name == 'dd':
                             text = ' '.join(e.text.split()) # change any whitespace to single space
-                            lower_case_text = text.lower()
                             for keyword in keywords:
-                                matches = re.search(r'\b'+ keyword + r'\b', lower_case_text, re.IGNORECASE)
+                                matches = re.search(keyword, text, re.IGNORECASE)
                                 if matches:
                                     misc_text.append(text)
                                     break
 
+                            num_sentences += 1
+
                     if len(misc_text) > 0:
                         caveat_obj['caveat_misc'].append({'name': curr_misc, 'text_list': misc_text})
+                        num_caveat_sentences += len(misc_text)
 
                 sentences = sent_tokenize(desc.text)
+                num_sentences += len(sentences)
 
                 for index, sentence in enumerate(sentences):
                     sentence = ' '.join(sentence.split())
                     
-                    lower_case_sentence = sentence.lower()
                     for keyword in keywords:
-                        matches = re.search(r'\b' + keyword + r'\b', lower_case_sentence, re.IGNORECASE)
+                        matches = re.search(keyword, sentence, re.IGNORECASE)
                         if matches:
                             caveat_obj['caveat_sentences'].append(sentence)
                             break
 
+                num_caveat_sentences += len(caveat_obj['caveat_sentences'])
                 api_caveats.append(caveat_obj)
 
     return api_caveats
 
 def extract_all_api_caveat_sentences():
+    global num_sentences
+    global num_caveat_sentences
+    
+    num_sentences = 0
+    num_caveat_sentences = 0
     files = [f for f in glob.glob(api_text_output_dir + '/*')]
 
     for file in files:
@@ -292,6 +310,8 @@ def extract_all_api_caveat_sentences():
             json.dump(api_caveats, f)
 
     print('Extraction complete!')
+    print('Total number of sentences analysed: {}'.format(num_sentences))
+    print('Total number of caveat sentences: {}'.format(num_caveat_sentences))
 
 # scrape_deprecated(deprecated_url, api_deprecated_output_file)
 extract_all_api_caveat_sentences()
