@@ -110,7 +110,7 @@ def extract_class_caveats(soup):
                     caveat_sentences.append(sentence)
                     break
 
-    return {'class_level_caveat_sentences': caveat_sentences, 'deprecated': class_deprecated}
+    return {'class_caveat_sentences': caveat_sentences, 'deprecated': class_deprecated}
 
 def calculate_section_type(soup):
     first_a_element = soup.find('a')
@@ -143,7 +143,7 @@ def extract_api_caveats(html_file):
         obj['id'] = caveat_id
         api_caveats.append(obj)
 
-        num_caveat_sentences += len(obj['class_level_caveat_sentences'])
+        num_caveat_sentences += len(obj['class_caveat_sentences'])
 
     caveat_id += 1
 
@@ -176,7 +176,7 @@ def extract_api_caveats(html_file):
                     'type': section_type,
                     'signature': '' if deprecated else signature_text,
                     'deprecated': deprecated,
-                    'caveat_sentences': [],
+                    'sentences': [],
                     'caveat_misc': [],
                     'id': caveat_id
                 }
@@ -203,7 +203,7 @@ def extract_api_caveats(html_file):
                                 else:
                                     caveat_obj['caveat_misc'].append({'name': curr_misc, 'list': misc_objs})
                         
-                            misc_text = []
+                            misc_objs = [] # reset list contents
                             curr_misc = e.text
                         elif e.name == 'dd':
                             text = ' '.join(e.text.split()) # change any whitespace to single space
@@ -243,10 +243,10 @@ def extract_api_caveats(html_file):
 
                                 for sentence in sentences:
                                     for keyword in keywords:
-                                        matches = re.search(keyword, text, re.IGNORECASE)
+                                        matches = re.search(keyword, sentence, re.IGNORECASE)
                                         if matches:
                                             misc_objs.append(sentence)
-                                        break
+                                            break
                                 num_caveat_sentences += len(misc_objs)
                                 num_sentences += len(sentences)
 
@@ -268,10 +268,10 @@ def extract_api_caveats(html_file):
                     for keyword in keywords:
                         matches = re.search(keyword, sentence, re.IGNORECASE)
                         if matches:
-                            caveat_obj['caveat_sentences'].append(sentence)
+                            caveat_obj['sentences'].append(sentence)
                             break
 
-                num_caveat_sentences += len(caveat_obj['caveat_sentences'])
+                num_caveat_sentences += len(caveat_obj['sentences'])
                 api_caveats.append(caveat_obj)
 
     return api_caveats
