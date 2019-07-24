@@ -196,12 +196,7 @@ def extract_api_caveats(html_file):
                                                  
                             # append the previous caveat misc data
                             if (len(misc_objs) > 0):
-                                if curr_misc == 'Parameters:':
-                                    caveat_obj['caveat_misc'].append({'name': curr_misc, 'parameters': misc_objs})
-                                elif curr_misc == 'Throws:':
-                                    caveat_obj['caveat_misc'].append({'name': curr_misc, 'exceptions': misc_objs})
-                                else:
-                                    caveat_obj['caveat_misc'].append({'name': curr_misc, 'list': misc_objs})
+                                caveat_obj['caveat_misc'].append({'name': curr_misc, 'list': misc_objs})
                         
                             misc_objs = [] # reset list contents
                             curr_misc = e.text
@@ -252,12 +247,7 @@ def extract_api_caveats(html_file):
 
                     # append the previous caveat misc data
                     if (len(misc_objs) > 0):
-                        if curr_misc == 'Parameters:':
-                            caveat_obj['caveat_misc'].append({'name': curr_misc, 'parameters': misc_objs})
-                        elif curr_misc == 'Throws:':
-                            caveat_obj['caveat_misc'].append({'name': curr_misc, 'exceptions': misc_objs})
-                        else:
-                            caveat_obj['caveat_misc'].append({'name': curr_misc, 'list': misc_objs})
+                        caveat_obj['caveat_misc'].append({'name': curr_misc, 'list': misc_objs})
 
                 sentences = sent_tokenize(desc.text)
                 num_sentences += len(sentences)
