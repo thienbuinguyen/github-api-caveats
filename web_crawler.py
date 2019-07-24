@@ -91,47 +91,6 @@ def mine_api_html_recursive(file_path, output_dir):
         print("Failed to extract API text!")
         print(e)
 
-def transform_soup(soup, parameters):
-    obj = {
-        'parameters': [],
-        'fields': [],
-        'methods': [],
-        'primitives': [],
-        'classes': [] 
-        }
-    
-    # transform the text of code tag elements
-    for code in soup.find_all('code'):
-        if len(code.text) == 0 or code.text in ['true', 'false', 'null'] or re.match('[^A-Za-z]', code.text) is not None:
-            continue
-        elif code.text in parameters:
-            if code.text not in obj['parameters']:
-                obj['parameters'].append(code.text) 
-            code.string = 'PARAMETER_' + str(obj['parameters'].index(code.text))
-        elif '(' in code.text:
-            if code.text not in obj['methods']:
-                obj['methods'].append(code.text)
-            code.string = 'METHOD_' + str(obj['methods'].index(code.text))
-        elif code.text[0].islower(): 
-            if code.text in['byte', 'short', 'int', 'long', 'float', 'double', 'char', 'boolean']:
-                if code.text not in obj['primitives']:
-                    obj['primitives'].append(code.text)
-                code.string = 'PRIMITIVE_' + str(obj['primitives'].index(code.text))
-            else:
-                if code.text not in obj['methods']:
-                    obj['methods'].append(code.text)
-                code.string = 'METHOD_' + str(obj['methods'].index(code.text))
-        elif re.match('.*[A-Z_]+$', code.text) is not None:
-            if code.text not in obj['fields']:
-                obj['fields'].append(code.text)
-            code.string = 'FIELD_' + str(obj['fields'].index(code.text))
-        else:
-            if code.text not in obj['classes']:
-                obj['classes'].append(code.text)
-            code.string = 'CLASS_' + str(obj['classes'].index(code.text))
-
-    return obj
-
 def extract_class_caveats(soup):
     global num_sentences
 
@@ -180,10 +139,8 @@ def extract_api_caveats(html_file):
 
     # retrieve all sentences associated to the class
     if class_desc:
-        mappings = transform_soup(class_desc, {})
         obj = extract_class_caveats(class_desc)
         obj['id'] = caveat_id
-        obj['mappings'] = mappings
         api_caveats.append(obj)
 
         num_caveat_sentences += len(obj['class_level_caveat_sentences'])
@@ -225,56 +182,82 @@ def extract_api_caveats(html_file):
                 }
 
                 caveat_id += 1
-                parameters = [] # list of parameter names for functions
-
                 misc_list = api.find('dl')
-                # extract the parameters for constructors and methods
-                if misc_list:
-                    if section_type in ['method', 'constructor']:
-                        extract_parameters = False
-                        for e in misc_list:
-                            if e.name == 'dt':
-                                if e.text == 'Parameters:':
-                                    extract_parameters = True
-                                elif extract_parameters:
-                                    break
-                            elif extract_parameters and  e.name == 'dd':
-                                parameters.append(e.text.split(' - ')[0])
-
-                    # extract all misc text (e.g. "Parameters:", "Returns:", "Throws:" sections)
-                    misc_text = []
-                    curr_misc = ''
-
-                # normalise all <code> tag text in the api soup and store the mappings
-                caveat_obj['mappings'] = transform_soup(api, parameters)
 
                 # extract misc sentences/text
                 if misc_list:
+                    curr_misc = ''
+                    misc_objs = []
+
                     for e in misc_list:
                         if e.name == 'dt':
                             if curr_misc == '':
                                 curr_misc = e.text
                                                  
                             # append the previous caveat misc data
-                            if (len(misc_text) > 0):
-                                caveat_obj['caveat_misc'].append({'name': curr_misc, 'text_list': misc_text})
-                                num_caveat_sentences += len(misc_text)
+                            if (len(misc_objs) > 0):
+                                if curr_misc == 'Parameters:':
+                                    caveat_obj['caveat_misc'].append({'name': curr_misc, 'parameters': misc_objs})
+                                elif curr_misc == 'Throws:':
+                                    caveat_obj['caveat_misc'].append({'name': curr_misc, 'exceptions': misc_objs})
+                                else:
+                                    caveat_obj['caveat_misc'].append({'name': curr_misc, 'list': misc_objs})
                         
                             misc_text = []
                             curr_misc = e.text
                         elif e.name == 'dd':
                             text = ' '.join(e.text.split()) # change any whitespace to single space
-                            for keyword in keywords:
-                                matches = re.search(keyword, text, re.IGNORECASE)
-                                if matches:
-                                    misc_text.append(text)
-                                    break
 
-                            num_sentences += 1
+                            # separate parameters and their caveat sentences
+                            if curr_misc == 'Parameters:':
+                                text_components = text.split(' - ')
+                                sentences = sent_tokenize(' - '.join(text_components[1:]))
 
-                    if len(misc_text) > 0:
-                        caveat_obj['caveat_misc'].append({'name': curr_misc, 'text_list': misc_text})
-                        num_caveat_sentences += len(misc_text)
+                                parameter_sentences = []
+                                for sentence in sentences:
+                                    for keyword in keywords:
+                                        matches = re.search(keyword, sentence, re.IGNORECASE)
+                                        if matches:
+                                            parameter_sentences.append(sentence)
+                                            break
+                                misc_objs.append({'parameter': text_components[0], 'sentences': parameter_sentences})
+                                num_caveat_sentences += len(parameter_sentences)
+                                num_sentences += len(sentences)
+                            # separate exceptions and their caveat sentences
+                            elif curr_misc == 'Throws:':
+                                text_components = text.split(' - ')
+                                sentences = sent_tokenize(' - '.join(text_components[1:]))
+
+                                exception_sentences = []
+                                for sentence in sentences:
+                                    for keyword in keywords:
+                                        matches = re.search(keyword, sentence, re.IGNORECASE)
+                                        if matches:
+                                            exception_sentences.append(sentence)
+                                            break
+                                misc_objs.append({'exception': text_components[0], 'sentences': exception_sentences})
+                                num_caveat_sentences += len(exception_sentences)
+                                num_sentences += len(sentences)
+                            else: # extract all other misc section sentences
+                                sentences = sent_tokenize(text)
+
+                                for sentence in sentences:
+                                    for keyword in keywords:
+                                        matches = re.search(keyword, text, re.IGNORECASE)
+                                        if matches:
+                                            misc_objs.append(sentence)
+                                        break
+                                num_caveat_sentences += len(misc_objs)
+                                num_sentences += len(sentences)
+
+                    # append the previous caveat misc data
+                    if (len(misc_objs) > 0):
+                        if curr_misc == 'Parameters:':
+                            caveat_obj['caveat_misc'].append({'name': curr_misc, 'parameters': misc_objs})
+                        elif curr_misc == 'Throws:':
+                            caveat_obj['caveat_misc'].append({'name': curr_misc, 'exceptions': misc_objs})
+                        else:
+                            caveat_obj['caveat_misc'].append({'name': curr_misc, 'list': misc_objs})
 
                 sentences = sent_tokenize(desc.text)
                 num_sentences += len(sentences)
