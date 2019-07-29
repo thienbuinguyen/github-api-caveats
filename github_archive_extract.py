@@ -10,33 +10,35 @@ Expects the '.gz' files in separate folders in the './github-archive' directory.
         /2018-02/
             2018-02-01-1.json.gz
             ...
-Outputs the data as json files in './github-archive-extracted' directory.
+Outputs the data as pickle files in the output_dir_path
 """
 
-import json
+import ujson
 import glob
 import os
 import gzip
 import time
-from multiprocessing import Pool
-from tabulate import tabulate
+from itertools import repeat
+from multiprocessing import Pool, cpu_count
 
 archive_paths = glob.glob('/media/thien/Data Drive1/github-archive/*/')
-ignore_paths = ['/media/thien/Data Drive1/github-archive/2019-01/', 
-    '/media/thien/Data Drive1/github-archive/2018-01/', 
-    '/media/thien/Data Drive1/github-archive/2018-02/',
-    '/media/thien/Data Drive1/github-archive/2018-03/',
-    '/media/thien/Data Drive1/github-archive/2018-04/',
-    '/media/thien/Data Drive1/github-archive/2018-05/',
-    '/media/thien/Data Drive1/github-archive/2018-06/',
-    '/media/thien/Data Drive1/github-archive/2018-08/',
-    '/media/thien/Data Drive1/github-archive/2018-09/',
-    '/media/thien/Data Drive1/github-archive/2018-10/',
-    '/media/thien/Data Drive1/github-archive/2018-11/',
-    '/media/thien/Data Drive1/github-archive/2018-12/',
-]
-output_dir_path = '/media/thien/Data Drive1/github-archive-extracted/'
+ignore_paths = [
+        '/media/thien/Data Drive1/github-archive/2019-01/',
+        '/media/thien/Data Drive1/github-archive/2018-02/',
+        '/media/thien/Data Drive1/github-archive/2018-03/',
+        '/media/thien/Data Drive1/github-archive/2018-04/',
+        '/media/thien/Data Drive1/github-archive/2018-05/',
+        '/media/thien/Data Drive1/github-archive/2018-06/',
+        '/media/thien/Data Drive1/github-archive/2018-07/',
+        '/media/thien/Data Drive1/github-archive/2018-08/',
+        '/media/thien/Data Drive1/github-archive/2018-09/',
+        '/media/thien/Data Drive1/github-archive/2018-10/',
+        '/media/thien/Data Drive1/github-archive/2018-11/',
+        '/media/thien/Data Drive1/github-archive/2018-12/'
+        ]
+output_dir_path = '/media/thien/Data Drive1/github-archive-extracted-revised/'
 java_repos_file_path = './repos.txt'
+repo_names = None
 
 def get_relevant_repo_names(file):
     repos = []
@@ -45,157 +47,96 @@ def get_relevant_repo_names(file):
         for line in f:
             line = line.strip()
             repos.append(line)
-    
-    return repos
+
+    return set(repos)
 
 # Extract issues, issue comments, pull requests and pull request comments for all .gz file in the given path
-def extract_github_data(file):
-    issues = []
+def extract_github_data(file, repo_names):
     issue_comments = []
-    pull_requests = []
     pull_request_comments = []
-    last_line = ""
-    error = None 
+    corrupted = False
 
-    print('Extracting {}'.format(file))
     try:
         with gzip.open(file, 'rb') as f_in:
             for line in f_in:
-                last_line = line
-                line = json.loads(line)
-                 
-                if line["public"]: # only extract artefacts that are public
-                    if line["type"] == "IssuesEvent": # extract issues
-                        if line["payload"]["action"] == "opened":
-                            issue_obj = line["payload"]["issue"]
-                            issues.append({
-                                "repo_name": line["repo"]["name"],
-                                "number": issue_obj["number"],
-                                "title": issue_obj["title"],
-                                "body": issue_obj["body"],
-                                "comments": issue_obj["comments"],
-                                "html_url": issue_obj["html_url"]
-                            })
-                    elif line["type"] == "IssueCommentEvent": # extract comments
-                        if line["payload"]["action"] == "created":
-                            comment_obj = line["payload"]["comment"]
-                            issue_comments.append({
-                                "body": comment_obj["body"],
-                                "issue_number": line["payload"]["issue"]["number"],
-                                "repo_name": line["repo"]["name"],
-                                "html_url": comment_obj["html_url"]
-                            })
-                    elif line["type"] == "PullRequestEvent": # extract pull request text
-                        if line["payload"]["action"] == "opened":
-                            pull_requests.append({
-                                "number": line["payload"]["number"],
-                                "title": line["payload"]["pull_request"]["title"],
-                                "body": line["payload"]["pull_request"]["body"],
-                                "repo_name": line["repo"]["name"],
-                                "html_url": line["payload"]["pull_request"]["html_url"]
-                            })
-                    if line["type"] == "PullRequestReviewCommentEvent": # Extract comments for pull requests
-                        if line["payload"]["action"] == "created":
-                            pull_request_comments.append({
-                                "body": line["payload"]["comment"]["body"],
-                                "diff_hunk": line["payload"]["comment"]["diff_hunk"],
-                                "html_url": line["payload"]["comment"]["html_url"],
-                                "pull_request_title": line["payload"]["pull_request"]["title"],
-                                "repo_name": line["repo"]["name"],
-                            })
+                try:
+                    line = ujson.loads(line)
+                     # only extract artefacts that are public and are part of a repo in the list of repo names
+                    if 'public' in line and line["public"] and 'repo' in line and 'name' in line['repo'] and line['repo']['name'] in repo_names:
+                        if "type" in line and line["type"] == "IssueCommentEvent": # extract comments
+                            if line["payload"]["action"] == "created":
+                                issue_comments.append({
+                                    "body": line["payload"]["comment"]["body"],
+                                    "issue": {
+                                        "id": line["payload"]["issue"]["id"],
+                                        "number": line["payload"]["issue"]["number"],
+                                        "body": line["payload"]["issue"]["body"],
+                                        "title": line["payload"]["issue"]["title"],
+                                        "html_url": line["payload"]["issue"]["html_url"]
+                                        },
+                                    "repo_name": line["repo"]["name"],
+                                    "html_url": line["payload"]["comment"]["html_url"]
+                                    })
+                        elif line["type"] == "PullRequestReviewCommentEvent": # Extract comments for pull requests
+                            if line["payload"]["action"] == "created":
+                                pull_request_comments.append({
+                                    "body": line["payload"]["comment"]["body"],
+                                    "diff_hunk": line["payload"]["comment"]["diff_hunk"],
+                                    "html_url": line["payload"]["comment"]["html_url"],
+                                    "pull_request_title": line["payload"]["pull_request"]["title"],
+                                    "repo_name": line["repo"]["name"],
+                                    })
+                except:
+                    pass # skip lines that can't be loaded or have missing keys
     except:
-        error = {"file": file, "line": last_line}
+        corrupted = True
 
-    return {"issues": issues, 
-            "issue_comments": issue_comments, 
-            "pull_requests": pull_requests, 
+    obj = {"issue_comments": issue_comments, 
             "pull_request_comments": pull_request_comments,
-            "error": error}
+            "corrupted": corrupted}
+
+    try:
+        file_name = os.path.basename(file)
+        path = output_dir_path + file_name + '.json'
+        with open(path, 'w+') as f:
+            ujson.dump(obj, f)
+    except:
+        print("Failed to write {} to file".format(file))
 
 def extract_all_github_data():
     start_time = time.time()
-    p = Pool(10)
-    num_files, num_issues, num_issue_comments, num_pull_requests,\
-            num_pull_request_comments = 0, 0, 0, 0, 0
-    errors = []
-    
+    p = Pool(8)
+
+    repo_names = get_relevant_repo_names(java_repos_file_path)
+
     for path in archive_paths:
         if path in ignore_paths:
             continue
+        print("Extracting directory {}".format(path))
         archive_files = [file for file in glob.glob(path + '*.gz')]
-        num_files += len(archive_files)
-        data_lists = p.map(extract_github_data, archive_files)
+        data_lists = p.starmap(extract_github_data, zip(archive_files, repeat(repo_names)))
 
-        issues = []
-        issue_comments = []
-        pull_requests = []
-        pull_request_comments = []
-        
-        for data in data_lists:
-            if data["error"]: # skip adding data if an error occured
-                errors.append(data["error"])
-                continue
-            issues += data["issues"]
-            issue_comments += data["issue_comments"]
-            pull_requests += data["pull_requests"]
-            pull_request_comments += data["pull_request_comments"]
-
-        num_issues += len(issues)
-        num_issue_comments += len(issue_comments)
-        num_pull_requests += len(pull_requests)
-        num_pull_request_comments += len(pull_request_comments)
-
-        # Write extracted data to json files
-        base_path = os.path.join(output_dir_path, os.path.basename(os.path.normpath(path)))
-        with open(base_path + "-issues.json", "w+") as f_issues,\
-                open(base_path + "-issue-comments.json", "w+") as f_issue_comments,\
-                open(base_path + "-pull-requests.json", "w+") as f_pull_requests,\
-                open(base_path + "-pull-request-comments.json", "w+") as f_pull_request_comments:
-            json.dump(issues, f_issues)
-            json.dump(issue_comments, f_issue_comments)
-            json.dump(pull_requests, f_pull_requests)
-            json.dump(pull_request_comments, f_pull_request_comments)
-
-    print("\nExtraction Complete! Total of {} files mined.".format(num_files ))
-
-    # Write any errors to a log file
-    if errors:
-        print("Note: A failure occured during extraction for one or more files. See 'github-extraction-log.txt' for more information.\n")
-        with open("./github_extract_error_logs.txt", "a+") as f:
-            for error in errors:
-                f.write(str(error))
-
-    # print total extracted data statistics
-    print(tabulate([[num_issues, num_issue_comments, num_pull_requests, num_pull_request_comments]],
-            headers=["issues", "issue comments", "pull requests", "pull request comments"]))
     print('Extraction completed in {} minutes.'.format((time.time() - start_time) / 60))
 
-def extract_java_elements(repo_names, input_files, output_file):
-    output_arr = []
+def combine_data():
+    files = glob.glob(output_dir_path + '*.json')
 
-    for file in input_files:
-        with open(file) as f:
-            print(file)
-            arr = json.load(f)
-            for e in arr:
-                if e['repo_name'] in repo_names:
-                    output_arr.append(e)
-            
-    with open(output_file, 'w+') as out:
-        json.dump(output_arr, out)
+    with open('./output/issue-comments-revised.jsonl', 'w+') as f_issue_out, \
+            open('./output/pull-request-comments-revised.jsonl', 'w+') as f_pull_out,\
+            open('./output/corrupted.txt', 'w+') as f_corrupt_out:
 
-def extract_all_java_elements():
-    repo_names = get_relevant_repo_names(java_repos_file_path)
-    repo_names = set(repo_names)
+        for file in files:
+            with open(file) as f:
+                obj = ujson.load(f)
 
-    issues = glob.glob(output_dir_path + '*issues.json')
-    issue_comments = glob.glob(output_dir_path + '*issue-comments.json')
-    pull_requests = glob.glob(output_dir_path + '*pull-requests.json')
-    pull_request_comments = glob.glob(output_dir_path + '*pull-request-comments.json')
+                for comment in obj['issue_comments']:
+                    f_issue_out.write(ujson.dumps(comment) + '\n')
 
-    # extract_java_elements(repo_names, issues, './output/java-2018-issues.json')
-    # extract_java_elements(repo_names, issue_comments, './output/java-2018-issue-comments.json')
-    # extract_java_elements(repo_names, pull_requests, './output/java-2018-pull-requests.json')
-    extract_java_elements(repo_names, pull_request_comments, './output/java-2018-pull-request-comments.json')
+                for comment in obj['pull_request_comments']:
+                    f_pull_out.write(ujson.dumps(comment) + '\n')
 
-extract_all_java_elements()
+                if obj['corrupted']:
+                    f_corrupt_out.write(file + '\n')
+
+# extract_all_github_data()
+combine_data()
