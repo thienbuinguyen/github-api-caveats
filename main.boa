@@ -1,0 +1,831 @@
+p: Project = input;
+results: output collection[string][string] of string;
+
+types: array of string;
+fulltypes: array of string;
+constructs: array of string;
+
+types = {"String"};
+fulltypes = {"java.lang.String"};
+constructs = {"String"};
+
+# API query information
+queryapis := {"charAt"};
+argTypes := {"int"};
+
+# traverse variables
+hasApiCall := false; # flag for whether a method node contains the api in question
+hasMyAPI := false;
+methodArgs: set of string;
+requireConstructor := false;
+revisionId := "";
+path := "";
+decls: stack of string;
+locals: map[string] of string;
+fields: map[string] of string;
+parentFields: map[string] of string; # in case subclasses are defined
+mKey := "";
+
+filesAnalysed: set of string;
+isStatic := false;
+myapis: set of string;
+foundapis: set of string;
+foreach (i: int; def(queryapis[i])) {
+    add(myapis, queryapis[i]);   
+    add(foundapis, queryapis[i]);
+}
+
+######### Helper functions ##########
+
+# Given a type name, checks if the type belongs to APIs of interest
+hasAPIType := function(t: string): bool {
+    foreach (i: int; def(types[i])) {
+        if (t == types[i])
+            return true;
+    }
+    
+    foreach (i: int; def(fulltypes[i])) {
+        if (t == fulltypes[i])
+            return true;
+    }
+    return false;    
+};
+
+# Given a variable name, checks its type against the APIs of interest
+getVariableType := function(variable: string, islookup: bool): string {
+    if (islookup && isStatic) {
+        if (hasAPIType(variable)) {
+            return variable;
+        } else {
+            return "";
+        }
+    }
+    lKeys := keys(locals);
+    t := "";
+    foreach (i: int; def(lKeys[i])) {
+        if (variable == lKeys[i]) {
+            t = locals[lKeys[i]];
+            if (islookup) {
+                if (hasAPIType(t)) {
+                    return t;
+                }
+            } else {
+                return t;
+            }
+        }
+    }
+    lKeys = keys(fields);
+    foreach (i: int; def(lKeys[i])) {
+        if (variable == lKeys[i]) {
+            t = fields[lKeys[i]];
+            if (islookup) {
+                if (hasAPIType(t)) {
+                    return t;
+                }
+            } else {
+                return t;
+            }
+        }
+    }
+    lKeys = keys(parentFields);
+    foreach (i: int; def(lKeys[i])) {
+        if (variable == lKeys[i]) {
+            t = parentFields[lKeys[i]];
+            if (islookup) {
+                if (hasAPIType(t)) {
+                    return t;
+                }
+            } else {
+                return t;
+            }
+        }
+    }
+    return "";
+}; 
+
+# Given a class, collects the types of all fields
+getTypeOfFields := function(decl: Declaration): map[string] of string {
+    l: map[string] of string;
+    foreach(i:int; def(decl.fields[i])) {
+        l[decl.fields[i].name] = decl.fields[i].variable_type.name;
+    }
+    return l;
+};
+
+# Return a map of all variable names to their types of a given method
+getTypeOfLocals := function(method: Method): map[string] of string {
+    l: map[string] of string;
+    foreach (i:int; def(method.arguments[i])) {
+    	arg := method.arguments[i].name;
+        argType := method.arguments[i].variable_type.name;
+        l[arg] = argType;
+        if (!contains(methodArgs, arg))
+            add(methodArgs, arg);
+    }
+    visit(method, visitor {
+        before expr: Expression -> {            
+            if (expr.kind == ExpressionKind.VARDECL) {
+                foreach (j: int; def(expr.variable_decls[j])) {
+                    l[expr.variable_decls[j].name] = expr.variable_decls[j].variable_type.name;
+                }
+            }      
+        }
+    });
+    return l;
+};
+
+# Given a type name, checks if it is one of the APIs of interest
+isAPIConstructor := function(constr: string): bool {
+    foreach (i: int; def(constructs[i])) {
+        if (constr == constructs[i])
+            return true;
+    }
+    foreach (i: int; def(fulltypes[i])) {
+        if (constr == fulltypes[i])
+            return true;
+    }
+    return false;
+};
+
+# Given two sets (arrays) of strings, merges them into the first set retaining only unique elements
+merge := function(s1: map[string] of bool, s2: map[string] of bool) {
+	k := keys(s2);
+    foreach (i: int; def(k[i])) {
+    	s1[k[i]] = true;
+    }
+};
+
+# Standard set (using arrays) intersection
+isIntersectionNotNull := function(s1: map[string] of bool, s2: map[string] of bool): bool {
+	k := keys(s1);
+    foreach (i: int; def(k[i])) {
+        if (haskey(s2, k[i]))
+        	return true;
+    }
+    return false;
+};
+
+# Given a name, checks if it is a valid variable whose type is available
+isVariable := function(var: string): bool {
+    lkeys := keys(locals);
+    foreach (i: int; def(lkeys[i])) {
+        if (var == lkeys[i])
+            return true;
+    }
+    
+    lkeys = keys(fields);
+    foreach (i: int; def(lkeys[i])) {
+        if (var == lkeys[i])
+            return true;
+    }
+    
+    lkeys = keys(parentFields);
+    foreach (i: int; def(lkeys[i])) {
+        if (var == lkeys[i])
+            return true;
+    }
+    return false;
+};
+
+# Given an expression, get all variable
+getVariables := function(node: Expression): map[string] of bool {
+    vars: map[string] of bool;
+    visit(node, visitor {
+        before expr: Expression -> {
+            if (expr.kind == ExpressionKind.VARACCESS) {
+                v := expr.variable;
+                if (isVariable(v))
+                    vars[v] = true;
+            } else if (expr.kind == ExpressionKind.VARDECL) {
+            	vars[expr.variable_decls[0].name] = true;
+            }
+        }
+    });
+    return vars;
+};
+
+clearAll := function() {
+    clear(locals); clear(methodArgs);
+#	    
+#    clear(apiNodes); clear(predicateNodes); 
+#    clear(node_apis); clear(variables); clear(predicates);
+#    
+#    clear(myAPINodes); clear(allVars); clear(allNodeIds); clear(hops); clear(foundapis);
+};
+
+##############################
+#lvars: map[string] of bool; # All variables defined or used in a node. Note: only use map since set type has no iteration.
+#getExpr := function(expression: Expression): string {
+#    exprStr := "";
+#    clear(lvars);
+#    oprs: stack of string;
+#    visit(expression, visitor {
+#        before expr: Expression -> {
+#            opr := "";
+#            m := "";
+#    		vd: Variable;
+#            
+#            switch (expr.kind) {
+#                case ExpressionKind.ARRAYINDEX:
+#                    visit(expr.expressions[0]);
+#                    exprStr = format("%s[", exprStr);
+#                    visit(expr.expressions[1]);
+#                    exprStr = format("%s]", exprStr);
+#                    stop;
+#                case ExpressionKind.ASSIGN: if (opr == "") opr = "="; 
+#                case ExpressionKind.ASSIGN_ADD: if (opr == "") opr = "+="; 
+#                case ExpressionKind.ASSIGN_BITAND: if (opr == "") opr = "&="; 
+#                case ExpressionKind.ASSIGN_BITOR: if (opr == "") opr = "|="; 
+#                case ExpressionKind.ASSIGN_BITXOR: if (opr == "") opr = "^="; 
+#                case ExpressionKind.ASSIGN_DIV: if (opr == "") opr = "/="; 
+#                case ExpressionKind.ASSIGN_LSHIFT: if (opr == "") opr = "<<="; 
+#                case ExpressionKind.ASSIGN_MOD:  if (opr == "") opr = "%="; 
+#                case ExpressionKind.ASSIGN_MULT: if (opr == "") opr = "*="; 
+#                case ExpressionKind.ASSIGN_RSHIFT: if (opr == "") opr = ">>="; 
+#                case ExpressionKind.ASSIGN_SUB: if (opr == "") opr = "-="; 
+#                case ExpressionKind.ASSIGN_UNSIGNEDRSHIFT: if (opr == "") opr = ">>>="; 
+#                case ExpressionKind.BIT_AND: if (opr == "") opr = "&"; 
+#                case ExpressionKind.BIT_LSHIFT: if (opr == "") opr = "<<"; 
+#                case ExpressionKind.BIT_NOT: if (opr == "") opr = "~"; 
+#                case ExpressionKind.BIT_OR: if (opr == "") opr = "|"; 
+#                case ExpressionKind.BIT_RSHIFT: if (opr == "") opr = ">>"; 
+#                case ExpressionKind.BIT_UNSIGNEDRSHIFT: if (opr == "") opr = ">>>"; 
+#                case ExpressionKind.BIT_XOR: if (opr == "") opr = "^"; 
+#                case ExpressionKind.LOGICAL_AND: if (opr == "") opr = "&&"; 
+#                case ExpressionKind.LOGICAL_NOT: if (opr == "") opr = "!";
+#                case ExpressionKind.LOGICAL_OR: if (opr == "") opr = "||";
+#                case ExpressionKind.LT: if (opr == "") opr = "<";
+#                case ExpressionKind.LTEQ: if (opr == "") opr = "<="; 
+#                case ExpressionKind.EQ: if (opr == "") opr = "==";
+#                case ExpressionKind.NEQ: if (opr == "") opr = "!=";
+#                case ExpressionKind.GT: if (opr == "") opr = ">";
+#                case ExpressionKind.GTEQ: if (opr == "") opr = ">=";
+#                case ExpressionKind.OP_ADD: if (opr == "") opr = "+";
+#                case ExpressionKind.OP_DEC: if (opr == "") opr = "--";
+#                case ExpressionKind.OP_DIV: if (opr == "") opr = "/"; 
+#                case ExpressionKind.OP_INC: if (opr == "") opr = "++"; 
+#                case ExpressionKind.OP_MOD: if (opr == "") opr = "%"; 
+#                case ExpressionKind.OP_MULT: if (opr == "") opr = "*";
+#                case ExpressionKind.OP_SUB: if (opr == "") opr = "-";
+#                    push(oprs, opr);
+#                    if (len(expr.expressions) == 1) {
+#                        exprStr = format("%s%s", exprStr, pop(oprs));
+#                        if (expr.kind == ExpressionKind.LOGICAL_NOT)
+#                            exprStr = format("%s(", exprStr);
+#                        visit(expr.expressions[0]);
+#                        if (expr.kind == ExpressionKind.LOGICAL_NOT)
+#                            exprStr = format("%s)", exprStr);
+#                    } else {
+#                        if ((expr.kind == ExpressionKind.ASSIGN) ||
+#                            expr.kind == ExpressionKind.LOGICAL_NOT) 
+#                            exprStr = format("%s(", exprStr);
+#                        foreach (i: int; def(expr.expressions[i])) {
+#                            visit(expr.expressions[i]);
+#                            exprStr = format("%s%s", exprStr, peek(oprs));
+#                        }
+#                        opr = pop(oprs);
+#                        exprStr = substring(exprStr, 0, (len(exprStr)-len(opr)));
+#                        if ((expr.kind == ExpressionKind.ASSIGN) ||
+#                            expr.kind == ExpressionKind.LOGICAL_NOT) 
+#                            exprStr = format("%s)", exprStr);
+#                    }
+#		            stop;
+#                case ExpressionKind.CAST:
+#                    if (def(expr.new_type)) {
+#                        tname := expr.new_type.name;
+#                        exprStr = format("%s(%s) ", exprStr, tname);
+#                        visit(expr.expressions[0]); 
+#                    }
+#                    stop;
+#                case ExpressionKind.CONDITIONAL:
+#                    exprStr = format("%s(", exprStr);
+#                    visit(expr.expressions[0]);
+#                    exprStr = format("%s)?", exprStr);
+#                    visit(expr.expressions[1]);
+#                    exprStr = format("%s:", exprStr);
+#                    visit(expr.expressions[2]);
+#                    stop;
+#                case ExpressionKind.METHODCALL:
+#                	m = expr.method;
+#                    if (len(expr.expressions) > 0) {
+#                        recv := expr.expressions[0];  
+#                        rv := ""; 
+#                        rtype := "";
+#                        if (recv.kind == ExpressionKind.VARACCESS) {
+#                            rv = recv.variable;
+#                            rtype = getVariableType(rv, true);
+#                            if (contains(myapis, m) && rtype != "") {
+#                                hasMyAPI = true;
+#                            }
+#                        } else if (recv.kind == ExpressionKind.NEW) {
+#                            rtype = recv.new_type.name;
+#                            if (contains(myapis, m) && isAPIConstructor(recv.new_type.name)) {
+#                                hasMyAPI = true;    
+#                            }
+#                        }
+#                        visit(expr.expressions[0]);
+#                        exprStr = format("%s.", exprStr);
+#                        
+#                    } else {
+#                        if (m == "super.onCreate" && contains(myapis, m)) {
+#                            hasMyAPI = true;
+#                        }
+#                    }
+#                    exprStr = format("%s%s(", exprStr, expr.method);
+#                    foreach (i: int; def(expr.method_args[i])) {
+#                        visit(expr.method_args[i]);  
+#                        margtype := "";
+#                        if (expr.method_args[i].kind == ExpressionKind.VARACCESS) {
+#                            margtype = getVariableType(expr.method_args[i].variable, false);
+#                        }
+#                        if (margtype != "") {
+#                            exprStr = format("%s:%s,", exprStr, margtype);
+#                        } else {
+#                            exprStr = format("%s,", exprStr);    
+#                        }
+#                        #exprStr = format("%s,", exprStr);
+#                    }
+#                    exprStr = format("%s)", exprStr);
+#                    stop;
+#                case ExpressionKind.NEW:
+#                    exprStr = format("%snew %s(", exprStr, expr.new_type.name);
+#                    foreach (i: int; def(expr.expressions[i])) {
+#                        visit(expr.expressions[i]);  
+#                        argtype := "";
+#                        if (expr.expressions[i].kind == ExpressionKind.VARACCESS) {
+#                            argtype = getVariableType(expr.expressions[i].variable, false);
+#                        }
+#                        if (argtype != "") {
+#                            exprStr = format("%s:%s,", exprStr, argtype);
+#                        } else {
+#                            exprStr = format("%s,", exprStr);    
+#                        }
+#                    }
+#                    exprStr = format("%s)", exprStr);
+#                    if (requireConstructor && isAPIConstructor(expr.new_type.name)) {
+#                        hasMyAPI = true;
+#                        remove(foundapis, expr.new_type.name);
+#                    }
+#                    stop;
+#                case ExpressionKind.NEWARRAY:
+#                    if (def(expr.new_type)) {
+#                        exprStr = format("%s new %s", exprStr, expr.new_type.name);
+#                    }
+#                    stop;
+#                case ExpressionKind.VARACCESS:
+#                    if (len(expr.expressions) > 0) {
+#                        e := expr.expressions[0];
+#                        visit(e);
+#                        exprStr = format("%s.%s", exprStr, expr.variable);
+#                    } else {
+#                        exprStr = format("%s%s", exprStr, expr.variable);
+#                    }
+#                    merge(lvars, getVariables(expr));
+#                    stop;
+#                case ExpressionKind.VARDECL:
+#                    vd = expr.variable_decls[0];
+#                    exprStr = format("%s", vd.name);
+#                    lvars[vd.name] = true;
+#                    if (def(vd.initializer)) {
+#                        exprStr = format("%s=", exprStr);
+#                        visit(vd.initializer);
+#                    }
+#                    stop;
+#                case ExpressionKind.LITERAL:
+#                    exprStr = format("%s%s", exprStr, expr.literal);
+#                    stop;
+#                case ExpressionKind.TYPECOMPARE:
+#                    if (len(expr.expressions) > 0) {
+#                        left := expr.expressions[0];
+#                        visit(left);
+#                        if (def(expr.new_type)) {
+#                            right := expr.new_type.name;
+#                            exprStr = format("%s instanceof %s", exprStr, right);
+#                        }
+#                    }
+#                    stop;
+#                case ExpressionKind.NULLCOALESCE:
+#                    break;
+#                case ExpressionKind.OTHER:
+#                    break;
+#                default:    
+#                	break;
+#            }
+#        }
+#    });
+#    
+#    return exprStr;
+#};
+
+######### EXPRESSION ##########
+lvars: map[string] of bool; # All variables defined or used in a node. Note: only use map since set type has no iteration.
+getExpr := function(expression: Expression): string {
+    exprStr := "";
+    clear(lvars);
+    oprs: stack of string;
+    visit(expression, visitor {
+        before expr: Expression -> {
+            opr := "";
+            m := "";
+    		vd: Variable;
+            
+            switch (expr.kind) {
+                case ExpressionKind.ARRAYINDEX:
+                    visit(expr.expressions[0]);
+                    exprStr = format("%s[", exprStr);
+                    visit(expr.expressions[1]);
+                    exprStr = format("%s]", exprStr);
+                    stop;
+                case ExpressionKind.ASSIGN: if (opr == "") opr = "="; 
+                case ExpressionKind.ASSIGN_ADD: if (opr == "") opr = "+="; 
+                case ExpressionKind.ASSIGN_BITAND: if (opr == "") opr = "&="; 
+                case ExpressionKind.ASSIGN_BITOR: if (opr == "") opr = "|="; 
+                case ExpressionKind.ASSIGN_BITXOR: if (opr == "") opr = "^="; 
+                case ExpressionKind.ASSIGN_DIV: if (opr == "") opr = "/="; 
+                case ExpressionKind.ASSIGN_LSHIFT: if (opr == "") opr = "<<="; 
+                case ExpressionKind.ASSIGN_MOD:  if (opr == "") opr = "%="; 
+                case ExpressionKind.ASSIGN_MULT: if (opr == "") opr = "*="; 
+                case ExpressionKind.ASSIGN_RSHIFT: if (opr == "") opr = ">>="; 
+                case ExpressionKind.ASSIGN_SUB: if (opr == "") opr = "-="; 
+                case ExpressionKind.ASSIGN_UNSIGNEDRSHIFT: if (opr == "") opr = ">>>="; 
+                case ExpressionKind.BIT_AND: if (opr == "") opr = "&"; 
+                case ExpressionKind.BIT_LSHIFT: if (opr == "") opr = "<<"; 
+                case ExpressionKind.BIT_NOT: if (opr == "") opr = "~"; 
+                case ExpressionKind.BIT_OR: if (opr == "") opr = "|"; 
+                case ExpressionKind.BIT_RSHIFT: if (opr == "") opr = ">>"; 
+                case ExpressionKind.BIT_UNSIGNEDRSHIFT: if (opr == "") opr = ">>>"; 
+                case ExpressionKind.BIT_XOR: if (opr == "") opr = "^"; 
+                case ExpressionKind.LOGICAL_AND: if (opr == "") opr = "&&"; 
+                case ExpressionKind.LOGICAL_NOT: if (opr == "") opr = "!";
+                case ExpressionKind.LOGICAL_OR: if (opr == "") opr = "||";
+                case ExpressionKind.LT: if (opr == "") opr = "<";
+                case ExpressionKind.LTEQ: if (opr == "") opr = "<="; 
+                case ExpressionKind.EQ: if (opr == "") opr = "==";
+                case ExpressionKind.NEQ: if (opr == "") opr = "!=";
+                case ExpressionKind.GT: if (opr == "") opr = ">";
+                case ExpressionKind.GTEQ: if (opr == "") opr = ">=";
+                case ExpressionKind.OP_ADD: if (opr == "") opr = "+";
+                case ExpressionKind.OP_DEC: if (opr == "") opr = "--";
+                case ExpressionKind.OP_DIV: if (opr == "") opr = "/"; 
+                case ExpressionKind.OP_INC: if (opr == "") opr = "++"; 
+                case ExpressionKind.OP_MOD: if (opr == "") opr = "%"; 
+                case ExpressionKind.OP_MULT: if (opr == "") opr = "*";
+                case ExpressionKind.OP_SUB: if (opr == "") opr = "-";
+                    push(oprs, opr);
+                    if (len(expr.expressions) == 1) {
+                        exprStr = format("%s%s", exprStr, pop(oprs));
+                        if (expr.kind == ExpressionKind.LOGICAL_NOT)
+                            exprStr = format("%s(", exprStr);
+                        visit(expr.expressions[0]);
+                        if (expr.kind == ExpressionKind.LOGICAL_NOT)
+                            exprStr = format("%s)", exprStr);
+                    } else {
+                        if ((expr.kind == ExpressionKind.ASSIGN) ||
+                            expr.kind == ExpressionKind.LOGICAL_NOT) 
+                            exprStr = format("%s(", exprStr);
+                        foreach (i: int; def(expr.expressions[i])) {
+                            visit(expr.expressions[i]);
+                            exprStr = format("%s%s", exprStr, peek(oprs));
+                        }
+                        opr = pop(oprs);
+                        exprStr = substring(exprStr, 0, (len(exprStr)-len(opr)));
+                        if ((expr.kind == ExpressionKind.ASSIGN) ||
+                            expr.kind == ExpressionKind.LOGICAL_NOT) 
+                            exprStr = format("%s)", exprStr);
+                    }
+		            stop;
+                case ExpressionKind.CAST:
+                    if (def(expr.new_type)) {
+                        tname := expr.new_type.name;
+                        exprStr = format("%s(%s) ", exprStr, tname);
+                        visit(expr.expressions[0]); 
+                    }
+                    stop;
+                case ExpressionKind.CONDITIONAL:
+                    exprStr = format("%s(", exprStr);
+                    visit(expr.expressions[0]);
+                    exprStr = format("%s)?", exprStr);
+                    visit(expr.expressions[1]);
+                    exprStr = format("%s:", exprStr);
+                    visit(expr.expressions[2]);
+                    stop;
+                case ExpressionKind.METHODCALL:
+                	m = expr.method;
+                    if (len(expr.expressions) > 0) {
+                        recv := expr.expressions[0];  
+                        rv := ""; 
+                        rtype := "";
+                        if (recv.kind == ExpressionKind.VARACCESS) {
+                            rv = recv.variable;
+                            rtype = getVariableType(rv, true);
+                            if (contains(myapis, m) && rtype != "") {
+                                hasMyAPI = true;
+                            }
+                        } else if (recv.kind == ExpressionKind.NEW) {
+                            rtype = recv.new_type.name;
+                            if (contains(myapis, m) && isAPIConstructor(recv.new_type.name)) {
+                                hasMyAPI = true;    
+                            }
+                        }
+                        visit(expr.expressions[0]);
+                        exprStr = format("%s.", exprStr);
+                        
+                    } else {
+                        if (m == "super.onCreate" && contains(myapis, m)) {
+                            hasMyAPI = true;
+                        }
+                    }
+                    exprStr = format("%s%s(", exprStr, expr.method);
+                    foreach (i: int; def(expr.method_args[i])) {
+                        visit(expr.method_args[i]);  
+                        margtype := "";
+                        if (expr.method_args[i].kind == ExpressionKind.VARACCESS) {
+                            margtype = getVariableType(expr.method_args[i].variable, false);
+                        }
+                        if (margtype != "") {
+                            exprStr = format("%s:%s,", exprStr, margtype);
+                        } else {
+                            exprStr = format("%s,", exprStr);    
+                        }
+                        #exprStr = format("%s,", exprStr);
+                    }
+                    exprStr = format("%s)", exprStr);
+                    stop;
+                case ExpressionKind.NEW:
+                    exprStr = format("%snew %s(", exprStr, expr.new_type.name);
+                    foreach (i: int; def(expr.expressions[i])) {
+                        visit(expr.expressions[i]);  
+                        argtype := "";
+                        if (expr.expressions[i].kind == ExpressionKind.VARACCESS) {
+                            argtype = getVariableType(expr.expressions[i].variable, false);
+                        }
+                        if (argtype != "") {
+                            exprStr = format("%s:%s,", exprStr, argtype);
+                        } else {
+                            exprStr = format("%s,", exprStr);    
+                        }
+                    }
+                    exprStr = format("%s)", exprStr);
+                    if (requireConstructor && isAPIConstructor(expr.new_type.name)) {
+                        hasMyAPI = true;
+                        remove(foundapis, expr.new_type.name);
+                    }
+                    stop;
+                case ExpressionKind.NEWARRAY:
+                    if (def(expr.new_type)) {
+                        exprStr = format("%s new %s", exprStr, expr.new_type.name);
+                    }
+                    stop;
+                case ExpressionKind.VARACCESS:
+                    if (len(expr.expressions) > 0) {
+                        e := expr.expressions[0];
+                        visit(e);
+                        exprStr = format("%s.%s", exprStr, expr.variable);
+                    } else {
+                        exprStr = format("%s%s", exprStr, expr.variable);
+                    }
+                    merge(lvars, getVariables(expr));
+                    stop;
+                case ExpressionKind.VARDECL:
+                    vd = expr.variable_decls[0];
+                    exprStr = format("%s", vd.name);
+                    lvars[vd.name] = true;
+                    if (def(vd.initializer)) {
+                        exprStr = format("%s=", exprStr);
+                        visit(vd.initializer);
+                    }
+                    stop;
+                case ExpressionKind.LITERAL:
+                    exprStr = format("%s%s", exprStr, expr.literal);
+                    stop;
+                case ExpressionKind.TYPECOMPARE:
+                    if (len(expr.expressions) > 0) {
+                        left := expr.expressions[0];
+                        visit(left);
+                        if (def(expr.new_type)) {
+                            right := expr.new_type.name;
+                            exprStr = format("%s instanceof %s", exprStr, right);
+                        }
+                    }
+                    stop;
+                case ExpressionKind.NULLCOALESCE:
+                    break;
+                case ExpressionKind.OTHER:
+                    break;
+                default:    
+                	break;
+            }
+        }
+    });
+    
+    return exprStr;
+};
+
+
+######### STATEMENT ###########
+testStmt := function(statement: Statement): string {
+    stmtStr := "";
+    visit(statement, visitor {
+        before stmt: Statement -> {
+            switch (stmt.kind) {
+                case StatementKind.ASSERT:
+                    stmtStr = "assert ";
+                    break;
+                case StatementKind.CASE:
+                    stmtStr = "case ";
+                    break;
+                case StatementKind.RETURN:
+                    stmtStr = "return ";
+                    break;
+                case StatementKind.SWITCH:
+                    stmtStr = "switch ";
+                    break;
+                case StatementKind.THROW:
+                    stmtStr = "throw ";
+                    break;
+                case StatementKind.EXPRESSION:
+                    stmtStr = format("%s%s", stmtStr, testExpr(stmt.expression));
+                    stop;
+                default:    
+                    break;
+            }
+        }
+        before expr: Expression -> {
+            stmtStr = format("%s%s", stmtStr, testExpr(expr));    
+            stop;
+        }
+    });
+    return stmtStr;
+};
+
+######### STRUCTURED CALL SEQUENCE ##########
+#condition	Expression?	
+#expression	Expression?	
+#initializations	array of Expression	
+#kind	StatementKind	The kind of statement
+#statements	array of Statement	
+#type_declaration	Declaration?	
+#updates	array of Expression	
+#variable_declaration	Variable?	
+arr: array of string;
+getStructuredCallSequences := function(node: Method, varsOfInterest : set of string) {
+	seq := "";
+	keySet: set of string;
+	seqMap: map[string] of stack of string;
+	
+	visit(node, visitor {
+#		before stmt: Statement -> {
+#			seq = testStmt(stmt);
+#			stop;
+#		}
+		before expr: Expression -> {
+			if (len(expr.expressions) > 0 && contains(varsOfInterest, expr.expressions[0].variable)) {
+				var := expr.expressions[0].variable;
+				s: stack of string;
+				if (!haskey(seqMap, var)) seqMap[var] = s;
+				
+				push(seqMap[var], expr.method);
+			}
+		}
+	});
+};
+
+######### DATA MINING ###########
+visit(p, visitor {
+        before node: CodeRepository -> {
+        	foreach (i: int; def(p.programming_languages[i])) {
+        		if (p.programming_languages[i] == "java") {
+        			snapshot := getsnapshot(node, "SOURCE_JAVA_JLS8");
+		        	foreach (j: int; def(snapshot[j])) {
+		        		visit(snapshot[j]);
+		        	}
+		        	stop;
+		        }
+        	}        	
+        }
+        before node: Revision -> {
+        	revisionId = node.id;
+        }
+        before node: ChangedFile -> {       	
+        	path = node.name;
+        	
+        	s := format("%s%s", p.project_url, path);
+        	if (contains(filesAnalysed, s)) stop;
+        	else add(filesAnalysed, s);
+        }
+        before node: Declaration -> {
+        	push(decls, node.name);
+        	if (len(keys(fields)) > 0) {
+		        fieldKeys := keys(fields);    
+		        foreach (i: int; def(fieldKeys[i])) {
+		        	k := fieldKeys[i];
+		        	v := fields[k];
+		            parentFields[k] = v;
+		        }
+		    }
+	        	
+        	clear(fields);
+        	fields = getTypeOfFields(node);
+
+        }
+        after node: Declaration -> {
+        	pop(decls);
+        	clear(fields);
+        	if (len(node.nested_declarations) > 0) {
+        		clear(parentFields);
+        	}
+        }
+        before node: Method -> {
+        	mKey = format("%s!%s!%s!%s!%s", p.project_url, path, revisionId, peek(decls), node.name);
+        	
+        	clearAll();
+        	locals = getTypeOfLocals(node);
+        	varsOfInterest: set of string; # all vars in which the API query is called on 
+        	
+        	visit(node, visitor {
+		        before exp: Expression -> {       
+		        	if (exp.kind == ExpressionKind.METHODCALL && contains(myapis, exp.method) && len(exp.method_args) == len(argTypes) && 
+		        		(isStatic || hasAPIType(getVariableType(exp.expressions[0].variable, true))))
+		        	{
+	        			# check each argument type matches signature of the API call
+		            	matches := true;
+	            		foreach (i: int; def(exp.method_args[i])) {
+	            			if (getVariableType(exp.method_args[i].variable, false) != argTypes[i]) {
+	            				matches = false;
+	            				break;
+	            			}
+	            		}
+	            		
+	            		if (matches) {	            			
+	            			if (!isStatic) 
+	                			add(varsOfInterest, exp.expressions[0].variable);  # NOTE: the variable that the method was called on is here
+	            		
+#	            			switch (exp.kind) {
+#                				case ExpressionKind.ARRAYINDEX:
+#	            					results[mKey]["ARRAYINDEX"] << "";
+#	            				case ExpressionKind.ARRAYINIT:
+#	            					results[mKey]["ARRAYINIT"] << "";
+#	            				case ExpressionKind.CONDITIONAL:
+#	            					results[mKey]["CONDITIONAL"] << "";
+#	            				case ExpressionKind.METHODCALL:
+#	            					results[mKey]["METHODCALL"] << "";
+#	            				case ExpressionKind.VARACCESS:
+#	            					results[mKey]["VARACCESS"] << "";
+#	            				case ExpressionKind.VARDECL:
+#	            					results[mKey]["VARDECL"] << "";
+#	            				case ExpressionKind.ASSIGN:
+#	            					results[mKey]["ASSIGN"] << "";
+#	            				case ExpressionKind.LITERAL:
+#	            					results[mKey]["LITERAL"] << "";
+#	            				case ExpressionKind.NEW:
+#	            					results[mKey]["NEW"] << "";
+#	            				default:
+#	            					results[mKey]["not found"] << "";
+#	            			}
+	            			getStructuredCallSequences(node, varsOfInterest);
+	            		}      
+		        	}   
+		        }
+		    });
+        }
+        before node: Statement -> {
+#        	if (hasApiCall) {
+#        		stop;
+#        	}
+#        	if (node.kind == StatementKind.IF || 
+#        		node.kind == StatementKind.FOR ||
+#        		node.kind == StatementKind.WHILE
+#        	) {
+#        		# FOR statements have the method somewhere else...
+#        		if (node.expression.method == guardMethod && 
+#        			len(node.expression.method_args) == numGuardArgs && 
+#        			getVarType(node.expression.expressions[0].variable) == apiType
+#        		) {
+#        			insideGuard = true;
+#        		}
+#        	}
+
+#			if (node.kind == StatementKind.FOR) {
+#				foreach (i: int; def(node.expression.expressions[i])) {
+#					if (node.expression.expressions[i].method == api) {
+#						var := node.expression.expressions[i].expressions[0].variable;
+#						results[mKey][var][getVarType(var)] << 1;
+#					}
+#				}
+#				
+#			}
+#        	
+#        	visit(node, visitor {
+#        		before expr: Expression -> {            
+#		            if (expr.method == api) {
+#		            	if (len(expr.expressions) > 0) {
+#		            		results[p.project_url][cur_file.name][expr.expressions[0].variable][insideGuard] << 1;
+#		            		stop;
+#		            	}
+#		            }
+#                }
+#        	});
+#        	
+#        	insideGuard = false;
+        }
+});
