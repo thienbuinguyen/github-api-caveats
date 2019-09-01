@@ -257,7 +257,7 @@ inputSource
 public void setInvalidCharacters(String invalidCharacters)
 invalidCharacters
 If non-null, specifies illegal characters.
-invalidCharacters
+
 -----------------------------7270
 public static InputSource sourceToInputSource(Source source)
 source

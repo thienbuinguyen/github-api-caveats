@@ -121,7 +121,7 @@ origin>=bound
 -----------------------------1320
 public InputMethodEvent(Component source, int id, long when, AttributedCharacterIterator text, int committedCharacterCount, TextHitInfo caret, TextHitInfo visiblePosition)
 if id is not in the range INPUT_METHOD_FIRST..INPUT_METHOD_LAST; or if id is CARET_POSITION_CHANGED and text is not null; or if committedCharacterCount is not in the range 0..(text.getEndIndex() - text.getBeginIndex())
-!(id>=INPUT_METHOD_FIRST&&id<=INPUT_METHOD_LAST)||!(committedCharacterCount>=0&&committedCharacterCount<=text.getEndIndex()-text.getBeginIndex())
+id<INPUT_METHOD_FIRST||id>INPUT_METHOD_LAST)||committedCharacterCount<0||committedCharacterCount>text.getEndIndex()-text.getBeginIndex()
 -----------------------------2988
 public final void setPriority(int newPriority)
 If the priority is not in the range MIN_PRIORITY to MAX_PRIORITY.

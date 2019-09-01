@@ -73,7 +73,7 @@ if the method's return type has not yet been loaded through the appropriate clas
 -----------------------------5174
 Path relativize(Path other)
 if other is not a Path that can be relativized against this path
-
+other -> Path
 -----------------------------16429
 void surroundContents(Node newParent) throws DOMException, RangeException
 INVALID_NODE_TYPE_ERR: Raised if node is an Attr, Entity, DocumentType, Notation, Document, or DocumentFragment node.
@@ -189,7 +189,7 @@ if either of the following two conditions holds: (1) combiner's return type is n
 -----------------------------16388
 void setStart(Node refNode, int offset) throws RangeException, DOMException
 INVALID_NODE_TYPE_ERR: Raised if refNode or an ancestor of refNode is an Entity, Notation, or DocumentType node.
-!ref -> Entity||Notation||DocumentType
+!refNode -> Entity||Notation||DocumentType
 -----------------------------12321
 void setRole(String relationId, Role role) throws RelationServiceNotRegisteredException, IllegalArgumentException, RelationNotFoundException, RoleNotFoundException, InvalidRoleValueException, RelationTypeNotFoundException
 if internal relation and value provided for role is not valid: - the number of referenced MBeans in given value is less than expected minimum degree or - the number of referenced MBeans in provided value exceeds expected maximum degree or - one referenced MBean in the value is not an Object of the MBean class expected for that role or - an MBean provided for that role does not exist
@@ -201,7 +201,7 @@ number -> Number
 -----------------------------16411
 void selectNode(Node refNode) throws RangeException, DOMException
 INVALID_NODE_TYPE_ERR: Raised if an ancestor of refNode is an Entity, Notation or DocumentType node or if refNode is a Document, DocumentFragment, Attr, Entity, or Notation node.
-!refNode -> Document,DocumentFragment,Attr,Entity,Notation
+!refNode -> Document||DocumentFragment||Attr||Entity||Notation
 -----------------------------183
 void setEnabled(boolean val)
 if this is a StepRequest, val is true, and the thread named in the request has died or is not yet started.
@@ -217,7 +217,7 @@ if value provided for role is not valid: - the number of referenced MBeans in gi
 -----------------------------13066
 Object getSupportedAttributeValues(Class<? extends Attribute> category, DocFlavor flavor, AttributeSet attributes)
 if category is not a Class that implements interface Attribute, or DocFlavor is not supported by this service
-
+category -> Attribute
 -----------------------------13059
 <T extends PrintServiceAttribute> T getAttribute(Class<T> category)
 if category is not a Class that implements interface PrintServiceAttribute
