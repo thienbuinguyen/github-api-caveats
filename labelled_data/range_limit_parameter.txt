@@ -1,0 +1,501 @@
+-----------------------------857
+public static BeanInfo getBeanInfo(Class<?> beanClass, int flags) throws IntrospectionException
+flags
+If flags == IGNORE_IMMEDIATE_BEANINFO then we ignore any BeanInfo associated with the specified beanClass.
+
+-----------------------------1258
+public MethodHandle findSpecial(Class<?> refc, String name, MethodType type, Class<?> specialCaller) throws NoSuchMethodException, IllegalAccessException
+name
+the name of the method (which must not be "<init>")
+name!="<init>"
+-----------------------------1545
+public ShortBuffer put(short[] src, int offset, int length)
+length
+The number of shorts to be read from the given array; must be non-negative and no larger than array.length - offset
+length>=0&&length<=array.length-offset
+-----------------------------6151
+public void addTreeSelectionListener(TreeSelectionListener tsl)
+tsl
+the TreeSelectionListener that will be notified when a node is selected or deselected (a "negative selection")
+
+-----------------------------1521
+public FloatBuffer get(float[] dst, int offset, int length)
+length
+The maximum number of floats to be written to the given array; must be non-negative and no larger than dst.length - offset
+length>=0&&length<=dst.length-offset
+-----------------------------1413
+public void setChunkedStreamingMode(int chunklen)
+chunklen
+If chunklen is less than or equal to zero, a default value will be used.
+
+-----------------------------535
+public ActionEvent(Object source, int id, String command, long when, int modifiers)
+when
+Passing negative or zero value is not recommended
+when>0
+-----------------------------3700
+public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue)
+keepAliveTime
+when the number of threads is greater than the core, this is the maximum time that excess idle threads will wait for new tasks before terminating.
+
+-----------------------------654
+public AffineTransform(float[] flatmatrix)
+flatmatrix
+If the length of the array is less than 6, only the first 4 values are taken.
+
+-----------------------------625
+public int nextOffset(float wrappingWidth, int offsetLimit, boolean requireNextWord)
+offsetLimit
+the first character that can not be included in the next layout, even if the text after the limit would fit within the wrapping width; offsetLimit must be greater than the current position
+
+-----------------------------1488
+public ByteBuffer get(byte[] dst, int offset, int length)
+length
+The maximum number of bytes to be written to the given array; must be non-negative and no larger than dst.length - offset
+length>=0&&length<dst.length-offset
+-----------------------------6887
+protected View createZone(int p0, int p1)
+p1
+This should be > getStartOffset() and <= getEndOffset().
+p1>getStartOffset()&&p1<=getEndOffset()
+-----------------------------3724
+public void sleep(long timeout) throws InterruptedException
+timeout
+If less than or equal to zero, do not sleep at all.
+
+-----------------------------2630
+public Duration minus(Duration duration)
+duration
+the duration to subtract, positive or negative, not null
+
+-----------------------------649
+public void insertChar(AttributedCharacterIterator newParagraph, int insertPos)
+insertPos
+Must not be less than the start of newParagraph, and must be less than the end of newParagraph.
+
+-----------------------------5201
+public abstract SSLEngineResult wrap(ByteBuffer[] srcs, int offset, int length, ByteBuffer dst) throws SSLException
+length
+The maximum number of buffers to be accessed; it must be non-negative and no larger than srcs.length - offset
+length>=0&&length<=srcs.length-offset
+-----------------------------1538
+public LongBuffer put(long[] src, int offset, int length)
+length
+The number of longs to be read from the given array; must be non-negative and no larger than array.length - offset
+length>=0&&length<=array.length-offset
+-----------------------------1121
+public StackTraceElement(String declaringClass, String methodName, String fileName, int lineNumber)
+lineNumber
+the line number of the source line containing the execution point represented by this stack trace element, or a negative number if this information is unavailable.
+
+-----------------------------6689
+protected AsyncBoxView.ChildState getChildState(int index)
+index
+This should be a value >= 0 and < getViewCount().
+index>=0&&index<getViewCount()
+-----------------------------1877
+protected int engineDigest(byte[] buf, int offset, int len) throws DigestException
+len
+If the value of this parameter is less than the actual digest length, the method will throw a DigestException.
+
+-----------------------------626
+public int nextOffset(float wrappingWidth, int offsetLimit, boolean requireNextWord)
+requireNextWord
+if true, the current position that is returned if the entire next word does not fit within wrappingWidth; if false, the offset returned is at least one greater than the current position
+
+-----------------------------1516
+public DoubleBuffer put(double[] src, int offset, int length)
+offset
+The offset within the array of the first double to be read; must be non-negative and no larger than array.length
+offset>=0&&offset<array.length
+-----------------------------3364
+public static Base64.Encoder getMimeEncoder(int lineLength, byte[] lineSeparator)
+lineLength
+If the rounded down line length is not a positive value, the output will not be separated in lines
+
+-----------------------------1500
+public CharBuffer get(char[] dst, int offset, int length)
+length
+The maximum number of chars to be written to the given array; must be non-negative and no larger than dst.length - offset
+length>=0&&length<=dst.length-offset
+-----------------------------5498
+public SysexMessage(byte[] data, int length) throws InvalidMidiDataException
+length
+the length of the valid message data in the array, including the status byte; it should be non-negative and less than or equal to data.length
+length>=0&&length<=data.length
+-----------------------------6149
+public void addTreeExpansionListener(TreeExpansionListener tel)
+tel
+a TreeExpansionListener that will be notified when a tree node is expanded or collapsed (a "negative expansion")
+
+-----------------------------1506
+public final char charAt(int index)
+index
+The index of the character to be read, relative to the position; must be non-negative and smaller than remaining()
+index>=0&&index<remaining()
+-----------------------------1531
+public IntBuffer put(int[] src, int offset, int length)
+length
+The number of ints to be read from the given array; must be non-negative and no larger than array.length - offset
+length>=0&&length<=array.length-offset
+-----------------------------2047
+void registerOutParameter(int parameterIndex, int sqlType, int scale) throws SQLException
+scale
+It must be greater than or equal to zero.
+scale>=0
+-----------------------------1615
+protected FileLock(FileChannel channel, long position, long size, boolean shared)
+position
+The position within the file at which the locked region starts; must be non-negative
+
+-----------------------------1602
+public abstract long transferTo(long position, long count, WritableByteChannel target) throws IOException
+count
+The maximum number of bytes to be transferred; must be non-negative
+count>=0
+-----------------------------4408
+public ArrayType(int dimension, OpenType<?> elementType) throws OpenDataException
+dimension
+the dimension of arrays described by this ArrayType instance; must be greater than or equal to 1.
+dimension>=1
+-----------------------------1497
+public static CharBuffer wrap(CharSequence csq, int start, int end)
+start
+The index of the first character to be used; must be non-negative and no larger than csq.length().
+start>=0&&start<=csq.length()
+-----------------------------856
+public static BeanInfo getBeanInfo(Class<?> beanClass, int flags) throws IntrospectionException
+flags
+If flags == USE_ALL_BEANINFO then we use all of the BeanInfo classes we can discover.
+
+-----------------------------1503
+public CharBuffer put(char[] src, int offset, int length)
+length
+The number of chars to be read from the given array; must be non-negative and no larger than array.length - offset
+length>=0&&length<=array.length-offset
+-----------------------------144
+@ConstructorProperties({"lineWidth","endCap","lineJoin","miterLimit","dashArray","dashPhase"}) public BasicStroke(float width, int cap, int join, float miterlimit, float[] dash, float dash_phase)
+width
+The width must be greater than or equal to 0.0f.
+width>=0.0f
+-----------------------------6768
+public abstract int getBoundedPosition(GlyphView v, int p0, float x, float len)
+p0
+the location in the model where the fragment should start it's representation >= 0.
+p0>=0
+-----------------------------1517
+public DoubleBuffer put(double[] src, int offset, int length)
+length
+The number of doubles to be read from the given array; must be non-negative and no larger than array.length - offset
+length>=0&&length<=array.length-offset
+-----------------------------1910
+protected int engineSign(byte[] outbuf, int offset, int len) throws SignatureException
+len
+This parameter is ignored if its value is greater than or equal to the actual signature length.
+
+-----------------------------3390
+void formatTo(Formatter formatter, int flags, int width, int precision)
+width
+If the length of the converted value is less than the width then the output will be padded by ' ' until the total number of characters equals width.
+
+-----------------------------1492
+public final int alignmentOffset(int index, int unitSize)
+index
+The index to query for alignment offset, must be non-negative, no upper bounds check is performed
+index>=0
+-----------------------------1499
+public CharBuffer get(char[] dst, int offset, int length)
+offset
+The offset within the array of the first char to be written; must be non-negative and no larger than dst.length
+offset>=0&&offset<=dst.length
+-----------------------------61
+public abstract void sendResponseHeaders(int rCode, long responseLength) throws IOException
+responseLength
+if > 0, specifies a fixed response body length and that exact number of bytes must be written to the stream acquired from getResponseBody(), or else if equal to 0, then chunked encoding is used, and an arbitrary number of bytes may be written.
+
+-----------------------------1562
+public abstract <A> void read(ByteBuffer dst, long position, A attachment, CompletionHandler<Integer,? super A> handler)
+position
+The file position at which the transfer is to begin; must be non-negative
+position>=0
+-----------------------------6885
+protected View createZone(int p0, int p1)
+p0
+This should be >= getStartOffset() and < getEndOffset().
+p0>=getStartOffset()&&p0<getEndOffset()
+-----------------------------1552
+public abstract <A> void lock(long position, long size, boolean shared, A attachment, CompletionHandler<FileLock,? super A> handler)
+position
+The position at which the locked region is to start; must be non-negative
+position>=0
+-----------------------------6150
+public void addTreeWillExpandListener(TreeWillExpandListener tel)
+tel
+a TreeWillExpandListener that will be notified when a tree node will be expanded or collapsed (a "negative expansion")
+
+-----------------------------1133
+public int lastIndexOf(int ch, int fromIndex)
+fromIndex
+If it is greater than or equal to the length of this string, it has the same effect as if it were equal to one less than the length of this string: this entire string may be searched.
+
+-----------------------------32
+public abstract Connection attach(String address, long attachTimeout, long handshakeTimeout) throws IOException
+attachTimeout
+If this transport service supports an attach timeout, and if attachTimeout is positive, then it specifies the timeout, in milliseconds (more or less), to use when attaching to the target VM.
+
+-----------------------------2628
+public Duration plus(Duration duration)
+duration
+the duration to add, positive or negative, not null
+
+-----------------------------2570
+public void setMaximumFractionDigits(int newValue)
+newValue
+the maximum number of fraction digits to be shown; if less than zero, then zero is used.
+
+-----------------------------34
+public abstract Connection attach(String address, long attachTimeout, long handshakeTimeout) throws IOException
+handshakeTimeout
+If this transport service supports a handshake timeout, and if handshakeTimeout is positive, then it specifies the timeout, in milliseconds (more or less), to use when handshaking with the target VM.
+
+-----------------------------2179
+public Date(long date)
+date
+A negative number indicates the number of milliseconds before January 1, 1970, 00:00:00 GMT.
+
+-----------------------------1484
+public Buffer limit(int newLimit)
+newLimit
+The new limit value; must be non-negative and no larger than this buffer's capacity
+newLimit>=0
+-----------------------------3311
+public static ZoneOffsetTransitionRule of(Month month, int dayOfMonthIndicator, DayOfWeek dayOfWeek, LocalTime time, boolean timeEndOfDay, ZoneOffsetTransitionRule.TimeDefinition timeDefnition, ZoneOffset standardOffset, ZoneOffset offsetBefore, ZoneOffset offsetAfter)
+dayOfMonthIndicator
+the day of the month-day of the cutover week, positive if the week is that day or later, negative if the week is that day or earlier, counting from the last day of the month, from -28 to 31 excluding 0
+
+-----------------------------376
+public PageAttributes(PageAttributes.ColorType color, PageAttributes.MediaType media, PageAttributes.OrientationRequestedType orientationRequested, PageAttributes.OriginType origin, PageAttributes.PrintQualityType printQuality, int[] printerResolution)
+printerResolution
+The first element must be greater than 0.
+
+-----------------------------377
+public PageAttributes(PageAttributes.ColorType color, PageAttributes.MediaType media, PageAttributes.OrientationRequestedType orientationRequested, PageAttributes.OriginType origin, PageAttributes.PrintQualityType printQuality, int[] printerResolution)
+printerResolution
+The second element must be must be greater than 0.
+
+-----------------------------1504
+public CharBuffer put(String src, int start, int end)
+start
+The offset within the string of the first char to be read; must be non-negative and no larger than string.length()
+start>=0&&start<=string.length()
+-----------------------------2571
+public void setMinimumFractionDigits(int newValue)
+newValue
+the minimum number of fraction digits to be shown; if less than zero, then zero is used.
+
+-----------------------------5472
+public MetaMessage(int type, byte[] data, int length) throws InvalidMidiDataException
+length
+an amount of bytes in the data byte array; it should be non-negative and less than or equal to data.length
+length>=0&&length<=data.length
+-----------------------------429
+public TextField(int columns) throws HeadlessException
+columns
+If columns is less than 0, columns is set to 0.
+
+-----------------------------1609
+public abstract MappedByteBuffer map(FileChannel.MapMode mode, long position, long size) throws IOException
+size
+The size of the region to be mapped; must be non-negative and no greater than Integer.MAX_VALUE
+size>=0&&size<=Integer.MAX_VALUE
+-----------------------------4346
+public DescriptorSupport(String... fields)
+fields
+The field name ends at the first = character; for example if the String is a=b=c then the field name is a and its value is b=c.
+
+-----------------------------479
+public DataFlavor(String mimeType) throws ClassNotFoundException
+mimeType
+the string used to identify the MIME type for this flavor; if the class specified by "class=" parameter is not successfully loaded, then a ClassNotFoundException is thrown
+
+-----------------------------3217
+public DateTimeFormatterBuilder appendValue(TemporalField field, int minWidth, int maxWidth, SignStyle signStyle)
+signStyle
+the positive/negative output style, not null
+
+-----------------------------6884
+public void setMaxZonesLoaded(int mzl)
+mzl
+the desired maximum number of zones to be actively loaded, must be greater than 0
+mzl>0
+-----------------------------177
+protected void createBuffers(int numBuffers, BufferCapabilities caps) throws AWTException
+numBuffers
+number of buffers to create; must be greater than one
+numBuffers>1
+-----------------------------1542
+public ShortBuffer get(short[] dst, int offset, int length)
+length
+The maximum number of shorts to be written to the given array; must be non-negative and no larger than dst.length - offset
+length>=0&&length<=dst.length-offset
+-----------------------------5376
+public KerberosTicket(byte[] asn1Encoding, KerberosPrincipal client, KerberosPrincipal server, byte[] sessionKey, int keyType, boolean[] flags, Date authTime, Date startTime, Date endTime, Date renewTill, InetAddress[] clientAddresses)
+flags
+If the number of elements in this array is less than the number of flags used by the Kerberos protocol, then the missing flags will be filled in with false.
+
+-----------------------------1507
+public abstract CharBuffer subSequence(int start, int end)
+start
+The index, relative to the current position, of the first character in the subsequence; must be non-negative and no larger than remaining()
+start>=0&&start<remaining()
+-----------------------------6866
+public void replace(int offset, int length, View[] views)
+offset
+This should be a value >= 0 and <= getViewCount
+offset>=0&&offset<=getViewCount
+-----------------------------2523
+public Timestamp(long time)
+time
+A negative number is the number of milliseconds before January 1, 1970, 00:00:00 GMT.
+
+-----------------------------3661
+public int awaitAdvance(int phase)
+phase
+an arrival phase number, or negative value if terminated; this argument is normally the value returned by a previous call to arrive or arriveAndDeregister.
+
+-----------------------------6712
+public void replace(int offset, int length, View[] views)
+length
+the number of existing child views to remove; this should be a value >= 0 and <= (getViewCount() - offset)
+length>=0&&length<=getViewCount()-offset
+-----------------------------1535
+public LongBuffer get(long[] dst, int offset, int length)
+length
+The maximum number of longs to be written to the given array; must be non-negative and no larger than dst.length - offset
+length>=0&&length<=dst.length-offset
+-----------------------------646
+public TextLayout getLayout(int start, int limit)
+limit
+Must be greater than start
+limit>start
+-----------------------------5739
+public String getSubString(long pos, int length) throws SerialException
+length
+the number of characters in the substring to be returned; must not be greater than the length of this SerialClob object, and the sum of the starting position and the length of the substring must be less than the length of this SerialClob object
+
+-----------------------------1303
+public MethodType dropParameterTypes(int start, int end)
+end
+the index (greater than start) of the first parameter type after not to remove
+
+-----------------------------6771
+public View createFragment(int p0, int p1)
+p0
+This should be a value greater or equal to the element starting offset and less than the element ending offset.
+
+-----------------------------5471
+public MetaMessage(int type, byte[] data, int length) throws InvalidMidiDataException
+type
+meta-message type (must be less than 128)
+type<128
+-----------------------------6865
+public void insert(int offs, View v)
+offs
+the offset of the view to insert before >= 0
+
+-----------------------------1020
+public void mark(int readAheadLimit) throws IOException
+readAheadLimit
+Because the stream's input comes from a string, there is no actual limit, so this argument must not be negative, but is otherwise ignored.
+readAheadLimit>=0
+-----------------------------5260
+public CHAR_ARRAY(String mimeType)
+mimeType
+If it is a text media type, it is assumed to contain a "charset=utf-16" parameter.
+
+-----------------------------5200
+public abstract SSLEngineResult wrap(ByteBuffer[] srcs, int offset, int length, ByteBuffer dst) throws SSLException
+offset
+The offset within the buffer array of the first buffer from which bytes are to be retrieved; it must be non-negative and no larger than srcs.length
+offset>=0&&offset<=srcs.length
+-----------------------------6772
+public View createFragment(int p0, int p1)
+p1
+This should be a value less than or equal to the elements end offset and greater than the elements starting offset.
+
+-----------------------------1505
+public CharBuffer put(String src, int start, int end)
+end
+The offset within the string of the last char to be read, plus one; must be non-negative and no larger than string.length()
+end>=0&&end<=string.length()
+-----------------------------1909
+protected int engineSign(byte[] outbuf, int offset, int len) throws SignatureException
+len
+If the value of this parameter is less than the actual signature length, this method will throw a SignatureException.
+
+-----------------------------7469
+public JdiInitiator(int port, List<String> remoteVMOptions, String remoteAgent, boolean isLaunch, String host, int timeout, Map<String,String> customConnectorArgs)
+timeout
+If zero or negative, will not wait thus will timeout immediately if not already started.
+
+-----------------------------1524
+public FloatBuffer put(float[] src, int offset, int length)
+length
+The number of floats to be read from the given array; must be non-negative and no larger than array.length - offset
+
+-----------------------------6681
+public void setAsynchronousLoadPriority(int p)
+p
+the new asynchronous loading priority; a value less than zero indicates that the document should not be loaded asynchronously
+
+-----------------------------450
+public Cursor createCustomCursor(Image cursor, Point hotSpot, String name) throws IndexOutOfBoundsException, HeadlessException
+hotSpot
+the X and Y of the large cursor's hot spot; the hotSpot values must be less than the Dimension returned by getBestCursorSize
+
+-----------------------------1530
+public IntBuffer put(int[] src, int offset, int length)
+offset
+The offset within the array of the first int to be read; must be non-negative and no larger than array.length
+offset>=0&&offset<=array.length
+-----------------------------418
+public TextArea(String text, int rows, int columns, int scrollbars) throws HeadlessException
+rows
+the number of rows; if rows is less than 0, rows is set to 0
+
+-----------------------------477
+public DataFlavor(String mimeType, String humanPresentableName)
+mimeType
+the string used to identify the MIME type for this flavor; if the mimeType does not specify a "class=" parameter, or if the class is not successfully loaded, then an IllegalArgumentException is thrown
+
+-----------------------------1537
+public LongBuffer put(long[] src, int offset, int length)
+offset
+The offset within the array of the first long to be read; must be non-negative and no larger than array.length
+offset>=0&&offset<=array.length
+-----------------------------146
+@ConstructorProperties({"lineWidth","endCap","lineJoin","miterLimit","dashArray","dashPhase"}) public BasicStroke(float width, int cap, int join, float miterlimit, float[] dash, float dash_phase)
+miterlimit
+The miterlimit must be greater than or equal to 1.0f.
+miterlimit>=1.0f
+-----------------------------2632
+public long dividedBy(Duration divisor)
+divisor
+the value to divide the duration by, positive or negative, not null
+
+-----------------------------90
+public static SctpChannel open(SocketAddress remote, int maxOutStreams, int maxInStreams) throws IOException
+maxOutStreams
+Must be non negative and no larger than 65536.
+maxOutStreams>=0&&maxOutStreams<=65536
+-----------------------------1601
+public abstract long transferTo(long position, long count, WritableByteChannel target) throws IOException
+position
+The position within the file at which the transfer is to begin; must be non-negative
+position>=0
+-----------------------------5464
+public abstract boolean waitForCardPresent(long timeout) throws CardException
+timeout
+if positive, block for up to timeout milliseconds; if zero, block indefinitely; must not be negative
+timeout>=0
+-----------------------------

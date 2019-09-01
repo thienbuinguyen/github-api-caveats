@@ -1,0 +1,401 @@
+-----------------------------16414
+void selectNodeContents(Node refNode) throws RangeException, DOMException
+INVALID_NODE_TYPE_ERR: Raised if refNode or an ancestor of refNode is an Entity, Notation or DocumentType node.
+!refNode -> Entity||Notation||DocumentType
+-----------------------------3714
+public boolean getBoolean(Object obj) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof), or if the field value cannot be converted to the type boolean by a widening conversion.
+
+-----------------------------3730
+public int getInt(Object obj) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof), or if the field value cannot be converted to the type int by a widening conversion.
+
+-----------------------------13129
+public HashPrintRequestAttributeSet(PrintRequestAttributeSet attributes)
+if any element of attributes is not an instance of PrintRequestAttributeSe
+
+-----------------------------16423
+void insertNode(Node newNode) throws DOMException, RangeException
+INVALID_NODE_TYPE_ERR: Raised if newNode is an Attr, Entity, Notation, or Document node.
+!newNode -> Attr||Entity||Notation||Document
+-----------------------------11361
+protected <T> void addObjectValue(String elementName, Class<T> classType, boolean required, T defaultValue, List<? extends T> enumeratedValues)
+if enumeratedValues contains an element that is not an instance of the class type denoted by classType or is null.
+
+-----------------------------14721
+public static JTextComponent.KeyBinding[] makeKeyBindings(Object[] keyBindingList)
+if the key part of the pair is not a KeyStroke or String, or the action part of the pair is not a String
+
+-----------------------------3718
+public byte getByte(Object obj) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof), or if the field value cannot be converted to the type byte by a widening conversion.
+
+-----------------------------3734
+public long getLong(Object obj) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof), or if the field value cannot be converted to the type long by a widening conversion.
+
+-----------------------------3726
+public short getShort(Object obj) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof), or if the field value cannot be converted to the type short by a widening conversion.
+
+-----------------------------4572
+public static Reader newReader(ReadableByteChannel ch, String csName)
+If no support for the named charset is available in this instance of the Java virtual machine
+
+-----------------------------12543
+Integer[] addNotificationListeners(ObjectName[] names, MarshalledObject[] filters, Subject[] delegationSubjects) throws InstanceNotFoundException, IOException
+if one of the elements of filters unmarshalls as a non-null object that is not a NotificationFilter.
+
+-----------------------------3326
+public static MethodHandle tryFinally(MethodHandle target, MethodHandle cleanup)
+if cleanup does not accept the required leading arguments, or if the method handle types do not match in their return types and their corresponding trailing parameters
+
+-----------------------------7928
+public HijrahDate date(Era era, int yearOfEra, int month, int dayOfMonth)
+if the era is not a HijrahEra
+era -> HijrahEra
+-----------------------------1883
+public double getDoubleParameter(int index)
+if the parameter at the specified index is not a Double
+this.parameters.get(index) -> Double
+-----------------------------11893
+public static ClassLoaderRepository getClassLoaderRepository(MBeanServer server)
+if there is a SecurityManager and the caller's permissions do not include or imply MBeanPermission("getClassLoaderRepository").
+
+-----------------------------1880
+public float getFloatParameter(int index)
+if the parameter at the specified index is not a Float
+this.parameters.get(index) -> Float
+-----------------------------119
+void forceEarlyReturn(Value value) throws InvalidTypeException, ClassNotLoadedException, IncompatibleThreadStateException
+if the method's return type has not yet been loaded through the appropriate class loader.
+
+-----------------------------5174
+Path relativize(Path other)
+if other is not a Path that can be relativized against this path
+
+-----------------------------16429
+void surroundContents(Node newParent) throws DOMException, RangeException
+INVALID_NODE_TYPE_ERR: Raised if node is an Attr, Entity, DocumentType, Notation, Document, or DocumentFragment node.
+!test -> Attr||Entity||DocumentType||Notation||Document||DocumentFragment
+-----------------------------13144
+boolean addAll(AttributeSet attributes)
+if some element in the specified set is not an instance of interface PrintRequestAttribute
+
+-----------------------------13100
+boolean add(Attribute attribute)
+if the attribute is not an instance of interface DocAttribute
+attribute -> DocAttribute
+-----------------------------12104
+public OpenMBeanAttributeInfoSupport(String name, String description, OpenType<T> openType, boolean isReadable, boolean isWritable, boolean isIs, T defaultValue, T[] legalValues) throws OpenDataException
+if defaultValue is not a valid value for the specified openType, or one value in legalValues is not valid for the specified openType, or defaultValue is non null and openType is an ArrayType or a TabularType, or legalValues is non null and non empty and openType is an ArrayType or a TabularType, or legalValues is non null and non empty and defaultValue is not contained in legalValues.
+
+-----------------------------7976
+public static JapaneseDate of(JapaneseEra era, int yearOfEra, int month, int dayOfMonth)
+if the value of any field is out of range, or if the day-of-month is invalid for the month-year, or if the date is not a Japanese era
+
+-----------------------------10988
+public void setInput(Object input, boolean seekForwardOnly, boolean ignoreMetadata)
+if input is not an instance of one of the classes returned by the originating service provider's getInputTypes method, or is not an ImageInputStream.
+
+-----------------------------3303
+public static MethodHandle collectArguments(MethodHandle target, int pos, MethodHandle filter)
+if the return type of filter is non-void and is not the same as the pos argument of the target, or if pos is not between 0 and the target's arity, inclusive, or if the resulting method handle's type would have too many parameters
+
+-----------------------------3738
+public float getFloat(Object obj) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof), or if the field value cannot be converted to the type float by a widening conversion.
+
+-----------------------------805
+public Dialog(Window owner)
+if the owner is not an instance of Dialog or Frame
+owner -> Dialog||Frame
+-----------------------------11885
+public static void releaseMBeanServer(MBeanServer mbeanServer)
+if there is a SecurityManager and the caller's permissions do not include or imply MBeanServerPermission("releaseMBeanServer").
+
+-----------------------------11168
+public void setOutput(Object output)
+if output is not an instance of one of the classes returned by the originating service provider's getOutputTypes method.
+
+-----------------------------4093
+public void connect(SocketAddress endpoint) throws IOException
+if endpoint is null or is a SocketAddress subclass not supported by this socket
+
+-----------------------------513
+public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException
+if the callback is not an instance of NameCallback or PasswordCallback
+
+-----------------------------14875
+protected void playSound(Action audioAction)
+if audioAction is non-null and the value of the default "AuditoryCues.playList" is not an Object[]
+
+-----------------------------13109
+protected HashAttributeSet(Attribute attribute, Class<?> interfaceName)
+if attribute is not an instance of interfaceName
+attribute -> interfaceName
+-----------------------------4743
+MembershipKey join(InetAddress group, NetworkInterface interf) throws IOException
+If the channel's socket is not an Internet Protocol socket, or the platform does not support multicasting
+
+-----------------------------11037
+public Iterator<IIOImage> readAll(Iterator<? extends ImageReadParam> params) throws IOException
+if any non-null element of params is not an ImageReadParam.
+
+-----------------------------3710
+public Object get(Object obj) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof).
+
+-----------------------------11453
+public abstract ImageOutputStream createOutputStreamInstance(Object output, boolean useCache, File cacheDir) throws IOException
+if output is not an instance of the correct class or is null.
+
+-----------------------------8009
+public ThaiBuddhistDate date(Era era, int yearOfEra, int month, int dayOfMonth)
+if the era is not a ThaiBuddhistEra
+era -> ThaiBuddhistEra
+-----------------------------6407
+void setHoldability(int holdability) throws SQLException
+if a database access occurs, this method is called on a closed connection, or the given parameter is not a ResultSet constant indicating holdability
+
+-----------------------------6356
+default void setObject(String parameterName, Object x, SQLType targetSqlType, int scaleOrLength) throws SQLException
+if parameterName does not correspond to a named parameter; if a database access error occurs or this method is called on a closed CallableStatement or if the Java Object specified by x is an InputStream or Reader object and the value of the scale parameter is less than zero
+
+-----------------------------13126
+public HashPrintJobAttributeSet(PrintJobAttributeSet attributes)
+if any element of attributes is not an instance of PrintJobAttribute
+
+-----------------------------14584
+public DateEditor(JSpinner spinner)
+if the spinners model is not an instance of SpinnerDateModel
+spinner -> SpinnerDateModel
+-----------------------------10952
+boolean activate(IIOParam param)
+if param is null or is not an instance of the correct class.
+
+-----------------------------6990
+int executeUpdate(String sql, String[] columnNames) throws SQLException
+if a database access error occurs, this method is called on a closed Statement, the SQL statement returns a ResultSet object, the second argument supplied to this method is not a String array whose elements are valid column names, the method is called on a PreparedStatement or CallableStatement
+
+-----------------------------100
+void stop(ObjectReference throwable) throws InvalidTypeException
+if throwable is not an instance of java.lang.Throwable in the target VM.
+
+-----------------------------3309
+public static MethodHandle foldArguments(MethodHandle target, int pos, MethodHandle combiner)
+if either of the following two conditions holds: (1) combiner's return type is non-void and not the same as the argument type at position pos of the target signature; (2) the N argument types at position pos of the target signature (skipping one matching the combiner's return type) are not identical with the argument types of combiner.
+
+-----------------------------16388
+void setStart(Node refNode, int offset) throws RangeException, DOMException
+INVALID_NODE_TYPE_ERR: Raised if refNode or an ancestor of refNode is an Entity, Notation, or DocumentType node.
+!ref -> Entity||Notation||DocumentType
+-----------------------------12321
+void setRole(String relationId, Role role) throws RelationServiceNotRegisteredException, IllegalArgumentException, RelationNotFoundException, RoleNotFoundException, InvalidRoleValueException, RelationTypeNotFoundException
+if internal relation and value provided for role is not valid: - the number of referenced MBeans in given value is less than expected minimum degree or - the number of referenced MBeans in provided value exceeds expected maximum degree or - one referenced MBean in the value is not an Object of the MBean class expected for that role or - an MBean provided for that role does not exist
+
+-----------------------------7092
+public final StringBuffer format(Object number, StringBuffer toAppendTo, FieldPosition pos)
+if number is null or not an instance of Number.
+number -> Number
+-----------------------------16411
+void selectNode(Node refNode) throws RangeException, DOMException
+INVALID_NODE_TYPE_ERR: Raised if an ancestor of refNode is an Entity, Notation or DocumentType node or if refNode is a Document, DocumentFragment, Attr, Entity, or Notation node.
+!refNode -> Document,DocumentFragment,Attr,Entity,Notation
+-----------------------------183
+void setEnabled(boolean val)
+if this is a StepRequest, val is true, and the thread named in the request has died or is not yet started.
+
+-----------------------------3285
+public static MethodHandle constant(Class<?> type, Object value)
+if the value cannot be converted to the required return type
+
+-----------------------------12253
+public void setRole(String relationId, Role role) throws RelationServiceNotRegisteredException, IllegalArgumentException, RelationNotFoundException, RoleNotFoundException, InvalidRoleValueException
+if value provided for role is not valid: - the number of referenced MBeans in given value is less than expected minimum degree or - the number of referenced MBeans in provided value exceeds expected maximum degree or - one referenced MBean in the value is not an Object of the MBean class expected for that role or - an MBean provided for that role does not exist
+
+-----------------------------13066
+Object getSupportedAttributeValues(Class<? extends Attribute> category, DocFlavor flavor, AttributeSet attributes)
+if category is not a Class that implements interface Attribute, or DocFlavor is not supported by this service
+
+-----------------------------13059
+<T extends PrintServiceAttribute> T getAttribute(Class<T> category)
+if category is not a Class that implements interface PrintServiceAttribute
+category -> PrintServiceAttribute
+-----------------------------6421
+PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException
+if a database access error occurs, this method is called on a closed connection or the given parameter is not a Statement constant indicating whether auto-generated keys should be returned
+
+-----------------------------13075
+Attribute get(Class<?> category)
+if the category is not a Class that implements interface Attribute
+category -> Attribute
+-----------------------------7990
+public MinguoDate date(Era era, int yearOfEra, int month, int dayOfMonth)
+if the era is not a MinguoEra
+era -> MinguoEra
+-----------------------------10139
+public Object put(Object name, Object value)
+if the name is not a Attributes.Name or the value is not a String
+name -> Attributes.Name & value -> String
+-----------------------------14367
+public void setParent(InputMap map)
+if map is not a ComponentInputMap or is not associated with the same component
+map -> ComponentInputMap
+-----------------------------7067
+public final StringBuffer format(Object number, StringBuffer toAppendTo, FieldPosition fieldPosition)
+if number is null or not an instance of Number
+number -> Number
+-----------------------------12594
+public int compareTo(Object obj)
+if obj is not a CompositeName.
+obj -> CompositeName
+-----------------------------1963
+public XMLEncoder(OutputStream out, String charset, boolean declaration, int indentation)
+if no support for the named charset is available in this instance of the Java virtual machine
+
+-----------------------------5649
+public static KeyStore.Builder newInstance(String type, Provider provider, File file, KeyStore.ProtectionParameter protection)
+if protection is not an instance of either PasswordProtection or CallbackHandlerProtection; or if file does not exist or does not refer to a normal file
+protection -> PasswordProtection||CallbackHandlerProtection
+-----------------------------6949
+default void writeObject(Object x, SQLType targetSqlType) throws SQLException
+if a database access error occurs or if the Java Object specified by x is an InputStream or Reader object and the value of the scale parameter is less than zero
+
+-----------------------------6585
+default void setObject(int parameterIndex, Object x, SQLType targetSqlType, int scaleOrLength) throws SQLException
+if parameterIndex does not correspond to a parameter marker in the SQL statement; if a database access error occurs or this method is called on a closed PreparedStatement or if the Java Object specified by x is an InputStream or Reader object and the value of the scale parameter is less than zero
+
+-----------------------------14795
+public static void setLookAndFeel(String className) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException
+if a new instance of the class couldn't be created
+
+-----------------------------12676
+int compareTo(Object obj)
+if obj is not a Name of a type that may be compared with this name
+obj -> Name
+-----------------------------4749
+MembershipKey join(InetAddress group, NetworkInterface interf, InetAddress source) throws IOException
+If the channel's socket is not an Internet Protocol socket, or source filtering is not supported, or the platform does not support multicasting
+
+-----------------------------3313
+public static MethodHandle catchException(MethodHandle target, Class<? extends Throwable> exType, MethodHandle handler)
+if handler does not accept the given exception type, or if the method handle types do not match in their return types and their corresponding parameters
+
+-----------------------------11889
+public static MBeanServer newMBeanServer(String domain)
+if there is a SecurityManager and the caller's permissions do not include or imply MBeanServerPermission("newMBeanServer").
+
+-----------------------------3746
+public void set(Object obj, Object value) throws IllegalArgumentException, IllegalAccessException
+if the specified object is not an instance of the class or interface declaring the underlying field (or a subclass or implementor thereof), or if an unwrapping conversion fails.
+
+-----------------------------11402
+public TIFFField(TIFFTag tag, int type, int count, Object data)
+if data is an instance of a class incompatible with the specified type.
+
+-----------------------------13243
+public PrinterStateReasons(Map<PrinterStateReason,Severity> map)
+if any key in map is not an instance of class PrinterStateReason or if any value in map is not an instance of class Severity
+
+-----------------------------12106
+public OpenMBeanAttributeInfoSupport(String name, String description, OpenType<T> openType, boolean isReadable, boolean isWritable, boolean isIs, T defaultValue, Comparable<T> minValue, Comparable<T> maxValue) throws OpenDataException
+if defaultValue, minValue or maxValue is not a valid value for the specified openType, or defaultValue is non null and openType is an ArrayType or a TabularType, or both minValue and maxValue are non-null and minValue.compareTo(maxValue) > 0 is true, or both defaultValue and minValue are non-null and minValue.compareTo(defaultValue) > 0 is true, or both defaultValue and maxValue are non-null and defaultValue.compareTo(maxValue) > 0 is true.
+
+-----------------------------13111
+protected HashAttributeSet(Attribute[] attributes, Class<?> interfaceName)
+if any element of attributes is not an instance of interfaceName
+
+-----------------------------14587
+public ListEditor(JSpinner spinner)
+if the spinners model is not an instance of SpinnerListModel
+spinner -> SpinnerListModel
+-----------------------------11886
+public static MBeanServer createMBeanServer(String domain)
+if there is a SecurityManager and the caller's permissions do not include or imply MBeanServerPermission("createMBeanServer").
+
+-----------------------------12102
+public OpenMBeanAttributeInfoSupport(String name, String description, OpenType<T> openType, boolean isReadable, boolean isWritable, boolean isIs, T defaultValue) throws OpenDataException
+if defaultValue is not a valid value for the specified openType, or defaultValue is non null and openType is an ArrayType or a TabularType.
+
+-----------------------------5708
+public final KeyStore.Entry getEntry(String alias, KeyStore.ProtectionParameter protParam) throws NoSuchAlgorithmException, UnrecoverableEntryException, KeyStoreException
+if the entry is a PrivateKeyEntry or SecretKeyEntry and the specified protParam does not contain the information needed to recover the key (e.g.
+
+-----------------------------3887
+public void setSocketAddress(SocketAddress address)
+if address is null or is a SocketAddress subclass not supported by this socket
+
+-----------------------------13135
+boolean add(Attribute attribute)
+if the attribute is not an instance of interface PrintJobAttribute
+attribute -> PrintJobAttribute
+-----------------------------3898
+public void bind(SocketAddress addr) throws SocketException
+if addr is a SocketAddress subclass not supported by this socket.
+
+-----------------------------118
+void forceEarlyReturn(Value value) throws InvalidTypeException, ClassNotLoadedException, IncompatibleThreadStateException
+if the value's type does not match the method's return type.
+
+-----------------------------13062
+boolean isAttributeCategorySupported(Class<? extends Attribute> category)
+if category is not a Class that implements interface Attribute
+category -> Attribute
+-----------------------------1734
+public static Raster createRaster(SampleModel sm, DataBuffer db, Point location)
+if db has more than one bank and sm is a PixelInterleavedSampleModel, SinglePixelPackedSampleModel, or MultiPixelPackedSampleModel.
+sm -> PixelInterleavedSampleModel||SinglePixelPackedSampleModel||MultiPixelPackedSampleModel
+-----------------------------3902
+public void connect(SocketAddress addr) throws SocketException
+if addr is null, or addr is a SocketAddress subclass not supported by this socket
+
+-----------------------------2792
+public void checkConnect(String host, int port, Object context)
+if the specified security context is not an instance of AccessControlContext (e.g., is null), or does not have permission to open a socket connection to the specified host and port.
+context -> AccessControlContext
+-----------------------------1877
+public long getLongParameter(int index)
+if the parameter at the specified index is not a Long
+
+-----------------------------3307
+public static MethodHandle foldArguments(MethodHandle target, MethodHandle combiner)
+if combiner's return type is non-void and not the same as the first argument type of the target, or if the initial N argument types of the target (skipping one matching the combiner's return type) are not identical with the argument types of combiner
+
+-----------------------------1868
+public char getCharParameter(int index)
+if the parameter at the specified index is not a Character
+
+-----------------------------4099
+public void bind(SocketAddress bindpoint) throws IOException
+if bindpoint is a SocketAddress subclass not supported by this socket
+
+-----------------------------16398
+void setStartBefore(Node refNode) throws RangeException, DOMException
+INVALID_NODE_TYPE_ERR: Raised if the root container of refNode is not an Attr, Document, or DocumentFragment node or if refNode is a Document, DocumentFragment, Attr, Entity, or Notation node.
+!refNode -> Document||DocumentFragment||Attr||Entity||Notation
+-----------------------------4049
+public void bind(SocketAddress endpoint) throws IOException
+if endpoint is a SocketAddress subclass not supported by this socket
+
+-----------------------------12607
+public int compareTo(Object obj)
+if obj is not a CompoundName.
+obj -> CompoundName
+-----------------------------3647
+public static boolean getBoolean(Object array, int index) throws IllegalArgumentException, ArrayIndexOutOfBoundsException
+If the specified object is not an array, or if the indexed element cannot be converted to the return type by an identity or widening conversion
+
+-----------------------------1762
+public final BufferedImage filter(BufferedImage src, BufferedImage dst)
+if the ColorModel of src is an IndexColorModel, or if the number of scaling factors and offsets in this RescaleOp do not meet the requirements stated in the class comments, or if the source and destination images differ in size.
+
+-----------------------------13199
+public boolean add(JobStateReason o)
+if the specified element is not an instance of class JobStateReason
+o -> JobStateReason
+-----------------------------3789
+public Object invoke(Object obj, Object... args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException
+if the method is an instance method and the specified object argument is not an instance of the class or interface declaring the underlying method (or of a subclass or implementor thereof); if the number of actual and formal parameters differ; if an unwrapping conversion for primitive arguments fails; or if, after possible unwrapping, a parameter value cannot be converted to the corresponding formal parameter type by a method invocation conversion.
+
+-----------------------------

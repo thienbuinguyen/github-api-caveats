@@ -84,7 +84,7 @@
 {"id": 16423, "text": "Note that any plus sign \"+\" prepended to the name of the feature will be ignored since it is not significant in the context of this method.", "labels": ["Ambiguous"]}
 {"id": 16424, "text": "If this parameter is null, the method will return the default namespace URI if any.", "labels": ["Ambiguous"]}
 {"id": 16425, "text": "the unit to check, null returns false", "labels": ["Ambiguous"]}
-{"id": 16426, "text": "the field to set in the result, not null", "labels": ["Ambiguous"]}
+{"id": 16426, "text": "the field to set in the result, not null", "labels": ["NullnessNotAllowed"]}
 {"id": 16427, "text": "the amount to add, not null", "labels": ["NullnessNotAllowed"]}
 {"id": 16428, "text": "the unit of the amount to add, not null", "labels": ["NullnessNotAllowed"]}
 {"id": 16429, "text": "the amount to subtract, not null", "labels": ["NullnessNotAllowed"]}

@@ -1,0 +1,401 @@
+-----------------------------9411
+public ArrayBlockingQueue(int capacity, boolean fair, Collection<? extends E> c)
+if capacity is less than c.size(), or less than 1.
+capacity<c.size()||capacity<1
+-----------------------------14745
+public abstract void rowsUpdated(int firstRow, int endRow, int column)
+if either argument is outside the range of the underlying model after the change, firstRow > endRow, or column is outside the range of the underlying model
+firstRow>endRow
+-----------------------------3085
+void retransformClasses(Class<?>... classes) throws UnmodifiableClassException
+if a specified class cannot be modified (isModifiableClass(java.lang.Class<?>) would return false)
+
+-----------------------------8299
+public static <T> void sort(T[] a, int fromIndex, int toIndex, Comparator<? super T> c)
+if fromIndex > toIndex or (optional) if the comparator is found to violate the Comparator contract
+fromIndex>toIndex
+-----------------------------2518
+public static int toChars(int codePoint, char[] dst, int dstIndex)
+if dstIndex is negative or not less than dst.length, or if dst at dstIndex doesn't have enough array element(s) to store the resulting char value(s).
+dstIndex<0||dstIndex>=dst.length
+-----------------------------10467
+DoubleStream limit(long maxSize)
+if maxSize is negative
+maxSize<0
+-----------------------------10935
+public RC5ParameterSpec(int version, int rounds, int wordSize, byte[] iv, int offset)
+if iv is null or (iv.length - offset < 2 * (wordSize / 8))
+iv.length-offset<2*(wordSize/8)
+-----------------------------3549
+public static Configuration resolve(ModuleFinder before, List<Configuration> parents, ModuleFinder after, Collection<String> roots)
+If the list of parents is empty, or the list has two or more parents with modules for different target operating systems, architectures, or versions
+
+-----------------------------2309
+public PipedInputStream(PipedOutputStream src, int pipeSize) throws IOException
+if pipeSize <= 0.
+pipeSize<=0
+-----------------------------4294
+public abstract char getChar(int index)
+If index is negative or not smaller than the buffer's limit, minus one
+index<0
+-----------------------------6441
+default boolean setShardingKeyIfValid(ShardingKey shardingKey, ShardingKey superShardingKey, int timeout) throws SQLException
+if an error occurs while performing this validation; a superSharedingKey is specified without a shardingKey; this method is called on a closed connection; or the timeout value is negative.
+
+-----------------------------987
+public Polygon(int[] xpoints, int[] ypoints, int npoints)
+if npoints is greater than the length of xpoints or the length of ypoints.
+npoints>xpoints.length||npoints>ypoints.length
+-----------------------------15884
+public abstract boolean isObjectModelSupported(String objectModel)
+If objectModel.length() == 0.
+objectModel.length()==0
+-----------------------------9323
+public void scheduleAtFixedRate(TimerTask task, Date firstTime, long period)
+if firstTime.getTime() < 0 or period <= 0
+firstTime.getTime()<0||period<=0
+-----------------------------1385
+public static NumericShaper getShaper(int singleRange)
+if the range is not a single range
+
+-----------------------------1708
+public static WritableRaster createBandedRaster(int dataType, int w, int h, int bands, Point location)
+if bands is less than 1
+bands<1
+-----------------------------7218
+public int get(TemporalField field)
+if a value for the field cannot be obtained or the value is outside the range of valid values for the field
+
+-----------------------------11317
+Comparable<?> getObjectMinValue(String elementName)
+if the Object is not defined as a range.
+
+-----------------------------1338
+public MouseEvent(Component source, int id, long when, int modifiers, int x, int y, int clickCount, boolean popupTrigger, int button)
+if button is greater than the current number of buttons and the support for extended mouse buttons is enabled by Java
+
+-----------------------------6083
+public ECFieldF2m(int m)
+if m is not positive.
+m<0
+-----------------------------14765
+public SpinnerNumberModel(Number value, Comparable<?> minimum, Comparable<?> maximum, Number stepSize)
+if stepSize or value is null or if the following expression is false: minimum <= value <= maximum
+!(minimum<=value&&value<=maximum)
+-----------------------------14600
+@BeanProperty(description="The location of the divider.") public void setDividerLocation(double proportionalLocation)
+if the specified location is < 0 or > 1.0
+proportionalLocation<0||proportionalLocation>1.0
+-----------------------------106
+List<StackFrame> frames(int start, int length) throws IncompatibleThreadStateException
+That is, the exception is thrown if any of the following are true: start < 0 start >= frameCount() length < 0 (start+length) > frameCount()
+start<0||start>=frameCount()||length<0||start+length>frameCount()
+-----------------------------1608
+protected DataBuffer(int dataType, int size, int numBanks, int[] offsets)
+if numBanks does not equal the length of offsets
+numBanks!=offsets.length
+-----------------------------14743
+public abstract void rowsDeleted(int firstRow, int endRow)
+if either argument is outside the range of the model before the change, or firstRow > endRow
+firstRow>endRow
+-----------------------------16004
+public void setMaxAge(Duration maxAge)
+if maxAge is negative
+maxAge<0
+-----------------------------2025
+public CharArrayReader(char[] buf, int offset, int length)
+If offset is negative or greater than buf.length, or if length is negative, or if the sum of these two values is negative.
+offset<0||offset>buf.length||length<0||offset+length<0
+-----------------------------11968
+public DescriptorSupport(int initNumFields) throws MBeanException, RuntimeOperationsException
+for illegal value for initNumFields (<= 0)
+initNumFields<=0
+-----------------------------3557
+public ModuleDescriptor.Builder requires(Set<ModuleDescriptor.Requires.Modifier> ms, String mn, ModuleDescriptor.Version compiledVersion)
+If the module name is null, is not a legal module name, or is equal to the module name that this builder was initialized to build
+
+-----------------------------9277
+public int nextInt(int origin, int bound)
+if origin is greater than or equal to bound
+origin>=bound
+-----------------------------1320
+public InputMethodEvent(Component source, int id, long when, AttributedCharacterIterator text, int committedCharacterCount, TextHitInfo caret, TextHitInfo visiblePosition)
+if id is not in the range INPUT_METHOD_FIRST..INPUT_METHOD_LAST; or if id is CARET_POSITION_CHANGED and text is not null; or if committedCharacterCount is not in the range 0..(text.getEndIndex() - text.getBeginIndex())
+!(id>=INPUT_METHOD_FIRST&&id<=INPUT_METHOD_LAST)||!(committedCharacterCount>=0&&committedCharacterCount<=text.getEndIndex()-text.getBeginIndex())
+-----------------------------2988
+public final void setPriority(int newPriority)
+If the priority is not in the range MIN_PRIORITY to MAX_PRIORITY.
+!(newPriority>=MIN_PRIORITY&&newPriority<=MAX_PRIORITY)
+-----------------------------356
+public static MessageInfo createOutgoing(Association association, SocketAddress address, int streamNumber)
+If association is null, or the streamNumber is negative or greater than 65536
+streamNumber<0||streamNumber>65536
+-----------------------------1586
+public ComponentSampleModel(int dataType, int w, int h, int pixelStride, int scanlineStride, int[] bandOffsets)
+if scanlineStride is less than 0
+scanlineStride<0
+-----------------------------15187
+protected TreePath(Object[] path, int length)
+if length - 1 is outside the range of the array
+length-1<0||length-1>=path.length
+-----------------------------13281
+boolean containsKey(Object key)
+if key is empty String
+
+-----------------------------10696
+public final void updateAAD(byte[] src, int offset, int len)
+if the src byte array is null, or the offset or length is less than 0, or the sum of the offset and len is greater than the length of the src byte array
+offset<0||len<0||offset+len>src.length
+-----------------------------665
+public Color(ColorSpace cspace, float[] components, float alpha)
+if any of the values in the components array or alpha is outside of the range 0.0 to 1.0
+alpha<0.0||alpha>1.0
+-----------------------------8162
+public abstract E get(int index)
+if the index is out of range (index < 0 || index >= size())
+index<0||index>=size()
+-----------------------------1588
+public ComponentSampleModel(int dataType, int w, int h, int pixelStride, int scanlineStride, int[] bandOffsets)
+if the product of w and h is greater than Integer.MAX_VALUE
+w*h>Integer.MAX_VALUE
+-----------------------------2018
+public ByteArrayOutputStream(int size)
+if size is negative.
+size<0
+-----------------------------2108
+public boolean setLastModified(long time)
+If the argument is negative
+time<negative
+-----------------------------4808
+public final SelectionKey register(Selector sel, int ops) throws ClosedChannelException
+If a bit in ops does not correspond to an operation that is supported by this channel, that is, if set & ~validOps() != 0
+set&~validOps()!=0
+-----------------------------3619
+public Reference<? extends T> remove(long timeout) throws IllegalArgumentException, InterruptedException
+If the value of the timeout argument is negative
+timeout<0
+-----------------------------3283
+public static MethodHandle permuteArguments(MethodHandle target, MethodType newType, int... reorder)
+if the index array length is not equal to the arity of the target, or if any index array element not a valid index for a parameter of newType, or if two corresponding parameter types in target.type() and newType are not identical,
+
+-----------------------------1470
+public byte[] lookupPixel(byte[] src, byte[] dst)
+if src is longer than dst or if for any element i of src, (src[i]&0xff)-offset is either less than zero or greater than or equal to the length of the lookup table for any band.
+src.length>dst.length
+-----------------------------663
+public Color(float r, float g, float b)
+if r, g or b are outside of the range 0.0 to 1.0, inclusive
+r<0.0||r>1.0||g<0.0||g>1.0||b<0.0||b>1.0
+-----------------------------14599
+@BeanProperty(description="Specifies how to distribute extra space when the split pane resizes.") public void setResizeWeight(double value)
+if value is < 0 or > 1
+value<0||value>1
+-----------------------------1918
+public static <T> T create(Class<T> listenerInterface, Object target, String action)
+if creating a Proxy for listenerInterface fails for any of the restrictions specified by Proxy.newProxyInstance(java.lang.ClassLoader, java.lang.Class<?>[], java.lang.reflect.InvocationHandler)
+
+-----------------------------13538
+public CommandAPDU(int cla, int ins, int p1, int p2, byte[] data, int dataOffset, int dataLength, int ne)
+if dataOffset or dataLength are negative or if dataOffset + dataLength are greater than data.length, or if ne is negative or greater than 65536, or if dataLength is greater than 65535
+dataOffset<0||dataLength<0||dataOffset+dataLength>data.length||ne<0||ne>65536||dataLength>65535
+-----------------------------11135
+public static ImageTypeSpecifier createIndexed(byte[] redLUT, byte[] greenLUT, byte[] blueLUT, byte[] alphaLUT, int bits, int dataType)
+if the non-null LUT parameters do not have lengths of exactly 1 << bits.
+
+-----------------------------530
+long getStartPosition(long line)
+if lineNumber < 1 if lineNumber > no.
+lineNumber<1
+-----------------------------15056
+protected float drawUnselectedText(Graphics2D g, float x, float y, int p0, int p1) throws BadLocationException
+if the range is invalid
+
+-----------------------------3917
+public void setSendBufferSize(int size) throws SocketException
+if the value is 0 or is negative.
+size<=0
+-----------------------------2408
+public RandomAccessFile(String name, String mode) throws FileNotFoundException
+if the mode argument is not equal to one of "r", "rw", "rws", or "rwd"
+mode!="r"||mode!="rw"||mode!="rws"||mode!="rwd"
+-----------------------------3030
+default ClassDesc arrayType(int rank)
+if the rank is less than zero or if the rank of the resulting array type is greater than 255
+rank<0||rank>255
+-----------------------------4258
+public static <T> HttpResponse.BodyHandler<T> buffering(HttpResponse.BodyHandler<T> downstreamHandler, int bufferSize)
+if bufferSize <= 0
+bufferSize<=0
+-----------------------------13908
+void setBlob(int parameterIndex, InputStream inputStream, long length) throws SQLException
+if a database access error occurs, this method is called on a closed PreparedStatement, if parameterIndex does not correspond to a parameter marker in the SQL statement, if the length specified is less than zero or if the number of bytes in the InputStream does not match the specified length.
+length<0
+-----------------------------12617
+public Object remove(int posn) throws InvalidNameException
+If posn is outside the specified range (includes case where compound name is empty).
+
+-----------------------------15424
+public abstract SignedInfo newSignedInfo(CanonicalizationMethod cm, SignatureMethod sm, List<? extends Reference> references)
+if references is empty
+
+-----------------------------6356
+default void setObject(String parameterName, Object x, SQLType targetSqlType, int scaleOrLength) throws SQLException
+if parameterName does not correspond to a named parameter; if a database access error occurs or this method is called on a closed CallableStatement or if the Java Object specified by x is an InputStream or Reader object and the value of the scale parameter is less than zero
+scaleOrLength<0
+-----------------------------6070
+public void setPolicy(Set<String> certPolicySet) throws IOException
+if a parsing error occurs on the OID such as the first component is not 0, 1 or 2 or the second component is greater than 39.
+
+-----------------------------5888
+public final int sign(byte[] outbuf, int offset, int len) throws SignatureException
+if this signature object is not initialized properly, if this signature algorithm is unable to process the input data provided, or if len is less than the actual signature length.
+
+-----------------------------1460
+public Raster getTile(int tileX, int tileY)
+if both tileX and tileY are not equal to 0
+tileX!=0&&tileY!=0
+-----------------------------13532
+public CommandAPDU(int cla, int ins, int p1, int p2, int ne)
+if ne is negative or greater than 65536
+ne<0||ne>65536
+-----------------------------6635
+void setFetchSize(int rows) throws SQLException
+if a database access error occurs; this method is called on a closed result set or the condition rows >= 0 is not satisfied
+rows<0
+-----------------------------11673
+void setFields(String[] fieldNames, Object[] fieldValues) throws RuntimeOperationsException
+Wrapped exception is IllegalArgumentException if fieldNames or fieldValues is null, or if the arrays are of different lengths, or if there is an illegal value in one of them.
+fieldNames.length!=fieldValues.length
+-----------------------------1394
+public void shape(char[] text, int start, int count, int context)
+if this is a contextual shaper and the specified context is not a single valid range.
+
+-----------------------------13757
+int write(byte[] b, int off, int len)
+if off is negative, or off+len is greater than the length of the array b
+off<0||off+len>b.length
+-----------------------------1587
+public ComponentSampleModel(int dataType, int w, int h, int pixelStride, int scanlineStride, int[] bandOffsets)
+if numBands is less than 1
+numBands<1
+-----------------------------13227
+public PageRanges(String members)
+Also if the constructed set-of-integer is a zero-length array or if any member of the set is less than 1.
+
+-----------------------------1154
+public void setOpacity(float opacity)
+if the window is in full screen mode, and the opacity is less than 1.0f
+
+-----------------------------6303
+void setNClob(String parameterName, Reader reader, long length) throws SQLException
+if parameterName does not correspond to a named parameter; if the length specified is less than zero; if the driver does not support national character sets; if the driver can detect that a data conversion error could occur; if a database access error occurs or this method is called on a closed CallableStatement
+length<0
+-----------------------------959
+public void remove(int position)
+if the position is less than 0 or greater than getItemCount()-1
+position<0||position>getItemCount()-1
+-----------------------------3850
+public BigDecimal setScale(int newScale, RoundingMode roundingMode)
+if roundingMode==UNNECESSARY and the specified scaling operation would require rounding.
+
+-----------------------------11544
+void readFully(char[] c, int off, int len) throws IOException
+if off is negative, len is negative, or off + len is greater than c.length.
+off<0||len<0||off+len>c.length
+-----------------------------4103
+public void setSoLinger(boolean on, int linger) throws SocketException
+if the linger value is negative.
+linger<0
+-----------------------------10918
+public GCMParameterSpec(int tLen, byte[] src)
+if tLen is negative, or src is null.
+tLen<0
+-----------------------------10921
+public IvParameterSpec(byte[] iv, int offset, int len)
+if iv is null or (iv.length - offset < len)
+iv.length-offset<len
+-----------------------------15544
+public Duration newDurationDayTime(boolean isPositive, int day, int hour, int minute, int second)
+If the values are not a valid representation of a Duration: if any of the fields (day, hour, ...) is negative.
+day<0||hour<0||minute<0||second<0
+-----------------------------3584
+public ModuleDescriptor.Builder provides(String service, List<String> providers)
+If the service type or any of the provider class names is null or not a qualified name of a class in a named package, or the list of provider class names is empty
+
+-----------------------------3493
+public ManagementPermission(String name)
+if name is empty or invalid.
+
+-----------------------------3863
+public MathContext(String val)
+if the precision section is out of range or of incorrect format
+
+-----------------------------11194
+public boolean canReplaceImageMetadata(int imageIndex) throws IOException
+if the writer supports image metadata replacement in general, but imageIndex is less than 0 or greater than the largest available index.
+imageIndex<0
+-----------------------------13529
+public CommandAPDU(byte[] apdu, int apduOffset, int apduLength)
+if apduOffset or apduLength are negative or if apduOffset + apduLength are greater than apdu.length, or if the specified bytes are not a valid APDU
+apduOffset<0||apduLength<0||apduOffset+apduLength>apdu.length
+-----------------------------6018
+public void setMaxPathLength(int maxPathLength)
+if maxPathLength is set to a value less than -1
+maxPathLength<-1
+-----------------------------15746
+public StAXResult(XMLStreamWriter xmlStreamWriter)
+If xmlStreamWriter == null.
+
+-----------------------------6299
+void setClob(String parameterName, Reader reader, long length) throws SQLException
+if parameterName does not correspond to a named parameter; if the length specified is less than zero; a database access error occurs or this method is called on a closed CallableStatement
+length<0
+-----------------------------7216
+public ValueRange range(TemporalField field)
+if the range for the field cannot be obtained
+
+-----------------------------8882
+public LanguageRange(String range)
+if the given range is null
+
+-----------------------------15070
+public static final int getRowStart(JTextComponent c, int offs) throws BadLocationException
+if the offset is out of range
+
+-----------------------------14532
+public JMenuItem insert(JMenuItem mi, int pos)
+if the value of pos < 0
+pos<0
+-----------------------------1668
+public Kernel(int width, int height, float[] data)
+if the length of data is less than the product of width and height
+width*height>data.length
+-----------------------------2049
+void readFully(byte[] b, int off, int len) throws IOException
+if off is negative, len is negative, or len is greater than b.length - off.
+off<0||len<0||len>b.length-off
+-----------------------------11417
+public TIFFField(TIFFTag tag, int type, long offset, TIFFDirectory dir)
+if offset <= 0.
+offset<=0
+-----------------------------1602
+public final BufferedImage filter(BufferedImage src, BufferedImage dst)
+if src equals dst
+src==dst
+-----------------------------10411
+public boolean find(int start)
+If start is less than zero or if start is greater than the length of the input sequence.
+start<0
+-----------------------------10489
+public int read(byte[] buf, int off, int len) throws IOException
+If off is negative, len is negative, or len is greater than buf.length - off
+off<0||len<0||len>buf.length-off
+-----------------------------14374
+public E elementAt(int index)
+if the index is negative or not less than the size of the list
+index<0
+-----------------------------12981
+void setSessionCacheSize(int size) throws IllegalArgumentException
+if the specified size is < 0.
+size<0
+-----------------------------

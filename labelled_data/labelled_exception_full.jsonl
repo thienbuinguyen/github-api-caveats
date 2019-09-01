@@ -4,7 +4,7 @@
 {"id": 11491, "text": "if the class of the specified element prevents it from being added to this queue", "labels": ["Ambiguous"]}
 {"id": 11492, "text": "if the specified element is null and this queue does not permit null elements", "labels": ["NullnessNotAllowed"]}
 {"id": 11493, "text": "if some property of this element prevents it from being added to this queue", "labels": ["Ambiguous"]}
-{"id": 11494, "text": "if this queue is empty", "labels": ["Ambiguous"]}
+{"id": 11494, "text": "if this queue is empty", "labels": ["RangeLimitation"]}
 {"id": 11495, "text": "if the class of an element of the specified collection prevents it from being added to this queue", "labels": ["Ambiguous"]}
 {"id": 11496, "text": "if the specified collection contains a null element and this queue does not permit null elements, or if the specified collection is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11497, "text": "if some property of an element of the specified collection prevents it from being added to this queue, or if the specified collection is this queue", "labels": ["Ambiguous"]}
@@ -14,16 +14,16 @@
 {"id": 11501, "text": "if the supplied metadata object cannot be parsed.", "labels": ["Ambiguous"]}
 {"id": 11502, "text": "if obj is null or not a Rdn.", "labels": ["NullnessNotAllowed"]}
 {"id": 11503, "text": "if val is not a String or byte array.", "labels": ["TypeRestriction"]}
-{"id": 11504, "text": "When an Illegal value is provided.", "labels": ["Ambiguous"]}
+{"id": 11504, "text": "When an Illegal value is provided.", "labels": ["RangeLimitation"]}
 {"id": 11505, "text": "if infos is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11506, "text": "if newLookAndFeel is non-null and newLookAndFeel.isSupportedLookAndFeel() returns false", "labels": ["NullnessNotAllowed", "Dependent"]}
 {"id": 11507, "text": "if key is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11508, "text": "if target is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11509, "text": "if the VirtualMachine is read-only - see VirtualMachine.canBeModified().", "labels": ["Dependent"]}
-{"id": 11510, "text": "if throwable is not an instance of java.lang.Throwable in the target VM.", "labels": ["Ambiguous"]}
+{"id": 11510, "text": "if throwable is not an instance of java.lang.Throwable in the target VM.", "labels": ["TypeRestriction"]}
 {"id": 11511, "text": "if the thread is not suspended in the target VM", "labels": ["Ambiguous"]}
 {"id": 11512, "text": "if the index is greater than or equal to frameCount() or is negative.", "labels": ["RangeLimitation"]}
-{"id": 11513, "text": "if the specified range is not within the range of stack frame indicies.", "labels": ["Ambiguous"]}
+{"id": 11513, "text": "if the specified range is not within the range of stack frame indicies.", "labels": ["RangeLimitation"]}
 {"id": 11514, "text": "That is, the exception is thrown if any of the following are true: start < 0 start >= frameCount() length < 0 (start+length) > frameCount()", "labels": ["RangeLimitation"]}
 {"id": 11515, "text": "if the target virtual machine does not support this operation.", "labels": ["Ambiguous"]}
 {"id": 11516, "text": "if the target virtual machine does not support this operation - see VirtualMachine.canPopFrames().", "labels": ["Dependent"]}
@@ -42,7 +42,7 @@
 {"id": 11529, "text": "if unable to convert to a Month", "labels": ["Ambiguous"]}
 {"id": 11530, "text": "if the range for the field cannot be obtained", "labels": ["Ambiguous"]}
 {"id": 11531, "text": "if the field is not supported", "labels": ["Ambiguous"]}
-{"id": 11532, "text": "if a value for the field cannot be obtained or the value is outside the range of valid values for the field", "labels": ["Ambiguous"]}
+{"id": 11532, "text": "if a value for the field cannot be obtained or the value is outside the range of valid values for the field", "labels": ["RangeLimitation"]}
 {"id": 11533, "text": "if the field is not supported or the range of values exceeds an int", "labels": ["Ambiguous"]}
 {"id": 11534, "text": "if numeric overflow occurs", "labels": ["Ambiguous"]}
 {"id": 11535, "text": "if a value for the field cannot be obtained", "labels": ["Ambiguous"]}
@@ -88,8 +88,8 @@
 {"id": 11575, "text": "Any SAX exception, possibly wrapping another exception.", "labels": ["Ambiguous"]}
 {"id": 11576, "text": "Probably indicating a failure to create a new InputStream or Reader, or an illegal URL.", "labels": ["Ambiguous"]}
 {"id": 11577, "text": "if the associated stack frame has become invalid.", "labels": ["Ambiguous"]}
-{"id": 11578, "text": "if the port parameter is outside the specified range of valid port values.", "labels": ["Ambiguous"]}
-{"id": 11579, "text": "if the port parameter is outside the range of valid port values, or if the hostname parameter is null.", "labels": ["Ambiguous", "NullnessNotAllowed"]}
+{"id": 11578, "text": "if the port parameter is outside the specified range of valid port values.", "labels": ["RangeLimitation"]}
+{"id": 11579, "text": "if the port parameter is outside the range of valid port values, or if the hostname parameter is null.", "labels": ["NullnessNotAllowed", "RangeLimitation"]}
 {"id": 11580, "text": "if a security manager is present and permission to resolve the host name is denied.", "labels": ["Ambiguous"]}
 {"id": 11581, "text": "if info is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11582, "text": "if locale isn't one of the locales returned from getAvailableLocales().", "labels": ["Dependent"]}
@@ -103,11 +103,11 @@
 {"id": 11590, "text": "if either argument is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11591, "text": "if the underlying member is not accessible to the given lookup object", "labels": ["Ambiguous"]}
 {"id": 11592, "text": "if the category is null", "labels": ["NullnessNotAllowed"]}
-{"id": 11593, "text": "if category is not a Class that implements interface PrintServiceAttribute", "labels": ["Ambiguous"]}
+{"id": 11593, "text": "if category is not a Class that implements interface PrintServiceAttribute", "labels": ["TypeRestriction"]}
 {"id": 11594, "text": "if flavor is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11595, "text": "if category is null", "labels": ["NullnessNotAllowed"]}
-{"id": 11596, "text": "if category is not a Class that implements interface Attribute", "labels": ["Ambiguous"]}
-{"id": 11597, "text": "if category is not a Class that implements interface Attribute, or DocFlavor is not supported by this service", "labels": ["Ambiguous"]}
+{"id": 11596, "text": "if category is not a Class that implements interface Attribute", "labels": ["TypeRestriction"]}
+{"id": 11597, "text": "if category is not a Class that implements interface Attribute, or DocFlavor is not supported by this service", "labels": ["TypeRestriction"]}
 {"id": 11598, "text": "if attrval is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11599, "text": "if flavor is not supported by this PrintService", "labels": ["Ambiguous"]}
 {"id": 11600, "text": "if name is null.", "labels": ["NullnessNotAllowed"]}
@@ -143,7 +143,7 @@
 {"id": 11630, "text": "if an I/O error occurs.", "labels": ["Ambiguous"]}
 {"id": 11631, "text": "Wraps an IllegalArgumentException for invalid Descriptor.", "labels": ["Ambiguous"]}
 {"id": 11632, "text": "If the providers for the service type have already been declared", "labels": ["Ambiguous"]}
-{"id": 11633, "text": "If the service type or any of the provider class names is null or not a qualified name of a class in a named package, or the list of provider class names is empty", "labels": ["Ambiguous"]}
+{"id": 11633, "text": "If the service type or any of the provider class names is null or not a qualified name of a class in a named package, or the list of provider class names is empty", "labels": ["NullnessNotAllowed", "RangeLimitation"]}
 {"id": 11634, "text": "If mainClass is null or not a qualified name of a class in a named package", "labels": ["NullnessNotAllowed"]}
 {"id": 11635, "text": "if there is an error in the conversion", "labels": ["Ambiguous"]}
 {"id": 11636, "text": "if any exception occurs during remote method invocation", "labels": ["Ambiguous"]}
@@ -164,7 +164,7 @@
 {"id": 11651, "text": "if s is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11652, "text": "if a database access error occurs", "labels": ["Ambiguous"]}
 {"id": 11653, "text": "if the JDBC driver does not support this method", "labels": ["Ambiguous"]}
-{"id": 11654, "text": "if a database access error occurs or if the Java Object specified by x is an InputStream or Reader object and the value of the scale parameter is less than zero", "labels": ["Ambiguous"]}
+{"id": 11654, "text": "if a database access error occurs or if the Java Object specified by x is an InputStream or Reader object and the value of the scale parameter is less than zero", "labels": ["TypeRestriction", "RangeLimitation"]}
 {"id": 11655, "text": "if the JDBC driver does not support this data type", "labels": ["Ambiguous"]}
 {"id": 11656, "text": "if the specified position is invalid", "labels": ["Ambiguous"]}
 {"id": 11657, "text": "if a security manager exists and its checkPropertiesAccess method doesn't allow setting of system properties.", "labels": ["Ambiguous"]}
@@ -188,8 +188,8 @@
 {"id": 11675, "text": "if the given output buffer is too small to hold the result", "labels": ["Ambiguous"]}
 {"id": 11676, "text": "if this is called on a delegate that does not support Cloneable.", "labels": ["Ambiguous"]}
 {"id": 11677, "text": "if no value is present", "labels": ["Ambiguous"]}
-{"id": 11678, "text": "if value is present and the given action is null", "labels": ["Ambiguous"]}
-{"id": 11679, "text": "if a value is present and the given action is null, or no value is present and the given empty-based action is null.", "labels": ["Ambiguous"]}
+{"id": 11678, "text": "if value is present and the given action is null", "labels": ["NullnessNotAllowed"]}
+{"id": 11679, "text": "if a value is present and the given action is null, or no value is present and the given empty-based action is null.", "labels": ["NullnessNotAllowed"]}
 {"id": 11680, "text": "if no value is present and the supplying function is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11681, "text": "if no value is present and the exception supplying function is null", "labels": ["NullnessNotAllowed"]}
 {"id": 11682, "text": "if baseName is null", "labels": ["NullnessNotAllowed"]}
@@ -307,7 +307,7 @@
 {"id": 11794, "text": "NOT_SUPPORTED_ERR: Raised when the type of the specified node is neither ELEMENT_NODE nor ATTRIBUTE_NODE, or if the implementation does not support the renaming of the document element.", "labels": ["Ambiguous"]}
 {"id": 11795, "text": "INVALID_CHARACTER_ERR: Raised if the new qualified name is not an XML name according to the XML version in use specified in the Document.xmlVersion attribute.", "labels": []}
 {"id": 11796, "text": "WRONG_DOCUMENT_ERR: Raised when the specified node was created from a different document than this document.", "labels": ["Ambiguous"]}
-{"id": 11797, "text": "NAMESPACE_ERR: Raised if the qualifiedName is a malformed qualified name, if the qualifiedName has a prefix and the namespaceURI is null, or if the qualifiedName has a prefix that is \"xml\" and the namespaceURI is different from \" http://www.w3.org/XML/1998/namespace\" [XML Namespaces] .", "labels": ["Ambiguous"]}
+{"id": 11797, "text": "NAMESPACE_ERR: Raised if the qualifiedName is a malformed qualified name, if the qualifiedName has a prefix and the namespaceURI is null, or if the qualifiedName has a prefix that is \"xml\" and the namespaceURI is different from \" http://www.w3.org/XML/1998/namespace\" [XML Namespaces] .", "labels": ["NullnessNotAllowed"]}
 {"id": 11798, "text": "Also raised, when the node being renamed is an attribute, if the qualifiedName, or its prefix, is \"xmlns\" and the namespaceURI is different from \"http://www.w3.org/2000/xmlns/\".", "labels": ["Ambiguous"]}
 {"id": 11799, "text": "if the input is not valid.", "labels": ["Ambiguous"]}
 {"id": 11800, "text": "For example, input might not be valid if the field type or name is not valid in the Java language or an annotation element references a type that can't be found.", "labels": ["Ambiguous"]}
@@ -324,8 +324,8 @@
 {"id": 11811, "text": "if this is less than zero.", "labels": ["RangeLimitation"]}
 {"id": 11812, "text": "if an exact result is requested (mc.getPrecision()==0) and there is no finite decimal expansion of the exact result", "labels": ["Ambiguous"]}
 {"id": 11813, "text": "if (mc.getRoundingMode()==RoundingMode.UNNECESSARY) and the exact result cannot fit in mc.getPrecision() digits.", "labels": ["Ambiguous"]}
-{"id": 11814, "text": "if n is out of range.", "labels": ["Ambiguous"]}
-{"id": 11815, "text": "if the result is inexact but the rounding mode is UNNECESSARY, or n is out of range.", "labels": ["Ambiguous"]}
+{"id": 11814, "text": "if n is out of range.", "labels": ["RangeLimitation"]}
+{"id": 11815, "text": "if the result is inexact but the rounding mode is UNNECESSARY, or n is out of range.", "labels": ["RangeLimitation"]}
 {"id": 11816, "text": "if the rounding mode is UNNECESSARY and the BigDecimal operation would require rounding.", "labels": ["Ambiguous"]}
 {"id": 11817, "text": "if roundingMode==UNNECESSARY and the specified scaling operation would require rounding.", "labels": ["Ambiguous"]}
 {"id": 11818, "text": "if the specified scaling operation would require rounding.", "labels": ["Ambiguous"]}
@@ -409,7 +409,7 @@
 {"id": 11896, "text": "If b is null.", "labels": ["NullnessNotAllowed"]}
 {"id": 11897, "text": "If off is negative, len is negative, or len is greater than b.length - off", "labels": ["RangeLimitation"]}
 {"id": 11898, "text": "if member < 1", "labels": ["RangeLimitation"]}
-{"id": 11899, "text": "if a null range is specified or if a non-null range is specified with lowerBound less than 1", "labels": ["RangeLimitation"]}
+{"id": 11899, "text": "if a null range is specified or if a non-null range is specified with lowerBound less than 1", "labels": ["RangeLimitation", "NullnessNotAllowed"]}
 {"id": 11900, "text": "if the destroy operation fails.", "labels": ["Ambiguous"]}
 {"id": 11901, "text": "if the caller does not have permission to destroy this Object.", "labels": ["Ambiguous"]}
 {"id": 11902, "text": "If the set contains an invalid combination of options", "labels": ["Ambiguous"]}

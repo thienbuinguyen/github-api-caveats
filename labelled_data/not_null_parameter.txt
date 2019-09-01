@@ -1,0 +1,501 @@
+-----------------------------7206
+void writeStartElement(String prefix, String localName, String namespaceURI) throws XMLStreamException
+prefix
+the prefix of the tag, may not be null
+prefix
+-----------------------------7417
+public void setName(String name)
+name
+the recording name, not null
+name
+-----------------------------2873
+public long toEpochSecond(LocalDate date)
+date
+the localdate, not null
+date
+-----------------------------7397
+public <A extends Annotation> A getAnnotation(Class<A> annotationClass)
+annotationClass
+the Class object that corresponds to the annotation type, not null
+annotationClass
+-----------------------------3205
+public TemporalAccessor parseBest(CharSequence text, TemporalQuery<?>... queries)
+queries
+the queries defining the types to attempt to parse to, must implement TemporalAccessor, not null
+queries
+-----------------------------955
+public static void setSerialFilter(ObjectInputFilter filter)
+filter
+the serialization filter to set as the process-wide filter; not null
+filter
+-----------------------------5150
+public static DirStateFactory.Result getStateToBind(Object obj, Name name, Context nameCtx, Hashtable<?,?> environment, Attributes attrs) throws NamingException
+obj
+The non-null object for which to get state to bind.
+obj
+-----------------------------7346
+public SecureLookupSupplier(MethodHandles.Lookup lookup)
+lookup
+Can not be null.
+lookup
+-----------------------------1279
+public static MethodHandle whileLoop(MethodHandle init, MethodHandle pred, MethodHandle body)
+body
+body of the loop, which may not be null.
+body
+-----------------------------4984
+public SearchResult(String name, Object obj, Attributes attrs)
+name
+The non-null name of the search item.
+name
+-----------------------------4227
+ObjectName preRegister(MBeanServer server, ObjectName name) throws Exception
+name
+In that case, this method must return a non-null ObjectName for the new MBean.
+
+-----------------------------2733
+public ZonedDateTime atZone(ZoneId zone)
+zone
+the time-zone to use, not null
+zone
+-----------------------------5097
+public Rdn(String rdnString) throws InvalidNameException
+rdnString
+The non-null and non-empty RFC2253 formatted string.
+rdnString
+-----------------------------4876
+public RefAddr get(String addrType)
+addrType
+The non-null address type for which to find the address.
+addrType
+-----------------------------2881
+public static Period between(LocalDate startDateInclusive, LocalDate endDateExclusive)
+startDateInclusive
+the start date, inclusive, not null
+startDateInclusive
+-----------------------------3232
+public DateTimeFormatterBuilder appendZoneText(TextStyle textStyle, Set<ZoneId> preferredZones)
+preferredZones
+the set of preferred zone ids, not null
+preferredZones
+-----------------------------735
+public Object getDataElements(int[] components, int offset, Object obj)
+obj
+If obj is not null, it must be a primitive array of type transferType.
+
+-----------------------------2946
+public static ZoneId of(String zoneId, Map<String,String> aliasMap)
+aliasMap
+a map of alias zone IDs (typically abbreviations) to real zone IDs, not null
+aliasMap
+-----------------------------3153
+public MinguoDate date(Era era, int yearOfEra, int month, int dayOfMonth)
+era
+the Minguo era, not null
+era
+-----------------------------2651
+public Instant minus(TemporalAmount amountToSubtract)
+amountToSubtract
+the amount to subtract, not null
+amountToSubtract
+-----------------------------1156
+void log(System.Logger.Level level, ResourceBundle bundle, String format, Object... params)
+format
+the string message format in MessageFormat format, (or a key in the message catalog if bundle is not null); can be null.
+
+-----------------------------793
+public float[] getPixel(int x, int y, float[] fArray, DataBuffer data)
+fArray
+If non-null, returns the samples in this array.
+
+-----------------------------5035
+public NamingEvent(EventContext source, int type, Binding newBd, Binding oldBd, Object changeInfo)
+source
+The non-null context that fired this event.
+source
+-----------------------------5180
+public ResolveResult(Object robj, Name rname)
+robj
+The non-null Object resolved to.
+robj
+-----------------------------3274
+public static TemporalAdjuster nextOrSame(DayOfWeek dayOfWeek)
+dayOfWeek
+the day-of-week to check for or move the date to, not null
+dayOfWeek
+-----------------------------4939
+void modifyAttributes(Name name, ModificationItem[] mods) throws NamingException
+mods
+an ordered sequence of modifications to be performed; may not be null
+mods
+-----------------------------7222
+void setNamespaceContext(NamespaceContext context) throws XMLStreamException
+context
+the namespace context to use for this writer, may not be null
+context
+-----------------------------3025
+default ChronoLocalDateTime<?> atTime(LocalTime localTime)
+localTime
+the local time to use, not null
+localTime
+-----------------------------3108
+public HijrahDate date(Era era, int yearOfEra, int month, int dayOfMonth)
+era
+the Hijrah era, not null
+era
+-----------------------------2659
+public int compareTo(Instant otherInstant)
+otherInstant
+the other instant to compare to, not null
+otherInstant
+-----------------------------4068
+public ImageReaderSpi(String vendorName, String version, String[] names, String[] suffixes, String[] MIMETypes, String readerClassName, Class<?>[] inputTypes, String[] writerSpiNames, boolean supportsStandardStreamMetadataFormat, String nativeStreamMetadataFormatName, String nativeStreamMetadataFormatClassName, String[] extraStreamMetadataFormatNames, String[] extraStreamMetadataFormatClassNames, boolean supportsStandardImageMetadataFormat, String nativeImageMetadataFormatName, String nativeImageMetadataFormatClassName, String[] extraImageMetadataFormatNames, String[] extraImageMetadataFormatClassNames)
+vendorName
+the vendor name, as a non-null String.
+vendorName
+-----------------------------6933
+public AttributeSet addAttribute(AttributeSet old, Object key, Object value)
+key
+the non-null attribute key
+key
+-----------------------------2658
+public ZonedDateTime atZone(ZoneId zone)
+zone
+the zone to combine with, not null
+zone
+-----------------------------7218
+void writeCData(String data) throws XMLStreamException
+data
+the data contained in the CData Section, may not be null
+data
+-----------------------------2687
+public Period until(ChronoLocalDate endDateExclusive)
+endDateExclusive
+the end date, exclusive, which may be in any chronology, not null
+endDateExclusive
+-----------------------------7289
+public abstract Schema newSchema(Source[] schemas) throws SAXException
+schemas
+Input schemas must be XML documents or XML elements and must not be null.
+schemas
+-----------------------------6855
+public static final Action[] augmentList(Action[] list1, Action[] list2)
+list1
+the first list, may be empty but not null
+list1
+-----------------------------4795
+Object addToEnvironment(String propName, Object propVal) throws NamingException
+propName
+the name of the environment property to add; may not be null
+propName
+-----------------------------2609
+public abstract Clock withZone(ZoneId zone)
+zone
+the time-zone to change to, not null
+zone
+-----------------------------2761
+public long until(Temporal endExclusive, TemporalUnit unit)
+endExclusive
+the end time, exclusive, which is converted to a LocalTime, not null
+endExclusive
+-----------------------------7406
+default void recorderInitialized(FlightRecorder recorder)
+recorder
+Flight Recorder instance, not null
+recorder
+-----------------------------4514
+void put(CompositeData value)
+value
+the composite data value to be added as a new row to this TabularData instance; must be of the same composite type as this instance's row type; must not be null.
+value
+-----------------------------5651
+public void setArray(int parameterIndex, Array array) throws SQLException
+array
+The Array object passed to this method must return a non-null Object for all getArray() method calls.
+array
+-----------------------------2691
+public LocalDateTime atTime(LocalTime time)
+time
+the time to combine with, not null
+time
+-----------------------------5063
+public LdapName(List<Rdn> rdns)
+rdns
+The non-null list of Rdns forming this LDAP name.
+rdns
+-----------------------------7284
+public void setProperty(String name, Object object) throws SAXNotRecognizedException, SAXNotSupportedException
+name
+The property name, which is a non-null fully-qualified URI.
+name
+-----------------------------5729
+public SerialBlob(Blob blob) throws SerialException, SQLException
+blob
+the Blob object from which this SerialBlob object is to be constructed; cannot be null.
+blob
+-----------------------------2768
+public int compareTo(LocalTime other)
+other
+the other time to compare to, not null
+other
+-----------------------------5069
+public Name addAll(List<Rdn> suffixRdns)
+suffixRdns
+The non-null suffix Rdns to add.
+suffixRdns
+-----------------------------3188
+public DateTimeFormatter withLocale(Locale locale)
+locale
+the new locale, not null
+locale
+-----------------------------7269
+public SAXSource(InputSource inputSource)
+inputSource
+An input source reference that must be non-null and that will be passed to the parse method of the reader.
+inputSource
+-----------------------------6798
+public void setInvalidCharacters(String invalidCharacters)
+invalidCharacters
+If non-null, specifies illegal characters.
+invalidCharacters
+-----------------------------7270
+public static InputSource sourceToInputSource(Source source)
+source
+Must be a non-null Source reference.
+source
+-----------------------------5120
+public abstract void setEnabledCipherSuites(String[] suites)
+suites
+The non-null list of names of all the cipher suites to enable.
+suites
+-----------------------------6011
+public void propertyChange(PropertyChangeEvent e)
+e
+Must not be null.
+e
+-----------------------------7578
+public void addSource(DOMImplementationSource s)
+s
+The source to be registered, may not be null
+s
+-----------------------------2638
+public static Instant now(Clock clock)
+clock
+the clock to use, not null
+clock
+-----------------------------3212
+public static String getLocalizedDateTimePattern(FormatStyle dateStyle, FormatStyle timeStyle, Chronology chrono, Locale locale)
+locale
+the locale, non-null
+locale
+-----------------------------4802
+protected Context getURLOrDefaultInitCtx(String name) throws NamingException
+name
+The non-null name for which to get the context.
+name
+-----------------------------3054
+ChronoPeriod minus(TemporalAmount amountToSubtract)
+amountToSubtract
+the period to subtract, not null
+amountToSubtract
+-----------------------------3244
+public DateTimeFormatter toFormatter(Locale locale)
+locale
+the locale to use for formatting, not null
+locale
+-----------------------------3857
+public String getDisplayUnicodeExtensionType(String type, String key, Locale locale)
+type
+the Unicode Extension type, not null.
+type
+-----------------------------7200
+String getNamespaceURI(String prefix)
+prefix
+The prefix to lookup, may not be null
+prefix
+-----------------------------2764
+public LocalDateTime atDate(LocalDate date)
+date
+the date to combine with, not null
+date
+-----------------------------2618
+public ValueRange range(TemporalField field)
+field
+the field to query the range for, not null
+field
+-----------------------------4910
+Attribute remove(String attrID)
+attrID
+The non-null id of the attribute to remove.
+attrID
+-----------------------------5648
+public void setClob(int parameterIndex, Clob x) throws SQLException
+x
+a Clob object representing an SQL CLOB value; cannot be null
+x
+-----------------------------3855
+public String getDisplayUnicodeExtensionKey(String key, Locale locale)
+key
+the Unicode Extension key, not null.
+key
+-----------------------------4796
+Object addToEnvironment(String propName, Object propVal) throws NamingException
+propVal
+the value of the property to add; may not be null
+propVal
+-----------------------------1328
+void setLoggerLevel(String loggerName, String levelName)
+loggerName
+Must be non-null.
+loggerName
+-----------------------------2625
+public static Duration parse(CharSequence text)
+text
+the text to parse, not null
+text
+-----------------------------5041
+public NamingExceptionEvent(EventContext source, NamingException exc)
+exc
+The non-null NamingException that was thrown.
+exc
+-----------------------------2621
+public <R> R query(TemporalQuery<R> query)
+query
+the query to invoke, not null
+query
+-----------------------------1397
+boolean remove(URI uri, HttpCookie cookie)
+uri
+if null, the cookie to be removed is not associated with an URI when added; if not null, the cookie to be removed is associated with the given URI when added.
+
+-----------------------------5096
+public Rdn(Attributes attrSet) throws InvalidNameException
+attrSet
+The non-null and non-empty attributes containing type/value mappings.
+attrSet
+-----------------------------5042
+public void dispatch(NamingListener listener)
+listener
+The non-null naming listener on which to invoke the method.
+listener
+-----------------------------5760
+@BeanProperty(visualUpdate=true, description="Whether the border should be painted.") public void setBorderPainted(boolean b)
+b
+if true and border property is not null, the border is painted
+
+-----------------------------3330
+public ZoneOffset getStandardOffset(Instant instant)
+instant
+the instant to find the offset information for, not null, but null may be ignored if the rules have a single offset for all instants
+
+-----------------------------7215
+void writeProcessingInstruction(String target) throws XMLStreamException
+target
+the target of the processing instruction, may not be null
+target
+-----------------------------7217
+void writeProcessingInstruction(String target, String data) throws XMLStreamException
+data
+the data contained in the processing instruction, may not be null
+data
+-----------------------------3313
+public static ZoneOffsetTransitionRule of(Month month, int dayOfMonthIndicator, DayOfWeek dayOfWeek, LocalTime time, boolean timeEndOfDay, ZoneOffsetTransitionRule.TimeDefinition timeDefnition, ZoneOffset standardOffset, ZoneOffset offsetBefore, ZoneOffset offsetAfter)
+time
+the cutover time in the 'before' offset, not null
+time
+-----------------------------3331
+public Duration getDaylightSavings(Instant instant)
+instant
+the instant to find the daylight savings for, not null, but null may be ignored if the rules have a single offset for all instants
+
+-----------------------------1818
+public CodeSigner(CertPath signerCertPath, Timestamp timestamp)
+signerCertPath
+It must not be null.
+signerCertPath
+-----------------------------3329
+public ZoneOffsetTransition getTransition(LocalDateTime localDateTime)
+localDateTime
+the local date-time to query for offset transition, not null, but null may be ignored if the rules have a single offset for all instants
+
+-----------------------------7409
+public Recording(Configuration configuration)
+configuration
+configuration that contains the settings to be use, not null
+configuration
+-----------------------------4947
+NamingEnumeration<SearchResult> search(Name name, String filter, SearchControls cons) throws NamingException
+filter
+the filter expression to use for the search; may not be null
+filter
+-----------------------------2666
+public static LocalDate ofInstant(Instant instant, ZoneId zone)
+instant
+the instant to create the date from, not null
+instant
+-----------------------------5062
+public LdapName(String name) throws InvalidNameException
+name
+This is a non-null distinguished name formatted according to the rules defined in RFC 2253.
+name
+-----------------------------5127
+void notificationReceived(UnsolicitedNotificationEvent evt)
+evt
+The non-null UnsolicitedNotificationEvent
+evt
+-----------------------------3299
+public static WeekFields of(DayOfWeek firstDayOfWeek, int minimalDaysInFirstWeek)
+firstDayOfWeek
+the first day of the week, not null
+firstDayOfWeek
+-----------------------------4376
+void setDescriptor(Descriptor inDescriptor, String inDescriptorType) throws MBeanException, RuntimeOperationsException
+inDescriptor
+It must NOT be null.
+inDescriptor
+-----------------------------3126
+public LocalDate date(TemporalAccessor temporal)
+temporal
+the date-time object to convert, not null
+temporal
+-----------------------------3858
+public String getDisplayUnicodeExtensionType(String type, String key, Locale locale)
+key
+the Unicode Extension key for this type, not null.
+key
+-----------------------------7642
+NodeIterator createNodeIterator(Node root, int whatToShow, NodeFilter filter, boolean entityReferenceExpansion) throws DOMException
+root
+The root must not be null.
+root
+-----------------------------7230
+public abstract void setOutputProperty(String name, String value) throws IllegalArgumentException
+value
+The non-null string value of the output property.
+value
+-----------------------------4513
+Object[] calculateIndex(CompositeData value)
+value
+the composite data value whose index in this TabularData instance is to be calculated; must be of the same composite type as this instance's row type; must not be null.
+value
+-----------------------------7201
+String getAttributeValue(String namespaceURI, String localName)
+localName
+the local name of the attribute, cannot be null
+localName
+-----------------------------4732
+public Binding(String name, Object obj, boolean isRelative)
+name
+The non-null string name of the object.
+name
+-----------------------------4902
+Attribute get(String attrID)
+attrID
+The non-null id of the attribute to retrieve.
+attrID
+-----------------------------5387
+public KerberosKey[] getKeys(KerberosPrincipal principal)
+principal
+the Kerberos principal, must not be null.
+principal
+-----------------------------

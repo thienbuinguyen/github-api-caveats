@@ -1,0 +1,401 @@
+-----------------------------3078
+public ClassDefinition(Class<?> theClass, byte[] theClassFile)
+if the supplied class or array is null.
+theClass||theClassFile
+-----------------------------8754
+public Formatter(File file, Charset charset, Locale l) throws IOException
+if file or charset is null.
+file||charset
+-----------------------------12978
+public SSLSessionBindingEvent(SSLSession session, String name)
+if session is null.
+session
+-----------------------------13465
+public X500Principal(InputStream is)
+if the InputStream is null
+is
+-----------------------------5661
+public TrustedCertificateEntry(Certificate trustedCert)
+if trustedCert is null
+trustedCert
+-----------------------------12403
+public JMXConnectionNotification(String type, Object source, String connectionId, long sequenceNumber, String message, Object userData)
+if type, source, or connectionId is null.
+type||source||connectionId
+-----------------------------15596
+String getNamespaceURI(String prefix)
+When prefix is null
+prefix
+-----------------------------8702
+boolean addAll(Collection<? extends E> c)
+if the specified collection contains a null element and this deque does not permit null elements, or if the specified collection is null
+c
+-----------------------------5951
+public CertPathValidatorException(String msg, Throwable cause, CertPath certPath, int index, CertPathValidatorException.Reason reason)
+if reason is null
+reason
+-----------------------------8962
+public Optional<T> filter(Predicate<? super T> predicate)
+if the predicate is null
+predicate
+-----------------------------11462
+public ImageReaderSpi(String vendorName, String version, String[] names, String[] suffixes, String[] MIMETypes, String readerClassName, Class<?>[] inputTypes, String[] writerSpiNames, boolean supportsStandardStreamMetadataFormat, String nativeStreamMetadataFormatName, String nativeStreamMetadataFormatClassName, String[] extraStreamMetadataFormatNames, String[] extraStreamMetadataFormatClassNames, boolean supportsStandardImageMetadataFormat, String nativeImageMetadataFormatName, String nativeImageMetadataFormatClassName, String[] extraImageMetadataFormatNames, String[] extraImageMetadataFormatClassNames)
+if inputTypes is null or has length 0.
+inputTypes
+-----------------------------11267
+public abstract void mergeTree(String formatName, Node root) throws IIOInvalidTreeException
+if root is null.
+root
+-----------------------------1224
+public void addFlavorForUnencodedNative(String nat, DataFlavor flav)
+if nat or flav is null
+nat||flav
+-----------------------------15782
+public abstract Schema newSchema(Source[] schemas) throws SAXException
+If the schemas parameter itself is null or any item in the array is null.
+schemas
+-----------------------------13178
+public DocumentName(String documentName, Locale locale)
+if documentName is null
+documentName
+-----------------------------16267
+Node renameNode(Node n, String namespaceURI, String qualifiedName) throws DOMException
+NAMESPACE_ERR: Raised if the qualifiedName is a malformed qualified name, if the qualifiedName has a prefix and the namespaceURI is null, or if the qualifiedName has a prefix that is "xml" and the namespaceURI is different from " http://www.w3.org/XML/1998/namespace" [XML Namespaces] .
+
+-----------------------------5843
+public static SecureRandom getInstance(String algorithm, SecureRandomParameters params, Provider provider) throws NoSuchAlgorithmException
+if the specified provider or params is null
+params||provider
+-----------------------------15196
+void report(Diagnostic<? extends S> diagnostic)
+if the diagnostic argument is null and the implementation cannot handle null arguments
+
+-----------------------------2930
+default void log(System.Logger.Level level, Object obj)
+if level is null, or obj is null.
+level||obj
+-----------------------------12013
+public ModelMBeanConstructorInfo getConstructor(String inName) throws MBeanException, RuntimeOperationsException
+Wraps an IllegalArgumentException for a null constructor name.
+
+-----------------------------15774
+public Schema newSchema(Source schema) throws SAXException
+if schema is null.
+schema
+-----------------------------13796
+public boolean isTargetEncodingSupported(AudioFormat.Encoding targetEncoding)
+if targetEncoding is null
+targetEncoding
+-----------------------------4083
+public Socket(InetAddress address, int port) throws IOException
+if address is null.
+address
+-----------------------------13459
+public LoginContext(String name, Subject subject, CallbackHandler callbackHandler, Configuration config) throws LoginException
+if a SecurityManager is set, config is null, and either the caller does not have AuthPermission("createLoginContext.name"), or if a configuration entry for name does not exist and the caller does not additionally have AuthPermission("createLoginContext.other")
+config
+-----------------------------6093
+public ECPrivateKeySpec(BigInteger s, ECParameterSpec params)
+if s or params is null.
+s||params
+-----------------------------3994
+public InetSocketAddress(String hostname, int port)
+if the port parameter is outside the range of valid port values, or if the hostname parameter is null.
+hostname
+-----------------------------981
+public void setOrigin(PageAttributes.OriginType origin)
+if origin is null.
+origin
+-----------------------------1291
+public DropTargetDragEvent(DropTargetContext dtc, Point cursorLocn, int dropAction, int srcActions)
+if cursorLocn is null
+cursorLocn
+-----------------------------13418
+public DelegationPermission(String principals)
+if principals is null.
+principals
+-----------------------------15176
+public void add(MutableTreeNode newChild)
+if newChild is null
+newChild
+-----------------------------14403
+public GroupLayout.SequentialGroup addPreferredGap(JComponent comp1, JComponent comp2, LayoutStyle.ComponentPlacement type)
+if type, comp1 or comp2 is null
+type||comp1||comp2
+-----------------------------7068
+public final StringBuffer format(Object number, StringBuffer toAppendTo, FieldPosition fieldPosition)
+if toAppendTo or fieldPosition is null
+toAppendTo||fieldPosition
+-----------------------------7088
+public DecimalFormat(String pattern)
+if pattern is null
+pattern
+-----------------------------8651
+int compare(T o1, T o2)
+if an argument is null and this comparator does not permit null arguments
+o1||o2
+-----------------------------10452
+public boolean isSupportedLocale(Locale locale)
+if the given locale is null
+locale
+-----------------------------13092
+public static Class<?> verifyAttributeCategory(Object object, Class<?> interfaceName)
+if object is null
+object
+-----------------------------11894
+public static ClassLoaderRepository getClassLoaderRepository(MBeanServer server)
+if server is null.
+server
+-----------------------------11442
+public IIOServiceProvider(String vendorName, String version)
+if vendorName is null.
+vendorName
+-----------------------------637
+public Component getLayoutComponent(Container target, Object constraints)
+if the target parameter is null
+target
+-----------------------------14236
+public SQLInputImpl(Object[] attributes, Map<String,Class<?>> map) throws SQLException
+if the attributes or the map is a null value
+attributes||map
+-----------------------------13416
+public TextInputCallback(String prompt, String defaultText)
+if prompt is null, if prompt has a length of 0, if defaultText is null or if defaultText has a length of 0.
+prompt||defaultText
+-----------------------------15419
+public abstract Reference newReference(String uri, DigestMethod dm, List<? extends Transform> transforms, String type, String id, byte[] digestValue)
+if dm or digestValue is null
+dm||digestValue
+-----------------------------12091
+public CompositeDataSupport(CompositeType compositeType, String[] itemNames, Object[] itemValues) throws OpenDataException
+compositeType is null, or itemNames[] or itemValues[] is null or empty, or one of the elements in itemNames[] is a null or empty string, or itemNames[] and itemValues[] are not of the same size.
+compositeType||itemNames||itemValues
+-----------------------------12587
+public Integer addNotification(String type, String message, Object userData, Date date, long period) throws IllegalArgumentException
+The date is null or the period is negative.
+date
+-----------------------------15898
+Object resolveVariable(QName variableName)
+If variableName is null.
+variableName
+-----------------------------9319
+public void schedule(TimerTask task, Date firstTime, long period)
+if task or firstTime is null
+task||firstTime
+-----------------------------9072
+public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) throws IllegalAccessException, InstantiationException, IOException
+if the class or its nullary constructor is not accessible.
+
+-----------------------------10450
+public String getDisplayUnicodeExtensionType(String type, String key, Locale locale)
+if key, type or locale is null
+key||type||locale
+-----------------------------11517
+public FileImageInputStream(RandomAccessFile raf)
+if raf is null.
+raf
+-----------------------------1262
+protected DragSourceContext createDragSourceContext(DragGestureEvent dgl, Cursor dragCursor, Image dragImage, Point imageOffset, Transferable t, DragSourceListener dsl)
+if the DragSource for the trigger event is null.
+
+-----------------------------3899
+public void connect(InetAddress address, int port)
+if the address is null, or the port is out of range.
+address
+-----------------------------9328
+public TreeSet(SortedSet<E> s)
+if the specified sorted set is null
+s
+-----------------------------1471
+public ColorConvertOp(ColorSpace cspace, RenderingHints hints)
+if cspace is null
+cspace
+-----------------------------1284
+public void dragEnter(DropTargetDragEvent dtde)
+if this DropTarget is active and dtde is null
+
+-----------------------------556
+public static VirtualMachine attach(String id) throws AttachNotSupportedException, IOException
+If id is null.
+id
+-----------------------------12519
+Object invoke(ObjectName name, String operationName, MarshalledObject params, String[] signature, Subject delegationSubject) throws InstanceNotFoundException, MBeanException, ReflectionException, IOException
+Wraps an IllegalArgumentException when name or operationName is null.
+
+-----------------------------10458
+int run(PrintWriter out, PrintWriter err, String... args)
+if any of the arguments are null, or if there are any null values in the args array
+
+-----------------------------9716
+public static <T> Callable<T> privilegedCallable(Callable<T> callable)
+if callable null
+callable
+-----------------------------12542
+Integer[] addNotificationListeners(ObjectName[] names, MarshalledObject[] filters, Subject[] delegationSubjects) throws InstanceNotFoundException, IOException
+if names or filters is null, or if names contains a null element, or if the three arrays do not all have the same size.
+names||filters
+-----------------------------1257
+protected DragSourceContext createDragSourceContext(DragGestureEvent dgl, Cursor dragCursor, Image dragImage, Point imageOffset, Transferable t, DragSourceListener dsl)
+if dscp is null
+
+-----------------------------11999
+void setDescriptor(Descriptor inDescriptor, String inDescriptorType) throws MBeanException, RuntimeOperationsException
+Wraps an IllegalArgumentException for illegal or null arguments or if the name field of the descriptor is not found in the corresponding MBeanAttributeInfo or MBeanConstructorInfo or MBeanNotificationInfo or MBeanOperationInfo.
+
+-----------------------------10910
+public static boolean isParityAdjusted(byte[] key, int offset) throws InvalidKeyException
+if the given key material is null, or starting at offset inclusive, is shorter than 8 bytes.
+key
+-----------------------------15928
+public GuardedInvocation(MethodHandle invocation)
+if invocation is null.
+invocation
+-----------------------------923
+public void setDestination(JobAttributes.DestinationType destination)
+if destination is null.
+destination
+-----------------------------515
+public ConfigFile(URI uri)
+if uri is null
+uri
+-----------------------------15866
+default <T> T evaluateExpression(Object item, Class<T> type) throws XPathExpressionException
+If type is null.
+type
+-----------------------------8920
+E lower(E e)
+if the specified element is null and this set does not permit null elements
+
+-----------------------------977
+public void setColor(PageAttributes.ColorType color)
+if color is null.
+color
+-----------------------------6019
+public PKIXCertPathBuilderResult(CertPath certPath, TrustAnchor trustAnchor, PolicyNode policyTree, PublicKey subjectPublicKey)
+if the certPath, trustAnchor or subjectPublicKey parameters are null
+certPath||trustAnchor||subjectPublicKey
+-----------------------------3112
+void redefineModule(Module module, Set<Module> extraReads, Map<String,Set<Module>> extraExports, Map<String,Set<Module>> extraOpens, Set<Class<?>> extraUses, Map<Class<?>,List<Class<?>>> extraProvides)
+if any of the arguments are null or any of the Sets or Maps contains a null key or value
+module||extraReads||extraExports||extraOpens||extraUses||extraProvides
+-----------------------------8882
+public LanguageRange(String range)
+if the given range is null
+range
+-----------------------------15430
+public abstract Manifest newManifest(List<? extends Reference> references)
+if references is null
+references
+-----------------------------13001
+public abstract void removeHandshakeCompletedListener(HandshakeCompletedListener listener)
+if the listener is not registered, or the argument is null.
+listener
+-----------------------------3969
+public void setAuthenticator(Authenticator auth)
+if the supplied auth is null.
+auth
+-----------------------------14946
+public void load(URL url) throws ParseException, IOException
+if synthSet is null
+
+-----------------------------12937
+public SSLEngineResult unwrap(ByteBuffer src, ByteBuffer[] dsts) throws SSLException
+if either src or dsts is null, or if any element in dsts is null.
+src||dsts
+-----------------------------1702
+protected Raster(SampleModel sampleModel, DataBuffer dataBuffer, Rectangle aRegion, Point sampleModelTranslate, Raster parent)
+if any of sampleModel, dataBuffer, aRegion or sampleModelTranslate is null
+sampleModel||dataBuffer||aRegion||sampleModelTranslate
+-----------------------------12953
+public final void setServerNames(List<SNIServerName> serverNames)
+if the serverNames contains null element
+
+-----------------------------1412
+public Area(Shape s)
+if s is null
+s
+-----------------------------949
+public LinearGradientPaint(Point2D start, Point2D end, float[] fractions, Color[] colors)
+if one of the points is null, or fractions array is null, or colors array is null
+start||end||fractions||colors
+-----------------------------11472
+public IIOMetadataFormat getStreamMetadataFormat(String formatName)
+if formatName is null or is not a supported name.
+formatName
+-----------------------------12067
+public void setOffset(Number value) throws IllegalArgumentException
+The specified offset is null or the offset value is less than zero.
+value
+-----------------------------15375
+Data transform(Data data, XMLCryptoContext context) throws TransformException
+if data is null
+data
+-----------------------------15907
+public NamedOperation(Operation baseOperation, Object name)
+if either baseOperation or name is null.
+baseOperation||name
+-----------------------------11760
+void unregisterMBean(ObjectName name) throws InstanceNotFoundException, MBeanRegistrationException
+Wraps a java.lang.IllegalArgumentException: The object name in parameter is null or the MBean you are when trying to unregister is the MBeanServerDelegate MBean.
+name
+-----------------------------14870
+protected void initClassDefaults(UIDefaults table)
+if table is null
+table
+-----------------------------3114
+public abstract void setTarget(MethodHandle newTarget)
+if the proposed new target is null
+newTarget
+-----------------------------8146
+public boolean containsAll(Collection<?> c)
+if the specified collection contains one or more null elements and this collection does not permit null elements (optional), or if the specified collection is null.
+c
+-----------------------------3334
+public static MethodType methodType(Class<?> rtype, Class<?> ptype0)
+if rtype or ptype0 is null
+rtype||ptype0
+-----------------------------13232
+public PrinterInfo(String info, Locale locale)
+if info is null
+info
+-----------------------------15643
+public void parse(File f, HandlerBase hb) throws SAXException, IOException
+If the File object is null.
+f
+-----------------------------14827
+public Insets getBorderInsets(Component c, Insets insets)
+if the specified insets is null
+insets
+-----------------------------15746
+public StAXResult(XMLStreamWriter xmlStreamWriter)
+If xmlStreamWriter == null.
+xmlStreamWriter
+-----------------------------15614
+public Document parse(File f) throws SAXException, IOException
+When f is null
+f
+-----------------------------15560
+public long getTimeInMillis(Calendar startInstant)
+if startInstant parameter is null.
+startInstant
+-----------------------------4025
+public static NetworkInterface getByInetAddress(InetAddress addr) throws SocketException
+If the specified address is null.
+addr
+-----------------------------3364
+public static CallSite makeConcat(MethodHandles.Lookup lookup, String name, MethodType concatType) throws StringConcatException
+If any of the incoming arguments is null.
+lookup||name||concatType
+-----------------------------6485
+public static Date valueOf(LocalDate date)
+if date is null
+date
+-----------------------------12088
+Object[] getAll(String[] keys)
+if an element in keys is a null or empty String.
+
+-----------------------------11264
+public abstract Node getAsTree(String formatName)
+if formatName is null or is not one of the names returned by getMetadataFormatNames.
+formatName
+-----------------------------
