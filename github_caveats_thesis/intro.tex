@@ -1,23 +1,55 @@
 \chapter{Introduction}
 \label{cha:intro}
+% Introduce API caveats
+% Highlight entire story with the 3 examples
+% Explore code analysis for API Caveats
 
+An Application Programming Interface (API) provides a set of functions to interact with some software. However, APIs often contain numerous constraints that developers must abide for correct usage of a given API. Misuse of an API can lead to severe bugs for developers such as software failures. These constraints are documented by the developers of an API in their formal documentation, which are usually created manually by the API developers or automatically generated from source code comments such as with the Javadoc tool for the Java programming language. A recent study by \citeauthor{caveat-knowledge-graph} researched a particular subset of constraints that focused specifically on API usage that are referred to as \textit{API caveats}. An extraction method for these API caveats are also proposed and used by \fix{JIAMOU ref}
 
-\section{Thesis Statement}
-\label{sec:thesisstatement}
-I believe A is better than B.
+A specific subset of API usage constraints are classified by \cite{maalej2013patterns} as \textit{directives}, which ``specify what users
+are allowed/not allowed to do with the API element''. 
 
+This subset of constraints was further researched by \citeauthor{caveat-knowledge-graph}
+\\
+
+Suppose a new developer was starting their journey on learning Java or programming in general. One of the first topics they might be interested in could be file handling (i.e. how to read a text file into their program). A common strategy to solve this problem involves using a search query on Google such as ``java how to read files''. The first search result of this is a HTML page from GeeksforGeeks\footnote{https://www.geeksforgeeks.org/different-ways-reading-text-file-java/} that provides multiple examples for reading a file in Java. The first example described is shown in Listing  \ref{lst:code-example}. The next step a developer would take is to copy-paste the relevant section into their program (i.e. the code within \lstinline{main}). Finally, the developer might try to execute their modified program, but this would result in \lstinline{FileNotFoundException} to be thrown. This is because the file path in the \lstinline{File} constructor call (line 11) has not been changed to the appropriate file path for the developer. In an integrated development environment (IDE) such as IntelliJ,  information about the exception such as which line the exception was thrown from will also be displayed. With further investigation, the developer will find a confounding result: IntelliJ reports the exception is not associated with the \lstinline{File} constructor line (where the file path is set), but with the \lstinline{FileReader} constructor in line 13. In other words, the file path appears to be accepted by \lstinline{File} but not by \lstinline{FileReader}. Searching for the reference documentation of these classes\footnote{FileReader: https://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html \\\indent File: https://docs.oracle.com/javase/7/docs/api/java/io/File.html, the developer could find the reference documentation for both of these classes}. Specfically, the documentation of the relevant constructor for \lstinline{FileReader} says ``Throws: FileNotFoundException - if the file does not exist, is a directory rather than a regular file, or for some other reason cannot be opened for reading''. Furthermore, the documentation for the constructor of \lstinline{File} does not mention the consequences of an invalid path. Rather, the developer might notice that \lstinline{File} has an \lstinline{exists()} method that can be used to verify whether the file exists. Only then could the developer understand the source of the problem encountered alongside correct usage of both \lstinline{File} and \lstinline{FileReader} for reading files in Java applications.
+
+Although the above example presents a contrived view of how a new developer would approach using a feature of an API for the first time, we can observe the constraints associated with an API introduce a significant problem for all programmers, which is best explained with the common phrase: ``you don't know what you don't know''. This indicates that the usage of an API requires considerable understanding of the different components involved alongside how its functions will behave in different scenarios. This is both time-consuming and a significant endeavour due to the number and size of APIs that exist across all programming languages and computer science fields.
+
+\begin{lstlisting}[tabsize=4,caption={File reading java code example from GeeksforGeeks},label={lst:code-example}]
+// Java Program to illustrate reading from FileReader 
+// using BufferedReader 
+import java.io.*; 
+public class ReadFromFile2 
+{ 
+	public static void main(String[] args)throws Exception 
+	{ 
+		// We need to provide file path as the parameter: 
+		// double backquote is to avoid compiler interpret words 
+		// like \test as \t (ie. as a escape sequence) 
+		File file = new File("C:\\Users\\pankaj\\Desktop\\test.txt"); 
+		
+		BufferedReader br = new BufferedReader(new FileReader(file)); 
+		
+		String st; 
+		while ((st = br.readLine()) != null) 
+		System.out.println(st); 
+	} 
+} 
+\end{lstlisting}
 
 \section{Main Research Challenges}
-\label{sec:problemstatement}
-Put your introduction here. You could use \textbackslash fix\{ABCDEFG.\} to
-leave your comments, see the box at the left side. \fix{You have to rewrite your
-	thesis!!!} 
+\label{sec:mainresearchchallenges}
 
+\subsection{Sentence Parsing for Contracts Generation}
+
+\subsection{Source Code Analysis}
 
 \section{Thesis Outline}
 \label{sec:outline}
 How many chapters you have? You may have Chapter~\ref{cha:background},
-Chapter~\ref{cha:design}, Chapter~\ref{cha:methodology},
-Chapter~\ref{cha:result}, and Chapter~\ref{cha:conc}.
 
 \section{Main Contributions}
+Parsing of API caveat sentences to formulate contracts (basic proof-of-concept)
+Developed checkers that can output warnings from contracts
+\fix{Discover lexical gap for GitHub data...}

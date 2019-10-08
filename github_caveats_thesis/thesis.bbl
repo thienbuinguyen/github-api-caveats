@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
@@ -7,11 +7,27 @@
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
+\bibitem[{{Li} et~al.(2018){Li}, {Li}, {Sun}, {Xing}, {Peng}, {Liu}, and
+  {Zhao}}]{caveat-knowledge-graph}
+\textsc{{Li}, H.; {Li}, S.; {Sun}, J.; {Xing}, Z.; {Peng}, X.; {Liu}, M.; and
+  {Zhao}, X.}, 2018.
+\newblock Improving api caveats accessibility by mining api caveats knowledge
+  graph.
+\newblock In \emph{2018 IEEE International Conference on Software Maintenance
+  and Evolution (ICSME)}, 183--193.
+\newblock \doi{10.1109/ICSME.2018.00028}.
+
 \bibitem[{Lieberman and Hewitt(1983)}]{LH:83}
 \textsc{Lieberman, H. and Hewitt, C.}, 1983.
 \newblock A real-time garbage collector based on the lifetimes of objects.
 \newblock \emph{Communications of the ACM}, 26, 6  (Jun. 1983), 419--429.
 \newblock \doi{10.1145/358141.358147}.
+
+\bibitem[{Maalej and Robillard(2013)}]{maalej2013patterns}
+\textsc{Maalej, W. and Robillard, M.~P.}, 2013.
+\newblock Patterns of knowledge in api reference documentation.
+\newblock \emph{IEEE Transactions on Software Engineering}, 39, 9  (2013),
+  1264--1282.
 
 \bibitem[{Moon(1984)}]{Moon:84}
 \textsc{Moon, D.~A.}, 1984.
