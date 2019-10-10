@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  9 OCT 2019 00:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  10 OCT 2019 23:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -860,20 +860,20 @@ LaTeX Font Info:    Try loading font information for OT1+zplm on input line 4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-))
+) [11
+
+])
 \tf@toc=\write6
 \openout6 = `thesis.toc'.
 
- [11
-
-] [12
-
-]
+ [12]
 (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
- [13] [14
+ [13
+
+] [14
 
 ] (./thesis.lot)
 \tf@lot=\write8
@@ -887,32 +887,29 @@ LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplj/b/n' tried instead on input line 1.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 11.
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--12
+Underfull \hbox (badness 10000) in paragraph at lines 16--18
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+fvm on input line 13.
+LaTeX Font Info:    Try loading font information for T1+fvm on input line 19.
 (/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd
 File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
 )
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 13.
+(Font)              scaled to size 9.85492pt on input line 19.
  [1
 
 ]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 17.
-LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 39.
-LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/pplj/b/n' tried instead on input line 39.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+nput line 23.
  [2]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 53.
+LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 45.
+LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 45.
 )
 (./background.tex [3] [4
 
@@ -938,15 +935,44 @@ ional garbage col-lec-tion [[][]Lieber-
 
 ]
 Chapter 3.
-) (./codeAnalysis.tex [7] [8
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \vbox (badness 6001) has occurred while \output is active []
+
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+[9]) (./codeAnalysis.tex [10pdfTeX warning (ext4): destination with the same id
+entifier (name{table.3.1}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {API Contracts Construction with Static Code Analysis}]
 Chapter 4.
-) (./conclusion.tex [9] [10
+[11
 
-]
+]) (./conclusion.tex [12]
 Chapter 5.
-) [11] [12
+) [13
+
+] [14
 
 ] (./thesis.bbl (./thesis.brf)
 \tf@brf=\write9
@@ -954,7 +980,7 @@ Chapter 5.
 
 )
 No file thesis.ind.
-[13
+[15
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
@@ -963,28 +989,23 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 8DDB5A221A29DDEBC9F68494512FDBCF;1938.
+(rerunfilecheck)             Checksum: EE321612C74A1C21E72104BFCD0C6230;2877.
+Package rerunfilecheck Info: File `thesis.brf' has not changed.
+(rerunfilecheck)             Checksum: C5442B0F443149E6F866A7EA363A9776;1092.
 
-
-Package rerunfilecheck Warning: File `thesis.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `thesis.brf':
-(rerunfilecheck)             Before: CED8E71A5EDB4DF6536981CE05A1F950;309
-(rerunfilecheck)             After:  B877273706AC68A176E1ABDCC8AF0662;373.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  ) 
 Here is how much of TeX's memory you used:
- 20434 strings out of 492982
- 372464 string characters out of 6134895
- 458011 words of memory out of 5000000
- 23440 multiletter control sequences out of 15000+600000
+ 20542 strings out of 492982
+ 374469 string characters out of 6134895
+ 455248 words of memory out of 5000000
+ 23528 multiletter control sequences out of 15000+600000
  69835 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,9n,76p,2710b,1214s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,16n,76p,2710b,1811s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texlive/texmf-dist/fonts/
@@ -992,10 +1013,10 @@ type1/public/fpl/fplrc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (29 pages, 117102 bytes).
+Output written on thesis.pdf (31 pages, 136120 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 358 compressed objects within 4 object streams
- 92 named destinations out of 1000 (max. 500000)
- 269 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 504 PDF objects out of 1000 (max. 8388607)
+ 459 compressed objects within 5 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 357 words of extra memory for PDF output out of 10000 (max. 10000000)
 

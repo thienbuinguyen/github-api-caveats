@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
@@ -37,6 +37,18 @@
   York, New York, USA.
 \newblock \doi{10.1145/800055.802040}.
 
+\bibitem[{{Ren} et~al.(2018){Ren}, {Xing}, X, {Xia}, {Lo}, {Grundy}, and
+  {Sun}}]{xiaoxue}
+\textsc{{Ren}, X.; {Xing}, Z.; X; {Xia}; {Lo}, D.; {Grundy}, J.; and {Sun},
+  J.}, 2018.
+\newblock Trustdoc: Documents speak louder than votes.
+\newblock  (2018).
+
+\bibitem[{Sun(2018)}]{jiamou}
+\textsc{Sun, J.}, 2018.
+\newblock Augment api caveats with erroneous code examples.
+\newblock  (2018).
+
 \bibitem[{Ungar(1984)}]{Ungar:84}
 \textsc{Ungar, D.}, 1984.
 \newblock Generation scavenging: A non-disruptive high performance storage
@@ -46,5 +58,16 @@
   (Pittsburgh, Pennsylvania, USA, Apr. 1984), 157--167. ACM, New York, New
   York, USA.
 \newblock \doi{10.1145/800020.808261}.
+
+\bibitem[{Zhou et~al.(2017)Zhou, Gu, Chen, Huang, Panichella, and
+  Gall}]{zhou-directive}
+\textsc{Zhou, Y.; Gu, R.; Chen, T.; Huang, Z.; Panichella, S.; and Gall, H.},
+  2017.
+\newblock Analyzing apis documentation and code to detect directive defects.
+\newblock In \emph{Proceedings of the 39th International Conference on Software
+  Engineering}, ICSE '17 (Buenos Aires, Argentina, 2017), 27--37. IEEE Press,
+  Piscataway, NJ, USA.
+\newblock \doi{10.1109/ICSE.2017.11}.
+\newblock \urlprefix\url{https://doi.org/10.1109/ICSE.2017.11}.
 
 \end{thebibliography}

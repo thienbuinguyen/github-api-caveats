@@ -15,18 +15,29 @@
 \BOOKMARK [1][-]{section.2.5}{Summary}{chapter.2}% 15
 \BOOKMARK [0][-]{chapter.3}{Locating API Misuse Examples in GitHub Data}{}% 16
 \BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.2}{Background}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.3}{Design}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.4}{Implementation}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.5}{Results}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.6}{Summary}{chapter.3}% 22
-\BOOKMARK [0][-]{chapter.4}{API Contracts Generation and Static Code Analysis}{}% 23
-\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 24
-\BOOKMARK [1][-]{section.4.2}{Background}{chapter.4}% 25
-\BOOKMARK [1][-]{section.4.3}{Design}{chapter.4}% 26
-\BOOKMARK [1][-]{section.4.4}{Implementation}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.5}{Results}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.6}{Summary}{chapter.4}% 29
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 30
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.2}{Final Remarks}{chapter.5}% 32
+\BOOKMARK [1][-]{section.3.2}{Design}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.2.1}{TF-IDF Sentence Matching}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.2}{Word2Vec Embedding}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.3}{Okapi BM25 Ranking}{section.3.2}% 21
+\BOOKMARK [1][-]{section.3.3}{Implementation}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.3.1}{GitHub Data Extraction}{section.3.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.2}{Java 12 Documentation Caveat Extraction}{section.3.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.3}{Data Preprocessing}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.4}{Candidate Filtering}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.5}{Sentence Embedding}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.6}{Candidate Matching}{section.3.3}% 28
+\BOOKMARK [1][-]{section.3.4}{Results}{chapter.3}% 29
+\BOOKMARK [1][-]{section.3.5}{Summary}{chapter.3}% 30
+\BOOKMARK [0][-]{chapter.4}{API Contracts Construction with Static Code Analysis}{}% 31
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.2}{Design}{chapter.4}% 33
+\BOOKMARK [2][-]{subsection.4.2.1}{Java 12 Caveat Statistics Analysis}{section.4.2}% 34
+\BOOKMARK [1][-]{section.4.3}{Implementation}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.3.1}{Java API Caveat Contracts}{section.4.3}% 36
+\BOOKMARK [2][-]{subsection.4.3.2}{IntelliJ Plugin with Static Code Analysis}{section.4.3}% 37
+\BOOKMARK [2][-]{subsection.4.3.3}{Boa Programming Language \046 API Call Sequence Mining}{section.4.3}% 38
+\BOOKMARK [1][-]{section.4.4}{Results}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.5}{Summary}{chapter.4}% 40
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 41
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.2}{Final Remarks}{chapter.5}% 43

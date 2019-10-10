@@ -11,7 +11,7 @@ import os
 import json
 from nltk.tokenize import sent_tokenize
 
-tree_url = 'https://docs.oracle.com/javase/12/docs/api/'
+tree_url = 'https://docs.oracle.com/en/java/javase/12/docs/api/overview-tree.html'
 deprecated_url = 'https://docs.oracle.com/en/java/javase/12/docs/api/deprecated-list.html'
 
 # Output file paths
@@ -37,7 +37,6 @@ def scrape_api_names(url, file_path):
     try:
         r = requests.get(url)
         soup = BeautifulSoup(r.text, features='html.parser')
-        print(soup)
 
         categories = soup.find_all('section', {'role': 'region'})
         apis = []
@@ -54,7 +53,7 @@ def scrape_api_names(url, file_path):
         print("Successfully scraped API tree!")
     except:
         print("Failed to scrape the API Tree at: {}".format(url))
-        
+
 def scrape_deprecated(url, output_file):
     r = requests.get(url)
     soup = BeautifulSoup(r.text, features='html.parser')
@@ -286,5 +285,6 @@ def extract_all_api_caveat_sentences():
     print('Total number of sentences analysed: {}'.format(num_sentences))
     print('Total number of caveat sentences: {}'.format(num_caveat_sentences))
 
+scrape_api_names(tree_url, './output/java-12-elements.txt')
 # scrape_deprecated(deprecated_url, api_deprecated_output_file)
-extract_all_api_caveat_sentences()
+# extract_all_api_caveat_sentences()

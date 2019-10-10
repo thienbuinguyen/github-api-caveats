@@ -4,14 +4,73 @@ Same as the last chapter, introduce the motivation and the high-level picture to
 readers, and introduce the sections in this chapter.
 
 \section{Introduction}
-
-\section{Background}
+\label{sec:info-intro}
 
 \section{Design}
+\label{sec:info-design}
+\subsection{TF-IDF Sentence Matching}
+\label{subsec:info-tfidf}
+\subsection{Word2Vec Embedding}
+\label{subsec:info-w2v}
+\subsection{Okapi BM25 Ranking}
+\label{subsec:info-bm25}
 
 \section{Implementation}
+\label{sec:info-implement}
+
+
+\subsection{GitHub Data Extraction}
+\label{subsec:info-github-extract}
+There are three notable sources for GitHub data: (1) the GitHub REST API, (2) the GitHub Archive project, and (3) GitHub itself by cloning a repository. For this project, the GitHub REST API and GitHub Archive was utilised due to the physical memory requirements of cloning each repository of interest. However, the GitHub REST API contains several limitations that inhibits its usefulness for a large corpus of community text such as request rate limitations and provided query options. Moreover, GitHub Archive is a project that creates hourly archives of all GitHub data starting from 2/12/2011 as JSON objects. The archives includes over 20 event types that are provided by GitHub such as the creation of an issue or a comment on a particular issue. Despite this, it does not provide metadata about the programming languages utilised for repositories. Thus, we can combine the queries of the GitHub REST API to identify the repositories that are Java related, then link them with community text captured by GitHub Archive.\\ 
+
+GitHub provides a REST API to allow developers to query for data on GitHub such as metadata about a particular repository, or the number of repositories containing a certain programming language. However, the REST API imposes a rate limit on user requests to prevent flooding of GitHub servers. The API of interest for data extraction is the ``search'' queries, which allows searching for repositories or issues given some conditions such as the time in which they were created. However, the API is limited and does not provide functionality to search for the comments of an issue for example. Furthermore, the API is limited to a maximum of 100 results for a single query. Combined with the rate limitations imposed, the API is only relevant for finding the repositories that contain Java code. Hence, a list of all Java related repositories are searched for by circumventing the rate limit with numerous HTTP GET requests. This specifically involves sending queries with a timer between each request to avoid the rate limit with slightly modified creation times for each day of interest. A time window of 2009 to 2019 was chosen alongside a restriction of at least 2 ``stars'' (at the time of the query) to reduce the scope of projects collected, and with Java as a language used in the repository. In particular, the number of ``stars'' a repository contains can be used to gauge its popularity. Thus, the 2 stars requirement ensures repositories that likely contain multiple issues and comments can be mined. The PyGitHub Python library in particular is used to implement this. Overall, collecting the repository names of Java related projects of interest yields 291,152 results. \\
+
+GitHub Archive captures a particularly useful event for community text: the ``IssueCommentEvent'' which contains information about a comment on a particular GitHub issue alongside information such as the associated repository and URL of the issue. Firstly, a script is used to download the archives for each hour of 2018. Note that only data from 2018 is collected to reduce the amount of time required for querying the entire dataset and as an initial study. Multiprocessing is used in particular with a Python script to perform concurrent downloads of archived data within several hours. After this, extraction of relevant ``IssueCommentEvent'' objects is performed by testing if the associated repository of a comment is Java related based on the list attained from using the GitHub REST API. Notable information of these objects such as the text body of an issue comment and its title are then mined for natural language processing. Overall, this extraction process results in 627,450 GitHub issues and 1,855,870 issue comments to be collected.
+
+\subsection{Java 12 Documentation Caveat Extraction}
+\label{subsec:info-caveat-extract}
+To start extracting API caveats for a given API document, the API document must first be collected. At the time of writing, the Java Standard Edition 12 was chosen as the latest Java version and documentation available. Its documentation consists of HTML pages for each class of the Java Development Kit (JDK) 12. In particular, the API documentation has a HTML page that lists the complete class hierarchy tree of the Java standard library with URL links to each class.\footnote{See the class hierarchy page at: https://docs.oracle.com/en/java/javase/12/docs/api/overview-tree.html} This information is utilised to data crawl the entire Java API documentation. First, the URL of all classes are mined from the class hierarchy page by collecting all hyperlink references on the page that are found within the appropriate HTML \lstinline{section} element. The relative URLs of each class are found by locating list item elements (\lstinline{li}) then anchor elements (\lstinline{a}) residing within. From this, absolute URLs are constructed for 4,865 classes. Next, the HTML pages of each class is collected by recursively sending HTTP GET requests for each of the URLs generated and saved locally for data mining. A total of 4,712 classes are found. It is important to note that the documentation of Java SE 12 is well-structured. For example, the parameters and possible exceptions for a method are consistently placed within certain HTML elements across all HTML pages. Hence, it is relatively simple to extract all sentences for each API element alongside additional information such as whether a method is deprecated from the existence of a \lstinline{div} element with the ``deprecationBlock'' class for example.\\
+
+Extraction of the caveat sentences is performed by first creating a set of keywords and patterns based on those found by \cite{caveat-knowledge-graph}. For each pattern, a regular expression is used to represent it and allow searching for exact matches within an arbitrary string. An API sentence is then regarded as an API caveat sentence if at least one regular expression match is found. This is executed recursively for all of the HTML pages, in which 115,243 caveat sentences are found. Of these sentences, 9,964 are regarded as ``class level sentences'', which are sentences that appear in the description section of a given API element and describes general information about that API element. Each method, field and constructor of a Java class is also identified using the structural HTML information, where 37,578 sentences are found within the description section of these elements. Specific sentences to an API element such as the parameters for a method and their possible exceptions comprise 67,701 sentences. It is also noted that 1,522 API elements are identified as deprecated elements. \\
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Category} & \textbf{Subcategory} & \textbf{Syntactic Pattern Examples} \\ \midrule
+		\multirow{5}{*}{Explicit} & Error/Exception & \begin{tabular}[c]{@{}l@{}}``insecure'', ``susceptible'', ``error'',\\ ``null'', ``exception'', ``susceptible'',\\ ``unavailable'', ``not thread safe'',\\ ``illegal'', ``inappropriate'',\end{tabular} \\ \cmidrule(l){2-3} 
+		& \multicolumn{1}{l}{Recommendation} & \multicolumn{1}{l}{\begin{tabular}[c]{@{}l@{}}``deprecate'', ``better/best to'',\\ ``recommended'', ``less desirable''\\ ``discourage''\end{tabular}} \\ \cmidrule(l){2-3} 
+		& Alternative & ``instead of'',``rather than'',``otherwise'' \\\cmidrule(l){2-3} 
+		& Imperative & ``do not'' \\\cmidrule(l){2-3} 
+		& Note & ``note that'', ``notably'', ``caution'' \\\hline
+		\multirow{2}{*}{Restricted} & Conditional & \begin{tabular}[c]{@{}l@{}}``under the condition'', ``whether ...'',\\ ``if ...'', ``when ...'', ``assume that ...''\end{tabular} \\\cmidrule(l){2-3}
+		& Temporal & ``before'', ``after'' \\\hline
+		\multirow{3}{*}{Generic} & Affirmative & \begin{tabular}[c]{@{}l@{}}``must'', ``should'', ``have to'',\\ ``need to''\end{tabular} \\
+		& Negative & ``do/be not ...'', ``never'' \\
+		& Emphasis & ``none'', ``only'', ``always'' \\ \hline 
+	\end{tabular}
+	\caption{API caveat categories and syntactic patterns from \cite{caveat-knowledge-graph}.}
+	\label{tab:caveat-keywords}
+\end{table}
+
+\fix{Add several good caveat examples alongside GitHub issues and StackOverlfow posts concerning them}
+
+\subsection{Data Preprocessing}
+\label{subsec:info-data-preprocess}
+Data cleaning and preprocessing is required to allow NLP techniques such as word embedding to perform and behave correctly. This step involves filtering the issue comments such that only those associated with an issue of interest (i.e. those containing some code) are analysed. A total of 85,318 issues of interest are found alongside 290,019 associated comments.
+Furthermore, several text preprocessing techniques are utilised to transform the sentences within a comment to tokens for usage in word embedding. In particular, the comments are in markdown format, allowing simple removal of unwanted elements such as code blocks. Hence, the preprocessing process involves removing all code blocks, URLs, additional white space characters, apostrophes, punctuation (except full stops appearing after a word).  Sentence tokenisation is then performed based on the full stops in the preprocessed comment sentences. Finally, tokenisation simply involves splitting words based on white space characters due to the removal of additional white space characters from the preprocessing step. An extra data cleaning step performed involves removing all tokens that contain only a single character or those that are English stopwords provided by the NLTK library. Overall, preprocessing of the GitHub issue comments results in 1,855,870 tokenised sentences.
+
+\subsection{Candidate Filtering}
+\label{subsec:info-candidate-filtering}
+
+\subsection{Sentence Embedding}
+\label{subsec:info-sentence-embedding}
+
+\subsection{Candidate Matching}
+\label{subsec:info-candidate-match}
 
 \section{Results}
+\label{sec:info-results}
 
 \section{Summary}
 Same as the last chapter, summary what you discussed in this chapter and

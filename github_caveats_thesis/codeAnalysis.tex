@@ -1,18 +1,35 @@
-\chapter{API Contracts Generation and Static Code Analysis}
+\chapter{API Contracts Construction with Static Code Analysis}
 \label{cha:codeAnalysis}
-Same as the last chapter, introduce the motivation and the high-level picture to
-readers, and introduce the sections in this chapter.
 
 \section{Introduction}
-
-\section{Background}
+\label{sec:contract-intro}
+Code contracts are a concept derived from object-oriented principles in which preconditions, postconditions and invariants are defined for different software components. Specifically, the principle of ``design by contract'' suggests the use of specifications referred to as contracts. This provides a method for improving both code correctness and robustness as software components can only interact via obligations to contracts. Utilising this, we reduce the problem of linking API caveats to source code to the problem of mapping API caveats to code contracts. This allows us to simplify the problem of improving understanding of API caveat considerably by providing developers with immediate feedback while coding. Furthermore, finding a general method for transforming an arbitrary API caveat to a code contract is sufficient as we can assume the existence of programming analysis tools that can accept these contracts and locate patterns in source code (variations of such tools already exist). As a continuation of the previous chapter, I perform statistical analysis of several caveat types for the Java 12 API documentation based on work by \cite{zhou-directive}. I then propose a parsing technique to identify API caveats related to a significant subset of exceptions thrown and construct associated API contracts. This extends upon the parsing techniques used by \citeauthor{zhou-directive} to collect a subset of API caveats related to explicit constraints such as range limitations for arguments of a method, or not-null requirements. I propose and utilise an algorithm for analysing caveat sentences from this subset of API caveats to construct a total of 4,694 unique contracts. Finally, I develop a proof-of-concept checker plugin for IntelliJ that can be used to highlight violations of these API contracts in real time. \\
 
 \section{Design}
+\label{sec:contract-design}
+The first step to generating contracts for API caveats is the extraction of API caveat sentences as described in \ref{subsec:info-caveat-extract}. We recall that caveat extraction using the approach described by \cite{caveat-knowledge-graph} on the Java 12 reference documentation yields 
+115,243 caveat sentences, where a significant proportion of the sentences (67,701) are found within miscellaneous sections of an API element such as sentences in the parameters section for a method, or the description of a methods return value. Furthermore, we observe that a subset of API caveats dealing with directives \cite{zhou-directive} contain explicit constraints that represent the largest portion (43.7\%) of API documentation \cite{directive-study}.
+
+\subsection{Java 12 Caveat Statistics Analysis}
+\label{subsec:contract-caveat-statistics}
 
 \section{Implementation}
+\label{sec:contract-implement}
+
+\subsection{Java API Caveat Contracts}
+\label{subsec:contract-caveat-contracts}
+
+\subsection{IntelliJ Plugin with Static Code Analysis}
+\label{subsec:contract-plugin}
+
+\subsection{Boa Programming Language \& API Call Sequence Mining}
+\label{subsec:contract-boa}
+\fix{Maybe remove this section if it doesn't add much}
 
 \section{Results}
+\label{sec:contract-results}
 
 \section{Summary}
+\label{sec:contract-summary}
 Same as the last chapter, summary what you discussed in this chapter and
 be the bridge to next chapter.

@@ -4,44 +4,47 @@ The top-level auxiliary file: thesis.aux
 The style file: anuthesis.bst
 Database file #1: thesis.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 5 entries,
+Warning--empty journal in xiaoxue
+Warning--empty journal in jiamou
+You've used 8 entries,
             3096 wiz_defined-function locations,
-            636 strings with 5361 characters,
-and the built_in function-call counts, 3667 in all, are:
-= -- 312
-> -- 120
-< -- 4
-+ -- 46
-- -- 39
-* -- 274
-:= -- 519
-add.period$ -- 21
-call.type$ -- 5
-change.case$ -- 44
-chr.to.int$ -- 5
-cite$ -- 5
-duplicate$ -- 273
-empty$ -- 305
-format.name$ -- 54
-if$ -- 767
+            655 strings with 5950 characters,
+and the built_in function-call counts, 5789 in all, are:
+= -- 469
+> -- 242
+< -- 5
++ -- 91
+- -- 81
+* -- 447
+:= -- 849
+add.period$ -- 33
+call.type$ -- 8
+change.case$ -- 75
+chr.to.int$ -- 8
+cite$ -- 10
+duplicate$ -- 424
+empty$ -- 452
+format.name$ -- 103
+if$ -- 1185
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 54
-newline$ -- 38
-num.names$ -- 20
-pop$ -- 102
+missing$ -- 89
+newline$ -- 55
+num.names$ -- 32
+pop$ -- 180
 preamble$ -- 1
-purify$ -- 33
+purify$ -- 59
 quote$ -- 0
-skip$ -- 105
+skip$ -- 154
 stack$ -- 0
-substring$ -- 205
-swap$ -- 155
+substring$ -- 262
+swap$ -- 228
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 45
-warning$ -- 0
-while$ -- 27
+type$ -- 72
+warning$ -- 2
+while$ -- 39
 width$ -- 0
-write$ -- 87
+write$ -- 132
+(There were 2 warnings)

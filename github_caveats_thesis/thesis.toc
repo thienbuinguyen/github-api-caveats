@@ -14,18 +14,29 @@
 \contentsline {section}{\numberline {2.5}Summary}{5}{section.2.5}
 \contentsline {chapter}{\numberline {3}Locating API Misuse Examples in GitHub Data}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introduction}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Background}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}Design}{7}{section.3.3}
-\contentsline {section}{\numberline {3.4}Implementation}{7}{section.3.4}
-\contentsline {section}{\numberline {3.5}Results}{7}{section.3.5}
-\contentsline {section}{\numberline {3.6}Summary}{7}{section.3.6}
-\contentsline {chapter}{\numberline {4}API Contracts Generation and Static Code Analysis}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Introduction}{9}{section.4.1}
-\contentsline {section}{\numberline {4.2}Background}{9}{section.4.2}
-\contentsline {section}{\numberline {4.3}Design}{9}{section.4.3}
-\contentsline {section}{\numberline {4.4}Implementation}{9}{section.4.4}
-\contentsline {section}{\numberline {4.5}Results}{9}{section.4.5}
-\contentsline {section}{\numberline {4.6}Summary}{9}{section.4.6}
-\contentsline {chapter}{\numberline {5}Conclusion}{11}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{11}{section.5.1}
-\contentsline {section}{\numberline {5.2}Final Remarks}{11}{section.5.2}
+\contentsline {section}{\numberline {3.2}Design}{7}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}TF-IDF Sentence Matching}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Word2Vec Embedding}{7}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Okapi BM25 Ranking}{7}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Implementation}{7}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}GitHub Data Extraction}{7}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Java 12 Documentation Caveat Extraction}{8}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Data Preprocessing}{9}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Candidate Filtering}{10}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}Sentence Embedding}{10}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {3.3.6}Candidate Matching}{10}{subsection.3.3.6}
+\contentsline {section}{\numberline {3.4}Results}{10}{section.3.4}
+\contentsline {section}{\numberline {3.5}Summary}{10}{section.3.5}
+\contentsline {chapter}{\numberline {4}API Contracts Construction with Static Code Analysis}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}Design}{11}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Java 12 Caveat Statistics Analysis}{12}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Implementation}{12}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Java API Caveat Contracts}{12}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}IntelliJ Plugin with Static Code Analysis}{12}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Boa Programming Language \& API Call Sequence Mining}{12}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Results}{12}{section.4.4}
+\contentsline {section}{\numberline {4.5}Summary}{12}{section.4.5}
+\contentsline {chapter}{\numberline {5}Conclusion}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{13}{section.5.1}
+\contentsline {section}{\numberline {5.2}Final Remarks}{13}{section.5.2}

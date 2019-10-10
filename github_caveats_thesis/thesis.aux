@@ -19,6 +19,11 @@
 \@writefile{toc}{\contentsline {chapter}{Acknowledgments}{vii}{chapter*.1}}
 \@writefile{toc}{\contentsline {chapter}{Abstract}{ix}{chapter*.2}}
 \citation{caveat-knowledge-graph}
+\@writefile{brf}{\backcite{caveat-knowledge-graph}{{xv}{(document)}{Doc-Start}}}
+\citation{caveat-knowledge-graph}
+\citation{caveat-knowledge-graph}
+\citation{jiamou}
+\citation{caveat-knowledge-graph,jiamou,xiaoxue}
 \citation{maalej2013patterns}
 \citation{caveat-knowledge-graph}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}}
@@ -26,8 +31,17 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{cha:intro}{{[chapter][1][]1}{1}{Introduction}{chapter.1}{}}
 \@writefile{brf}{\backcite{caveat-knowledge-graph}{{1}{[chapter][1][]1}{chapter.1}}}
-\@writefile{brf}{\backcite{maalej2013patterns}{{1}{[chapter][1][]1}{chapter.1}}}
 \@writefile{brf}{\backcite{caveat-knowledge-graph}{{1}{[chapter][1][]1}{chapter.1}}}
+\@writefile{brf}{\backcite{jiamou}{{1}{[chapter][1][]1}{chapter.1}}}
+\@writefile{brf}{\backcite{caveat-knowledge-graph}{{1}{[chapter][1][]1}{chapter.1}}}
+\@writefile{brf}{\backcite{jiamou}{{1}{[chapter][1][]1}{chapter.1}}}
+\@writefile{brf}{\backcite{xiaoxue}{{1}{[chapter][1][]1}{chapter.1}}}
+\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ JIAMOU and XIAOXUE ref}{1}{section*.6}}
+\pgfsyspdfmark {pgfid1}{18589341}{12775336}
+\pgfsyspdfmark {pgfid2}{4652733}{12770492}
+\pgfsyspdfmark {pgfid3}{6967198}{12522914}
+\@writefile{brf}{\backcite{maalej2013patterns}{{1}{[chapter][1][]1}{section*.6}}}
+\@writefile{brf}{\backcite{caveat-knowledge-graph}{{1}{[chapter][1][]1}{section*.6}}}
 \newlabel{lst:code-example}{{[lstlisting][1][1]1.1}{2}{File reading java code example from GeeksforGeeks}{lstlisting.1.1}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {1.1}File reading java code example from GeeksforGeeks}{2}{lstlisting.1.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Main Research Challenges}{3}{section.1.1}}
@@ -37,10 +51,10 @@
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Thesis Outline}{3}{section.1.2}}
 \newlabel{sec:outline}{{[section][2][1]1.2}{3}{Thesis Outline}{section.1.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}Main Contributions}{3}{section.1.3}}
-\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Discover lexical gap for GitHub data...}{3}{section*.6}}
-\pgfsyspdfmark {pgfid1}{26267486}{35771662}
-\pgfsyspdfmark {pgfid2}{4652733}{35766818}
-\pgfsyspdfmark {pgfid3}{6967198}{35519240}
+\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Discover lexical gap for GitHub data...}{3}{section*.7}}
+\pgfsyspdfmark {pgfid6}{26267486}{19928202}
+\pgfsyspdfmark {pgfid7}{4652733}{19923358}
+\pgfsyspdfmark {pgfid8}{6967198}{19675780}
 \citation{LH:83,Moon:84,Ungar:84}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Related Work}{5}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -60,32 +74,88 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{cha:infoRetrieval}{{[chapter][3][]3}{7}{Locating API Misuse Examples in GitHub Data}{chapter.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Introduction}{7}{section.3.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Background}{7}{section.3.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Design}{7}{section.3.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Implementation}{7}{section.3.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Results}{7}{section.3.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Summary}{7}{section.3.6}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}API Contracts Generation and Static Code Analysis}{9}{chapter.4}}
+\newlabel{sec:info-intro}{{[section][1][3]3.1}{7}{Introduction}{section.3.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Design}{7}{section.3.2}}
+\newlabel{sec:info-design}{{[section][2][3]3.2}{7}{Design}{section.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}TF-IDF Sentence Matching}{7}{subsection.3.2.1}}
+\newlabel{subsec:info-tfidf}{{[subsection][1][3.2]3.2.1}{7}{TF-IDF Sentence Matching}{subsection.3.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Word2Vec Embedding}{7}{subsection.3.2.2}}
+\newlabel{subsec:info-w2v}{{[subsection][2][3.2]3.2.2}{7}{Word2Vec Embedding}{subsection.3.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Okapi BM25 Ranking}{7}{subsection.3.2.3}}
+\newlabel{subsec:info-bm25}{{[subsection][3][3.2]3.2.3}{7}{Okapi BM25 Ranking}{subsection.3.2.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Implementation}{7}{section.3.3}}
+\newlabel{sec:info-implement}{{[section][3][3]3.3}{7}{Implementation}{section.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}GitHub Data Extraction}{7}{subsection.3.3.1}}
+\newlabel{subsec:info-github-extract}{{[subsection][1][3.3]3.3.1}{7}{GitHub Data Extraction}{subsection.3.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Java 12 Documentation Caveat Extraction}{8}{subsection.3.3.2}}
+\newlabel{subsec:info-caveat-extract}{{[subsection][2][3.3]3.3.2}{8}{Java 12 Documentation Caveat Extraction}{subsection.3.3.2}{}}
+\citation{caveat-knowledge-graph}
+\citation{caveat-knowledge-graph}
+\@writefile{brf}{\backcite{caveat-knowledge-graph}{{9}{[subsection][2][3.3]3.3.2}{subsection.3.3.2}}}
+\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Add several good caveat examples alongside GitHub issues and StackOverlfow posts concerning them}{9}{section*.8}}
+\pgfsyspdfmark {pgfid11}{8572831}{20414431}
+\pgfsyspdfmark {pgfid12}{4652733}{20409587}
+\pgfsyspdfmark {pgfid13}{6967198}{20162009}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Data Preprocessing}{9}{subsection.3.3.3}}
+\newlabel{subsec:info-data-preprocess}{{[subsection][3][3.3]3.3.3}{9}{Data Preprocessing}{subsection.3.3.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces API caveat categories and syntactic patterns from \cite  {caveat-knowledge-graph}.}}{10}{table.3.1}}
+\@writefile{brf}{\backcite{caveat-knowledge-graph}{{10}{[table][1][]3.1}{table.3.1}}}
+\newlabel{tab:caveat-keywords}{{[table][1][]3.1}{10}{API caveat categories and syntactic patterns from \cite {caveat-knowledge-graph}}{table.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Candidate Filtering}{10}{subsection.3.3.4}}
+\newlabel{subsec:info-candidate-filtering}{{[subsection][4][3.3]3.3.4}{10}{Candidate Filtering}{subsection.3.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Sentence Embedding}{10}{subsection.3.3.5}}
+\newlabel{subsec:info-sentence-embedding}{{[subsection][5][3.3]3.3.5}{10}{Sentence Embedding}{subsection.3.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.6}Candidate Matching}{10}{subsection.3.3.6}}
+\newlabel{subsec:info-candidate-match}{{[subsection][6][3.3]3.3.6}{10}{Candidate Matching}{subsection.3.3.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Results}{10}{section.3.4}}
+\newlabel{sec:info-results}{{[section][4][3]3.4}{10}{Results}{section.3.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Summary}{10}{section.3.5}}
+\citation{zhou-directive}
+\citation{zhou-directive}
+\citation{caveat-knowledge-graph}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}API Contracts Construction with Static Code Analysis}{11}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:codeAnalysis}{{[chapter][4][]4}{9}{API Contracts Generation and Static Code Analysis}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{9}{section.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Background}{9}{section.4.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Design}{9}{section.4.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Implementation}{9}{section.4.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Results}{9}{section.4.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Summary}{9}{section.4.6}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{11}{chapter.5}}
+\newlabel{cha:codeAnalysis}{{[chapter][4][]4}{11}{API Contracts Construction with Static Code Analysis}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{11}{section.4.1}}
+\newlabel{sec:contract-intro}{{[section][1][4]4.1}{11}{Introduction}{section.4.1}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{11}{[section][1][4]4.1}{section.4.1}}}
+\@writefile{brf}{\backcite{zhou-directive}{{11}{[section][1][4]4.1}{section.4.1}}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Design}{11}{section.4.2}}
+\newlabel{sec:contract-design}{{[section][2][4]4.2}{11}{Design}{section.4.2}{}}
+\@writefile{brf}{\backcite{caveat-knowledge-graph}{{11}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Java 12 Caveat Statistics Analysis}{12}{subsection.4.2.1}}
+\newlabel{subsec:contract-caveat-statistics}{{[subsection][1][4.2]4.2.1}{12}{Java 12 Caveat Statistics Analysis}{subsection.4.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Implementation}{12}{section.4.3}}
+\newlabel{sec:contract-implement}{{[section][3][4]4.3}{12}{Implementation}{section.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Java API Caveat Contracts}{12}{subsection.4.3.1}}
+\newlabel{subsec:contract-caveat-contracts}{{[subsection][1][4.3]4.3.1}{12}{Java API Caveat Contracts}{subsection.4.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}IntelliJ Plugin with Static Code Analysis}{12}{subsection.4.3.2}}
+\newlabel{subsec:contract-plugin}{{[subsection][2][4.3]4.3.2}{12}{IntelliJ Plugin with Static Code Analysis}{subsection.4.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Boa Programming Language \& API Call Sequence Mining}{12}{subsection.4.3.3}}
+\newlabel{subsec:contract-boa}{{[subsection][3][4.3]4.3.3}{12}{Boa Programming Language \& API Call Sequence Mining}{subsection.4.3.3}{}}
+\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Maybe remove this section...}{12}{section*.9}}
+\pgfsyspdfmark {pgfid16}{4736286}{35709455}
+\pgfsyspdfmark {pgfid19}{34472774}{35704611}
+\pgfsyspdfmark {pgfid20}{36787239}{35457033}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Results}{12}{section.4.4}}
+\newlabel{sec:contract-results}{{[section][4][4]4.4}{12}{Results}{section.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Summary}{12}{section.4.5}}
+\newlabel{sec:contract-summary}{{[section][5][4]4.5}{12}{Summary}{section.4.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{13}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:conc}{{[chapter][5][]5}{11}{Conclusion}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Future Work}{11}{section.5.1}}
-\newlabel{sec:future}{{[section][1][5]5.1}{11}{Future Work}{section.5.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Final Remarks}{11}{section.5.2}}
+\newlabel{cha:conc}{{[chapter][5][]5}{13}{Conclusion}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Future Work}{13}{section.5.1}}
+\newlabel{sec:future}{{[section][1][5]5.1}{13}{Future Work}{section.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Final Remarks}{13}{section.5.2}}
 \bibstyle{anuthesis}
 \bibdata{thesis}
 \bibcite{caveat-knowledge-graph}{{1}{2018}{{{Li} et~al.}}{{{Li}, {Li}, {Sun}, {Xing}, {Peng}, {Liu}, and {Zhao}}}}
 \bibcite{LH:83}{{2}{1983}{{Lieberman and Hewitt}}{{}}}
 \bibcite{maalej2013patterns}{{3}{2013}{{Maalej and Robillard}}{{}}}
 \bibcite{Moon:84}{{4}{1984}{{Moon}}{{}}}
-\bibcite{Ungar:84}{{5}{1984}{{Ungar}}{{}}}
+\bibcite{xiaoxue}{{5}{2018}{{{Ren} et~al.}}{{{Ren}, {Xing}, X, {Xia}, {Lo}, {Grundy}, and {Sun}}}}
+\bibcite{jiamou}{{6}{2018}{{Sun}}{{}}}
+\bibcite{Ungar:84}{{7}{1984}{{Ungar}}{{}}}
+\bibcite{zhou-directive}{{8}{2017}{{Zhou et~al.}}{{Zhou, Gu, Chen, Huang, Panichella, and Gall}}}
