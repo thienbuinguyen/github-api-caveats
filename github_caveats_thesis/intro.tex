@@ -1,14 +1,9 @@
 \chapter{Introduction}
 \label{cha:intro}
-% Introduce API caveats
-% Highlight entire story with the 3 examples
-% Explore code analysis for API Caveats
 
 An Application Programming Interface (API) provides a set of functions to interact with some software. However, APIs often contain numerous constraints that developers must abide for correct usage of a given API. Misuse of an API can lead to severe bugs for developers such as software failures. These constraints are documented by the developers of an API in their formal documentation, which are usually created manually by the API developers or automatically generated from source code comments such as with the Javadoc tool for the Java programming language. A recent study by \citeauthor{caveat-knowledge-graph} researched a particular subset of constraints that focused specifically on correct and incorrect API usage that are referred to as \textit{API caveats}. Furthermore, \citeauthor{caveat-knowledge-graph} proposed an extraction method for these API caveats at the sentence level by identifying common keywords between them, improving the accessibility of these API caveats. 
 In addition to this, an approach by \citeauthor{jiamou} to simplify these API caveats for developers and improve understanding was proposed using Natural Language Processing (NLP) techniques. This involved using word/sentence embedding and comparing sentence similarity of sentence vectors across community text from Q/A forums such as Stack Overflow to link the API caveats with actual code examples. With this, API caveats are augmented with ``real'' code examples by developers that can help them understand how to use an API. However, this approach requires a large corpus of code examples alongside the assumption informal text by communities containing high lexical similarity to sentences of formal API documentation. Besides this, it also makes the assumption that text surrounding code examples are relevant to the code examples provided.
 This thesis seeks to extend upon the word by \citeauthor{caveat-knowledge-graph, jiamou, xiaoxue} to investigate alternative methods of improving the understandability of API caveats. In particular, I focus on translating natural language of API caveats into code \textit{contracts} that can be used directly by program analysis tools to check for API misuse in real time.
-
-are also proposed and used by \fix{JIAMOU and XIAOXUE ref}
 
 A specific subset of API usage constraints are classified by \cite{maalej2013patterns} as \textit{directives}, which ``specify what users
 are allowed/not allowed to do with the API element''. 
@@ -42,8 +37,16 @@ public class ReadFromFile2
 } 
 \end{lstlisting}
 
+\begin{enumerate}
+	\item Provide 3 caveat examples from Java 12 API (ArrayList.subList, String.indexOf, HashMap concurrency)
+\end{enumerate}
+
 \section{Main Research Challenges}
 \label{sec:mainresearchchallenges}
+
+\begin{enumerate}
+	\item Similar to Jiamou's report
+\end{enumerate}
 
 \subsection{Sentence Parsing for Contracts Generation}
 
@@ -51,9 +54,12 @@ public class ReadFromFile2
 
 \section{Thesis Outline}
 \label{sec:outline}
-How many chapters you have? You may have Chapter~\ref{cha:background},
 
 \section{Main Contributions}
 Parsing of API caveat sentences to formulate contracts (basic proof-of-concept)
 Developed checkers that can output warnings from contracts
-\fix{Discover lexical gap for GitHub data...}
+\fix{Discovered lexical gap for GitHub data...}
+
+\begin{enumerate}
+	\item Mention some API element dependency parsing if some time to complete
+\end{enumerate}

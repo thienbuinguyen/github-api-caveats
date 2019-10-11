@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
@@ -6,6 +6,32 @@
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\bibitem[{Amann et~al.(2016)Amann, Nadi, Nguyen, Nguyen, and
+  Mezini}]{amann2016mubench}
+\textsc{Amann, S.; Nadi, S.; Nguyen, H.~A.; Nguyen, T.~N.; and Mezini, M.},
+  2016.
+\newblock Mubench: a benchmark for api-misuse detectors.
+\newblock In \emph{2016 IEEE/ACM 13th Working Conference on Mining Software
+  Repositories (MSR)}, 464--467. IEEE.
+
+\bibitem[{Bae et~al.(2014)Bae, Cho, Lim, and Ryu}]{bae2014safewapi}
+\textsc{Bae, S.; Cho, H.; Lim, I.; and Ryu, S.}, 2014.
+\newblock Safewapi: web api misuse detector for web applications.
+\newblock In \emph{Proceedings of the 22nd ACM SIGSOFT International Symposium
+  on Foundations of Software Engineering}, 507--517. ACM.
+
+\bibitem[{Dryer(2005)}]{dryer200581}
+\textsc{Dryer, M.~S.}, 2005.
+\newblock 81 order of subject, object, and verb.
+\newblock \emph{The world atlas of language structures, ed. by Martin
+  Haspelmath et al},  (2005), 330--333.
+
+\bibitem[{Kapur and Sodhi(2018)}]{kapur2018estimating}
+\textsc{Kapur, R. and Sodhi, B.}, 2018.
+\newblock Estimating defectiveness of source code: A predictive model using
+  github content.
+\newblock \emph{arXiv preprint arXiv:1803.07764},  (2018).
 
 \bibitem[{{Li} et~al.(2018){Li}, {Li}, {Sun}, {Xing}, {Peng}, {Liu}, and
   {Zhao}}]{caveat-knowledge-graph}
@@ -17,11 +43,17 @@
   and Evolution (ICSME)}, 183--193.
 \newblock \doi{10.1109/ICSME.2018.00028}.
 
-\bibitem[{Lieberman and Hewitt(1983)}]{LH:83}
-\textsc{Lieberman, H. and Hewitt, C.}, 1983.
-\newblock A real-time garbage collector based on the lifetimes of objects.
-\newblock \emph{Communications of the ACM}, 26, 6  (Jun. 1983), 419--429.
-\newblock \doi{10.1145/358141.358147}.
+\bibitem[{Li et~al.(2018)Li, Sun, Xing, and Han}]{li2018api}
+\textsc{Li, J.; Sun, A.; Xing, Z.; and Han, L.}, 2018.
+\newblock Api caveat explorer--surfacing negative usages from practice: An
+  api-oriented interactive exploratory search system for programmers.
+\newblock In \emph{The 41st International ACM SIGIR Conference on Research \&
+  Development in Information Retrieval}, 1293--1296. ACM.
+
+\bibitem[{Li(2018)}]{construct-knowledge-graph}
+\textsc{Li, S.}, 2018.
+\newblock Constructing software knowledge graph from software text.
+\newblock  (2018).
 
 \bibitem[{Maalej and Robillard(2013)}]{maalej2013patterns}
 \textsc{Maalej, W. and Robillard, M.~P.}, 2013.
@@ -29,13 +61,13 @@
 \newblock \emph{IEEE Transactions on Software Engineering}, 39, 9  (2013),
   1264--1282.
 
-\bibitem[{Moon(1984)}]{Moon:84}
-\textsc{Moon, D.~A.}, 1984.
-\newblock Garbage collection in a large {LISP} system.
-\newblock In  LFP '84: \emph{Proceedings of the 1984 ACM Symposium on LISP and
-  Functional Programming} (Austin, Texas, USA, Aug. 1984), 235--246. ACM, New
-  York, New York, USA.
-\newblock \doi{10.1145/800055.802040}.
+\bibitem[{Monperrus et~al.(2012)Monperrus, Eichberg, Tekes, and
+  Mezini}]{directives-study}
+\textsc{Monperrus, M.; Eichberg, M.; Tekes, E.; and Mezini, M.}, 2012.
+\newblock What should developers be aware of? an empirical study on the
+  directives of api documentation.
+\newblock \emph{Empirical Software Engineering}, 17 (05 2012).
+\newblock \doi{10.1007/s10664-011-9186-4}.
 
 \bibitem[{{Ren} et~al.(2018){Ren}, {Xing}, X, {Xia}, {Lo}, {Grundy}, and
   {Sun}}]{xiaoxue}
@@ -44,20 +76,65 @@
 \newblock Trustdoc: Documents speak louder than votes.
 \newblock  (2018).
 
+\bibitem[{Silva et~al.(2019)Silva, Roy, Rahman, Schneider, Paixao, and
+  Maia}]{silva2019recommending}
+\textsc{Silva, R.~F.; Roy, C.~K.; Rahman, M.~M.; Schneider, K.~A.; Paixao, K.;
+  and Maia, M. d.~A.}, 2019.
+\newblock Recommending comprehensive solutions for programming tasks by mining
+  crowd knowledge.
+\newblock \emph{arXiv preprint arXiv:1903.07662},  (2019).
+
+\bibitem[{Singh and Mangat(2013)}]{singh2013elements}
+\textsc{Singh, R. and Mangat, N.~S.}, 2013.
+\newblock \emph{Elements of survey sampling}, vol.~15.
+\newblock Springer Science \& Business Media.
+
+\bibitem[{Subramanian et~al.(2014)Subramanian, Inozemtseva, and
+  Holmes}]{live-api-doc}
+\textsc{Subramanian, S.; Inozemtseva, L.; and Holmes, R.}, 2014.
+\newblock Live api documentation.
+\newblock In \emph{Proceedings of the 36th International Conference on Software
+  Engineering}, 643--652. ACM.
+
 \bibitem[{Sun(2018)}]{jiamou}
 \textsc{Sun, J.}, 2018.
 \newblock Augment api caveats with erroneous code examples.
 \newblock  (2018).
 
-\bibitem[{Ungar(1984)}]{Ungar:84}
-\textsc{Ungar, D.}, 1984.
-\newblock Generation scavenging: A non-disruptive high performance storage
-  reclamation algorithm.
-\newblock In  SDE 1: \emph{Proceedings of the 1st ACM SIGSOFT/SIGPLAN Software
-  Engineering Symposium on Practical Software Development Environments}
-  (Pittsburgh, Pennsylvania, USA, Apr. 1984), 157--167. ACM, New York, New
-  York, USA.
-\newblock \doi{10.1145/800020.808261}.
+\bibitem[{Uddin and Robillard(2015)}]{uddin2015api}
+\textsc{Uddin, G. and Robillard, M.~P.}, 2015.
+\newblock How api documentation fails.
+\newblock \emph{IEEE Software}, 32, 4  (2015), 68--75.
+
+\bibitem[{Van~Nguyen et~al.(2017)Van~Nguyen, Nguyen, Phan, Nguyen, and
+  Nguyen}]{van2017combining}
+\textsc{Van~Nguyen, T.; Nguyen, A.~T.; Phan, H.~D.; Nguyen, T.~D.; and Nguyen,
+  T.~N.}, 2017.
+\newblock Combining word2vec with revised vector space model for better code
+  retrieval.
+\newblock In \emph{Proceedings of the 39th International Conference on Software
+  Engineering Companion}, 183--185. IEEE Press.
+
+\bibitem[{Wen et~al.(2019)Wen, Liu, Wu, Xie, Cheung, and
+  Su}]{mutation-analysis}
+\textsc{Wen, M.; Liu, Y.; Wu, R.; Xie, X.; Cheung, S.-C.; and Su, Z.}, 2019.
+\newblock Exposing library api misuses via mutation analysis.
+\newblock In \emph{Proceedings of the 41st International Conference on Software
+  Engineering}, 866--877. IEEE Press.
+
+\bibitem[{Zhang et~al.(2018)Zhang, Upadhyaya, Reinhardt, Rajan, and
+  Kim}]{code-examples}
+\textsc{Zhang, T.; Upadhyaya, G.; Reinhardt, A.; Rajan, H.; and Kim, M.}, 2018.
+\newblock Are code examples on an online q\&a forum reliable?: a study of api
+  misuse on stack overflow.
+\newblock In \emph{2018 IEEE/ACM 40th International Conference on Software
+  Engineering (ICSE)}, 886--896. IEEE.
+
+\bibitem[{Zheng et~al.(2017)Zheng, Zhou, Li, and Wu}]{zheng2017code}
+\textsc{Zheng, W.; Zhou, H.-Y.; Li, M.; and Wu, J.}, 2017.
+\newblock Code attention: Translating code to comments by exploiting domain
+  features.
+\newblock \emph{arXiv preprint arXiv:1709.07642},  (2017).
 
 \bibitem[{Zhou et~al.(2017)Zhou, Gu, Chen, Huang, Panichella, and
   Gall}]{zhou-directive}

@@ -286,6 +286,21 @@
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
 
+
+\lstdefinelanguage{None}{}
+
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{multirow}
+% verbatim lstlisting
+\lstset{
+	language=None,
+	basicstyle=\ttfamily,
+	columns=fixed,
+	fontadjust=true,
+	basewidth=0.5em
+}
+
 \lstset{language=Java,
 	basicstyle=\ttfamily\footnotesize,
 	showspaces=false,
@@ -299,3 +314,9 @@
 	basicstyle=\ttfamily,
 	literate={\ \ }{{\ }}1
 }
+
+\usepackage{makecell}
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}

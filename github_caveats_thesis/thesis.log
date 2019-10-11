@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  10 OCT 2019 23:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.13)  11 OCT 2019 23:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,6 +706,12 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Cskip=\skip61
 )
 \c@@todonotes@numberoftodonotes=\count141
+)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen191
+\c@nlinenum=\count142
+\TeXr@lab=\toks36
 ))
 \@indexfile=\write4
 \openout4 = `thesis.idx'.
@@ -744,7 +750,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count142
+\c@section@level=\count143
 )
 LaTeX Info: Redefining \ref on input line 63.
 LaTeX Info: Redefining \pageref on input line 63.
@@ -754,21 +760,21 @@ LaTeX Info: Redefining \nameref on input line 63.
 \@outlinefile=\write5
 \openout5 = `thesis.out'.
 
-\big@size=\dimen191
+\big@size=\dimen192
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count143
-\scratchdimen=\dimen192
+\scratchcounter=\count144
+\scratchdimen=\dimen193
 \scratchbox=\box47
-\nofMPsegments=\count144
-\nofMParguments=\count145
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count146
-\MPscratchDim=\dimen193
-\MPnumerator=\count147
-\makeMPintoPDFobject=\count148
-\everyMPtoPDFconversion=\toks37
+\nofMPsegments=\count145
+\nofMParguments=\count146
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count147
+\MPscratchDim=\dimen194
+\MPnumerator=\count148
+\makeMPintoPDFobject=\count149
+\everyMPtoPDFconversion=\toks38
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -788,7 +794,7 @@ e
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count149
+\c@lstlisting=\count150
 
 (./titlepage.tex
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <24.88> not available
@@ -867,13 +873,21 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 \openout6 = `thesis.toc'.
 
  [12]
-(./thesis.lof)
+(./thesis.lof
+LaTeX Font Info:    Try loading font information for T1+fvm on input line 5.
+ (/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd
+File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
+)
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 9.85492pt on input line 5.
+)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
  [13
 
-] [14
+]
+[14
 
 ] (./thesis.lot)
 \tf@lot=\write8
@@ -887,111 +901,285 @@ LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <12> not available
 (Font)              Font shape `T1/pplj/b/n' tried instead on input line 1.
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 11.
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
+Underfull \hbox (badness 10000) in paragraph at lines 11--13
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+fvm on input line 19.
-(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd
-File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
-)
-LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 19.
- [1
+[1
 
 ]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 23.
+nput line 18.
  [2]
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 45.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 44.
 LaTeX Font Info:    Font shape `T1/pplj/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/pplj/b/n' tried instead on input line 45.
-)
-(./background.tex [3] [4
+(Font)              Font shape `T1/pplj/b/n' tried instead on input line 44.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 61.
+) (./background.tex [3] [4
 
 ]
 Chapter 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--6
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
-
- []
-
-
-Overfull \hbox (6.35507pt too wide) in paragraph at lines 11--17
-\T1/pplx/m/n/10.95 You may ref-er-ence other pa-pers. For ex-am-ple: Gen-er-a-t
-ional garbage col-lec-tion [[][]Lieber-
- []
-
-) (./infoRetrieval.tex [5] [6
-
-]
+[5]) (./infoRetrieval.tex [6]
 Chapter 3.
 
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+[7
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 82--82
+ []|\T1/pplx/m/n/10.95 Listing 3.2: An ex-am-ple of a caveat sen-tence ex-tract
+ed from the 
+ []
+
+
+Underfull \hbox (badness 3942) in paragraph at lines 82--82
+ [][][][][][][][][] \T1/pplx/m/n/10.95 doc-u-men-ta-tion ex-plain-ing the struc
+-ture of a 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+ []|\T1/pplx/m/n/10.95 Listing 3.3: An ex-am-ple of a caveat sen-tence ex-tract
+ed from the 
+ []
+
+[10pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.127 
+      ] [11]
+
+LaTeX Warning: Marginpar on page 12 moved.
+
+
+LaTeX Warning: Marginpar on page 12 moved.
+
+) (./codeAnalysis.tex [12]
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--12
+
+ []
+
+[13
+
+]
 Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
-
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
+<figs/api-doc-charAt.png, id=619, 999.735pt x 595.22375pt>
+File: figs/api-doc-charAt.png Graphic file (type png)
+<use figs/api-doc-charAt.png>
+Package pdftex.def Info: figs/api-doc-charAt.png  used on input line 31.
+(pdftex.def)             Requested size: 308.57014pt x 183.7182pt.
+[15pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.36 
+      <./figs/api-doc-charAt.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
 
-Underfull \vbox (badness 6001) has occurred while \output is active []
-
- [8]
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
-[9]) (./codeAnalysis.tex [10pdfTeX warning (ext4): destination with the same id
-entifier (name{table.3.1}) has been already used, duplicate ignored
+[16pdfTeX warning (ext4): destination with the same identifier (name{table.4.1}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.62 
+     pdfTeX warning (ext4): destination with the same identifier (name{table.4.
+2}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.62 
+     ]
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+
+ []
+
+[17pdfTeX warning (ext4): destination with the same identifier (name{table.4.3}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.81 
+     ]
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+
+Underfull \vbox (badness 5681) has occurred while \output is active []
+
+ [18]
+Overfull \hbox (497.44139pt too wide) in paragraph at lines 113--134
+[][]
+ []
+
+
+LaTeX Warning: Marginpar on page 19 moved.
+
+
+LaTeX Warning: Marginpar on page 19 moved.
+
+
+LaTeX Warning: Marginpar on page 19 moved.
+
+) (./conclusion.tex [19pdfTeX warning (ext4): destination with the same identif
+ier (name{table.4.4}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.1 \chapter
-            {API Contracts Construction with Static Code Analysis}]
-Chapter 4.
-[11
+            {Conclusion}pdfTeX warning (ext4): destination with the same identi
+fier (name{table.4.5}) has been already used, duplicate ignored
 
-]) (./conclusion.tex [12]
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Conclusion}] [20pdfTeX warning (ext4): destination with the same i
+dentifier (name{table.4.6}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1 \chapter
+            {Conclusion}]
 Chapter 5.
-) [13
+) (./appendix.tex
 
-] [14
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\begingroup' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\NAT@ctype' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\z@' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\let' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\let' on input line 2.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--28
+[][]
+ []
+
+
+Overfull \hbox (2.45369pt too wide) in paragraph at lines 46--70
+[][]
+ []
+
+
+Overfull \hbox (6.40663pt too wide) in paragraph at lines 75--82
+[][]
+ []
+
+) [21
+
+] [22pdfTeX warning (ext4): destination with the same identifier (name{table.5.
+1}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.120 \backmatter
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{table.5.2}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.120 \backmatter
+                 ] [23pdfTeX warning (ext4): destination with the same identifi
+er (name{table.5.3}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.120 \backmatter
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{table.5.4}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.120 \backmatter
+                 ] [24
 
 ] (./thesis.bbl (./thesis.brf)
 \tf@brf=\write9
 \openout9 = `thesis.brf'.
 
-)
-No file thesis.ind.
-[15
+ [25
 
-]
+])
+No file thesis.ind.
+[26]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
  (./thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: EE321612C74A1C21E72104BFCD0C6230;2877.
+(rerunfilecheck)             Checksum: 90F76215D8CD43CB035365AA79B80170;3243.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: C5442B0F443149E6F866A7EA363A9776;1092.
+(rerunfilecheck)             Checksum: 1226F2C1E43D0A9D4C559671F82B52EE;3616.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -999,24 +1187,25 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  ) 
 Here is how much of TeX's memory you used:
- 20542 strings out of 492982
- 374469 string characters out of 6134895
- 455248 words of memory out of 5000000
- 23528 multiletter control sequences out of 15000+600000
- 69835 words of font info for 103 fonts, out of 8000000 for 9000
+ 21123 strings out of 492982
+ 383385 string characters out of 6134895
+ 513678 words of memory out of 5000000
+ 23962 multiletter control sequences out of 15000+600000
+ 74135 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,16n,76p,2710b,1811s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,18n,76p,2654b,1819s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/fpl/fplrc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on thesis.pdf (31 pages, 136120 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/fpl/fplbj8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/fpl/fplrc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fv
+mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on thesis.pdf (42 pages, 253671 bytes).
 PDF statistics:
- 504 PDF objects out of 1000 (max. 8388607)
- 459 compressed objects within 5 object streams
- 112 named destinations out of 1000 (max. 500000)
- 357 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 870 PDF objects out of 1000 (max. 8388607)
+ 801 compressed objects within 9 object streams
+ 238 named destinations out of 1000 (max. 500000)
+ 402 words of extra memory for PDF output out of 10000 (max. 10000000)
 

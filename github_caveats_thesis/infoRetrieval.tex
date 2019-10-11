@@ -10,14 +10,18 @@ readers, and introduce the sections in this chapter.
 \label{sec:info-design}
 \subsection{TF-IDF Sentence Matching}
 \label{subsec:info-tfidf}
+\fix{Basic description of TF-IDF}
+
 \subsection{Word2Vec Embedding}
 \label{subsec:info-w2v}
+\fix{Basic description of W2V}
+
 \subsection{Okapi BM25 Ranking}
 \label{subsec:info-bm25}
+\fix{Basic description of BM25}
 
 \section{Implementation}
 \label{sec:info-implement}
-
 
 \subsection{GitHub Data Extraction}
 \label{subsec:info-github-extract}
@@ -62,16 +66,73 @@ Furthermore, several text preprocessing techniques are utilised to transform the
 
 \subsection{Candidate Filtering}
 \label{subsec:info-candidate-filtering}
+It is observed that several sentences extracted are invalid caveat sentences or contain snippets of code within the context of a particular sentence. Example of this is shown in Listing \ref{invalid-caveat-1}, \ref{invalid-caveat-2} and \ref{invalid-caveat-3}.
+
+\begin{lstlisting}[label=invalid-caveat-1,caption={An example of a caveat sentence extracted from the \lstinline{javax.swing.Spring} documentation containing some snippets of code or mathematical expressions},float,frame=tb,numbers=none,language=None]
+If we denote Springs as [a, b, c], where a <= b <= c, 
+we can define the same arithmetic operators on Springs:
+
+[a1, b1, c1] + [a2, b2, c2] = [a1 + a2, b1 + b2, c1 + c2]
+
+-[a, b, c] = [-c, -b, -a]
+
+max([a1, b1, c1], [a2, b2, c2]) = [max(a1, a2), max(b1, b2), max(c1, c2)]
+\end{lstlisting}
+
+\begin{lstlisting}[label=invalid-caveat-2,caption={An example of a caveat sentence extracted from the \lstinline{java.security.cert.X509CRL} documentation explaining the structure of a \lstinline{TBSCertList} object.},float,frame=tb,numbers=none,language=None]
+The ASN.1 definition of tbsCertList is:
+
+TBSCertList  ::=  SEQUENCE  {
+	version                 Version OPTIONAL,
+	-- if present, must be v2
+	signature               AlgorithmIdentifier,
+	issuer                  Name,
+	thisUpdate              ChoiceOfTime,
+	nextUpdate              ChoiceOfTime OPTIONAL,
+	revokedCertificates     SEQUENCE OF SEQUENCE  {
+	userCertificate         CertificateSerialNumber,
+	revocationDate          ChoiceOfTime,
+	crlEntryExtensions      Extensions OPTIONAL
+	-- if present, must be v2
+	}  OPTIONAL,
+	crlExtensions           [0]  EXPLICIT Extensions OPTIONAL
+	-- if present, must be v2
+}
+\end{lstlisting}
+
+\begin{lstlisting}[label=invalid-caveat-3,caption={An example of a caveat sentence extracted from the \lstinline{java.text.BreakIterator} documentation that contains some sample code.},float,frame=tb,numbers=none,language=None]
+Creating and using text boundaries:
+
+public static void main(String args[]) {
+	if (args.length == 1) {
+		String stringToExamine = args[0];
+		//print each word in order
+		BreakIterator boundary = BreakIterator.getWordInstance();
+		boundary.setText(stringToExamine);
+		printEachForward(boundary, stringToExamine);
+		//print each sentence in reverse order
+		boundary = BreakIterator.getSentenceInstance(Locale.US);
+		boundary.setText(stringToExamine);
+		printEachBackward(boundary, stringToExamine);
+		printFirst(boundary, stringToExamine);
+		printLast(boundary, stringToExamine);
+	}
+}
+\end{lstlisting}
+
 
 \subsection{Sentence Embedding}
 \label{subsec:info-sentence-embedding}
+\fix{Describe embedding for all methods (TF-IDF, W2V and BM25)}
 
 \subsection{Candidate Matching}
 \label{subsec:info-candidate-match}
+\fix{Describe matching method with the manually labelling conducted}
 
 \section{Results}
 \label{sec:info-results}
 
+\fix{Add manual labelling table}
+
 \section{Summary}
-Same as the last chapter, summary what you discussed in this chapter and
-be the bridge to next chapter.
+
