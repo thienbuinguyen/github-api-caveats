@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{}
@@ -7,13 +7,13 @@
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
-\bibitem[{Amann et~al.(2016)Amann, Nadi, Nguyen, Nguyen, and
-  Mezini}]{amann2016mubench}
-\textsc{Amann, S.; Nadi, S.; Nguyen, H.~A.; Nguyen, T.~N.; and Mezini, M.},
-  2016.
-\newblock Mubench: a benchmark for api-misuse detectors.
-\newblock In \emph{2016 IEEE/ACM 13th Working Conference on Mining Software
-  Repositories (MSR)}, 464--467. IEEE.
+\bibitem[{Baca et~al.(2009)Baca, Petersen, Carlsson, and
+  Lundberg}]{baca2009static}
+\textsc{Baca, D.; Petersen, K.; Carlsson, B.; and Lundberg, L.}, 2009.
+\newblock Static code analysis to detect software security vulnerabilities-does
+  experience matter?
+\newblock In \emph{2009 International Conference on Availability, Reliability
+  and Security}, 804--810. IEEE.
 
 \bibitem[{Bae et~al.(2014)Bae, Cho, Lim, and Ryu}]{bae2014safewapi}
 \textsc{Bae, S.; Cho, H.; Lim, I.; and Ryu, S.}, 2014.
@@ -21,17 +21,40 @@
 \newblock In \emph{Proceedings of the 22nd ACM SIGSOFT International Symposium
   on Foundations of Software Engineering}, 507--517. ACM.
 
+\bibitem[{Bardas et~al.(2010)}]{bardas2010static}
+\textsc{Bardas, A.~G. et~al.}, 2010.
+\newblock Static code analysis.
+\newblock \emph{Journal of Information Systems \& Operations Management}, 4, 2
+  (2010), 99--107.
+
+\bibitem[{Blasi et~al.(2018)Blasi, Goffi, Kuznetsov, Gorla, Ernst, Pezz{\`e},
+  and Castellanos}]{blasi2018translating}
+\textsc{Blasi, A.; Goffi, A.; Kuznetsov, K.; Gorla, A.; Ernst, M.~D.;
+  Pezz{\`e}, M.; and Castellanos, S.~D.}, 2018.
+\newblock Translating code comments to procedure specifications.
+\newblock In \emph{Proceedings of the 27th ACM SIGSOFT International Symposium
+  on Software Testing and Analysis}, 242--253. ACM.
+
 \bibitem[{Dryer(2005)}]{dryer200581}
 \textsc{Dryer, M.~S.}, 2005.
 \newblock 81 order of subject, object, and verb.
 \newblock \emph{The world atlas of language structures, ed. by Martin
   Haspelmath et al},  (2005), 330--333.
 
-\bibitem[{Kapur and Sodhi(2018)}]{kapur2018estimating}
-\textsc{Kapur, R. and Sodhi, B.}, 2018.
-\newblock Estimating defectiveness of source code: A predictive model using
-  github content.
-\newblock \emph{arXiv preprint arXiv:1803.07764},  (2018).
+\bibitem[{Havrlant and Kreinovich(2017)}]{tfidf-explain}
+\textsc{Havrlant, L. and Kreinovich, V.}, 2017.
+\newblock A simple probabilistic explanation of term frequency-inverse document
+  frequency (tf-idf) heuristic (and variations motivated by this explanation).
+\newblock \emph{International Journal of General Systems}, 46 (01 2017),
+  27--36.
+\newblock \doi{10.1080/03081079.2017.1291635}.
+
+\bibitem[{Huang et~al.(2018)Huang, Xia, Xing, Lo, and Wang}]{huang2018api}
+\textsc{Huang, Q.; Xia, X.; Xing, Z.; Lo, D.; and Wang, X.}, 2018.
+\newblock Api method recommendation without worrying about the task-api
+  knowledge gap.
+\newblock In \emph{Proceedings of the 33rd ACM/IEEE International Conference on
+  Automated Software Engineering}, 293--304. ACM.
 
 \bibitem[{{Li} et~al.(2018){Li}, {Li}, {Sun}, {Xing}, {Peng}, {Liu}, and
   {Zhao}}]{caveat-knowledge-graph}
@@ -43,17 +66,16 @@
   and Evolution (ICSME)}, 183--193.
 \newblock \doi{10.1109/ICSME.2018.00028}.
 
-\bibitem[{Li et~al.(2018)Li, Sun, Xing, and Han}]{li2018api}
-\textsc{Li, J.; Sun, A.; Xing, Z.; and Han, L.}, 2018.
-\newblock Api caveat explorer--surfacing negative usages from practice: An
-  api-oriented interactive exploratory search system for programmers.
-\newblock In \emph{The 41st International ACM SIGIR Conference on Research \&
-  Development in Information Retrieval}, 1293--1296. ACM.
-
 \bibitem[{Li(2018)}]{construct-knowledge-graph}
 \textsc{Li, S.}, 2018.
 \newblock Constructing software knowledge graph from software text.
 \newblock  (2018).
+
+\bibitem[{{Louridas}(2006)}]{1657940}
+\textsc{{Louridas}, P.}, 2006.
+\newblock Static code analysis.
+\newblock \emph{IEEE Software}, 23, 4  (July 2006), 58--61.
+\newblock \doi{10.1109/MS.2006.114}.
 
 \bibitem[{Maalej and Robillard(2013)}]{maalej2013patterns}
 \textsc{Maalej, W. and Robillard, M.~P.}, 2013.
@@ -61,13 +83,82 @@
 \newblock \emph{IEEE Transactions on Software Engineering}, 39, 9  (2013),
   1264--1282.
 
-\bibitem[{Monperrus et~al.(2012)Monperrus, Eichberg, Tekes, and
+\bibitem[{Manning et~al.(2008)Manning, Raghavan, and
+  Sch\"{u}tze}]{Manning:2008:IIR:1394399}
+\textsc{Manning, C.~D.; Raghavan, P.; and Sch\"{u}tze, H.}, 2008.
+\newblock \emph{Introduction to Information Retrieval}.
+\newblock Cambridge University Press, New York, NY, USA.
+\newblock ISBN 0521865719, 9780521865715.
+
+\bibitem[{Mikolov et~al.(2013{\natexlab{a}})Mikolov, Chen, Corrado, and
+  Dean}]{mikolov2013efficient}
+\textsc{Mikolov, T.; Chen, K.; Corrado, G.; and Dean, J.}, 2013{\natexlab{a}}.
+\newblock Efficient estimation of word representations in vector space.
+\newblock \emph{arXiv preprint arXiv:1301.3781},  (2013).
+
+\bibitem[{Mikolov et~al.(2013{\natexlab{b}})Mikolov, Sutskever, Chen, Corrado,
+  and Dean}]{mikolov2013distributed}
+\textsc{Mikolov, T.; Sutskever, I.; Chen, K.; Corrado, G.~S.; and Dean, J.},
+  2013{\natexlab{b}}.
+\newblock Distributed representations of words and phrases and their
+  compositionality.
+\newblock In \emph{Advances in neural information processing systems},
+  3111--3119.
+
+\bibitem[{Mitchell(1994)}]{mitchell1994sentence}
+\textsc{Mitchell, D.~C.}, 1994.
+\newblock Sentence parsing.
+\newblock \emph{Handbook of psycholinguistics},  (1994), 375--409.
+
+\bibitem[{Monperrus et~al.(2012{\natexlab{a}})Monperrus, Eichberg, Tekes, and
+  Mezini}]{monperrus2012should}
+\textsc{Monperrus, M.; Eichberg, M.; Tekes, E.; and Mezini, M.},
+  2012{\natexlab{a}}.
+\newblock What should developers be aware of? an empirical study on the
+  directives of api documentation.
+\newblock \emph{Empirical Software Engineering}, 17, 6  (2012), 703--737.
+
+\bibitem[{Monperrus et~al.(2012{\natexlab{b}})Monperrus, Eichberg, Tekes, and
   Mezini}]{directives-study}
-\textsc{Monperrus, M.; Eichberg, M.; Tekes, E.; and Mezini, M.}, 2012.
+\textsc{Monperrus, M.; Eichberg, M.; Tekes, E.; and Mezini, M.},
+  2012{\natexlab{b}}.
 \newblock What should developers be aware of? an empirical study on the
   directives of api documentation.
 \newblock \emph{Empirical Software Engineering}, 17 (05 2012).
 \newblock \doi{10.1007/s10664-011-9186-4}.
+
+\bibitem[{Palangi et~al.(2016)Palangi, Deng, Shen, Gao, He, Chen, Song, and
+  Ward}]{palangi2016deep}
+\textsc{Palangi, H.; Deng, L.; Shen, Y.; Gao, J.; He, X.; Chen, J.; Song, X.;
+  and Ward, R.}, 2016.
+\newblock Deep sentence embedding using long short-term memory networks:
+  Analysis and application to information retrieval.
+\newblock \emph{IEEE/ACM Transactions on Audio, Speech and Language Processing
+  (TASLP)}, 24, 4  (2016), 694--707.
+
+\bibitem[{Pandita et~al.(2012)Pandita, Xiao, Zhong, Xie, Oney, and
+  Paradkar}]{pandita2012inferring}
+\textsc{Pandita, R.; Xiao, X.; Zhong, H.; Xie, T.; Oney, S.; and Paradkar, A.},
+  2012.
+\newblock Inferring method specifications from natural language api
+  descriptions.
+\newblock In \emph{Proceedings of the 34th International Conference on Software
+  Engineering}, 815--825. IEEE Press.
+
+\bibitem[{P{\'e}rez-Iglesias et~al.(2009)P{\'e}rez-Iglesias,
+  P{\'e}rez-Ag{\"u}era, Fresno, and Feinstein}]{perez2009integrating}
+\textsc{P{\'e}rez-Iglesias, J.; P{\'e}rez-Ag{\"u}era, J.~R.; Fresno, V.; and
+  Feinstein, Y.~Z.}, 2009.
+\newblock Integrating the probabilistic models bm25/bm25f into lucene.
+\newblock \emph{arXiv preprint arXiv:0911.5046},  (2009).
+
+\bibitem[{Ratinov and Roth(2009)}]{ratinov-roth-2009-design}
+\textsc{Ratinov, L. and Roth, D.}, 2009.
+\newblock Design challenges and misconceptions in named entity recognition.
+\newblock In \emph{Proceedings of the Thirteenth Conference on Computational
+  Natural Language Learning ({C}o{NLL}-2009)}, 147--155. Association for
+  Computational Linguistics, Boulder, Colorado.
+\newblock \urlprefix\url{https://www.aclweb.org/anthology/W09-1119}.
 
 \bibitem[{{Ren} et~al.(2018){Ren}, {Xing}, X, {Xia}, {Lo}, {Grundy}, and
   {Sun}}]{xiaoxue}
@@ -76,13 +167,11 @@
 \newblock Trustdoc: Documents speak louder than votes.
 \newblock  (2018).
 
-\bibitem[{Silva et~al.(2019)Silva, Roy, Rahman, Schneider, Paixao, and
-  Maia}]{silva2019recommending}
-\textsc{Silva, R.~F.; Roy, C.~K.; Rahman, M.~M.; Schneider, K.~A.; Paixao, K.;
-  and Maia, M. d.~A.}, 2019.
-\newblock Recommending comprehensive solutions for programming tasks by mining
-  crowd knowledge.
-\newblock \emph{arXiv preprint arXiv:1903.07662},  (2019).
+\bibitem[{Robertson(2004)}]{robertson2004understanding}
+\textsc{Robertson, S.}, 2004.
+\newblock Understanding inverse document frequency: on theoretical arguments
+  for idf.
+\newblock \emph{Journal of documentation}, 60, 5  (2004), 503--520.
 
 \bibitem[{Singh and Mangat(2013)}]{singh2013elements}
 \textsc{Singh, R. and Mangat, N.~S.}, 2013.
@@ -100,11 +189,6 @@
 \textsc{Sun, J.}, 2018.
 \newblock Augment api caveats with erroneous code examples.
 \newblock  (2018).
-
-\bibitem[{Uddin and Robillard(2015)}]{uddin2015api}
-\textsc{Uddin, G. and Robillard, M.~P.}, 2015.
-\newblock How api documentation fails.
-\newblock \emph{IEEE Software}, 32, 4  (2015), 68--75.
 
 \bibitem[{Van~Nguyen et~al.(2017)Van~Nguyen, Nguyen, Phan, Nguyen, and
   Nguyen}]{van2017combining}
@@ -130,11 +214,10 @@
 \newblock In \emph{2018 IEEE/ACM 40th International Conference on Software
   Engineering (ICSE)}, 886--896. IEEE.
 
-\bibitem[{Zheng et~al.(2017)Zheng, Zhou, Li, and Wu}]{zheng2017code}
-\textsc{Zheng, W.; Zhou, H.-Y.; Li, M.; and Wu, J.}, 2017.
-\newblock Code attention: Translating code to comments by exploiting domain
-  features.
-\newblock \emph{arXiv preprint arXiv:1709.07642},  (2017).
+\bibitem[{Zhong and Su(2013)}]{zhong2013detecting}
+\textsc{Zhong, H. and Su, Z.}, 2013.
+\newblock Detecting api documentation errors.
+\newblock In \emph{ACM SIGPLAN Notices}, vol.~48, 803--816. ACM.
 
 \bibitem[{Zhou et~al.(2017)Zhou, Gu, Chen, Huang, Panichella, and
   Gall}]{zhou-directive}
@@ -146,5 +229,12 @@
   Piscataway, NJ, USA.
 \newblock \doi{10.1109/ICSE.2017.11}.
 \newblock \urlprefix\url{https://doi.org/10.1109/ICSE.2017.11}.
+
+\bibitem[{Zitser et~al.(2004)Zitser, Lippmann, and Leek}]{zitser2004testing}
+\textsc{Zitser, M.; Lippmann, R.; and Leek, T.}, 2004.
+\newblock Testing static analysis tools using exploitable buffer overflows from
+  open source code.
+\newblock In \emph{ACM SIGSOFT Software Engineering Notes}, vol.~29, 97--106.
+  ACM.
 
 \end{thebibliography}

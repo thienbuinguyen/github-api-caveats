@@ -1,22 +1,25 @@
 \chapter{Conclusion}
 \label{cha:conc}
+In this chapter, I summarise the topic of investigation, the main challenges identified in Chapter \ref{cha:intro} and how they relate to the main contributions of this thesis. Suggestions for future work are also presented. \\
 
-\begin{enumerate}
-	\item Summarise work done with information retrieval
-	\item Summarise work done with sentence parsing
-	\item 
-\end{enumerate}
+Section \ref{sec:summary} provides an overview of this thesis in terms of topic, challenges, contributions and findings.\\
+
+Section \ref{sec:future} describes some future work ideas relevant to API caveats and constructing API caveat contracts.\\ 
+
+\section{Summary}
+\label{sec:summary}
+This thesis presents the approach of using sentence embedding based on \cite{jiamou} for linking Java 12 API caveats to community text from GitHub alongside methods to construct caveat contracts from API documentation. Chapter \ref{cha:intro} introduces the concept of API caveats and provided a realistic scenario to describe the motivation for linking API caveats to code. The main challenges of this thesis was also identified. Chapter \ref{cha:background} presents related work that defined the key concepts of this thesis: API caveats, using NLP techniques to augment API caveats with code examples, and the applications of static code analysis with API documentation. In Chapter \ref{cha:infoRetrieval}, the process of extracting the documentation and caveats from the Java 12 API is described in detail. Furthermore, the approach for extracting GitHub community text data and the construction of multiple information retrieval systems based on TF-IDF, word2vec, BM25 is explained. The negative results of this approach is discussed and used to introduce an alternative method applied in Chapter \ref{cha:codeAnalysis}. Furthermoer, Chapter \ref{cha:codeAnalysis} presents the idea of caveat contracts and the transformation of API caveats to form caveat contracts. The design of a checker program that can utilise the caveat contracts is given.\\
+The main challenges of this thesis (Chapter \ref{cha:intro}) revolves around how API caveats can be linked to code. The challenges consist of effective sentence embedding and matching, sentence parsing techniques to extract constraints, and implementation of static code analysis that can use caveat contracts. In Chapter \ref{cha:infoRetrieval}, I tackled the problem of sentence embedding and matching by extending the work of \cite{jiamou} with additional information retrieval system models. Specifically, information retrieval systems built upon TF-IDF, BM25 and word2vec + BM25 were also used in addition to just word2vec to investigate the differences of embedding models and overall approach applied to GitHub. I attempt to match 73,831 API caveat sentences against 629,933 GitHub comment sentences using the models mentioned, and perform statistical sampling with manual labelling to determine the performance of these information retrieval systems. However, a significant lexical gap was observed that resulted in all models to have precision less than or equal to 1\%. The negative result of this reveals that sentence embeddings are non-optimal methods for linkage in the presence of large lexical gaps. \\
+In Chapter \ref{cha:codeAnalysis}, I tackle the challenges of sentence parsing for constraints extraction by utilising and combining ideas from \cite{zhou-directive} and \cite{blasi2018translating} to propose a sentence normalisation approach. I conduct a statistical analysis of the Java 12 API documentation for constraints recognised in \cite{zhou-directive} as \textit{not-null} and \textit{range limitation} constraints to showcase their prevalence in the Java API documentation. I find that 20\% of unique caveat sentences from exception sections of the documentation specify a \textit{non-null} constraint, while approximately 13\% of these sentences specify a \textit{range limitation} constraint. I tackle the challenge of static code analysis simply by developing a proof-of-concept checker and showing how it can detect contract violations. Overall, I construct 4,694 unique caveat contracts and develop an IntelliJ plugin to automatically detect caveat contract violations in real time. 
 
 \section{Future Work}
 \label{sec:future}
 
-\begin{enumerate}
-	\item Mention mutation analysis paper 
-	\item Talk about using knowledge graph / API element dependencies parsing
-	\item Applying same approach to other languages
-	\item Applying same approach to other API documentation
-	\item Looking at other caveat categories
-	\item Extending plugin
-\end{enumerate}
+\noindent
+\textbf{Extending caveat contracts to include other caveat categories.} Other interesting caveat types mentioned in Chapter \ref{cha:intro} should also be considered for caveat contracts. These require much more complex parsing techniques. In addition, other methods to resolve dependencies of API caveats should be investigated. For example, the ``add'' method of ``ArrayList'' in Java specifies ``IndexOutOfBoundsException - if the index is out of range (index < 0 || index > size())''. Identifying that ``size()'' refers to the \lstinline{size} method of \lstinline{ArrayList} is a complex problem given that cross class dependencies exist.
 
-\section{Final Remarks}
+\noindent
+\textbf{Detect bugs in existing software.} Automatic detection of bugs remains a challenging problem. Two notable works that the methods proposed in this thesis can be applied to is API call sequences \cite{code-examples} and mutation analysis \cite{mutation-analysis}. The Boa programming language is used as a interface to a large number GitHub repositories in \cite{code-examples} to data-mine correct usage patterns of APIs. However, using caveat contracts, an interesting application would be to search for free, open-source software on GitHub that contain API misuses. Methods to effectively present these errors and suggest fixes to developers also requires further research as the approach of this thesis only identifies misuse after they occur: it does not teach developers about correct API usage beforehand. For \cite{mutation-analysis}, I suggest the topic of automatic caveat contract to test code mapping. Specifically, generating test suites for programs would be beneficial for all developers for code validation and development efficiency.
+
+\noindent
+\textbf{Testing other APIs and programming languages.} Evaluating the practicality of caveat contracts with other APIs and programmings languages is another useful topic that should be researched. Differing results could be expected for analysis of dynamically typed programming languages for example. Furthermore, the different syntactic styles used for different API documentation presents a challenge for generalised approaches.

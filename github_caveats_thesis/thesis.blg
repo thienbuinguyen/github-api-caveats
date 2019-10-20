@@ -3,53 +3,51 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: anuthesis.bst
 Database file #1: thesis.bib
-Repeated entry---line 243 of file thesis.bib
- : @inproceedings{li2018api
- :                         ,
-I'm skipping whatever remains of this entry
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty journal in construct-knowledge-graph
 Warning--empty journal in xiaoxue
 Warning--empty journal in jiamou
-You've used 20 entries,
+Warning--can't use both volume and number fields in zhong2013detecting
+Warning--can't use both volume and number fields in zitser2004testing
+You've used 32 entries,
             3096 wiz_defined-function locations,
-            701 strings with 8512 characters,
-and the built_in function-call counts, 14187 in all, are:
-= -- 1116
-> -- 690
-< -- 8
-+ -- 251
-- -- 231
-* -- 1092
-:= -- 2108
-add.period$ -- 72
-call.type$ -- 20
-change.case$ -- 194
-chr.to.int$ -- 20
-cite$ -- 23
-duplicate$ -- 1022
-empty$ -- 1059
-format.name$ -- 293
-if$ -- 2877
-int.to.chr$ -- 1
+            784 strings with 11126 characters,
+and the built_in function-call counts, 22962 in all, are:
+= -- 1824
+> -- 1059
+< -- 15
++ -- 390
+- -- 354
+* -- 1766
+:= -- 3369
+add.period$ -- 117
+call.type$ -- 32
+change.case$ -- 305
+chr.to.int$ -- 30
+cite$ -- 37
+duplicate$ -- 1664
+empty$ -- 1754
+format.name$ -- 449
+if$ -- 4681
+int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 217
-newline$ -- 113
-num.names$ -- 80
-pop$ -- 476
+missing$ -- 355
+newline$ -- 177
+num.names$ -- 128
+pop$ -- 744
 preamble$ -- 1
-purify$ -- 157
+purify$ -- 245
 quote$ -- 0
-skip$ -- 397
+skip$ -- 634
 stack$ -- 0
-substring$ -- 579
-swap$ -- 532
-text.length$ -- 1
+substring$ -- 1033
+swap$ -- 895
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 177
-warning$ -- 3
-while$ -- 92
+type$ -- 282
+warning$ -- 5
+while$ -- 156
 width$ -- 0
-write$ -- 284
-(There was 1 error message)
+write$ -- 454
+(There were 5 warnings)

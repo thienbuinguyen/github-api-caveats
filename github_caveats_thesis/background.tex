@@ -1,43 +1,31 @@
 \chapter{Related Work}
 \label{cha:background}
-%At the begging of each chapter, please introduce the motivation and high-level
-%picture of the chapter. You also have to introduce sections in the
-%chapter. \\
-%
-%Section~\ref{sec:relatedwork} yyyy.\\
+This chapter provides an overview of the key works that serve as the background for API caveats, linking API caveats to code examples with NLP techniques, and the use of static code analysis to detect API errors or misuses. \\
+Note that the term \textit{API reference documentation} or \textit{API documentation} is adopted throughout this thesis to refer to the set of \textit{documents} that are indexed by an \textit{API element} such as a class or method (\cite{maalej2013patterns}). For example, the Java 12 reference documentation consists of documents as web-pages with each describing a specific Java class (\lstinline{String}, \lstinline{ArrayList} etc.). \\
 
-\section{Related work}
-\label{sec:relatedwork}
+Section \ref{sec:related-api-caveats} references the papers that termed \textit{API caveats} and extended upon this concept for linkage of API caveats to code.\\
 
-\section{API Documentation and API Caveats}
-\begin{enumerate}
-	\item \cite{jiamou} - Jiamou report
-	\item \cite{caveat-knowledge-graph} - Knowledge graph
-	\item \cite{xiaoxue} - trustdoc
-	\item \cite{construct-knowledge-graph} - knowledge graph thesis
-	\item \cite{uddin2015api} - API doc study
-\end{enumerate}
+Section \ref{sec:related-nlp} mentions notable works that have applied NLP techniques to the domain of API documentation and for general API misuse detection.\\
 
-\section{NLP focus for API}
-\begin{enumerate}
-\item \cite{live-api-doc} - BAKER - link source code to API documentation
-\item \cite{zheng2017code} - Code to comments
-\item \cite{van2017combining} - using w2v on code for finding code examples
-\item \cite{silva2019recommending} - CROKAGE
-\item \cite{li2018api} - API Caveat Explorer
-\end{enumerate}
+Section \ref{sec:related-static-code-analysis} references the papers that applied static code analysis to the domain of API documentation and for general API misuse detection.\\
 
-\section{API Usage Misuse}
-\begin{enumerate}
-	\item \cite{code-examples} - API call sequence mining on GitHub
-	\item \cite{zhou-directive} - Directive defects
-	\item \cite{mutation-analysis} - Mutation analysis
-	\item \cite{amann2016mubench} - API misuse detector benchmark MuBENCH
-	\item \cite{kapur2018estimating} - defectiveness of code on GitHub
-	\item \cite{bae2014safewapi} -API misuse detection on web apps
-\end{enumerate}
+\fix{Add motivation and high level picture of each chapter at the start}
+
+\section{API Caveats}
+\label{sec:related-api-caveats}
+API reference documentation consists of a taxonomy of knowledge types that is defined by \cite{maalej2013patterns}. A particular knowledge type identified as \textit{directives} that ``specifies what users are allowed/not allowed to do with the API element'' is identified as a notable component of API reference documentation by \cite{caveat-knowledge-graph}. These knowledge types are particular interest as they can be used to highlight the accessibility of API documentation, which are essential parts of a framework because they describe functionality and usage of an API. The term \textit{API caveat} is defined by \citeauthor{caveat-knowledge-graph} to refer to directives and all other forms of constraints described by an API document, and is the adopted term for this thesis. \citeauthor{caveat-knowledge-graph} conduct formative study of the Q\&A website Stack Overflow that highlights the prevalence of API caveats as issues for programmers, a set of syntactic patterns were provided that could be used to identify API caveats (see Table \ref{tab:caveat-keywords} for the complete list of syntactic patterns). API caveats have many practical applications such as the examination of the quality/validity of Stack Overflow answers \cite{xiaoxue}, construction of a knowledge graph that can be used for information retrieval purposes or entity-centric searches of API caveats \cite{construct-knowledge-graph}, and augmentation of caveats with code examples \cite{jiamou}. In particular, the work by \cite{jiamou} is the foundations for Chapter \ref{cha:infoRetrieval}. It was shown that one solution to caveat linkage to code was via indirect approach. NLP techniques of mainly word2vec sentence embedding could be applied to sentences of API caveats and community text that surrounded code snippets. The cosine similarity of these vector outputs could then be used to determine the relatedness of API caveats to community text, and hence the relatedness of API caveats to the code examples. 
+
+\section{Natural Language Processing for API Documents}
+\label{sec:related-nlp}
+Beside the work of \cite{jiamou} explained in the previous section, other NLP-centered works for linking API documentation in general to code have been proposed. For example, CROKAGE (Crowd Knowledge Answer Generator) is a tool that takes a query in natural language form and returns programming solutions consisting of both code and explanations. This is achieved with several NLP models and word embedding approaches including the use of a Lucene Index, FastText, IDF and an API inverted index. The relevance scoring methods also utilise the BM25 function and TF-IDF. Note that BM25 and TF-IDF (and IDF) are explained in further detail in Chapter \ref{cha:infoRetrieval} (Section \ref{sec:info-design}). An explanation of the other methods will not be presented here as those models were not used in this thesis. Another solution is proposed by \cite{huang2018api} named BIKER (Bi-Information source based KnowledgE Recommendation). This mainly tackles the problem of helping developers find APIs that appropriate for their programming tasks, and uses a combination of language models involving IDF and word2vec. Similar to the other works mentioned, relevant posts from Stack Overflow are ranked using similarity functions for a given query and returned to users. The advantage of deep learning with word2vec was also used by \cite{van2017combining} for example code searching by computing the similarity of query vectors with source code as vectors. \\
+In terms of parsing semi-structured natural langauge, \cite{pandita2012inferring} proposes an approach using part-of-speech tagging, and phrase and clause parsing to identify sentences that describe code contracts via first order logic (FOL) expressions with precision and recall of 91.8\% and 93\% respectively. Jdoctor is proposed by \cite{blasi2018translating} that performs sentence normalisation techniques to translate Javadoc comments to executable Java expressions. In other words, the tool generates procedure specifications that are analogous to code contracts and boast an overall precision and recall of 92\% and 83\% respectively. This approach is extended upon in Chapter \ref{cha:codeAnalysis} to construct code contracts that can be applied to a static code analyser. 
+
+\section{Linkage Methods using Code Analysis}
+\label{sec:related-static-code-analysis}
+A code-analysis centered solution for linkage of API documents and code was proposed by \cite{live-api-doc} with Baker. The method proposed uses deductive linking, where the abstract syntax tree (AST) of a particular code snippet from online sites is analysed, relevant API elements are detected, then linked to the associated API documents. Another approach combines NLP and code analysis to detect errors such as obsolete code samples \cite{zhong2013detecting}. For this, the names of API elements from code samples represented as natural language or as code are compared to the set of all API element names for some API. Mismatches in the names are then be reported as documentation errors. A different approach for detecting API misuse does not use any API documentation, but data-mines the most common patterns used from a large set of code repositories like GitHub \cite{code-examples}. This is accomplished by traversing the AST of code samples generating API call sequences that represent important information about a single API call and relevant expressions/statements surrounding it. The correct usage patterns are then applied to Stack Overflow to determine how reliable the code examples were. \cite{zhou-directive} provides a method of detecting defects between API documents and their code implementations by extracting the constraints from directives and code as FOL expressions, then comparing them with an Satisfiability Modulo Theories (SMT) solver. In particular, this work defines and focuses on several categories of constraints for directives, which represent the largest portion of API documentation at 43.7\% \cite{monperrus2012should}. Heuristic patterns and regular expressions used from this work are the building block of API caveat contracts construction in Chapter \ref{cha:codeAnalysis}.
+The concept of mutation analysis has also been suggested for exposing API misuse by \cite{mutation-analysis}. Mutation analysis involves many, small modifications to a program called \textit{mutants} that are then executed with a given test suite. Execution data from the stack trace of these programs can then be used to determine whether a mutant introduced an API misuse and recognise patterns misuse. Finally, an example of the application of static code analysis for detecting bugs is shown by \cite{bae2014safewapi} for JavaScript web applications. Note that JavaScript is a dynamically typed programming language, but static type analysis can be used to perform type-based analysis. This uses fact that Web APIs are typically specified in a certain format known as Interface Definition Language, which exposes function semantics.
 
 \section{Summary}
-
+This chapter provides an overview of related works for API caveats, NLP applied to API documentation, and the use of static code analysis for API misuse detection. Related works that are the foundations of this thesis are identified and key terminology used is defined to avoid ambiguity for readers. In Chapter \ref{cha:infoRetrieval}, the techniques in \cite{jiamou} are applied to GitHub data to investigate linking API caveats to a different community platform domain (GitHub).
 
 

@@ -1,5 +1,6 @@
 \chapter{API Contracts Construction with Static Code Analysis}
 \label{cha:codeAnalysis}
+Section \ref{sec:contract-intro} provides background information for code contracts and an overview of the work conducted for this Chapter: constructing code contracts from API cavaeat sentences and using static code analysis to apply the contracts to code in real time. Section \ref{sec:contract-design} describes the design framework for generating and using code contracts. This includes a statistical analysis on the Java 12 API caveats, a description of the idea used for extracting information from caveat sentences for code contracts construction, and the concept of checker programs that can utilise the code contracts. Section \ref{sec:contract-implement} explains the implementation of API contracts construction and static code analysis in an IntelliJ proof-of-concept plugin. This is followed by the output of the plugin (Section \ref{sec:contract-results}) and a summary of this chapter in Section \ref{sec:contract-summary}.
 
 \section{Introduction}
 \label{sec:contract-intro}
@@ -77,9 +78,10 @@ Analysis of other categories must also be considered to determine what API contr
 The results in Table \ref{tab:caveat-sent-stats} show the size of \textit{Control} and \textit{Temporal} caveat sentences is notably small, indicating that perhaps API documents rarely contain API methods that require specific call orders or additional control structures. This is an interesting result given that 31\% of 217,818 Stack Overflow posts studied in \cite{code-examples} were found to have a potential API misuse based on the categories mentioned previously. This suggests that API documentation may not contain sufficient information for developers to handle API caveats of these categories in particular.
 
 \subsection{API Contracts Construction}
+\label{subsec:contract-construct}
 Given the results found from statistical analysis in \ref{subsec:contract-caveat-statistics}, the next step is to collect a set of API caveat sentences and attempt different approaches to extract important information for a given caveat. As a baseline study, the API caveats contained within the \textit{not-null} and \textit{range limitation} categories are the main caveats researched for this thesis. This is because the 64 heuristic rules and 29 regular expressions from \cite{zhou-directive} could be used as one approach for parsing an API caveat sentence. Their approach utilised these heuristics and regular expressions to parse the constraints of a caveat into a first-order logic (FOL) formula that can be passed to an satisfiability modulo theories (SMT) solver. However, their work (and the artefacts produced) are based on 429 documents of the JDK 1.8. In comparison to the Java 12 API documentation, 4,712 documents were data-crawled. Furthermore, large amounts of manual analysis is required to formulate these heuristic rules such that they can be generalised to multiple sentences for a given corpus. Hence, a simpler approach is proposed based on observations of the heuristics and some sample caveat sentences that are \textit{not-null} or \textit{range limitation} constraints. Thus, we can attempt to find a generalised approach for analysing sentences of these categories for different APIs and perhaps across other programming languages. \\
 
-To design a simpler method for parsing API caveats with a \textit{not-null} constraint, we observe that sentences must mention the term ``null'' to either specify if a \lstinline{null} value is allowed or not allowed in code. Furthermore, given the structural information of the Java 12 API documentation, two notable sections already exist for each method/constructor of the API: the parameter list and exceptions list. These sections contain structural consistency in their sentences which follow a template described in \ref{subsec:contract-caveat-statistics}. Therefore, it is trivial to obtain information such as the subject of a sentence can obtained without the need for dependency parsing or part-of-speech (POS) tagging. Another observation made based on the heuristics from \cite{zhou-directive} is the prevalence of the subject-object-verb (SVO) ordering for a given sentence \cite{dryer200581}. Specifically, English is known to follow SVO ordering despite other possible logical orderings such as subject-object-verb used in Japanese or subject-verb-object in Mandarin. This structure can be seen from rules 1 and 17 of \ref{app:not-null}. For rule 20, we observe the use of ``non-null` as a predicative adjective to the subject, which is the only \textit{non-null} heuristic formulated that has ``null'' appearing before the subject. The final observation for this category of caveats is that whether some parameter for an API method call can be null is a boolean condition. In other words, this category of caveats represents the simplest form of an API contract as it only needs to specify whether a null value is accepted or disallowed for some dependent API element. Given this information, a general approach to identify whether an API caveat is of the \textit{non-null} category is to first filter for caveat sentences containing the sub-string ``null''. Next, we can assume that API documentations aim to be simplistic and mentions of nullness within certain sections (i.e. exception sections) can be regarded as a ``nullness not allowed'' constraint. This is particularly true for the Java API documentation as the sentences in exception sections of methods/constructors is used to describe the conditions required for the relevant exception to be thrown. Hence, any mention of ``null'' inside this section could be assumed to indicate a null value will result in an exception. We do note however that this assumption does not necessarily hold for other API documentation. \\
+To design a simpler method for parsing API caveats with a \textit{not-null} constraint, we observe that sentences must mention the term ``null'' to either specify if a \lstinline{null} value is allowed or not allowed in code. Furthermore, given the structural information of the Java 12 API documentation, two notable sections already exist for each method/constructor of the API: the parameter list and exceptions list. These sections contain structural consistency in their sentences which follow a template described in \ref{subsec:contract-caveat-statistics}. Therefore, it is trivial to obtain information such as the subject of a sentence can obtained without the need for dependency parsing or part-of-speech (POS) tagging. Another observation made based on the heuristics from \cite{zhou-directive} is the prevalence of the subject-verb-object (SVO) ordering for a given sentence \cite{dryer200581}. Specifically, English is known to follow SVO ordering despite other possible logical orderings such as subject-object-verb used in Japanese or subject-verb-object in Mandarin. This structure can be seen from rules 1 and 17 of \ref{app:not-null}. For rule 20, we observe the use of ``non-null` as a predicative adjective to the subject, which is the only \textit{non-null} heuristic formulated that has ``null'' appearing before the subject. The final observation for this category of caveats is that whether some parameter for an API method call can be null is a boolean condition. In other words, this category of caveats represents the simplest form of an API contract as it only needs to specify whether a null value is accepted or disallowed for some dependent API element. Given this information, a general approach to identify whether an API caveat is of the \textit{non-null} category is to first filter for caveat sentences containing the sub-string ``null''. Next, we can assume that API documentations aim to be simplistic and mentions of nullness within certain sections (i.e. exception sections) can be regarded as a ``nullness not allowed'' constraint. This is particularly true for the Java API documentation as the sentences in exception sections of methods/constructors is used to describe the conditions required for the relevant exception to be thrown. Hence, any mention of ``null'' inside this section could be assumed to indicate a null value will result in an exception. We do note however that this assumption does not necessarily hold for other API documentation. \\
 
 \begin{table}[]
 	\begin{tabular}{|cc|}
@@ -105,7 +107,50 @@ To design a simpler method for parsing API caveats with a \textit{not-null} cons
 	\label{tab:range-limit-heuristic}
 \end{table}
 
-An alternative approach for parsing the \textit{non-null} and \textit{range limitation} API caveats is to utilise a sentence normalisation technique used in \cite{zhou-directive}. In particular, several regular expressions are identified by \citeauthor{zhou-directive} to perform substitutions within a sentence prior to dependency parsing. These expressions are used to detect cases such as the names of variables, classes and mathematical expressions
+An alternative approach for parsing the \textit{non-null} and \textit{range limitation} API caveats is to utilise a sentence normalisation technique used in \cite{zhou-directive}. In particular, several regular expressions are identified by \citeauthor{zhou-directive} to perform substitutions within a sentence prior to dependency parsing. These expressions are used to detect cases such as the names of variables, classes and mathematical expressions, which are replaced with a labelled word to facilitate dependency parsing. This process is a form of \textit{sentence normalisation}. However, rather than using a dependency parser in combination with manually formulated heuristic rules catered to dependency parsing output, we can simply use heuristic rules that are catered to the normalised sentences given knowledge about the structure of SVO in English sentences. For example, a sentence in the exception section of the \lstinline{ArrayBlockingQueue} constructor for class \lstinline{java.util.concurrent.ArrayBlockingQueue<E>} says:
+
+\begin{verbatim}
+IllegalArgumentException - if capacity is less than c.size(), or less than 1
+\end{verbatim}
+
+If we ignore the exception, and focus on the text after the hyphen (`-' symbol), we obtain:
+
+\begin{verbatim}
+if capacity is less than c.size(), or less than 1
+\end{verbatim}
+
+From this, we can then apply some additional heuristic rules that are loosely based on the formulated heuristics from \citeauthor{zhou-directive} and common English phrases for mathematical expressions. The rules formulated for this project are shown in \ref{tab:normalisation-regex}. In particular, these rules are used first in the normalisation process. For the given example, the first phase of normalisation results in:
+
+\begin{verbatim}
+if capacity is < c.size(), or < 1
+\end{verbatim}
+
+\begin{table}[]
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Regular Expression} & \textbf{Normalisation Form} \\ \hline
+		(not? (less|shorter) than)|((greater|larger) than or equal to) & \textgreater{}= \\ \hline
+		(not? (greater|larger|longer) than)|((less|shorter) than or equal to) & \textless{}= \\ \hline
+		(less|shorter) than & \textless{} \\ \hline
+		(greater|larger|longer) than & \textgreater{} \\ \hline
+		((is|are)? not negative)|((be)? non-negative) & \textgreater{}=0 \\ \hline
+		((is|are)? not positive)|((be)? non-positive) & \textless{}=0 \\ \hline
+		(is|are)? negative & \textless{}0 \\ \hline
+		(is|are)? positive & \textgreater{}0 \\ \hline
+		not equal( to)? & != \\ \hline
+		equal to & == \\ \hline
+	\end{tabular}
+	\caption{Regular expressions used to normalise mathematical phrases.}
+	\label{tab:normalisation-regex}
+\end{table}
+
+The second phase of sentence normalisation involves the regular expressions in \ref{tab:zhou-regex} and normalisation of additional white-space characters. This allows parsing based on heuristics that are based on the SVO structure of English rather than manual observation of Java API specific sentences used in \citeauthor{zhou-directive}. The result of this is:
+
+\begin{verbatim}
+if @PARAM1 is @EXPR1, or @EXPR2
+\end{verbatim}
+
+Here, ``@PARAM1'' represents ``capacity'', which is the first parameter of the method, and ``@EXPR1'' and ``@EXPR2'' represent the mathematical expressions within the sentence. Finally, a greedy parsing approach is used to extract the constraints from the sentence. We assume the linear nature of the SVO structure is used for most sentences, which suggests that each word of a sentence can be considered from left to right, to perform our parsing. Hence we tokenise the sentence such that we have a list of tokens and iterate over the list in a single pass. States are saved throughout the iteration process based on the token observed at each step of iteration. These states contain information such as whether a negating word (e.g. ``not'', ``false'') or expression was encountered. A simplistic rule for the parsing is to then construct a constraint whenever an expression token is encountered. The last parameter observed is then used to \textit{complete} this expression. For the given example, both ``@EXPR1'' and ``@EXPR2'' are therefore completed with ``@PARAM1'' to form the constraints $capacity<c.size()$ and $capacity<1$. We note that for the scope of this project, the rules used to construct these constraints are simplistic and only consider these mathematical constraints alongside logical ``or'' conditions as shown in the example above. API caveat sentences consist of other constraint types (such as temporal rules for API calls) that would require more complex parsing techniques. However, we mainly propose this approach as an alternative to the heuristics-based approach from \citeauthor{zhou-directive} that requires significantly more effort with manual labelling.\\
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -113,12 +158,12 @@ An alternative approach for parsing the \textit{non-null} and \textit{range limi
 	\begin{tabular}{|l|l|l|}
 		\hline
 		\textbf{Type} & \textbf{Description} & \textbf{Regular Expression} \\ \hline
-		\multirow{2}{*}{Specific Values} & 0.0, 0.1f, etc. & \textbackslash{}W(-)?{[}0-9{]}+(,{[}0-9{]}+)*((\textbackslash{}.{[}0-9{]}+)?{[}a-z{]}*)\textbackslash{}W \\ \cline{2-3} 
-		& \begin{tabular}[c]{@{}l@{}}Member value of objects \\ e.g., Location.x\end{tabular} & \textbackslash{}W(\textasciicircum{}(java\textbackslash{}.|javax\textbackslash{}.|org\textbackslash{}.))?({[}A-Za-z\_{]}+\textbackslash{}w+\textbackslash{}.)+{[}a-z\_{]}+{[}a-z0-9\_{]}*{[}\textasciicircum{}\textbackslash{}.A-Za-z0-9\_{]} \\ \hline
-		\multirow{4}{*}{Class methods and static members} & \begin{tabular}[c]{@{}l@{}}class methods,\\ e.g., ClassA.func(Param1)\end{tabular} & \textbackslash{}W{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*(\textbackslash{}.{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]})*(\#{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*)?\([^()]*\)\textbackslash{}W \\ \cline{2-3} 
-		& Static member, e.g.,  Desktop.Action\#OPEN & \textbackslash{}W({[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*(\textbackslash{}.{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]})*)?(\#{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*){[}\textasciicircum{}A-Za-z0-9\_(){]} \\ \cline{2-3} 
+		\multirow{2}{*}{\shortstack[l]{Specific\\Values}} & 0.0, 0.1f, etc. & \textbackslash{}W(-)?{[}0-9{]}+(,{[}0-9{]}+)*((\textbackslash{}.{[}0-9{]}+)?{[}a-z{]}*)\textbackslash{}W \\ \cline{2-3} 
+		& \begin{tabular}[c]{@{}l@{}}Member value of objects \\ e.g. Location.x\end{tabular} & \shortstack[l]{\textbackslash{}W(\textasciicircum{}(java\textbackslash{}.|javax\textbackslash{}.|org\textbackslash{}.))?\\({[}A-Za-z\_{]}+\textbackslash{}w+\textbackslash{}.)+{[}a-z\_{]}+{[}a-z0-9\_{]}*{[}\textasciicircum{}\textbackslash{}.A-Za-z0-9\_{]}} \\ \hline
+		\multirow{4}{*}{\shortstack[l]{Class\\methods\\and\\static\\members}} & \begin{tabular}[c]{@{}l@{}}class methods,\\ e.g., ClassA.func(Param1)\end{tabular} & \shortstack[l]{\textbackslash{}W{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*(\textbackslash{}.{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]})*\\(\#{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*)?\([^()]*\)\textbackslash{}W} \\ \cline{2-3} 
+		& \shortstack[l]{Static member,\\ e.g.  Desktop.Action\#OPEN} & \shortstack[l]{\textbackslash{}W({[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*(\textbackslash{}.{[}A-Za-z\_{]}+\\{[}A-Za-z\_0-9{]})*)?(\#{[}A-Za-z\_{]}+{[}A-Za-z\_0-9{]}*){[}\textasciicircum{}A-Za-z0-9\_(){]}} \\ \cline{2-3} 
 		& All upper case & \textbackslash{}W(\textbackslash{}w+\textbackslash{}.)*({[}A-Z{]}+\_)*{[}A-Z{]}+\textbackslash{}W \\ \cline{2-3} 
-		& Class name & \textbackslash{}W({[}A-Za-z\_{]}+\textbackslash{}w+\textbackslash{}.)*{[}A-Za-z\_{]}*{[}A-Z{]}+\textbackslash{}w+{[}\textasciicircum{}\textbackslash{}.A-Za-z0-9\_{]} \\ \hline
+		& Class name & \shortstack[l]{\textbackslash{}W({[}A-Za-z\_{]}+\textbackslash{}w+\textbackslash{}.)*{[}A-Za-z\_{]}*{[}A-Z{]}+\\\textbackslash{}w+{[}\textasciicircum{}\textbackslash{}.A-Za-z0-9\_{]}} \\ \hline
 		\multirow{11}{*}{Expressions} & A - B & \textbackslash{}W\textbackslash{}w+((\textbackslash{}s+-)|(-\textbackslash{}s+)|(\textbackslash{}s+-\textbackslash{}s+))\textbackslash{}w+\textbackslash{}W \\ \cline{2-3} 
 		& A + B & \textbackslash{}W\textbackslash{}w+\textbackslash{}s*\textbackslash{}+\textbackslash{}s*\textbackslash{}w+\textbackslash{}W \\ \cline{2-3} 
 		& A * B & \textbackslash{}W\textbackslash{}w+\textbackslash{}s*\textbackslash{}*\textbackslash{}s*\textbackslash{}w+\textbackslash{}W \\ \cline{2-3} 
@@ -137,28 +182,117 @@ An alternative approach for parsing the \textit{non-null} and \textit{range limi
 
 \subsection{Checker Programs}
 \fix{Describe IntelliJ plugin and Boa AST}
+To apply the constructed API caveat contracts to source code, it was assumed that program analysis tools exist that can utilise the caveat contracts constructed for a given API documentation. Fortunately, such tools exist and are contained within a field known as static code analysis \cite{1657940}. Static code analysis uses checkers that can perform checks on a program without executing them. A common data structure used by these tools is Abstract Syntax Trees (ASTs), which models the structure of source code as a tree. Syntactic details of the code are not represented which enable analysis of code to be significantly simpler. Consider the following code for the Euclidean algorithm:
+
+\begin{verbatim}
+while b != 0
+    if a > b
+        a := a - b
+    else
+        b := b - a
+return a
+\end{verbatim}
+
+The AST of the program is shown in \ref{fig:ast}. In particular, ASTs are can be used to extract important information such as an API call or to generate API sequence calls as shown in \cite{code-examples}. Furthermore, static code checkers can be developed that use API caveat contracts as constraints to check for within the AST of an arbitrary program. Given some API caveat contract, we could traverse the AST of a program and identify any code expressions that correspond to the relevant API call. Checking if a code contract is satisfied then requires one or more of the following processes: observing the surrounding API calls, identifying which are relevant, inspecting the various control flows of the program, evaluating expressions, and inspecting the API call arguments used.
+The IntelliJ platform was chosen for development of a proof-of-concept plugin given that it was one of the three most popular Java IDEs (next to Netbeans and Eclipse) at the time of writing and provided a simple interface for accessing the AST of Java code. IntelliJ provides an interface known as the Program Structure Interface (PSI) that allows multiple approaches to navigation of an AST, making the development of a plugin relatively simple.
+
+\begin{figure}
+	\label{fig:ast}
+	\centering
+	\includegraphics[width=0.75\textwidth]{figs/ast.png}
+	\caption{Example of an AST for the Euclidean algorithm. Copied from \url{https://en.wikipedia.org/wiki/Abstract\_syntax\_tree}}
+\end{figure}
 
 \section{Implementation}
 \label{sec:contract-implement}
+Implementation of the Java 12 API caveat contract construction was completed purely using Python 3.6 and its standard libraries. The contracts generated were exported as a JSON array to be used in other applications (i.e. plugin) and can be found in the project repository (\url{./exception_range_rules_filtered.json}). The IntelliJ plugin was developed in Java 11.
 
 \subsection{Java API Caveat Contracts}
 \label{subsec:contract-caveat-contracts}
-\fix{Describe contract construction in Python}
+The JSON objects for caveats of the Java 12 classes were reused from \ref{subsec:info-caveat-extract} and loaded as a Pandas library \lstinline{DataFrame} object. The object consisted of rows of individual caveats while the columns represented various information about a caveat such as the sentence involved and which class it belonged to. This allowed filtering functions to be easily applied such that a subset of the caveats could be selected based on some condition. Constructing the caveat contracts involved following the algorithm described in \ref{subsec:contract-construct}. In particular, the regular expressions in \ref{tab:zhou-regex} and \ref{tab:normalisation-regex} were written in Python's \lstinline{re} library syntax. In addition to the algorithm described in \ref{subsec:contract-construct}, a simpler approach was also considered for \textit{not-null} caveats. From observation of the exception level sentences of the Java 12 documentation, it was found that any mention of the term ``null'' would usually imply an exception to be thrown if some parameter was \lstinline{null}. Therefore, an approach to capture all \textit{non-null} caveats for exception level sentences involves a sub-string check to see if ``null'' appears within the sentence. It was assumed that the same logic could be applied to the caveat categories of interest (\textit{range limitation} and \textit{type restriction}). Furthermore, it was noted that these caveat sentences would require certain key terms to be considered at all for a category (e.g. ``null'' would have to appear within a sentence to specify whether \lstinline{null} is allowed or not). 
+Generalised regular expressions were then used to filter the caveat sentences into whether they potentially belonged to one of the caveat categories of interest. For example, to collect caveats that potentially issued a \textit{non-null} constraint, ``null'' was used as a search term and the sentence was considered if it contained the sub-string ``null''. The complete list of regular expressions used can be found in the \url{APIDoc2Rules.ipynb} Jupyter notebook. Applying these filters resulted in significantly smaller sets of caveat sentences that required manual labelling to determine what constraints they described for future contract construction. Specifically, the unique potential \textit{not-null} exception and parameter sentences totalled 835 and 193 respectively. For the \textit{range limitation} category, the exception and parameter sentences totalled 193 and 149 respectively. Given the small sets of sentences obtained, a random sample of size 100 was collected for each group/filter. For the \textit{not-null} categories of exception and parameter sentences, the subject parameter of the constraint was labelled. As an example, for the sentence ``prefix - the prefix of the tag, may not be null'', \textit{prefix} would be marked as the constraint subject. Note that the parameter sentences follow a template as described in \ref{subsec:contract-caveat-statistics} which makes extracting the relevant parameter trivial whereas for an exception sentence such as ``if the specified sorted set is null'' from the constructor of the \lstinline{java.util.TreeSet<E>} class, parsing is harder given that the name of the relevant parameter (``s'' in this case) is not used.
+
+For the \textit{range limitation} sentences, the constraints were expressed as a mathematical expression. An example of this is with the sentence ``IllegalArgumentException - if iv is null or (iv.length - offset < 2 * (wordSize / 8))'' from the \lstinline{RC5ParameterSpec} constructor of the \lstinline{javax.crypto.spec.RC5ParameterSpec} class, the constraint of the sentence would be identified as $iv.length-offset<2*(wordSize/8)$. After manual labelling, 90\% of the 100 random parameter sentences filtered for \textit{not-null} were found to actually describe a \textit{not-null} constraint. For the exception level sentences, 87\% were found to describe a \textit{not-null} constraint. Moreoever, for the \textit{range-limitation} samples, 49\% and 72\% of the parameter and exception sentences were found to express an range limitation constraint, respectively. These results reveal that using basic sub-string searches for \textit{not-null} constraints is a viable approach for the Java 12 API documentation, while more complex approaches are required for identifying (and extracting) \textit{range limitation} caveats. Applying the sentence normalisation algorithm described in \ref{subsec:contract-construct}, the constraints were found to be correctly extracted for 41 of the 72 API caveat sentences with a range limitation constraint in the sample. An additional 13 caveat sentences were partially able to extract the correct constraints (which would also cause an exception to be thrown). Overall, the results are represented in terms of a confusion matrix in \ref{tab:conf-mat} to allow computation of accuracy, and F-measure. It can be seen that the true positive (TP) is 54, true negative (TN) is 25, false positive (FN) is 2, and the false negative is 19. Using the equations \ref{accuracy}, \ref{recall}, \ref{precision} and \ref{f-measure}, the accuracy is 0.77, recall is 0.73, precision is 0.96 and F1 score is 0.83. These results suggest that applying sentence normalisation is a viable approach for extracting constraints from sentences that describe exceptions thrown under certain conditions (or at least for the Java 12 API documentation). These extracted constraints were then used to represent API caveat contracts in static code analysis. Each caveat contract consisted of the full class name of the associated API caveat, the method name and its signature (containing its return type and list of parameters), and the constraint for one of the parameters. Overall, 4,694 unique contracts were constructed for the Java 12 API documentation using the sentence normalisation algorithm proposed (in regards to \textit{not-null} or \textit{range limitation} constraints).
+
+\begin{table}[]
+	\begin{tabular}{l|l|l|}
+		\cline{2-3}
+		& \textbf{Predicted Non-constraint} & \textbf{Predicted Constraint} \\ \hline
+		\multicolumn{1}{|l|}{\textbf{Actual Non-constraint}} & 25 & 2 \\ \hline
+		\multicolumn{1}{|l|}{\textbf{Actual Constraint}} & 19 & 54 \\ \hline
+	\end{tabular}
+	\caption{Confusion matrix for the sentence normalisation approach proposed.}
+	\label{tab:conf-mat}
+\end{table}
+
+\begin{equation}
+\label{accuracy}
+\text{accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+
+\begin{equation}
+\label{recall}
+\text{recall}=\frac{TP}{TP + FN}
+\end{equation}
+
+\begin{equation}
+\label{precision}
+\text{precision}=\frac{TP}{TP + FP}
+\end{equation}
+
+\begin{equation}
+\label{f-measure}
+\text{F1}=\frac{2\cdot recall\cdot precision}{recall + precision}
+\end{equation}
 
 \subsection{IntelliJ Plugin with Static Code Analysis}
 \label{subsec:contract-plugin}
-\fix{Explain IntelliJ plugin and Boa AST code}
-
-\subsection{Boa Programming Language \& API Call Sequence Mining}
-\label{subsec:contract-boa}
-\fix{Maybe remove this section if it doesn't add much}
+IntelliJ's PSI provides the \lstinline{AbstractBaseJavaLocalInspectionTool} class that can be extended for creating plugins involving static code analysis. This was used to define a \textit{visitor} that would traverse the AST of a program periodically. In addition to this, classes were defined for the concepts of an API method, API class, caveat, and for storing a collection of all caveat contracts loaded from \ref{subsec:contract-caveat-contracts}. Java's \lstinline{HashMap} was used as the underlying data structure for storing the caveat contracts. This tree-like structure allowed searching for the contracts of an arbitrary method to consist of two simple steps: obtaining the methods attached to a certain class (via the full class name as a hash), finding the correct method by searching through the associated list of methods. It is noted that further optimisations could be used in the future to quicken the retrieval of contracts for a given API method such as using the hash of the method signature to map directly to its caveat contracts. However, a simple design was chosen given that the plugin was a proof-of-concept application. Overall, the code analysis process involved implementing the visit function for the visitor such that each expression call in the program would be analysed. Specifically, the full class name, method name and argument types would be identified. The caveat contracts associated to the API call would then be retrieved. Each caveat contract would then be invoked and checked given the argument values provided to the API call. For the \textit{not-null} constraints, this check simply required comparing the argument values to \lstinline{null}. For the \textit{range limitation} constraints, the logical operators ($<$, $\leq$, etc.) were also included alongside the comparing value in the contracts constructed from \ref{subsec:contract-caveat-contracts}. This meant that an SMT solver was not required and we could simply applying the range constraints in Java code, though an SMT solver could be used in future for more complex constraints. We also note here that as baseline checker program, we only analyse argument values passed directly to an API call. Furthermore, the caveat categories of interest for this thesis are \textit{not-null} and \textit{range limitation}, which do not require further analysis of a program's AST even though more complex analysis can be conducted (such as evaluating expressions/variables that are passed as arguments to an API call). IntelliJ's PSI then provides the functionality to register a problem that will be displayed within the code editor of the IDE. Each caveat contract that was found to be violated would then result in a problem to be registered for the associated API call.
 
 \section{Results}
 \label{sec:contract-results}
+From the construction of API caveat contracts for the Java 12 API documentation, and from the checker plugin implemented for IntelliJ, a proof-of-concept for applying natural language to source code was completed. To showcase an example of the plugin's functionalities, \ref{fig:plugin-inspection-off} illustrates several constraint-violating API calls for Java 12 API elements in IntelliJ. Using the plugin, the result is each constraint-violation is highlighted in IntelliJ with red squiggly lines as shown in \ref{fig:plugin-inspection-on}. Hovering the cursor over any of these highlighted problems will bring show a pop-up that provides more detailed information about the caveat contract violation. An example of this is shown in \ref{fig:plugin-problem}. In these examples, IntelliJ version 2018.2.4 (community edition) was used.
 
-\fix{Add screenshots of the IntelliJ plugin and table of results for potential errors from Boa}
+\begin{figure}
+	\label{fig:plugin-inspection-off}
+	\centering
+	\includegraphics[width=0.85\textwidth]{figs/plugin-inspection-off.png}
+	\caption{Example of IntelliJ's (lack of) problem highlights for obvious constraint violations.}
+\end{figure}
+
+\begin{figure}
+	\label{fig:plugin-inspection-on}
+	\centering
+	\includegraphics[width=0.85\textwidth]{figs/plugin-inspection-on.png}
+	\caption{Example of how the developed plugin handles API caveat contract violations.}
+\end{figure}
+
+\begin{figure}
+	\label{fig:plugin-problem}
+	\centering
+	\includegraphics[width=0.3\textwidth]{figs/plugin-problem.png}
+	\caption{Example of displayed problem message for an API caveat contract violation using the plugin.}
+\end{figure}
+
+It is noted that IntelliJ does implement its own version of contracts that require annotations following a specific syntax within the IDE. However, these contracts must be manually implemented for each method and were found to be mostly inconsistent. An example of this inconsistency is shown in \ref{fig:intellij-inspection-on} and \ref{fig:intellij-inspection-off}. In \ref{fig:intellij-inspection-on}, a \textit{not-null} constraint is violated for the \lstinline{isAfter} API call and correctly highlighted by IntelliJ's contracts. In \ref{fig:intellij-inspection-off}, another \textit{not-null} constraint is violated for the \lstinline{add} method of a \lstinline{PriorityQueue} object, which throws a \lstinline{NullPointerException} if executed. Hence, it can be seen that the code contracts implementation has two major drawbacks: it requires manual implementation of IntelliJ contracts for each method, and it is inconsistent (potentially as a result of the first problem). The plugin implemented is able to solve the first problem by automating the process of mapping sentences from the Java 12 API documentation to custom caveat contracts. Furthermore, it is able to solve the second problem with manual intervention as constraints for each individual API element are extracted and parsed into caveat contracts.
+
+\begin{figure}
+	\label{fig:intellij-inspection-on}
+	\centering
+	\includegraphics[width=0.5\textwidth]{figs/intellij-inspection-on.png}
+	\caption{Example of IntelliJ's contracts.}
+\end{figure}
+
+Overall, the plugin in its current iteration is able to highlight the explicit contract violations from the Java 12 API documentation related to \textit{not-null} or \textit{range limitation} constraints. It is clear that with the addition of other categories of API caveats mapped to contracts, the plugin could be used to highlight many errors and problems for developers in real-time, which could minimise API misuse and help developers learn correct usage of an API. In terms of constructing caveat contracts, further research could yield methods that both improve the precision and recall of constraints extraction. It could also be used to bridge the gap between developers of an API and users of the given APIs such that API misuses can be minimised. In terms of static code analysis, the plugin shows that natural language can be applied to source code to improve understanding of an API, avoid API misuses and potentially increase efficiency of learning/development for programmers.
+
+\begin{figure}
+	\label{fig:intellij-inspection-off}
+	\centering
+	\includegraphics[width=0.5\textwidth]{figs/intellij-inspection-off.png}
+	\caption{Example of IntelliJ's contract inconsistency.}
+\end{figure}
 
 \section{Summary}
 \label{sec:contract-summary}
-Same as the last chapter, summary what you discussed in this chapter and
-be the bridge to next chapter.
+This chapter focused on the concept of code contracts and associated it to API caveats. The idea of transforming API caveats to contracts was presented and implemented for a subset of API caveats that were related to \textit{not-null} and \textit{range limitation} constraints. A statistical analysis was also performed to determine the prevalence of these categories of caveats in the Java 12 API documentation. It was found that 20\% of unique API caveat sentences appearing in the exception sections of the documentation imposed a \textit{not-null} constraint. For the \textit{range limitation} category, 13\% of unique API caveat sentences were found to describe a constraint involving range. These categories were chosen for investigation and implementation of code contracts as they were explicit constraints that would result in an exception and could be considered the baseline API caveats for mapping natural language to code contracts. Furthermore, a sentence normalisation algorithm was proposed for extracting the range constraints from sentences and used to construct 4,694 unique contracts. Design and implementation of a proof-of-concept IntelliJ plugin that acted as checker for the the caveat contracts was also presented. The potential of this approach for linking natural language to source code was also discussed. In particular, the plugin showcases that API misuses could be detected in real-time, improve understanding of APIs and direct developers to correct usage of an API.\\
+In Chapter \ref{cha:conc}, the findings of this thesis are summarised and ideas for future work are presented. Lastly, some final remarks about the research focus of this thesis are expressed.
