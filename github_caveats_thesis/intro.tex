@@ -5,6 +5,7 @@ An Application Programming Interface (API) provides a set of functions to intera
 \section{Motivation}
 Suppose a developer was starting their journey on learning Java. A topic that may pique their interest is file handling or how to read text files in particular. A common strategy involves inputting a search query such as ``java how to read files'' into Google. The first result of this is a tutorial webpage by GeeksforGeeks\footnote{https://www.geeksforgeeks.org/different-ways-reading-text-file-java/} that provides multiple methods and examples for reading a file in Java. The first example shown in Listing \ref{lst:code-example}.
 
+\centering
 \begin{lstlisting}[tabsize=4,caption={File reading java code example from GeeksforGeeks},label={lst:code-example}]
 // Java Program to illustrate reading from FileReader 
 // using BufferedReader 
@@ -26,6 +27,7 @@ public class ReadFromFile2
 	} 
 } 
 \end{lstlisting}
+\flushleft
 
 At this point, the next step a developer might take is to copy the code shown in Listing \ref{lst:code-example} into their program. Pleased with their clever thinking, the developer might try to execute their program, only to find a \lstinline{FileNotFoundException} is thrown. This is because the file path in the \lstinline{File} constructor call has not been changed to the appropriate file path on their system. In an Integrated Development Environment (IDE) such as IntelliJ,  information about the exception would also be exposed. This includes the associated line number in which the exception was thrown. However, this reveals a confounding result: the exception is not associated with the \lstinline{File} constructor (where the file path is set), but with the \lstinline{FileReader} constructor from line 13. In other words, the file path appears to be accepted by \lstinline{File} but not by \lstinline{FileReader}. A logical step would then involve searching for the reference documentation of these Java classes\footnote{https://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html \\\indent https://docs.oracle.com/javase/7/docs/api/java/io/File.html}. By reading the documentation of \lstinline{FileReader}'s constructor, the developer will discover a line that says ``Throws: FileNotFoundException - if the file does not exist, is a directory rather than a regular file, or for some other reason cannot be opened for reading''. Also checking the documentation of \lstinline{File}'s constructor, they will find that such warning is provided. Rather, they may notice that \lstinline{File} contains a \lstinline{exists()} method used to verify whether a file exists \textit{after} instantiating the \lstinline{File} object. Only after this arduous process does the developer understand the source of the problem encountered alongside correct usage \lstinline{File} and \lstinline{FileReader} for reading files.\\
 Although the above example presents a simplistic view of how a new developer might approach learning a new API, we observe the constraints associated with an API introduce a significant problem for all programmers. This problem lies in the fact that ``you don't know what you don't know'', meaning the usage of an API requires a considerable understanding of the different components involved alongside how its functions will behave in different scenarios. This is a time-consuming endeavour given the number and complexity of different APIs.\\
@@ -97,11 +99,11 @@ Other challenges for this thesis are challenges involved with static code analys
 An overview of API caveats and the background work of this thesis is described in Chapter \ref{cha:background}. Chapter \ref{cha:infoRetrieval} extends upon the work of \cite{jiamou} and \cite{xiaoxue} for linking API caveat sentences to code examples in a different domain: GitHub. A more direct approach for linkage is described in Chapter \ref{cha:codeAnalysis} with the construction of caveat contracts and static code analysis. In Chapter \ref{cha:conc}, the findings of this thesis are discussed with remarks for future work.
 
 \section{Main Contributions}
-The main contributions of Chapter \ref{cha:infoRetrieval} is the discovery of a significant lexical gap for community text from GitHub and (Java 12) API caveat sentences. This impedes previous approaches used for linking API caveats to code examples.\\
+The main contributions of Chapter \ref{cha:infoRetrieval} is the discovery of a significant lexical gap between community text from GitHub and (Java 12) API caveat sentences, which impedes previous approaches used for linking API caveats to code examples.\\
 
 \noindent
 The main contributions of Chapter \ref{cha:codeAnalysis} are:
 \begin{itemize}
-	\item Parsing of a subset of API caveats that result in exceptions to formulate code contracts.
-	\item A tool implementation that uses static code analysis to automatically check code contract compliance in real time.
+	\item Parsing of a subset of API caveats from the Java 12 API that result in exceptions to formulate caveat contracts.
+	\item Implementation of a checker program (IntelliJ plugin) that uses static code analysis to automatically check caveat contract compliance in real time.
 \end{itemize}
