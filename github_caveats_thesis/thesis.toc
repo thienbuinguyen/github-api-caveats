@@ -8,7 +8,8 @@
 \contentsline {chapter}{\numberline {2}Related Work}{7}{chapter.2}
 \contentsline {section}{\numberline {2.1}API Caveats}{7}{section.2.1}
 \contentsline {section}{\numberline {2.2}Natural Language Processing for API Documents}{8}{section.2.2}
-\contentsline {section}{\numberline {2.3}Summary}{9}{section.2.3}
+\contentsline {section}{\numberline {2.3}Code Analysis Applications with API Documents}{9}{section.2.3}
+\contentsline {section}{\numberline {2.4}Summary}{9}{section.2.4}
 \contentsline {chapter}{\numberline {3}Locating API Misuse Examples in GitHub Data}{11}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introduction}{11}{section.3.1}
 \contentsline {section}{\numberline {3.2}Design}{12}{section.3.2}
