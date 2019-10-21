@@ -1,16 +1,19 @@
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Example of a caveat for \lstinline {String.indexOf(int n)} alongside relevant Stack Overflow/GitHub comments.}}{3}{table.1.1}
+\contentsline {table}{\numberline {1.2}{\ignorespaces Example of a caveat for \lstinline {ArrayList.subList(int fromIndex, int toIndex)} alongside relevant Stack Overflow/GitHub comments.}}{4}{table.1.2}
+\contentsline {table}{\numberline {1.3}{\ignorespaces Example of a caveat for \textbackslash {}lstinline\{HashMap.size()\} alongside relevant Stack Overflow/GitHub comments.}}{4}{table.1.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces API caveat categories and syntactic patterns from \cite {caveat-knowledge-graph}.}}{16}{table.3.1}
+\contentsline {table}{\numberline {3.1}{\ignorespaces API caveat categories and syntactic patterns from \cite {caveat-knowledge-graph}.}}{17}{table.3.1}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Manually labelled results for classes of 336 randomly sampled parameter level caveat sentences.}}{28}{table.4.1}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Manually labelled results for classes of 356 randomly sampled exception level caveat sentences.}}{28}{table.4.2}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Manually labelled categories for caveat sentences found in different locations of the Java 12 API documentation.}}{29}{table.4.3}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Example of 3 of 20 heuristic rules for nullness not allowed from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:not-null-heuristic} (Appendix).}}{31}{table.4.4}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Example of 3 of 23 heuristic rules for range limitations from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:range-limit-heuristic} (Appendix).}}{31}{table.4.5}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Regular expressions used to normalise mathematical phrases.}}{32}{table.4.6}
-\contentsline {table}{\numberline {4.7}{\ignorespaces The regular expressions identified in \textbackslash {}cite\{\} for sub-sentence substitutions and dependency parsing.}}{33}{table.4.7}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Confusion matrix for the sentence normalisation approach proposed.}}{37}{table.4.8}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Manually labelled results for classes of 336 randomly sampled parameter level caveat sentences.}}{29}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Manually labelled results for classes of 356 randomly sampled exception level caveat sentences.}}{29}{table.4.2}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Manually labelled categories for caveat sentences found in different locations of the Java 12 API documentation.}}{30}{table.4.3}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Example of 3 of 20 heuristic rules for nullness not allowed from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:not-null-heuristic} (Appendix).}}{32}{table.4.4}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Example of 3 of 23 heuristic rules for range limitations from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:range-limit-heuristic} (Appendix).}}{32}{table.4.5}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Regular expressions used to normalise mathematical phrases.}}{33}{table.4.6}
+\contentsline {table}{\numberline {4.7}{\ignorespaces The regular expressions identified in \textbackslash {}cite\{\} for sub-sentence substitutions and dependency parsing.}}{34}{table.4.7}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Confusion matrix for the sentence normalisation approach proposed.}}{38}{table.4.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {6.1}{\ignorespaces Complete list of heuristic rules for exception nullness not allowed.}}{47}{table.6.1}

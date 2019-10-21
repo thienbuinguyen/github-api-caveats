@@ -1,6 +1,18 @@
 \chapter{Locating API Misuse Examples in GitHub Data}
 \label{cha:infoRetrieval}
-Section \ref{sec:info-intro} provides an overview of linking API caveats to code examples on Q\&A websites and the same approach applied to GitHub for this thesis. Section \ref{sec:info-design} describes the use of TF-IDF, word2vec and BM25 as information retrieval systems. This is followed by the extraction of GitHub data and API caveats from the Java 12 API documentation (Section \ref{sec:info-implement}). The complete process used for sentence matching of GitHub comment sentences and the Java 12 API caveat sentences is also described. Finally, Section \ref{sec:info-results} describes the results of sentence matching and Section \ref{sec:info-summary} summarises the findings of this chapter.
+This chapter describes the process used for extracting caveats from the Java 12 API documentation, extracting GitHub community text, and linking the two via NLP techniques and construction of information retrieval systems. However, this approach is found to unsuccessful when applied to GitHub data, and is therefore documented as a reference and bridge for the alternative approach used in Chapter \ref{cha:codeAnalysis}. \\
+
+\noindent
+Section \ref{sec:info-intro} provides an overview of linking API caveats to code examples on Q\&A websites and the same approach applied to GitHub for this thesis. \\
+
+\noindent
+Section \ref{sec:info-design} describes the use of TF-IDF, word2vec and BM25 as information retrieval systems.\\
+
+Section \ref{sec:info-implement} discuses the implementation of the approach, which consists of the 
+the extraction of GitHub data and API caveats from the Java 12 API documentation. The complete process used for sentence matching of GitHub comment sentences and the Java 12 API caveat sentences is also included. \\
+
+\noindent
+Section \ref{sec:info-results} describes the results of sentence matching. \\
 
 \section{Introduction}
 \label{sec:info-intro}
@@ -9,7 +21,14 @@ I extract 1,855,870 GitHub comments related to Java throughout 2018 via the GitH
 
 \section{Design}
 \label{sec:info-design}
-Section \ref{subsec:info-tfidf} provides an overview of the TF-IDF statistic and its use in information retrieval, followed by a description of the word2vec model for sentence embedding (Section \ref{subsec:info-w2v}) and Okapi BM25 function (Section \ref{subsec:info-bm25}). For the purposes of this thesis, \textit{documents} is used interchangeably with \textit{sentences} and \textit{terms} is used interchangeably with \textit{words}.
+Section \ref{subsec:info-tfidf} provides an overview of the TF-IDF statistic and its use in information retrieval, followed by a description of the word2vec model for sentence embedding (Section \ref{subsec:info-w2v}) and Okapi BM25 function (Section \ref{subsec:info-bm25}). For the purposes of this thesis, \textit{documents} is used interchangeably with \textit{sentences} and \textit{terms} is used interchangeably with \textit{words}. An architecture design overview of this chapter is shown in Figure \ref{fig:github-architecture}. Note that this resembles the architecture overview of \cite{jiamou}, but attempts additional approaches for \textit{Candidate Matching} in the \textit{Matching Phase}.
+
+\begin{figure}
+	\label{fig:github-architecture}
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/github-architecture.pdf}
+	\caption{Architecture design of the work for this chapter.}
+\end{figure}
 
 \subsection{TF-IDF Sentence Matching}
 \label{subsec:info-tfidf}
