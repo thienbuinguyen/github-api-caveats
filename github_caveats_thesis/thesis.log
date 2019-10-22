@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.22)  22 OCT 2019 13:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.22)  22 OCT 2019 15:20
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -998,122 +998,140 @@ nput line 9.
 [1
 
 ] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 52--52
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--54
 [][]\T1/pplx/m/n/9 https://stackoverflow.com/questions/10859633/java-string-ind
 ex-out-of-range-1-exception-using-
  []
 
-[3pdfTeX warning (ext4): destination with the same identifier (name{table.1.1})
- has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.67 \end{table}
-                ]
-Underfull \hbox (badness 10000) in paragraph at lines 69--69
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
 [][]\T1/pplx/m/n/9 https://stackoverflow.com/questions/37256605/why-does-arrayl
 ist-sublist0-n-return-a-list-of-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--86
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--88
 [][]\T1/pplx/m/n/9 https://stackoverflow.com/questions/5283294/can-a-java-hashm
 aps-size-be-out-of-sync-with-its-
  []
 
-
-Underfull \vbox (badness 1997) has occurred while \output is active []
-
- [4pdfTeX warning (ext4): destination with the same identifier (name{table.1.2}
-) has been already used, duplicate ignored
+[3] [4pdfTeX warning (ext4): destination with the same identifier (name{table.1
+.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.90 ... learn important features of sentences. \\
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{table.1.3}) has been already used, duplica
-te ignored
+l.94 ...parsing and static code analysis.\bigbreak
+                                                  ] [5pdfTeX warning (ext4): de
+stination with the same identifier (name{table.1.2}) has been already used, dup
+licate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.90 ... learn important features of sentences. \\
-                                                  ]
-Underfull \vbox (badness 2922) has occurred while \output is active []
+l.99 
+     ]) (background.tex [6pdfTeX warning (ext4): destination with the same iden
+tifier (name{table.1.3}) has been already used, duplicate ignored
 
- [5])
-(background.tex [6]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Related Work}]
 Chapter 2.
 [7
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1014) has occurred while \output is active []
 
- [8])
-(infoRetrieval.tex [9] [10
-
-]
+ [8]
+[9]) (infoRetrieval.tex [10]
 Chapter 3.
-[11]
-<figs/github-architecture.pdf, id=617, 542.025pt x 352.43669pt>
+[11
+
+] [12]
+<figs/github-architecture.pdf, id=621, 542.025pt x 352.43669pt>
 File: figs/github-architecture.pdf Graphic file (type pdf)
 <use figs/github-architecture.pdf>
-Package pdftex.def Info: figs/github-architecture.pdf  used on input line 30.
+Package pdftex.def Info: figs/github-architecture.pdf  used on input line 32.
 (pdftex.def)             Requested size: 329.14275pt x 214.02345pt.
- [12] [13pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.3.1}) has been already used, duplicate ignored
+
+Underfull \vbox (badness 2828) has occurred while \output is active []
+
+ [13pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.47 
-      <./figs/github-architecture.pdf
+l.44 \end{equation}
+                    <./figs/github-architecture.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figs/github-architecture.pdf): PDF inclusi
 on: invalid other resource which is no dict (key 'ProcSets', type <array>); ign
 ored.
->] [14] [15] [16]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 98.
- [17pdfTeX warning (ext4): destination with the same identifier (name{table.3.1
-}) has been already used, duplicate ignored
+>]
+Underfull \vbox (badness 2103) has occurred while \output is active []
+
+ [14]
+[15] [16] [17] [18pdfTeX warning (ext4): destination with the same identifier (
+name{table.3.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.103 
-      ] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 123--123
+l.107 ...ments from initial observation. \bigbreak
+                                                  ]
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
  []|\T1/pplx/m/n/10.95 Listing 3.2: An ex-am-ple of a caveat sen-tence ex-tract
 ed from the 
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 123--123
+Underfull \hbox (badness 3942) in paragraph at lines 124--124
  [][][][][][][][][] \T1/pplx/m/n/10.95 doc-u-men-ta-tion ex-plain-ing the struc
 -ture of a 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--144
+Underfull \hbox (badness 10000) in paragraph at lines 145--145
  []|\T1/pplx/m/n/10.95 Listing 3.3: An ex-am-ple of a caveat sen-tence ex-tract
 ed from the 
  []
 
 
-LaTeX Warning: Reference `adi2016fine' on page 19 undefined on input line 166.
+LaTeX Warning: Reference `adi2016fine' on page 19 undefined on input line 167.
 
-[19] [20]
+
+Underfull \vbox (badness 1484) has occurred while \output is active []
+
+ [19]
+[20]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 176.
 
+[21]
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
 (Font)              scaled to size 8.09995pt on input line 183.
-[21] [22] [23]) (codeAnalysis.tex [24]
+ [22]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23])
+(codeAnalysis.tex [24]
 Chapter 4.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 15.
 [25
 
 ]
-<figs/contract-architecture.pdf, id=845, 521.0667pt x 313.17pt>
+<figs/contract-architecture.pdf, id=844, 521.0667pt x 313.17pt>
 File: figs/contract-architecture.pdf Graphic file (type pdf)
 <use figs/contract-architecture.pdf>
 Package pdftex.def Info: figs/contract-architecture.pdf  used on input line 31.
@@ -1135,7 +1153,7 @@ pdfTeX warning: pdflatex.exe (file ./figs/contract-architecture.pdf): PDF inclu
 sion: invalid other resource which is no dict (key 'ProcSets', type <array>); i
 gnored.
 >]
-<figs/api-doc-charAt.png, id=884, 999.735pt x 595.22375pt>
+<figs/api-doc-charAt.png, id=883, 999.735pt x 595.22375pt>
 File: figs/api-doc-charAt.png Graphic file (type png)
 <use figs/api-doc-charAt.png>
 Package pdftex.def Info: figs/api-doc-charAt.png  used on input line 51.
@@ -1218,7 +1236,7 @@ Overfull \hbox (102.25645pt too wide) in paragraph at lines 177--198
                                                   \fi \fi 
 l.213 \end{verbatim}
                     ]
-<figs/ast.png, id=974, 803.0pt x 906.38625pt>
+<figs/ast.png, id=973, 803.0pt x 906.38625pt>
 File: figs/ast.png Graphic file (type png)
 <use figs/ast.png>
 Package pdftex.def Info: figs/ast.png  used on input line 221.
@@ -1240,19 +1258,19 @@ Underfull \vbox (badness 5681) has occurred while \output is active []
                                                   \fi \fi 
 l.270 
       ]
-<figs/plugin-inspection-off.png, id=1018, 1101.11375pt x 435.6275pt>
+<figs/plugin-inspection-off.png, id=1017, 1101.11375pt x 435.6275pt>
 File: figs/plugin-inspection-off.png Graphic file (type png)
 <use figs/plugin-inspection-off.png>
 Package pdftex.def Info: figs/plugin-inspection-off.png  used on input line 278
 .
 (pdftex.def)             Requested size: 349.71533pt x 138.3534pt.
-<figs/plugin-inspection-on.png, id=1019, 1096.095pt x 441.65pt>
+<figs/plugin-inspection-on.png, id=1018, 1096.095pt x 441.65pt>
 File: figs/plugin-inspection-on.png Graphic file (type png)
 <use figs/plugin-inspection-on.png>
 Package pdftex.def Info: figs/plugin-inspection-on.png  used on input line 285.
 
 (pdftex.def)             Requested size: 349.71533pt x 140.91306pt.
-<figs/plugin-problem.png, id=1020, 464.73625pt x 116.435pt>
+<figs/plugin-problem.png, id=1019, 464.73625pt x 116.435pt>
 File: figs/plugin-problem.png Graphic file (type png)
 <use figs/plugin-problem.png>
 Package pdftex.def Info: figs/plugin-problem.png  used on input line 292.
@@ -1264,7 +1282,7 @@ Package pdftex.def Info: figs/plugin-problem.png  used on input line 292.
                                                   \fi \fi 
 l.297 
        <./figs/plugin-inspection-off.png>]
-<figs/intellij-inspection-on.png, id=1031, 672.5125pt x 97.36375pt>
+<figs/intellij-inspection-on.png, id=1030, 672.5125pt x 97.36375pt>
 File: figs/intellij-inspection-on.png Graphic file (type png)
 <use figs/intellij-inspection-on.png>
 Package pdftex.def Info: figs/intellij-inspection-on.png  used on input line 30
@@ -1290,7 +1308,7 @@ l.306
 l.306 
        <./figs/plugin-inspection-on.png> <./figs/plugin-problem.png> <./figs/in
 tellij-inspection-on.png>]
-<figs/intellij-inspection-off.png, id=1039, 747.79375pt x 56.21pt>
+<figs/intellij-inspection-off.png, id=1038, 747.79375pt x 56.21pt>
 File: figs/intellij-inspection-off.png Graphic file (type png)
 <use figs/intellij-inspection-off.png>
 Package pdftex.def Info: figs/intellij-inspection-off.png  used on input line 3
@@ -1363,7 +1381,7 @@ Overfull \hbox (6.40663pt too wide) in paragraph at lines 80--87
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figs/study-contract.pdf, id=1103, page=1, 597.55246pt x 845.07718pt>
+<figs/study-contract.pdf, id=1102, page=1, 597.55246pt x 845.07718pt>
 File: figs/study-contract.pdf Graphic file (type pdf)
 <use figs/study-contract.pdf, page 1>
 Package pdftex.def Info: figs/study-contract.pdf , page1 used on input line 94.
@@ -1386,20 +1404,20 @@ plicate ignored
                                                   \fi \fi 
 l.94 ...xtwidth]{figs/study-contract.pdf} \newpage
                                                    <./figs/study-contract.pdf>]
-<figs/study-contract.pdf, id=1155, page=2, 597.50731pt x 845.04607pt>
+<figs/study-contract.pdf, id=1154, page=2, 597.50731pt x 845.04607pt>
 File: figs/study-contract.pdf Graphic file (type pdf)
 <use figs/study-contract.pdf, page 2>
 Package pdftex.def Info: figs/study-contract.pdf , page2 used on input line 95.
 
 (pdftex.def)             Requested size: 329.14275pt x 465.49886pt.
 [50 <./figs/study-contract.pdf, page is rotated 180 degrees>]
-<figs/examiner.pdf, id=1163, page=1, 597.19106pt x 845.07718pt>
+<figs/examiner.pdf, id=1162, page=1, 597.19106pt x 845.07718pt>
 File: figs/examiner.pdf Graphic file (type pdf)
 <use figs/examiner.pdf, page 1>
 Package pdftex.def Info: figs/examiner.pdf , page1 used on input line 97.
 (pdftex.def)             Requested size: 329.14275pt x 465.761pt.
  [51 <./figs/examiner.pdf>]
-<figs/examiner.pdf, id=1201, page=2, 597.19106pt x 845.07718pt>
+<figs/examiner.pdf, id=1200, page=2, 597.19106pt x 845.07718pt>
 File: figs/examiner.pdf Graphic file (type pdf)
 <use figs/examiner.pdf, page 2>
 Package pdftex.def Info: figs/examiner.pdf , page2 used on input line 98.
@@ -1420,9 +1438,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 12A46528E4647D58B84D90A6395D4792;3104.
+(rerunfilecheck)             Checksum: 6102327225738C0F2DE641AFB6CD0568;3113.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: E9500821FDB148DEE030049EF4ED252D;6840.
+(rerunfilecheck)             Checksum: 425F84FE6C5DE6F78E57DB4597C93CE1;6841.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1433,10 +1451,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  ) 
 Here is how much of TeX's memory you used:
- 22996 strings out of 492453
- 412046 string characters out of 3129819
+ 22987 strings out of 492453
+ 411851 string characters out of 3129819
  700681 words of memory out of 3000000
- 26560 multiletter control sequences out of 15000+200000
+ 26552 multiletter control sequences out of 15000+200000
  78292 words of font info for 128 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,21n,85p,2850b,1447s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1451,9 +1469,9 @@ s/MiKTeX 2.9/fonts/type1/bera/fvmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/urw/palatino/uplb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatin
 o/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
 
-Output written on thesis.pdf (71 pages, 4001402 bytes).
+Output written on thesis.pdf (71 pages, 4002113 bytes).
 PDF statistics:
- 1427 PDF objects out of 1440 (max. 8388607)
- 264 named destinations out of 1000 (max. 500000)
+ 1425 PDF objects out of 1440 (max. 8388607)
+ 263 named destinations out of 1000 (max. 500000)
  550 words of extra memory for PDF output out of 10000 (max. 10000000)
 
