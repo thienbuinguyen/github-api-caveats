@@ -324,3 +324,13 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{tabularx}
+\usepackage{lstlinebgrd}
+
+\usepackage{expl3,xparse}
+
+\ExplSyntaxOn
+\NewDocumentCommand \lstcolorlines { O{pink} m }
+{
+	\clist_if_in:nVT { #2 } { \the\value{lstnumber} }{ \color{#1} }
+}
+\ExplSyntaxOff
