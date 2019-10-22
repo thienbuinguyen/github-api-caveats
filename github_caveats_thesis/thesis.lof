@@ -1,15 +1,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture design of the work for this chapter.}}{13}{figure.3.1}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture design of the work for this chapter.}}{13}{figure.3.1}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture design of the work for this chapter.}}{27}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces API documentation for the \lstinline {charAt} method of the \lstinline {java.lang.String} class}}{28}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of an AST for the Euclidean algorithm. Copied from \url {https://en.wikipedia.org/wiki/Abstract\_syntax\_tree}}}{36}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Example of IntelliJ's (lack of) problem highlights for obvious constraint violations.}}{39}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Example of how the developed plugin handles API caveat contract violations.}}{40}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Example of displayed problem message for an API caveat contract violation using the plugin.}}{40}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of IntelliJ's contracts.}}{40}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Example of IntelliJ's contract inconsistency.}}{41}{figure.4.8}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture design of the work for this chapter.}}{27}{figure.4.1}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces API documentation for the \lstinline {charAt} method of the \lstinline {java.lang.String} class}}{28}{figure.4.2}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of an AST for the Euclidean algorithm. Copied from \url {https://en.wikipedia.org/wiki/Abstract\_syntax\_tree}}}{36}{figure.4.3}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Example of IntelliJ's (lack of) problem highlights for obvious constraint violations.}}{39}{figure.4.4}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Example of how the developed plugin handles API caveat contract violations.}}{40}{figure.4.5}% 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Example of displayed problem message for an API caveat contract violation using the plugin.}}{40}{figure.4.6}% 
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of IntelliJ's contracts.}}{40}{figure.4.7}% 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Example of IntelliJ's contract inconsistency.}}{41}{figure.4.8}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
