@@ -1,9 +1,53 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis.aux
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: thesis.aux
 The style file: anuthesis.bst
 Database file #1: thesis.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty journal in construct-knowledge-graph
 Warning--empty journal in xiaoxue
 Warning--empty journal in jiamou
 Warning--can't use both volume and number fields in zhong2013detecting
 Warning--can't use both volume and number fields in zitser2004testing
+You've used 33 entries,
+            3096 wiz_defined-function locations,
+            788 strings with 11330 characters,
+and the built_in function-call counts, 23611 in all, are:
+= -- 1868
+> -- 1103
+< -- 15
++ -- 406
+- -- 369
+* -- 1823
+:= -- 3474
+add.period$ -- 120
+call.type$ -- 33
+change.case$ -- 315
+chr.to.int$ -- 31
+cite$ -- 38
+duplicate$ -- 1710
+empty$ -- 1795
+format.name$ -- 467
+if$ -- 4803
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 366
+newline$ -- 182
+num.names$ -- 132
+pop$ -- 769
+preamble$ -- 1
+purify$ -- 254
+quote$ -- 0
+skip$ -- 647
+stack$ -- 0
+substring$ -- 1044
+swap$ -- 917
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 291
+warning$ -- 5
+while$ -- 159
+width$ -- 0
+write$ -- 467
 (There were 5 warnings)
