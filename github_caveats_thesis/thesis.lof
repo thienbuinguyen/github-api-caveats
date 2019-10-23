@@ -5,13 +5,13 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Example of the description section for the Java \lstinline {String} API documentation. Sentences located in this area (highlighted in red) are referred to as \textit {class level sentences}.}}{18}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Example of the API documentation for \lstinline {ArrayList.get(int index)}. Sentences located in the red underlined section, blue underlined section, green underlined section, and purple underlined section are referred to as \textit {element sentences}, \textit {parameter sentences}, \textit {return sentences} and \textit {exception sentences} respectively.}}{19}{figure.3.3}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture design of the work for this chapter.}}{29}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces API documentation for the \lstinline {charAt} method of the \lstinline {java.lang.String} class}}{30}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of an AST for the Euclidean algorithm. Copied from \url {https://en.wikipedia.org/wiki/Abstract\_syntax\_tree}}}{38}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Example of IntelliJ's (lack of) problem highlights for obvious constraint violations.}}{41}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Example of how the developed plugin handles API caveat contract violations.}}{42}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Example of displayed problem message for an API caveat contract violation using the plugin.}}{42}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of IntelliJ's contracts.}}{42}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Example of IntelliJ's contract inconsistency.}}{43}{figure.4.8}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture design of the work for this chapter.}}{31}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces API documentation for the \lstinline {charAt} method of the \lstinline {java.lang.String} class}}{32}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of an AST for the Euclidean algorithm. Copied from \url {https://en.wikipedia.org/wiki/Abstract\_syntax\_tree}}}{40}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Example of IntelliJ's (lack of) problem highlights for obvious constraint violations.}}{44}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Example of how the developed plugin handles API caveat contract violations.}}{44}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Example of displayed problem message for an API caveat contract violation using the plugin.}}{44}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of IntelliJ's contracts.}}{45}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Example of IntelliJ's contract inconsistency.}}{45}{figure.4.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

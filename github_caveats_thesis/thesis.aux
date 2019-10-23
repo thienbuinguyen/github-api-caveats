@@ -90,11 +90,6 @@
 \citation{van2017combining}
 \citation{pandita2012inferring}
 \citation{blasi2018translating}
-\citation{live-api-doc}
-\citation{zhong2013detecting}
-\citation{code-examples}
-\citation{zhou-directive}
-\citation{monperrus2012should}
 \@writefile{brf}{\backcite{xiaoxue}{{8}{[section][1][2]2.1}{section.2.1}}}
 \@writefile{brf}{\backcite{construct-knowledge-graph}{{8}{[section][1][2]2.1}{section.2.1}}}
 \@writefile{brf}{\backcite{jiamou}{{8}{[section][1][2]2.1}{section.2.1}}}
@@ -105,6 +100,11 @@
 \@writefile{brf}{\backcite{van2017combining}{{8}{[section][2][2]2.2}{section.2.2}}}
 \@writefile{brf}{\backcite{pandita2012inferring}{{8}{[section][2][2]2.2}{section.2.2}}}
 \@writefile{brf}{\backcite{blasi2018translating}{{8}{[section][2][2]2.2}{section.2.2}}}
+\citation{live-api-doc}
+\citation{zhong2013detecting}
+\citation{code-examples}
+\citation{zhou-directive}
+\citation{monperrus2012should}
 \citation{mutation-analysis}
 \citation{bae2014safewapi}
 \citation{jiamou}
@@ -117,7 +117,7 @@
 \@writefile{brf}{\backcite{monperrus2012should}{{9}{[section][3][2]2.3}{section.2.3}}}
 \@writefile{brf}{\backcite{mutation-analysis}{{9}{[section][3][2]2.3}{section.2.3}}}
 \@writefile{brf}{\backcite{bae2014safewapi}{{9}{[section][3][2]2.3}{section.2.3}}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Summary}{9}{section.2.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Summary}{10}{section.2.4}}
 \@writefile{brf}{\backcite{jiamou}{{10}{[section][4][2]2.4}{section.2.4}}}
 \citation{jiamou}
 \citation{xiaoxue}
@@ -164,7 +164,7 @@
 \@writefile{brf}{\backcite{Manning:2008:IIR:1394399}{{14}{[subsection][3][3.2]3.2.3}{subsection.3.2.3}}}
 \@writefile{brf}{\backcite{Manning:2008:IIR:1394399}{{14}{[subsection][3][3.2]3.2.3}{subsection.3.2.3}}}
 \@writefile{brf}{\backcite{perez2009integrating}{{14}{[subsection][3][3.2]3.2.3}{subsection.3.2.3}}}
-\newlabel{eq:bm25}{{[equation][2][3]3.2}{14}{BM25 Ranking}{equation.3.2.2}{}}
+\newlabel{eq:bm25}{{[equation][2][3]3.2}{15}{BM25 Ranking}{equation.3.2.2}{}}
 \newlabel{eq:bm25-idf}{{[equation][3][3]3.3}{15}{BM25 Ranking}{equation.3.2.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Implementation}{15}{section.3.3}}
 \newlabel{sec:info-implement}{{[section][3][3]3.3}{15}{Implementation}{section.3.3}{}}
@@ -175,11 +175,11 @@
 \citation{caveat-knowledge-graph}
 \citation{caveat-knowledge-graph}
 \@writefile{brf}{\backcite{caveat-knowledge-graph}{{17}{[subsection][2][3.3]3.3.2}{subsection.3.3.2}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Data Preprocessing}{17}{subsection.3.3.3}}
-\newlabel{subsec:info-data-preprocess}{{[subsection][3][3.3]3.3.3}{17}{Data Preprocessing}{subsection.3.3.3}{}}
 \citation{jiamou}
 \newlabel{fig:class-sents}{{[figure][2][]3.2}{18}{Java 12 Documentation Caveat Extraction}{figure.3.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of the description section for the Java \lstinline {String} API documentation. Sentences located in this area (highlighted in red) are referred to as \textit  {class level sentences}.}}{18}{figure.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Data Preprocessing}{18}{subsection.3.3.3}}
+\newlabel{subsec:info-data-preprocess}{{[subsection][3][3.3]3.3.3}{18}{Data Preprocessing}{subsection.3.3.3}{}}
 \@writefile{brf}{\backcite{jiamou}{{18}{[subsection][3][3.3]3.3.3}{subsection.3.3.3}}}
 \newlabel{fig:api-doc-eg}{{[figure][3][]3.3}{19}{Java 12 Documentation Caveat Extraction}{figure.3.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of the API documentation for \lstinline {ArrayList.get(int index)}. Sentences located in the red underlined section, blue underlined section, green underlined section, and purple underlined section are referred to as \textit  {element sentences}, \textit  {parameter sentences}, \textit  {return sentences} and \textit  {exception sentences} respectively.}}{19}{figure.3.3}}
@@ -190,171 +190,176 @@
 \newlabel{tab:caveat-keywords}{{[table][1][]3.1}{20}{API caveat categories and syntactic patterns from \cite {caveat-knowledge-graph}}{table.3.1}{}}
 \newlabel{invalid-caveat-1}{{[lstlisting][1][3]3.1}{21}{An example of a caveat sentence extracted from the \lstinline {javax.swing.Spring} documentation containing some snippets of code or mathematical expressions}{lstlisting.3.1}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}An example of a caveat sentence extracted from the \lstinline {javax.swing.Spring} documentation containing some snippets of code or mathematical expressions}{21}{lstlisting.3.1}}
-\newlabel{invalid-caveat-2}{{[lstlisting][2][3]3.2}{21}{An example of a caveat sentence extracted from the \lstinline {java.security.cert.X509CRL} documentation explaining the structure of a \lstinline {TBSCertList} object}{lstlisting.3.2}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}An example of a caveat sentence extracted from the \lstinline {java.security.cert.X509CRL} documentation explaining the structure of a \lstinline {TBSCertList} object.}{21}{lstlisting.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Sentence Embedding}{21}{subsection.3.3.5}}
+\newlabel{subsec:info-sentence-embedding}{{[subsection][5][3.3]3.3.5}{21}{Sentence Embedding}{subsection.3.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.6}Candidate Matching}{21}{subsection.3.3.6}}
+\newlabel{subsec:info-candidate-match}{{[subsection][6][3.3]3.3.6}{21}{Candidate Matching}{subsection.3.3.6}{}}
+\newlabel{invalid-caveat-2}{{[lstlisting][2][3]3.2}{22}{An example of a caveat sentence extracted from the \lstinline {java.security.cert.X509CRL} documentation explaining the structure of a \lstinline {TBSCertList} object}{lstlisting.3.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}An example of a caveat sentence extracted from the \lstinline {java.security.cert.X509CRL} documentation explaining the structure of a \lstinline {TBSCertList} object.}{22}{lstlisting.3.2}}
 \newlabel{invalid-caveat-3}{{[lstlisting][3][3]3.3}{22}{An example of a caveat sentence extracted from the \lstinline {java.text.BreakIterator} documentation that contains some sample code}{lstlisting.3.3}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3.3}An example of a caveat sentence extracted from the \lstinline {java.text.BreakIterator} documentation that contains some sample code.}{22}{lstlisting.3.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Sentence Embedding}{22}{subsection.3.3.5}}
-\newlabel{subsec:info-sentence-embedding}{{[subsection][5][3.3]3.3.5}{22}{Sentence Embedding}{subsection.3.3.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.6}Candidate Matching}{22}{subsection.3.3.6}}
-\newlabel{subsec:info-candidate-match}{{[subsection][6][3.3]3.3.6}{22}{Candidate Matching}{subsection.3.3.6}{}}
 \citation{xiaoxue}
-\citation{jiamou}
 \newlabel{cosine}{{[equation][4][3]3.4}{23}{Candidate Matching}{equation.3.3.4}{}}
 \@writefile{brf}{\backcite{xiaoxue}{{23}{[subsection][6][3.3]3.3.6}{equation.3.3.4}}}
-\@writefile{brf}{\backcite{jiamou}{{23}{[subsection][6][3.3]3.3.6}{equation.3.3.4}}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Results}{23}{section.3.4}}
 \newlabel{sec:info-results}{{[section][4][3]3.4}{23}{Results}{section.3.4}{}}
+\citation{jiamou}
 \newlabel{error-log}{{[lstlisting][4][3]3.4}{24}{Example of a GitHub comment containing an error log from \url {https://github.com/ChrisRM/material-theme-jetbrains/issues/863}}{lstlisting.3.4}{}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3.4}Example of a GitHub comment containing an error log from \url  {https://github.com/ChrisRM/material-theme-jetbrains/issues/863}}{24}{lstlisting.3.4}}
+\@writefile{brf}{\backcite{jiamou}{{25}{[section][4][3]3.4}{lstnumber.3.4.5}}}
 \citation{jiamou}
 \citation{xiaoxue}
-\citation{jiamou}
-\citation{xiaoxue}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Summary}{25}{section.3.5}}
-\newlabel{sec:info-summary}{{[section][5][3]3.5}{25}{Summary}{section.3.5}{}}
-\@writefile{brf}{\backcite{jiamou}{{25}{[section][5][3]3.5}{section.3.5}}}
-\@writefile{brf}{\backcite{xiaoxue}{{25}{[section][5][3]3.5}{section.3.5}}}
-\@writefile{brf}{\backcite{jiamou}{{25}{[section][5][3]3.5}{section.3.5}}}
-\@writefile{brf}{\backcite{xiaoxue}{{25}{[section][5][3]3.5}{section.3.5}}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Summary}{26}{section.3.5}}
+\newlabel{sec:info-summary}{{[section][5][3]3.5}{26}{Summary}{section.3.5}{}}
+\@writefile{brf}{\backcite{jiamou}{{26}{[section][5][3]3.5}{section.3.5}}}
+\@writefile{brf}{\backcite{xiaoxue}{{26}{[section][5][3]3.5}{section.3.5}}}
 \citation{zhou-directive}
 \citation{zhou-directive}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}API Contracts Construction with Static Code Analysis}{27}{chapter.4}}
+\citation{blasi2018translating}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}API Contracts Construction with Static Code Analysis}{29}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:codeAnalysis}{{[chapter][4][]4}{27}{API Contracts Construction with Static Code Analysis}{chapter.4}{}}
-\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Extensions of this concept are also addressed.}{27}{section*.6}}
+\newlabel{cha:codeAnalysis}{{[chapter][4][]4}{29}{API Contracts Construction with Static Code Analysis}{chapter.4}{}}
+\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Extensions of this concept are also addressed.}{29}{section*.6}}
 \pgfsyspdfmark {pgfid1}{13688361}{19664154}
 \pgfsyspdfmark {pgfid2}{4652733}{19659310}
 \pgfsyspdfmark {pgfid3}{6967198}{19411732}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{27}{section.4.1}}
-\newlabel{sec:contract-intro}{{[section][1][4]4.1}{27}{Introduction}{section.4.1}{}}
-\citation{caveat-knowledge-graph}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}}
+\newlabel{sec:contract-intro}{{[section][1][4]4.1}{29}{Introduction}{section.4.1}{}}
 \citation{zhou-directive}
 \citation{directives-study}
 \citation{zhou-directive}
 \citation{zhou-directive}
+\citation{blasi2018translating}
+\citation{zhou-directive}
+\citation{zhou-directive}
+\citation{zhou-directive}
 \citation{code-examples}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][1][4]4.1}{section.4.1}}}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][1][4]4.1}{section.4.1}}}
+\@writefile{brf}{\backcite{blasi2018translating}{{30}{[section][1][4]4.1}{section.4.1}}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Design}{30}{section.4.2}}
+\newlabel{sec:contract-design}{{[section][2][4]4.2}{30}{Design}{section.4.2}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{brf}{\backcite{directives-study}{{30}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{brf}{\backcite{blasi2018translating}{{30}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][2][4]4.2}{section.4.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{30}{[section][2][4]4.2}{section.4.2}}}
 \citation{zhou-directive}
 \citation{singh2013elements}
-\@writefile{brf}{\backcite{zhou-directive}{{28}{[section][1][4]4.1}{section.4.1}}}
-\@writefile{brf}{\backcite{zhou-directive}{{28}{[section][1][4]4.1}{section.4.1}}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Design}{28}{section.4.2}}
-\newlabel{sec:contract-design}{{[section][2][4]4.2}{28}{Design}{section.4.2}{}}
-\@writefile{brf}{\backcite{caveat-knowledge-graph}{{28}{[section][2][4]4.2}{section.4.2}}}
-\@writefile{brf}{\backcite{zhou-directive}{{28}{[section][2][4]4.2}{section.4.2}}}
-\@writefile{brf}{\backcite{directives-study}{{28}{[section][2][4]4.2}{section.4.2}}}
-\@writefile{brf}{\backcite{zhou-directive}{{28}{[section][2][4]4.2}{section.4.2}}}
-\@writefile{brf}{\backcite{zhou-directive}{{28}{[section][2][4]4.2}{section.4.2}}}
-\@writefile{brf}{\backcite{code-examples}{{28}{[section][2][4]4.2}{section.4.2}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Java 12 Caveat Statistics Analysis}{28}{subsection.4.2.1}}
-\newlabel{subsec:contract-caveat-statistics}{{[subsection][1][4.2]4.2.1}{28}{Java 12 Caveat Statistics Analysis}{subsection.4.2.1}{}}
-\@writefile{brf}{\backcite{zhou-directive}{{28}{[subsection][1][4.2]4.2.1}{subsection.4.2.1}}}
-\@writefile{brf}{\backcite{singh2013elements}{{28}{[subsection][1][4.2]4.2.1}{subsection.4.2.1}}}
 \citation{zhou-directive}
-\newlabel{fig:contracct-architecture}{{[figure][1][]4.1}{29}{Design}{figure.4.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture design of the work for this chapter.}}{29}{figure.4.1}}
-\newlabel{sample}{{[equation][1][4]4.1}{29}{Java 12 Caveat Statistics Analysis}{equation.4.2.1}{}}
-\@writefile{brf}{\backcite{zhou-directive}{{29}{[subsection][1][4.2]4.2.1}{equation.4.2.1}}}
+\@writefile{brf}{\backcite{code-examples}{{31}{[section][2][4]4.2}{section.4.2}}}
+\newlabel{fig:contracct-architecture}{{[figure][1][]4.1}{31}{Design}{figure.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture design of the work for this chapter.}}{31}{figure.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Java 12 Caveat Statistics Analysis}{31}{subsection.4.2.1}}
+\newlabel{subsec:contract-caveat-statistics}{{[subsection][1][4.2]4.2.1}{31}{Java 12 Caveat Statistics Analysis}{subsection.4.2.1}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{31}{[subsection][1][4.2]4.2.1}{subsection.4.2.1}}}
+\@writefile{brf}{\backcite{singh2013elements}{{31}{[subsection][1][4.2]4.2.1}{subsection.4.2.1}}}
+\newlabel{sample}{{[equation][1][4]4.1}{31}{Java 12 Caveat Statistics Analysis}{equation.4.2.1}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{31}{[subsection][1][4.2]4.2.1}{equation.4.2.1}}}
 \citation{zhou-directive}
 \citation{zhou-directive}
-\newlabel{fig:api-doc-charAt}{{[figure][2][]4.2}{30}{Java 12 Caveat Statistics Analysis}{figure.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces API documentation for the \lstinline {charAt} method of the \lstinline {java.lang.String} class}}{30}{figure.4.2}}
-\@writefile{brf}{\backcite{zhou-directive}{{30}{[subsection][1][4.2]4.2.1}{figure.4.2}}}
-\@writefile{brf}{\backcite{zhou-directive}{{30}{[subsection][1][4.2]4.2.1}{figure.4.2}}}
+\newlabel{fig:api-doc-charAt}{{[figure][2][]4.2}{32}{Java 12 Caveat Statistics Analysis}{figure.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces API documentation for the \lstinline {charAt} method of the \lstinline {java.lang.String} class}}{32}{figure.4.2}}
 \citation{code-examples}
 \citation{zhou-directive}
 \citation{zhou-directive}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Manually labelled results for classes of 336 randomly sampled parameter level caveat sentences.}}{31}{table.4.1}}
-\newlabel{tab:caveat-param-stats}{{[table][1][]4.1}{31}{Manually labelled results for classes of 336 randomly sampled parameter level caveat sentences}{table.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Manually labelled results for classes of 356 randomly sampled exception level caveat sentences.}}{31}{table.4.2}}
-\newlabel{tab:caveat-exception-stats}{{[table][2][]4.2}{31}{Manually labelled results for classes of 356 randomly sampled exception level caveat sentences}{table.4.2}{}}
-\@writefile{brf}{\backcite{code-examples}{{31}{[subsection][1][4.2]4.2.1}{table.4.2}}}
-\@writefile{brf}{\backcite{zhou-directive}{{31}{[subsection][1][4.2]4.2.1}{table.4.2}}}
-\@writefile{brf}{\backcite{zhou-directive}{{31}{[subsection][1][4.2]4.2.1}{table.4.2}}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Manually labelled results for classes of 336 randomly sampled parameter level caveat sentences.}}{33}{table.4.1}}
+\newlabel{tab:caveat-param-stats}{{[table][1][]4.1}{33}{Manually labelled results for classes of 336 randomly sampled parameter level caveat sentences}{table.4.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Manually labelled results for classes of 356 randomly sampled exception level caveat sentences.}}{33}{table.4.2}}
+\newlabel{tab:caveat-exception-stats}{{[table][2][]4.2}{33}{Manually labelled results for classes of 356 randomly sampled exception level caveat sentences}{table.4.2}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{33}{[subsection][1][4.2]4.2.1}{figure.4.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{33}{[subsection][1][4.2]4.2.1}{figure.4.2}}}
+\@writefile{brf}{\backcite{code-examples}{{33}{[subsection][1][4.2]4.2.1}{table.4.2}}}
 \citation{code-examples}
 \citation{zhou-directive}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Manually labelled categories for caveat sentences found in different locations of the Java 12 API documentation.}}{32}{table.4.3}}
-\newlabel{tab:caveat-sent-stats}{{[table][3][]4.3}{32}{Manually labelled categories for caveat sentences found in different locations of the Java 12 API documentation}{table.4.3}{}}
-\@writefile{brf}{\backcite{code-examples}{{32}{[subsection][1][4.2]4.2.1}{table.4.3}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}API Contracts Construction}{32}{subsection.4.2.2}}
-\newlabel{subsec:contract-construct}{{[subsection][2][4.2]4.2.2}{32}{API Contracts Construction}{subsection.4.2.2}{}}
-\@writefile{brf}{\backcite{zhou-directive}{{32}{[subsection][2][4.2]4.2.2}{subsection.4.2.2}}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Manually labelled categories for caveat sentences found in different locations of the Java 12 API documentation.}}{34}{table.4.3}}
+\newlabel{tab:caveat-sent-stats}{{[table][3][]4.3}{34}{Manually labelled categories for caveat sentences found in different locations of the Java 12 API documentation}{table.4.3}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{34}{[subsection][1][4.2]4.2.1}{table.4.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{34}{[subsection][1][4.2]4.2.1}{table.4.2}}}
+\@writefile{brf}{\backcite{code-examples}{{34}{[subsection][1][4.2]4.2.1}{table.4.3}}}
 \citation{zhou-directive}
 \citation{dryer200581}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}API Contracts Construction}{35}{subsection.4.2.2}}
+\newlabel{subsec:contract-construct}{{[subsection][2][4.2]4.2.2}{35}{API Contracts Construction}{subsection.4.2.2}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{35}{[subsection][2][4.2]4.2.2}{subsection.4.2.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{35}{[subsection][2][4.2]4.2.2}{subsection.4.2.2}}}
+\@writefile{brf}{\backcite{dryer200581}{{35}{[subsection][2][4.2]4.2.2}{subsection.4.2.2}}}
 \citation{zhou-directive}
 \citation{zhou-directive}
 \citation{zhou-directive}
 \citation{zhou-directive}
 \citation{zhou-directive}
 \citation{zhou-directive}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Example of 3 of 20 heuristic rules for nullness not allowed from \cite  {zhou-directive}. Note that the complete list can be found in \ref  {tab:not-null-heuristic} (Appendix).}}{33}{table.4.4}}
-\@writefile{brf}{\backcite{zhou-directive}{{33}{[table][4][]4.4}{table.4.4}}}
-\newlabel{tab:not-null-heuristic}{{[table][4][]4.4}{33}{Example of 3 of 20 heuristic rules for nullness not allowed from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:not-null-heuristic} (Appendix)}{table.4.4}{}}
-\@writefile{brf}{\backcite{zhou-directive}{{33}{[subsection][2][4.2]4.2.2}{subsection.4.2.2}}}
-\@writefile{brf}{\backcite{dryer200581}{{33}{[subsection][2][4.2]4.2.2}{subsection.4.2.2}}}
-\@writefile{brf}{\backcite{zhou-directive}{{33}{[subsection][2][4.2]4.2.2}{table.4.5}}}
-\@writefile{brf}{\backcite{zhou-directive}{{33}{[subsection][2][4.2]4.2.2}{table.4.5}}}
 \citation{zhou-directive}
 \citation{zhou-directive}
-\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Example of 3 of 23 heuristic rules for range limitations from \cite  {zhou-directive}. Note that the complete list can be found in \ref  {tab:range-limit-heuristic} (Appendix).}}{34}{table.4.5}}
-\@writefile{brf}{\backcite{zhou-directive}{{34}{[table][5][]4.5}{table.4.5}}}
-\newlabel{tab:range-limit-heuristic}{{[table][5][]4.5}{34}{Example of 3 of 23 heuristic rules for range limitations from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:range-limit-heuristic} (Appendix)}{table.4.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Regular expressions used to normalise mathematical phrases.}}{34}{table.4.6}}
-\newlabel{tab:normalisation-regex}{{[table][6][]4.6}{34}{Regular expressions used to normalise mathematical phrases}{table.4.6}{}}
-\@writefile{brf}{\backcite{zhou-directive}{{34}{[subsection][2][4.2]4.2.2}{table.4.5}}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Example of 3 of 20 heuristic rules for nullness not allowed from \cite  {zhou-directive}. Note that the complete list can be found in \ref  {tab:not-null-heuristic} (Appendix).}}{36}{table.4.4}}
+\@writefile{brf}{\backcite{zhou-directive}{{36}{[table][4][]4.4}{table.4.4}}}
+\newlabel{tab:not-null-heuristic}{{[table][4][]4.4}{36}{Example of 3 of 20 heuristic rules for nullness not allowed from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:not-null-heuristic} (Appendix)}{table.4.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Example of 3 of 23 heuristic rules for range limitations from \cite  {zhou-directive}. Note that the complete list can be found in \ref  {tab:range-limit-heuristic} (Appendix).}}{36}{table.4.5}}
+\@writefile{brf}{\backcite{zhou-directive}{{36}{[table][5][]4.5}{table.4.5}}}
+\newlabel{tab:range-limit-heuristic}{{[table][5][]4.5}{36}{Example of 3 of 23 heuristic rules for range limitations from \cite {zhou-directive}. Note that the complete list can be found in \ref {tab:range-limit-heuristic} (Appendix)}{table.4.5}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{36}{[subsection][2][4.2]4.2.2}{table.4.5}}}
+\@writefile{brf}{\backcite{zhou-directive}{{36}{[subsection][2][4.2]4.2.2}{table.4.5}}}
+\@writefile{brf}{\backcite{zhou-directive}{{36}{[subsection][2][4.2]4.2.2}{table.4.5}}}
 \citation{zhou-directive}
 \citation{1657940}
-\@writefile{brf}{\backcite{zhou-directive}{{35}{[subsection][2][4.2]4.2.2}{table.4.6}}}
-\@writefile{brf}{\backcite{zhou-directive}{{35}{[subsection][2][4.2]4.2.2}{table.4.6}}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Checker Programs}{35}{subsection.4.2.3}}
-\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Describe IntelliJ plugin and Boa AST}{35}{section*.7}}
-\pgfsyspdfmark {pgfid6}{7458719}{19117515}
-\pgfsyspdfmark {pgfid7}{4652733}{19112671}
-\pgfsyspdfmark {pgfid8}{6967198}{18865093}
-\@writefile{brf}{\backcite{1657940}{{35}{[subsection][3][4.2]4.2.3}{section*.7}}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces The regular expressions identified in \textbackslash {}cite\{\} for sub-sentence substitutions and dependency parsing.}}{36}{table.4.7}}
-\newlabel{tab:zhou-regex}{{[table][7][]4.7}{36}{The regular expressions identified in \textbackslash {}cite\{\} for sub-sentence substitutions and dependency parsing}{table.4.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Regular expressions used to normalise mathematical phrases.}}{37}{table.4.6}}
+\newlabel{tab:normalisation-regex}{{[table][6][]4.6}{37}{Regular expressions used to normalise mathematical phrases}{table.4.6}{}}
+\@writefile{brf}{\backcite{zhou-directive}{{37}{[subsection][2][4.2]4.2.2}{table.4.6}}}
+\@writefile{brf}{\backcite{zhou-directive}{{37}{[subsection][2][4.2]4.2.2}{table.4.6}}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces The regular expressions identified in \textbackslash {}cite\{\} for sub-sentence substitutions and dependency parsing.}}{38}{table.4.7}}
+\newlabel{tab:zhou-regex}{{[table][7][]4.7}{38}{The regular expressions identified in \textbackslash {}cite\{\} for sub-sentence substitutions and dependency parsing}{table.4.7}{}}
 \citation{code-examples}
-\@writefile{brf}{\backcite{code-examples}{{37}{[subsection][3][4.2]4.2.3}{section*.7}}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Implementation}{37}{section.4.3}}
-\newlabel{sec:contract-implement}{{[section][3][4]4.3}{37}{Implementation}{section.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Java API Caveat Contracts}{37}{subsection.4.3.1}}
-\newlabel{subsec:contract-caveat-contracts}{{[subsection][1][4.3]4.3.1}{37}{Java API Caveat Contracts}{subsection.4.3.1}{}}
-\newlabel{fig:ast}{{[figure][3][]4.3}{38}{Checker Programs}{figure.4.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of an AST for the Euclidean algorithm. Copied from \url  {https://en.wikipedia.org/wiki/Abstract\_syntax\_tree}}}{38}{figure.4.3}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.8}{\ignorespaces Confusion matrix for the sentence normalisation approach proposed.}}{40}{table.4.8}}
-\newlabel{tab:conf-mat}{{[table][8][]4.8}{40}{Confusion matrix for the sentence normalisation approach proposed}{table.4.8}{}}
-\newlabel{accuracy}{{[equation][2][4]4.2}{40}{Java API Caveat Contracts}{equation.4.3.2}{}}
-\newlabel{recall}{{[equation][3][4]4.3}{40}{Java API Caveat Contracts}{equation.4.3.3}{}}
-\newlabel{precision}{{[equation][4][4]4.4}{40}{Java API Caveat Contracts}{equation.4.3.4}{}}
-\newlabel{f-measure}{{[equation][5][4]4.5}{40}{Java API Caveat Contracts}{equation.4.3.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}IntelliJ Plugin with Static Code Analysis}{40}{subsection.4.3.2}}
-\newlabel{subsec:contract-plugin}{{[subsection][2][4.3]4.3.2}{40}{IntelliJ Plugin with Static Code Analysis}{subsection.4.3.2}{}}
-\newlabel{fig:plugin-inspection-off}{{[figure][4][]4.4}{41}{Results}{figure.4.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Example of IntelliJ's (lack of) problem highlights for obvious constraint violations.}}{41}{figure.4.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Results}{41}{section.4.4}}
-\newlabel{sec:contract-results}{{[section][4][4]4.4}{41}{Results}{section.4.4}{}}
-\newlabel{fig:plugin-inspection-on}{{[figure][5][]4.5}{42}{Results}{figure.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Example of how the developed plugin handles API caveat contract violations.}}{42}{figure.4.5}}
-\newlabel{fig:plugin-problem}{{[figure][6][]4.6}{42}{Results}{figure.4.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Example of displayed problem message for an API caveat contract violation using the plugin.}}{42}{figure.4.6}}
-\newlabel{fig:intellij-inspection-on}{{[figure][7][]4.7}{42}{Results}{figure.4.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of IntelliJ's contracts.}}{42}{figure.4.7}}
-\newlabel{fig:intellij-inspection-off}{{[figure][8][]4.8}{43}{Results}{figure.4.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Example of IntelliJ's contract inconsistency.}}{43}{figure.4.8}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Summary}{43}{section.4.5}}
-\newlabel{sec:contract-summary}{{[section][5][4]4.5}{43}{Summary}{section.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Checker Programs}{39}{subsection.4.2.3}}
+\newlabel{sec:code-checker}{{[subsection][3][4.2]4.2.3}{39}{Checker Programs}{subsection.4.2.3}{}}
+\@writefile{tdo}{\contentsline {todo}{\color@fb@x {}{black}{}{fixcolor}{\leavevmode {\color  {fixcolor}o}}\ Describe IntelliJ plugin and Boa AST}{39}{section*.7}}
+\pgfsyspdfmark {pgfid6}{7458719}{45789107}
+\pgfsyspdfmark {pgfid7}{4652733}{45784263}
+\pgfsyspdfmark {pgfid8}{6967198}{45536685}
+\@writefile{brf}{\backcite{1657940}{{39}{[subsection][3][4.2]4.2.3}{section*.7}}}
+\@writefile{brf}{\backcite{code-examples}{{39}{[subsection][3][4.2]4.2.3}{section*.7}}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Implementation}{39}{section.4.3}}
+\newlabel{sec:contract-implement}{{[section][3][4]4.3}{39}{Implementation}{section.4.3}{}}
+\newlabel{fig:ast}{{[figure][3][]4.3}{40}{Checker Programs}{figure.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Example of an AST for the Euclidean algorithm. Copied from \url  {https://en.wikipedia.org/wiki/Abstract\_syntax\_tree}}}{40}{figure.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Java API Caveat Contracts}{41}{subsection.4.3.1}}
+\newlabel{subsec:contract-caveat-contracts}{{[subsection][1][4.3]4.3.1}{41}{Java API Caveat Contracts}{subsection.4.3.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.8}{\ignorespaces Confusion matrix for the sentence normalisation approach proposed.}}{42}{table.4.8}}
+\newlabel{tab:conf-mat}{{[table][8][]4.8}{42}{Confusion matrix for the sentence normalisation approach proposed}{table.4.8}{}}
+\newlabel{accuracy}{{[equation][2][4]4.2}{42}{Java API Caveat Contracts}{equation.4.3.2}{}}
+\newlabel{recall}{{[equation][3][4]4.3}{42}{Java API Caveat Contracts}{equation.4.3.3}{}}
+\newlabel{precision}{{[equation][4][4]4.4}{42}{Java API Caveat Contracts}{equation.4.3.4}{}}
+\newlabel{f-measure}{{[equation][5][4]4.5}{42}{Java API Caveat Contracts}{equation.4.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}IntelliJ Plugin with Static Code Analysis}{43}{subsection.4.3.2}}
+\newlabel{subsec:contract-plugin}{{[subsection][2][4.3]4.3.2}{43}{IntelliJ Plugin with Static Code Analysis}{subsection.4.3.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Results}{43}{section.4.4}}
+\newlabel{sec:contract-results}{{[section][4][4]4.4}{43}{Results}{section.4.4}{}}
+\newlabel{fig:plugin-inspection-off}{{[figure][4][]4.4}{44}{Results}{figure.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Example of IntelliJ's (lack of) problem highlights for obvious constraint violations.}}{44}{figure.4.4}}
+\newlabel{fig:plugin-inspection-on}{{[figure][5][]4.5}{44}{Results}{figure.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Example of how the developed plugin handles API caveat contract violations.}}{44}{figure.4.5}}
+\newlabel{fig:plugin-problem}{{[figure][6][]4.6}{44}{Results}{figure.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Example of displayed problem message for an API caveat contract violation using the plugin.}}{44}{figure.4.6}}
+\newlabel{fig:intellij-inspection-on}{{[figure][7][]4.7}{45}{Results}{figure.4.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of IntelliJ's contracts.}}{45}{figure.4.7}}
+\newlabel{fig:intellij-inspection-off}{{[figure][8][]4.8}{45}{Results}{figure.4.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Example of IntelliJ's contract inconsistency.}}{45}{figure.4.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Summary}{45}{section.4.5}}
+\newlabel{sec:contract-summary}{{[section][5][4]4.5}{45}{Summary}{section.4.5}{}}
 \citation{jiamou}
 \citation{jiamou}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{45}{chapter.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{47}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{cha:conc}{{[chapter][5][]5}{45}{Conclusion}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Summary}{45}{section.5.1}}
-\newlabel{sec:summary}{{[section][1][5]5.1}{45}{Summary}{section.5.1}{}}
-\@writefile{brf}{\backcite{jiamou}{{45}{[section][1][5]5.1}{section.5.1}}}
-\@writefile{brf}{\backcite{jiamou}{{45}{[section][1][5]5.1}{section.5.1}}}
+\newlabel{cha:conc}{{[chapter][5][]5}{47}{Conclusion}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Summary}{47}{section.5.1}}
+\newlabel{sec:summary}{{[section][1][5]5.1}{47}{Summary}{section.5.1}{}}
+\@writefile{brf}{\backcite{jiamou}{{47}{[section][1][5]5.1}{section.5.1}}}
+\@writefile{brf}{\backcite{jiamou}{{47}{[section][1][5]5.1}{section.5.1}}}
 \citation{zhou-directive}
 \citation{blasi2018translating}
 \citation{zhou-directive}
@@ -362,34 +367,34 @@
 \citation{mutation-analysis}
 \citation{code-examples}
 \citation{mutation-analysis}
-\@writefile{brf}{\backcite{zhou-directive}{{46}{[section][1][5]5.1}{section.5.1}}}
-\@writefile{brf}{\backcite{blasi2018translating}{{46}{[section][1][5]5.1}{section.5.1}}}
-\@writefile{brf}{\backcite{zhou-directive}{{46}{[section][1][5]5.1}{section.5.1}}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Future Work}{46}{section.5.2}}
-\newlabel{sec:future}{{[section][2][5]5.2}{46}{Future Work}{section.5.2}{}}
-\@writefile{brf}{\backcite{code-examples}{{46}{[section][2][5]5.2}{section.5.2}}}
-\@writefile{brf}{\backcite{mutation-analysis}{{46}{[section][2][5]5.2}{section.5.2}}}
-\@writefile{brf}{\backcite{code-examples}{{46}{[section][2][5]5.2}{section.5.2}}}
-\@writefile{brf}{\backcite{mutation-analysis}{{46}{[section][2][5]5.2}{section.5.2}}}
+\@writefile{brf}{\backcite{zhou-directive}{{48}{[section][1][5]5.1}{section.5.1}}}
+\@writefile{brf}{\backcite{blasi2018translating}{{48}{[section][1][5]5.1}{section.5.1}}}
+\@writefile{brf}{\backcite{zhou-directive}{{48}{[section][1][5]5.1}{section.5.1}}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Future Work}{48}{section.5.2}}
+\newlabel{sec:future}{{[section][2][5]5.2}{48}{Future Work}{section.5.2}{}}
+\@writefile{brf}{\backcite{code-examples}{{48}{[section][2][5]5.2}{section.5.2}}}
+\@writefile{brf}{\backcite{mutation-analysis}{{48}{[section][2][5]5.2}{section.5.2}}}
+\@writefile{brf}{\backcite{code-examples}{{48}{[section][2][5]5.2}{section.5.2}}}
+\@writefile{brf}{\backcite{mutation-analysis}{{48}{[section][2][5]5.2}{section.5.2}}}
 \citation{zhou-directive}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Appendix}{49}{chapter.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Appendix}{51}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{brf}{\backcite{zhou-directive}{{49}{[section][1][6]6.1}{section.6.1}}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Heuristic Rules from \cite  {zhou-directive}}{49}{section.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Not-null Heuristics}{49}{subsection.6.1.1}}
-\newlabel{app:not-null}{{[subsection][1][6.1]6.1.1}{49}{Not-null Heuristics}{subsection.6.1.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Complete list of heuristic rules for exception nullness not allowed.}}{49}{table.6.1}}
-\newlabel{tab:complete-not-null-heuristic-except}{{[table][1][]6.1}{49}{Complete list of heuristic rules for exception nullness not allowed}{table.6.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Complete list of heuristic rules for parameter nullness not allowed.}}{49}{table.6.2}}
-\newlabel{tab:complete-not-null-heuristic-param}{{[table][2][]6.2}{49}{Complete list of heuristic rules for parameter nullness not allowed}{table.6.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Range Limitation Heuristics}{50}{subsection.6.1.2}}
-\newlabel{app:range-limit}{{[subsection][2][6.1]6.1.2}{50}{Range Limitation Heuristics}{subsection.6.1.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Complete list of heuristic rules for exception range limitations.}}{50}{table.6.3}}
-\newlabel{tab:complete-heuristics-range-limit-except}{{[table][3][]6.3}{50}{Complete list of heuristic rules for exception range limitations}{table.6.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces Complete list of heuristic rules for parameter range limitations.}}{51}{table.6.4}}
-\newlabel{tab:complete-heuristics-range-limit-param}{{[table][4][]6.4}{51}{Complete list of heuristic rules for parameter range limitations}{table.6.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Independent Study Contract}{51}{section.6.2}}
+\@writefile{brf}{\backcite{zhou-directive}{{51}{[section][1][6]6.1}{section.6.1}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Heuristic Rules from \cite  {zhou-directive}}{51}{section.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Not-null Heuristics}{51}{subsection.6.1.1}}
+\newlabel{app:not-null}{{[subsection][1][6.1]6.1.1}{51}{Not-null Heuristics}{subsection.6.1.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Complete list of heuristic rules for exception nullness not allowed.}}{51}{table.6.1}}
+\newlabel{tab:complete-not-null-heuristic-except}{{[table][1][]6.1}{51}{Complete list of heuristic rules for exception nullness not allowed}{table.6.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Complete list of heuristic rules for parameter nullness not allowed.}}{51}{table.6.2}}
+\newlabel{tab:complete-not-null-heuristic-param}{{[table][2][]6.2}{51}{Complete list of heuristic rules for parameter nullness not allowed}{table.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Range Limitation Heuristics}{52}{subsection.6.1.2}}
+\newlabel{app:range-limit}{{[subsection][2][6.1]6.1.2}{52}{Range Limitation Heuristics}{subsection.6.1.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Complete list of heuristic rules for exception range limitations.}}{52}{table.6.3}}
+\newlabel{tab:complete-heuristics-range-limit-except}{{[table][3][]6.3}{52}{Complete list of heuristic rules for exception range limitations}{table.6.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces Complete list of heuristic rules for parameter range limitations.}}{53}{table.6.4}}
+\newlabel{tab:complete-heuristics-range-limit-param}{{[table][4][]6.4}{53}{Complete list of heuristic rules for parameter range limitations}{table.6.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Independent Study Contract}{53}{section.6.2}}
 \bibstyle{anuthesis}
 \bibdata{thesis}
 \bibcite{baca2009static}{{1}{2009}{{Baca et~al.}}{{Baca, Petersen, Carlsson, and Lundberg}}}
