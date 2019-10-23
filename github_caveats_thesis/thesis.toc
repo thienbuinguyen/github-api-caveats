@@ -23,17 +23,17 @@
 \contentsline {subsection}{\numberline {3.3.4}Candidate Filtering}{19}{subsection.3.3.4}
 \contentsline {subsection}{\numberline {3.3.5}Sentence Embedding}{21}{subsection.3.3.5}
 \contentsline {subsection}{\numberline {3.3.6}Candidate Matching}{21}{subsection.3.3.6}
-\contentsline {section}{\numberline {3.4}Results}{23}{section.3.4}
+\contentsline {section}{\numberline {3.4}Results}{24}{section.3.4}
 \contentsline {section}{\numberline {3.5}Summary}{26}{section.3.5}
 \contentsline {chapter}{\numberline {4}API Contracts Construction with Static Code Analysis}{29}{chapter.4}
 \contentsline {section}{\numberline {4.1}Introduction}{29}{section.4.1}
 \contentsline {section}{\numberline {4.2}Design}{30}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Java 12 Caveat Statistics Analysis}{31}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}API Contracts Construction}{35}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Checker Programs}{39}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Implementation}{39}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Java API Caveat Contracts}{41}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}IntelliJ Plugin with Static Code Analysis}{43}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.2.2}API Contracts Construction}{34}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Checker Programs}{38}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Implementation}{38}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Java API Caveat Contracts}{40}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}IntelliJ Plugin with Static Code Analysis}{42}{subsection.4.3.2}
 \contentsline {section}{\numberline {4.4}Results}{43}{section.4.4}
 \contentsline {section}{\numberline {4.5}Summary}{45}{section.4.5}
 \contentsline {chapter}{\numberline {5}Conclusion}{47}{chapter.5}
